@@ -1,0 +1,144 @@
+@import "../../abstracts/variables";
+@import "../../abstracts/mixins";
+@import "../../base/utilities";
+@import "../../base/typography";
+
+
+.signin {
+    @include pages;
+
+    &__content {
+        @include flexbox;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
+.sociallog {
+    @include flexbox;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    &__item {
+        padding: .7em;
+        border-radius: 5px;
+        @include flexbox;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        &--g {
+            background-color: #DF4930;
+        }
+
+        &--fb {
+            background-color: #507CC0;
+        }
+    }
+
+    &__icon {
+        width: 20px;
+        height: 20px;
+        fill: $divider-color;
+    }
+
+    &__link {
+        @include links(13px, $divider-color);
+        padding-left: .8em;
+    }
+}
+
+.info {
+    @include flexbox;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+
+    &__title {
+        color: $primary-text;
+        margin-bottom: .3em;
+    }
+
+    &__details {
+        color: rgba($secondary-text, .9);
+        width: 80%;
+    }
+}
+
+.form {
+    @include forms;
+
+    &__fgroup {
+        @include form-groups;
+        &-label {
+            @include form-labels;
+        }
+
+        &-control {
+            @include form-controls;
+        }
+    }
+
+    &__controllers {
+        width: 100%;
+        @include flexbox;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        &-items {
+            @include flexbox;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        &-chbox {
+            width: 14px;
+            height: 14px;
+        }
+
+        &-smlabel {
+            font-size: 13px;
+            font-weight: 400;
+            color: $primary-text;
+            margin-left: .5em;
+        }
+        &-fgotlink {
+            @include links(12px, $primary-text);
+        }
+    }
+
+    &__submit {
+        align-self: center;
+        color: $divider-color;
+        @include buttons(120px, 15px);
+    }
+}
+
+.al-signed {
+    font-size: 14px;
+    font-weight: 400;
+    color: $primary-text;
+    @include flexbox;
+    align-items: center;
+
+    &__link {
+        @include links(16px, $primary-color);
+        font-weight: 600;
+        margin-left: .4em;
+    }
+}
+
+.homeback {
+    &__link {
+        @include links(15px, $primary-color);
+        font-weight: 600;
+    }
+}
+
+.rel {
+    position: relative;
+}

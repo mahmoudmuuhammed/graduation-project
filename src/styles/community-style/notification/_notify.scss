@@ -1,0 +1,15 @@
+@import "../../abstracts/variables";
+@import "../../abstracts/mixins";
+
+:host {
+    position: absolute;
+    right: 256px;
+    top: 50px;
+}
+
+.notification {
+    width: 300px;
+    height: 500px;
+    background-color: #000;
+    border-radius: 5px;
+}

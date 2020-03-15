@@ -1,0 +1,34 @@
+<!-- top navigation  -->
+<nav class="top-nav">
+        <!-- medkit brand  -->
+    <div class="brand">
+        <a href="#" class="brand__link">Medkit</a>
+    </div>
+        <!-- second div of navigation  -->
+    <div class="items">
+        <div class="items__usage">
+            <svg class="items__usage-icons">
+                <use xlink:href="../../../assets/sprites/topnav-icons.svg#search"></use>
+            </svg>
+            <svg class="items__usage-icons" (click)="onShowNotificationToggle()">
+                <use xlink:href="../../../assets/sprites/topnav-icons.svg#notification"></use>
+            </svg>
+        </div>
+        <div class="items__user">
+            <div class="items__user-info">
+                <p class="items__user-name">John Smith</p>
+                <p class="items__user-username">@john22</p>
+            </div>
+            <img 
+                src="../../../assets/images/user1.jpg" 
+                alt="user image" 
+                class="items__user-img">
+
+            <svg class="items__user-dropdown">
+                <use xlink:href="../../../assets/sprites/topnav-icons.svg#more-arrow"></use>
+            </svg>
+        </div>
+    </div>
+    <notification 
+        *ngIf="showNotification"></notification>
+</nav>

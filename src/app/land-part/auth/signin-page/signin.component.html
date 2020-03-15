@@ -1,0 +1,113 @@
+<section class="signin">
+    <div class="signin__content">
+        <div class="info u-mrgt-1 u-mrgb-1">
+            <h1 class="info__title lg-title">
+                Welcome back.
+            </h1>
+            <p class="info__details md-text">
+                Sign in with social, or enter your email and
+                password below to can access to your account.
+            </p>
+        </div>
+        <div class="sociallog u-mrgb-2">
+            <div class="sociallog__item sociallog__item--g u-mrgr-1">
+                <svg class="sociallog__icon">
+                    <use xlink:href="../../../../../assets/sprites/auth-icons.svg#google"></use>
+                </svg>
+                <a href="#" 
+                    class="sociallog__link">Sign in with Google</a>
+            </div>
+            <div class="sociallog__item sociallog__item--fb">
+                <svg class="sociallog__icon">
+                    <use xlink:href="../../../../../assets/sprites/auth-icons.svg#facebook"></use>
+                </svg>
+                <a href="#" 
+                    class="sociallog__link">Sign in with Facebook</a>
+            </div>
+        </div>
+        <form 
+            [formGroup]="signinForm"
+            (ngSubmit)="signinFormSubmit()"
+            class="form u-mrgb-1">
+            <div class="form__fgroup u-mrgb-1">
+                <label class="form__fgroup-label" for="email">Email</label>
+                <input 
+                    type="email" 
+                    class="form__fgroup-control" 
+                    placeholder="Enter your email" 
+                    id="email" 
+                    formControlName="email">
+                
+                <div class="validation" 
+                    *ngIf="!emailControl.valid && emailControl.touched">
+
+                    <svg class="validation__icon">
+                        <use xlink:href="../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                    </svg>
+                    <p *ngIf="emailControl.errors.required">
+                        {{ validationErrorMessage.requiredError }}
+                    </p>
+                    <p *ngIf="emailControl.errors.email">
+                        {{ validationErrorMessage.validEmail }}
+                    </p>
+                </div>
+            </div>
+            <div class="form__fgroup rel u-mrgb-1">
+                <label class="form__fgroup-label" for="password">Password</label>
+                <div 
+                    (click)="showPasswordToggle(passInput)" 
+                    style="position: absolute; top: 42px; right: 27px; cursor: pointer;">
+
+                    <svg 
+                        *ngIf="!checkPassState"
+                        style="width: 18px; height: 18px; fill: #56565a">
+                        <use xlink:href="../../../../assets/sprites/pass-state.svg#visibility"></use>
+                    </svg>
+                    <svg 
+                    *ngIf="checkPassState"
+                    style="width: 18px; height: 18px; fill: #56565a">
+                        <use xlink:href="../../../../assets/sprites/pass-state.svg#invisible"></use>
+                    </svg>
+                </div>
+                <input
+                    type="password"
+                    class="form__fgroup-control"
+                    placeholder="Enter your password"
+                    id="password" 
+                    formControlName="password"
+                    #passInput>
+                
+                <div class="validation" 
+                *ngIf="!passwordControl.valid && passwordControl.touched">
+
+                <svg class="validation__icon">
+                    <use xlink:href="../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                </svg>
+                <p *ngIf="passwordControl.errors.required">
+                    {{ validationErrorMessage.requiredError }}
+                </p>
+            </div>
+            </div>
+            <div class="form__controllers u-mrgb-2">
+                <div class="form__controllers-items">
+                    <input 
+                        type="checkbox"
+                        id="rememberme" 
+                        class="form__controllers-chbox">
+                    <label 
+                        class="form__controllers-smlabel" 
+                        for="rememberme">Remember me</label>
+                </div>
+                <a href="" class="form__controllers-fgotlink">Forget password?</a>
+            </div>
+            <button class="form__submit">Sign in</button>
+        </form>
+        <div class="al-signed u-mrgb-1">
+            <p>No account?</p>
+            <a href="" class="al-signed__link">Sign up</a>
+        </div>
+        <div class="homeback">
+            <a href="" class="homeback__link">Back to home.</a>
+        </div>
+    </div>
+</section>

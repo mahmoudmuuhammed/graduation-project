@@ -1,0 +1,77 @@
+@import "../../abstracts/variables";
+@import "../../abstracts/mixins";
+@import "../../base/utilities";
+@import "../../base/typography";
+
+.blog {
+    width: 100%;
+    @include flexbox;
+    flex-direction: row;
+    justify-content: center;
+
+    &__content {
+        width: 90%;
+        @include flexbox;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+}
+
+.bnav {
+    @include flexbox;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: .5em;
+
+    &__brand {
+        
+        &-link {
+            @include links(20px, $primary-text);
+            font-weight: 900;
+            &--custom {
+                font-weight: 500;
+                font-size: 15px;
+                color: $secondary-text;
+            }
+        }
+    }
+
+    &__list {
+        @include flexbox;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 400px;
+
+        &-item {
+            list-style: none;
+        }
+
+        &-link {
+            @include links(15px, $primary-text);
+            font-weight: 500;
+        }
+
+        &-subscribe {
+
+            &__control {
+                padding: .7em .4em;
+                border: 1px solid #dfe9ec;
+                border-radius: 5px 0 0 5px;
+
+                &:focus {
+                    outline: none;
+                    border: 1px solid $primary-color;
+                }
+                &::-webkit-input-placeholder{
+                    font-size: 12px;
+                    font-weight: 400;
+                }
+            }
+
+            &__btn {
+                
+            }
+        }
+    }
+}
