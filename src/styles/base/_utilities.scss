@@ -151,3 +151,7 @@
         margin-right: .4em;
     }
 }
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
