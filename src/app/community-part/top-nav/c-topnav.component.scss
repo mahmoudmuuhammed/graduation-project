@@ -1,1 +1,465 @@
 @import "../../../styles/community-style/top-nav/topnav";
+
+
+//Colors
+
+$whiteColor:#fff;
+$primaryColor:#764BCB;
+$greyColor:#f5f5f5;
+$moreGreyColor:#BBA5E5;
+
+
+.topNavbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background: #fff;
+    box-shadow: 0px 2px 5px -3px #AAA;
+}
+
+.navbar-brand {
+    width: 250px;
+    height: auto;
+
+    .smallLogo {
+        width: 150px;
+    }
+}
+
+.mainNavBtn {
+    position: relative;
+    border: none;
+    padding: 0;
+    background: transparent;
+    width: 30px;
+    height: 25px;
+    margin-right: 20px;
+
+    .navTrigger {
+        width: 30px;
+        height: 25px;
+        margin: auto;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: none;
+        cursor: pointer;
+    }
+
+    .navTrigger {
+
+        i {
+            background-color: #555;
+            border-radius: 2px;
+            content: '';
+            display: block;
+            width: 100%;
+            height: 4px;
+        }
+    }
+
+    .navTrigger {
+        i:nth-child(1) {
+            -webkit-animation: outT 0.3s backwards;
+            animation: outT 0.3s backwards;
+            -webkit-animation-direction: reverse;
+            animation-direction: reverse;
+        }
+    }
+
+    .navTrigger {
+        i:nth-child(2) {
+            margin: 5px 0;
+            -webkit-animation: outM 0.3s backwards;
+            animation: outM 0.3s backwards;
+            -webkit-animation-direction: reverse;
+            animation-direction: reverse;
+        }
+    }
+
+    .navTrigger {
+        i:nth-child(3) {
+            -webkit-animation: outBtm 0.3s backwards;
+            animation: outBtm 0.3s backwards;
+            -webkit-animation-direction: reverse;
+            animation-direction: reverse;
+        }
+    }
+
+    .navTrigger.active {
+        i:nth-child(1) {
+            -webkit-animation: inT 0.3s forwards;
+            animation: inT 0.3s forwards;
+        }
+    }
+
+    .navTrigger.active {
+        i:nth-child(2) {
+            -webkit-animation: inM 0.3s forwards;
+            animation: inM 0.3s forwards;
+        }
+    }
+
+    .navTrigger.active {
+        i:nth-child(3) {
+            -webkit-animation: inBtm 0.3s forwards;
+            animation: inBtm 0.3s forwards;
+        }
+    }
+
+    @media (max-width:768px) {
+        .navTrigger {
+            display: block !important;
+        }
+    }
+
+    @-webkit-keyframes inM {
+        50% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(45deg);
+        }
+    }
+
+    @keyframes inM {
+        50% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(45deg);
+        }
+    }
+
+    @-webkit-keyframes outM {
+        50% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(45deg);
+        }
+    }
+
+    @keyframes outM {
+        50% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(45deg);
+        }
+    }
+
+    @-webkit-keyframes inT {
+        0% {
+            -webkit-transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            -webkit-transform: translateY(9px) rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: translateY(9px) rotate(135deg);
+        }
+    }
+
+    @keyframes inT {
+        0% {
+            transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(9px) rotate(0deg);
+        }
+
+        100% {
+            transform: translateY(9px) rotate(135deg);
+        }
+    }
+
+    @-webkit-keyframes outT {
+        0% {
+            -webkit-transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            -webkit-transform: translateY(9px) rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: translateY(9px) rotate(135deg);
+        }
+    }
+
+    @keyframes outT {
+        0% {
+            transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(9px) rotate(0deg);
+        }
+
+        100% {
+            transform: translateY(9px) rotate(135deg);
+        }
+    }
+
+    @-webkit-keyframes inBtm {
+        0% {
+            -webkit-transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            -webkit-transform: translateY(-9px) rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: translateY(-9px) rotate(135deg);
+        }
+    }
+
+    @keyframes inBtm {
+        0% {
+            transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(-9px) rotate(0deg);
+        }
+
+        100% {
+            transform: translateY(-9px) rotate(135deg);
+        }
+    }
+
+    @-webkit-keyframes outBtm {
+        0% {
+            -webkit-transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            -webkit-transform: translateY(-9px) rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: translateY(-9px) rotate(135deg);
+        }
+    }
+
+    @keyframes outBtm {
+        0% {
+            transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(-9px) rotate(0deg);
+        }
+
+        100% {
+            transform: translateY(-9px) rotate(135deg);
+        }
+    }
+}
+
+.navControlDiv {
+    width: max-content;
+    float: right;
+    display: flex;
+    align-items: center;
+
+    .searchContainerDiv {
+        width: max-content;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+
+        .searchContainer {
+            padding: 5px 20px 5px 10px;
+            background-color: #f5f5f5;
+            border-radius: 3px;
+
+            button {
+                background-color: transparent;
+                border: none;
+                color: #888;
+
+                i {
+                    color: #aaa;
+                }
+            }
+
+            Input[type="text"] {
+                background-color: transparent;
+                border: none;
+                max-width: 178px;
+                padding-left: 10px
+            }
+        }
+    }
+
+    .AccountOptionDiv {
+        display: flex;
+        align-items: center;
+
+        .bellBtn {
+            border: none;
+            background-color: transparent;
+            padding: 0px;
+
+            .bellDot {
+                position: absolute;
+                top: -1px;
+                right: 0px;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: $primaryColor;
+            }
+
+            .notificationBell {
+                font-size: 25px;
+            }
+        }
+
+        .notificationDivContainer {
+            background: #fff;
+            position: absolute;
+            min-width: 150px;
+            right: 5px;
+            top: 60px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 3px #aaa;
+            background-color: #fff;
+            border-radius: 5px;
+            min-width: 300px;
+
+
+            .notificationHeader {
+                padding: 5px 10px;
+                border-bottom: 1px solid #ddd;
+            }
+        }
+
+        .accountDetails {
+            display: flex;
+            align-items: center;
+            border-left: 1px solid #e7e7e7;
+            margin-left: 10px;
+
+            .accountImg {
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                margin-left: 10px;
+            }
+
+            .accountName {
+                margin: 0 10px;
+            }
+
+            .AccountOption {
+
+                .AccountBtn {
+                    background-color: transparent;
+                    border: none;
+                    padding: 0 10px;
+
+                    i {
+                        font-size: 22px;
+                        margin-top: 3px;
+                    }
+                }
+
+                #AccountOptionDiv {
+                    background: #fff;
+                    position: absolute;
+                    min-width: 150px;
+                    right: 5px;
+                    padding: 0 20px;
+                    top: 60px;
+                    box-shadow: 0px 0px 3px #aaa;
+                    border-radius: 5px;
+
+                    .optionDiv {
+                        padding: 10px 0;
+
+                        a {
+                            text-decoration: none;
+                        }
+                    }
+
+                    .notificationTogglerDiv {
+                        display: flex;
+                        align-items: center;
+                        padding: 10px 0;
+                        border-bottom: 1px solid #ccc;
+
+                        .switch {
+                            position: relative;
+                            display: inline-block;
+                            width: 35px;
+                            height: 20px;
+                            margin: 0 0 0 10px;
+
+                            input {
+                                opacity: 0;
+                                width: 0;
+                                height: 0;
+                            }
+                        }
+
+                        .slider {
+                            position: absolute;
+                            cursor: pointer;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            background-color: #ccc;
+                            -webkit-transition: .4s;
+                            transition: .4s;
+
+                            &:before {
+                                position: absolute;
+                                content: "";
+                                height: 16px;
+                                width: 16px;
+                                left: 3px;
+                                bottom: 2px;
+                                background-color: white;
+                                -webkit-transition: .4s;
+                                transition: .4s;
+                            }
+                        }
+
+                        input:checked+.slider {
+                            background-color: $primaryColor;
+                        }
+
+                        input:checked+.slider:before {
+                            -webkit-transform: translateX(13px);
+                            -ms-transform: translateX(13px);
+                            transform: translateX(13px);
+                        }
+
+                        .slider.round {
+                            border-radius: 20px;
+
+                            &:before {
+                                border-radius: 50%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

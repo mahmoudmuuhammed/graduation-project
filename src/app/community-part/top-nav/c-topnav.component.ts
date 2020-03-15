@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import {NotificationComponent} from "../notification/notification.component";
 
 @Component({
     selector: 'c-topnav',
@@ -12,5 +13,11 @@ export class TopnavComponent {
 
     onShowNotificationToggle() {
         this.showNotification = !this.showNotification;
+    }
+
+
+    navCollabseStatus: boolean = false;
+    mainNavBtnClick() {
+        this.navCollabseStatus = !this.navCollabseStatus;
     }
 }

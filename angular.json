@@ -29,10 +29,18 @@
               "src/assets/fonts/inter"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/styles/main.scss"
+              "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "src/styles/main.scss",
+              "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@fortawesome/fontawesome-free/js/all.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/jquery/dist/poper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.sideNav.js"
+            ]
           },
           "configurations": {
             "production": {

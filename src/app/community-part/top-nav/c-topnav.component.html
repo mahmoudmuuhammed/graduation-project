@@ -1,10 +1,8 @@
-<!-- top navigation  -->
+<!-- Eldod's previous work
 <nav class="top-nav">
-        <!-- medkit brand  -->
     <div class="brand">
         <a href="#" class="brand__link">Medkit</a>
     </div>
-        <!-- second div of navigation  -->
     <div class="items">
         <div class="items__usage">
             <svg class="items__usage-icons">
@@ -32,3 +30,78 @@
     <notification 
         *ngIf="showNotification"></notification>
 </nav>
+-->
+
+<!--moemen's topnav-->
+<nav class="navbar navbar-expand-md fixed-top topNavbar">
+
+    <div style="display: flex;align-items: center;">
+        <!-- Nav Toggler Btn -->
+        <button class="navbar-toggler mainNavBtn" type="button" (click)="mainNavBtnClick()" data-toggle="offcanvas">
+            <span class="navTrigger" [ngClass]="navCollabseStatus ? 'active' : ''">
+                <i></i><i></i><i></i>
+            </span>
+        </button>
+        <a class="navbar-brand d-none d-md-block" href="#">
+            <img src="../assets/images/logo.svg" class="d-inline-block align-top" alt="Logo">
+        </a>
+        <a class="navbar-brand d-md-none d-block smallLogo" href="#" style="margin-top:-5px;width:160px">
+            <img src="../assets/images/miniLogo.svg" class="d-inline-block align-top" alt="Logo">
+        </a>
+    </div>
+
+    <div class="navControlDiv">
+        <!-- Search Area -->
+        <div class="searchContainerDiv d-none d-md-block">
+            <div class="searchContainer">
+                <button>
+                    <i class="fas fa-search"></i>
+                </button>
+                <input type="text">
+            </div>
+        </div>
+
+
+        <div class="AccountOptionDiv" >
+            <!-- BellBtn Area -->
+            <div style="position: relative;">
+                <button class="bellBtn" data-toggle="collapse" data-target="#notificationDiv" aria-expanded="false"
+                    aria-controls="collapseExample">
+                    <i class="far fa-bell notificationBell"></i>
+                    <div class="bellDot"></div>
+                </button>
+            </div>
+            <div class="collapse notificationDivContainer" id="notificationDiv">
+                <header class="notificationHeader">Notification</header>
+                <notification></notification>
+            </div>
+            <!-- Account Picture and Option -->
+            <div class="accountDetails">
+                <img src="./assets/images/profile.jpg" class="accountImg">
+                <span class=" d-none d-md-block accountName">Moemen said</span>
+                <!-- Account option -->
+                <div class="AccountOption">
+                    <button class="AccountBtn" type="button" data-toggle="collapse" data-target="#AccountOptionDiv"
+                        aria-expanded="false" aria-controls="AccountOptionDiv">
+                        <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="collapse" id="AccountOptionDiv">
+                        <div>
+                            <div class=" optionDiv notificationTogglerDiv">
+                                <span>Notification</span>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="optionDiv"><a href="#">Logout</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
