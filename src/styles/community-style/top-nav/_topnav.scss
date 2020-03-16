@@ -1,100 +1,542 @@
 @import "../../abstracts/variables";
 @import "../../abstracts/mixins";
-@import "../../base/utilities";
 
 
-.top-nav {
-    width: 100%;
-    height: 4rem;
-    background-color: #344151;
-    @include flexbox;
-    flex-direction: row;
+.topNavbar {
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
+    padding: 5px 10px;
+    background: #fff;
+    box-shadow: 0px 2px 5px -3px #aaa;
 }
 
-.brand {
-    width: 100px;
-    text-align: center;
-    &__link {
-        font-weight: 900;
-        color: $divider-color;
-        text-decoration: none;
-        font-size: 25px;
+.navbar-brand {
+    width: 250px;
+    height: auto;
+
+    .smallLogo {
+        width: 150px;
     }
 }
 
-.items {
-    
-    @include flexbox;
-    flex-direction: row;
+.mainNavBtn {
+    position: relative;
+    border: none;
+    padding: 0;
+    background: transparent;
+    width: 30px;
+    height: 25px;
     margin-right: 20px;
 
-    
-    &__usage {
-        @include flexbox;
-        flex-direction: row;
-        width: 65px;
-        justify-content: space-between;
-        align-items: center;
+    .navTrigger {
+        width: 30px;
+        height: 25px;
+        margin: auto;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: none;
+        cursor: pointer;
 
-        &-icons {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-            fill: #eee;
+        i {
+            background-color: $primary-text;
+            border-radius: 2px;
+            display: block;
+            width: 100%;
+            height: 4px;
+        }
+
+        i:nth-child(1) {
+            -webkit-animation: outT 0.3s backwards;
+            animation: outT 0.3s backwards;
+            -webkit-animation-direction: reverse;
+            animation-direction: reverse;
+        }
+
+        i:nth-child(2) {
+            margin: 5px 0;
+            -webkit-animation: outM 0.3s backwards;
+            animation: outM 0.3s backwards;
+            -webkit-animation-direction: reverse;
+            animation-direction: reverse;
+        }
+
+        i:nth-child(3) {
+            -webkit-animation: outBtm 0.3s backwards;
+            animation: outBtm 0.3s backwards;
+            -webkit-animation-direction: reverse;
+            animation-direction: reverse;
         }
     }
 
-    &__user {
-        @include flexbox;
-        justify-content: space-around;
-        align-items: center;
-        width: 270px;
-    
-        &::before {
-            content: "";
-            height: 25px;
-            display: block;
-            margin: 0 20px;
-            border: 1px solid $divider-color;
+    .navTrigger.active {
+
+        i:nth-child(1) {
+            -webkit-animation: inT 0.3s forwards;
+            animation: inT 0.3s forwards;
         }
 
-        &-info {
-            @include flexbox;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            color: $divider-color;
+        i:nth-child(2) {
+            -webkit-animation: inM 0.3s forwards;
+            animation: inM 0.3s forwards;
         }
 
-        &-name {
-            font-size: 15px;
-            font-weight: 500;
-            cursor: pointer;
+        i:nth-child(3) {
+            -webkit-animation: inBtm 0.3s forwards;
+            animation: inBtm 0.3s forwards;
+        }
+    }
+
+    @media (max-width:768px) {
+        .navTrigger {
+            display: block !important;
+        }
+    }
+
+    @-webkit-keyframes inM {
+        50% {
+            -webkit-transform: rotate(0deg);
         }
 
-        &-username {
-            font-size: 300;
-            font-size: 12px;
-            padding: .2em;
+        100% {
+            -webkit-transform: rotate(45deg);
+        }
+    }
+
+    @keyframes inM {
+        50% {
+            transform: rotate(0deg);
         }
 
-        &-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
+        100% {
+            transform: rotate(45deg);
+        }
+    }
+
+    @-webkit-keyframes outM {
+        50% {
+            -webkit-transform: rotate(0deg);
         }
 
-        &-dropdown {
-            width: 12px;
-            height: 12px;
-            fill: $divider-color;
-            cursor: pointer;
+        100% {
+            -webkit-transform: rotate(45deg);
+        }
+    }
+
+    @keyframes outM {
+        50% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(45deg);
+        }
+    }
+
+    @-webkit-keyframes inT {
+        0% {
+            -webkit-transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            -webkit-transform: translateY(9px) rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: translateY(9px) rotate(135deg);
+        }
+    }
+
+    @keyframes inT {
+        0% {
+            transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(9px) rotate(0deg);
+        }
+
+        100% {
+            transform: translateY(9px) rotate(135deg);
+        }
+    }
+
+    @-webkit-keyframes outT {
+        0% {
+            -webkit-transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            -webkit-transform: translateY(9px) rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: translateY(9px) rotate(135deg);
+        }
+    }
+
+    @keyframes outT {
+        0% {
+            transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(9px) rotate(0deg);
+        }
+
+        100% {
+            transform: translateY(9px) rotate(135deg);
+        }
+    }
+
+    @-webkit-keyframes inBtm {
+        0% {
+            -webkit-transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            -webkit-transform: translateY(-9px) rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: translateY(-9px) rotate(135deg);
+        }
+    }
+
+    @keyframes inBtm {
+        0% {
+            transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(-9px) rotate(0deg);
+        }
+
+        100% {
+            transform: translateY(-9px) rotate(135deg);
+        }
+    }
+
+    @-webkit-keyframes outBtm {
+        0% {
+            -webkit-transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            -webkit-transform: translateY(-9px) rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: translateY(-9px) rotate(135deg);
+        }
+    }
+
+    @keyframes outBtm {
+        0% {
+            transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(-9px) rotate(0deg);
+        }
+
+        100% {
+            transform: translateY(-9px) rotate(135deg);
         }
     }
 }
+
+.navControlDiv {
+    width: max-content;
+    float: right;
+    display: flex;
+    align-items: center;
+
+    .searchContainerDiv {
+        width: max-content;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+
+        .searchContainer {
+            padding: 5px 20px 5px 10px;
+            background-color: $main-background;
+            border-radius: 3px;
+            display: flex;
+
+            button {
+                background-color: transparent;
+                border: none;
+                color: #888;
+
+                i {
+                    color: $secondary-text;
+                }
+            }
+
+            Input[type="text"] {
+                background-color: transparent;
+                border: none;
+                max-width: 178px;
+                padding-left: 10px
+            }
+        }
+    }
+
+    .AccountOptionDiv {
+        display: flex;
+        align-items: center;
+
+        .bellBtn {
+            border: none;
+            background-color: transparent;
+            padding: 0px;
+
+            .bellDot {
+                position: absolute;
+                top: -1px;
+                right: 0px;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: $primary-color;
+            }
+
+            .notificationBell {
+                font-size: 25px;
+            }
+        }
+
+        .notificationDivContainer {
+            background: #fff;
+            position: absolute;
+            min-width: 150px;
+            right: 5px;
+            top: 60px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 3px #aaa;
+            background-color: #fff;
+            border-radius: 5px;
+            min-width: 300px;
+
+
+            .notificationHeader {
+                padding: 5px 10px;
+                border-bottom: 1px solid #ddd;
+            }
+        }
+
+        .accountDetails {
+            display: flex;
+            align-items: center;
+            border-left: 1px solid #e7e7e7;
+            margin-left: 10px;
+
+            .accountImg {
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                margin-left: 10px;
+            }
+
+            .accountName {
+                margin: 0 10px;
+            }
+
+            .AccountOption {
+
+                .AccountBtn {
+                    background-color: transparent;
+                    border: none;
+                    padding: 0 10px;
+
+                    i {
+                        font-size: 22px;
+                        margin-top: 3px;
+                    }
+                }
+
+                #AccountOptionDiv {
+                    background: #fff;
+                    position: absolute;
+                    min-width: 150px;
+                    right: 5px;
+                    padding: 0 20px;
+                    top: 60px;
+                    box-shadow: 0px 0px 3px #aaa;
+                    border-radius: 5px;
+
+                    .optionDiv {
+                        padding: 10px 0;
+
+                        a {
+                            text-decoration: none;
+                        }
+                    }
+
+                    .notificationTogglerDiv {
+                        display: flex;
+                        align-items: center;
+                        padding: 10px 0;
+                        border-bottom: 1px solid #ccc;
+
+                        .switch {
+                            position: relative;
+                            display: inline-block;
+                            width: 35px;
+                            height: 20px;
+                            margin: 0 0 0 10px;
+
+                            input {
+                                opacity: 0;
+                                width: 0;
+                                height: 0;
+                            }
+                        }
+
+                        .slider {
+                            position: absolute;
+                            cursor: pointer;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            background-color: #ccc;
+                            -webkit-transition: .4s;
+                            transition: .4s;
+
+                            &:before {
+                                position: absolute;
+                                content: "";
+                                height: 16px;
+                                width: 16px;
+                                left: 3px;
+                                bottom: 2px;
+                                background-color: #fff;
+                                -webkit-transition: .4s;
+                                transition: .4s;
+                            }
+                        }
+
+                        input:checked+.slider {
+                            background-color: $primary-color;
+                        }
+
+                        input:checked+.slider:before {
+                            -webkit-transform: translateX(13px);
+                            -ms-transform: translateX(13px);
+                            transform: translateX(13px);
+                        }
+
+                        .slider.round {
+                            border-radius: 20px;
+
+                            &:before {
+                                border-radius: 50%;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+// .top-nav {
+//     width: 100%;
+//     height: 4rem;
+//     background-color: #344151;
+//     @include flexbox;
+//     flex-direction: row;
+//     justify-content: space-between;
+//     align-items: center;
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+// }
+
+// .brand {
+//     width: 100px;
+//     text-align: center;
+//     &__link {
+//         font-weight: 900;
+//         color: $divider-color;
+//         text-decoration: none;
+//         font-size: 25px;
+//     }
+// }
+
+// .items {
+
+//     @include flexbox;
+//     flex-direction: row;
+//     margin-right: 20px;
+
+
+//     &__usage {
+//         @include flexbox;
+//         flex-direction: row;
+//         width: 65px;
+//         justify-content: space-between;
+//         align-items: center;
+
+//         &-icons {
+//             width: 18px;
+//             height: 18px;
+//             cursor: pointer;
+//             fill: #eee;
+//         }
+//     }
+
+//     &__user {
+//         @include flexbox;
+//         justify-content: space-around;
+//         align-items: center;
+//         width: 270px;
+
+//         &::before {
+//             content: "";
+//             height: 25px;
+//             display: block;
+//             margin: 0 20px;
+//             border: 1px solid $divider-color;
+//         }
+
+//         &-info {
+//             @include flexbox;
+//             flex-direction: column;
+//             align-items: flex-start;
+//             justify-content: center;
+//             color: $divider-color;
+//         }
+
+//         &-name {
+//             font-size: 15px;
+//             font-weight: 500;
+//             cursor: pointer;
+//         }
+
+//         &-username {
+//             font-size: 300;
+//             font-size: 12px;
+//             padding: .2em;
+//         }
+
+//         &-img {
+//             width: 50px;
+//             height: 50px;
+//             border-radius: 50%;
+//             cursor: pointer;
+//         }
+
+//         &-dropdown {
+//             width: 12px;
+//             height: 12px;
+//             fill: $divider-color;
+//             cursor: pointer;
+//         }
+//     }
+// }
