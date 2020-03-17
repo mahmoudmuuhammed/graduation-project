@@ -5,11 +5,14 @@
 
 .signup {
     @include pages;
+    position: relative;
     &__content {
         @include flexbox;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+        position: relative;
+        width: min-content;
     }
 }
 
@@ -22,12 +25,14 @@
 
     &__title {
         color: $primary-text;
-        margin-bottom: .3em;
+        margin: .8rem 0;
+        text-shadow: 1px -1px 0px #fff;
+
     }
 
     &__details {
         color: rgba($secondary-text, .9);
-        width: 70%;
+        text-shadow: 1px -1px 0px #fff;
 
         @media only screen and (max-width: 600px) {
             width: 100%;
@@ -108,7 +113,6 @@
 .copyright {
     font-size: 14px;
     color: $secondary-text;
-    width: 60%;
     text-align: center;
     padding: 1em;
     @media only screen and (max-width: 600px) {
@@ -127,5 +131,88 @@
         &:hover {
             text-decoration: underline;
         }
+    }
+}
+
+.orDiv {
+    p {
+        font-size: 20px;
+        color: #555;
+        display: flex;
+        align-items: center;
+        margin:2rem 0;
+        
+
+        &::before {
+            content: "";
+            width: 40%;
+            height: 2px;
+            background-color: #555;
+            display: block;
+            position: absolute;
+            left: 0;
+        }
+
+
+        &::after {
+            content: "";
+            width: 40%;
+            height: 2px;
+            background-color: #555;
+            display: block;
+            position: absolute;
+            right: 0;
+        }
+    }
+
+}
+
+
+.backDiv {
+    position: absolute;
+    top: 0px;
+    right: 0;
+
+    img {
+        width: 500px;
+    }
+}
+
+.leftImg {
+    position: absolute;
+    top: 50%;
+    left: -50px;
+    transform: translateY(-50%);
+    height: 500px;
+
+}
+.rightBottomImg {
+    position: absolute;
+    bottom: 0px;
+    right:0px;
+    width: 250px;  
+
+}
+@media(min-width:1200px){
+    .rightBottomImg{
+        width: 500px;
+    }
+}
+@media (max-width:768px){
+    .backDiv{
+        img{
+            width: 100%;
+        }
+    }
+    .leftImg {
+        left: -100px;
+    }
+    .rightBottomImg{
+        width: 170px;
+    }
+}
+@media(max-width:600px){
+    .leftImg,.rightBottomImg{
+        display: none;
     }
 }

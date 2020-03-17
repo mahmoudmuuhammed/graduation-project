@@ -3,7 +3,6 @@
 @import "../../base/utilities";
 @import "../../base/typography";
 
-
 .signin {
     @include pages;
 
@@ -12,6 +11,7 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+        position: relative;
     }
 }
 
@@ -28,6 +28,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;
+
         &--g {
             background-color: #DF4930;
         }
@@ -58,7 +59,8 @@
 
     &__title {
         color: $primary-text;
-        margin-bottom: .3em;
+        margin-bottom: 1em;
+        text-shadow: 1px -1px 0px #fff;
     }
 
     &__details {
@@ -67,11 +69,45 @@
     }
 }
 
+.orDiv {
+    p {
+        font-size: 20px;
+        color: $primary-text;
+        display: flex;
+        align-items: center;
+        margin:1rem 0;
+        
+
+        &::before {
+            content: "";
+            width: 40%;
+            height: 2px;
+            background-color: $primary-text;
+            display: block;
+            position: absolute;
+            left: 0;
+        }
+
+
+        &::after {
+            content: "";
+            width: 40%;
+            height: 2px;
+            background-color: $primary-text;
+            display: block;
+            position: absolute;
+            right: 0;
+        }
+    }
+
+}
+
 .form {
     @include forms;
 
     &__fgroup {
         @include form-groups;
+
         &-label {
             @include form-labels;
         }
@@ -94,7 +130,7 @@
             align-items: center;
             justify-content: space-between;
         }
-        
+
         &-chbox {
             width: 14px;
             height: 14px;
@@ -106,6 +142,7 @@
             color: $primary-text;
             margin-left: .5em;
         }
+
         &-fgotlink {
             @include links(12px, $primary-text);
         }
@@ -141,4 +178,43 @@
 
 .rel {
     position: relative;
+}
+
+
+.backDiv {
+    position: absolute;
+    top: 0px;
+    right: 0;
+
+    img {
+        width: 500px;
+    }
+}
+
+.leftBottomImg {
+    position: absolute;
+    bottom: 0px;
+    left: -50px;
+    height: 350px;
+
+}
+
+@media(max-width:768px) {
+
+    .backDiv {
+        width: 80%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .leftBottomImg {
+        display: none;
+    }
+    .info{
+        &__title{
+            margin:2rem 0;
+        }
+    }
 }

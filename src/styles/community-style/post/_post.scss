@@ -41,6 +41,7 @@
                     .userName {
                         font-size: 18px;
                         color: $primary-text;
+                        cursor: pointer;
                     }
 
                     .postKind {
@@ -51,8 +52,8 @@
 
                             span {
                                 color: #fff;
-                                padding: 0 10px;
-                                font-size: 14px;
+                                padding: 0 5px;
+                                font-size: 13px;
                             }
                         }
                     }
@@ -68,6 +69,8 @@
                     justify-content: center;
                     align-items: center;
                     padding: 10px;
+                    cursor: pointer;
+
 
                     span {
                         width: 5px;
@@ -103,6 +106,8 @@
                             color: $primary-text;
                             width: 100%;
                             text-align: left;
+                            cursor: pointer;
+                            font-size: 16px;
 
                             .optIcon {
                                 margin-right: 10px;
@@ -136,6 +141,7 @@
 
         p {
             margin: 0px;
+            font-size: 15px;
         }
     }
 
@@ -158,6 +164,12 @@
                 border: none;
                 color: $primary-text;
                 font-size: 13px;
+                cursor: pointer;
+                border-radius: 5px;
+
+                &:hover{
+                    background-color: $hover-color;
+                }
 
                 .arrow {
                     margin-right: 5px;
@@ -203,6 +215,7 @@
                 width: 100%;
                 border: none;
                 padding: 10px 70px 10px 10px;
+                font-size: 15px;
 
                 &::placeholder {
                     color: #ccc;
@@ -218,6 +231,7 @@
                 right: 0px;
                 top: 0;
                 height: 100%;
+                cursor: pointer;
             }
         }
     }
