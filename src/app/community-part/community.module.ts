@@ -4,13 +4,15 @@ import { TopnavComponent } from './top-nav/c-topnav.component';
 import { NotificationComponent } from './notification/notification.component';
 import { CommonModule } from '@angular/common';
 import { PostComponent } from './post/post.component';
+import { DangerAreaComponent } from './danger-area/danger-area.component';
 
 @NgModule({
     declarations: [
         SidebarComponent,
         TopnavComponent,
         NotificationComponent,
-        PostComponent
+        PostComponent,
+        DangerAreaComponent,
     ],
     imports: [
         CommonModule
@@ -19,7 +21,8 @@ import { PostComponent } from './post/post.component';
         SidebarComponent,
         TopnavComponent,
         NotificationComponent,
-        PostComponent
+        PostComponent,
+        DangerAreaComponent
     ]
 })
 
