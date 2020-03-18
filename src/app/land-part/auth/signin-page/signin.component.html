@@ -11,14 +11,16 @@
                 </p>
             </div>
             <div class="sociallog u-mrgb-2">
-                <div class="sociallog__item sociallog__item--g u-mrgr-1">
+                <div class="sociallog__item sociallog__item--g u-mrgr-1" 
+                    (click)="googleSignin()">
                     <svg class="sociallog__icon">
                         <use xlink:href="../../../../../assets/sprites/auth-icons.svg#google"></use>
                     </svg>
                     <a href="#" 
                         class="sociallog__link">Sign in with Google</a>
                 </div>
-                <div class="sociallog__item sociallog__item--fb">
+                <div class="sociallog__item sociallog__item--fb" 
+                    (click)="facebookSignin()">
                     <svg class="sociallog__icon">
                         <use xlink:href="../../../../../assets/sprites/auth-icons.svg#facebook"></use>
                     </svg>
@@ -89,15 +91,25 @@
                         formControlName="password">
                     
                     <div class="validation" 
-                    *ngIf="!passwordControl.valid && passwordControl.touched">
+                        *ngIf="!passwordControl.valid && passwordControl.touched">
     
-                    <svg class="validation__icon">
-                        <use xlink:href="../../../../assets/svgs/exclamation.svg#Capa_1"></use>
-                    </svg>
-                    <p *ngIf="passwordControl.errors.required">
-                        {{ validationErrorMessage.required }}
-                    </p>
-                </div>
+                        <svg class="validation__icon">
+                            <use xlink:href="../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                        </svg>
+                        <p *ngIf="passwordControl.errors.required">
+                            {{ validationErrorMessage.required }}
+                        </p>
+                    </div>
+                    <div class="validation" 
+                        *ngIf="validationErrorMessage.incorrectPass">
+    
+                        <svg class="validation__icon">
+                            <use xlink:href="../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                        </svg>
+                        <p>
+                            {{ validationErrorMessage.incorrectPass }}
+                        </p>
+                    </div>
                 </div>
                 <div class="form__controllers u-mrgb-2">
                     <div class="form__controllers-items">

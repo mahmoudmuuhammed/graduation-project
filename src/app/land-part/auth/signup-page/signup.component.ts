@@ -11,20 +11,50 @@ import { FormsServices } from 'src/app/services/forms.service';
 export class SignupPageComponent implements OnInit {
     // form group object
     signupForm: FormGroup;
+    // pass state checking...
     checkPassState: boolean = false;
         // validation errors
     validationMessageError = this.forms.validationErrors;
+        // dependency injections for external services
     constructor(private forms: FormsServices) {}
-    
+    // when component initialize the component
     ngOnInit() {
-        this.signupFormController();   
+        this.signupFormController();
     }
-
+    // toggling the password state
     toggleShowPass() {
         this.checkPassState = !this.checkPassState;
     }
+        // submitting form
+    signupFormSubmit() {
+        let emailValue = this.signupForm.get('email').value;
+        let passwordValue = this.signupForm.get('password').value;
+        let confirmPassValue = this.signupForm.get('cpassword').value;
+        if(this.signupForm.status == 'VALID') {
+            if(confirmPassValue != passwordValue) {
+                this.validationMessageError.matching = 'two password must be matching'
+                confirmPassValue = '';
+                return;
+            }
+            this.validationMessageError.matching = '';
+            this.forms.onSignupWithEmail(emailValue, passwordValue);
+            this.signupForm.reset();
+        } 
+        else {
+            this.signupForm.markAllAsTouched();
+        }
+        
 
-    signupFormSubmit() {}
+
+    }
+    // when user sign in with facebook
+    onSignupWithFacebookProvider() {
+        this.forms.facebookAuth();
+    }
+        // when user sign up with google
+    onSignupWithGoogleProvider() {
+        this.forms.googleAuth();
+    }
 
         // Form controller 
     private signupFormController() {

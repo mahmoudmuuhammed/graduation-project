@@ -10,13 +10,16 @@
             </p>
         </div>
         <div class="sociallog u-mrgb-1">
-            <div class="sociallog__item sociallog__item--g u-mrgr-1">
+            <div class="sociallog__item sociallog__item--g u-mrgr-1" 
+                (click)="onSignupWithGoogleProvider()">
                 <svg class="sociallog__icon">
                     <use xlink:href="../../../../../assets/sprites/auth-icons.svg#google"></use>
                 </svg>
                 <a href="#" class="sociallog__link">Sign up with Google</a>
             </div>
-            <div class="sociallog__item sociallog__item--fb">
+            <div
+             class="sociallog__item sociallog__item--fb" 
+                (click)="onSignupWithFacebookProvider()">
                 <svg class="sociallog__icon">
                     <use xlink:href="../../../../../assets/sprites/auth-icons.svg#facebook"></use>
                 </svg>
@@ -96,7 +99,8 @@
                     </p>
                 </div>
             </div>
-            <div class="form__fgroup u-mrgb-1" style="position: relative;">
+            <div class="form__fgroup u-mrgb-1" 
+                style="position: relative;">
                 <div 
                     style="position: absolute; top: 42px; right: 27px; cursor: pointer;" 
                     [showPassword]="checkPassState" 
