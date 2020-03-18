@@ -1,14 +1,16 @@
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
+import { ShowPasswordDirective } from 'src/app/directives/show-pass.directive';
 import { SigninPageComponent } from './signin-page/signin.component';
 import { SignupPageComponent } from './signup-page/signup.component';
-import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations: [
         SigninPageComponent,
-        SignupPageComponent
+        SignupPageComponent,
+        ShowPasswordDirective
     ],
     imports: [
         ReactiveFormsModule,

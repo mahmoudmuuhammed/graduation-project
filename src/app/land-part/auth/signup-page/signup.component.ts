@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormsServices } from 'src/app/services/forms.service';
 
 @Component({
     selector: 'signup-page',
@@ -10,20 +11,20 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class SignupPageComponent implements OnInit {
     // form group object
     signupForm: FormGroup;
+    checkPassState: boolean = false;
         // validation errors
-    validationMessageError = {
-        required: 'required',
-        notValidEmail: 'notValidEmail',
-        matching: 'two password not matching'
-    };
+    validationMessageError = this.forms.validationErrors;
+    constructor(private forms: FormsServices) {}
     
     ngOnInit() {
-        this.signupFormController();
+        this.signupFormController();   
     }
 
-    signupFormSubmit() {
-        
+    toggleShowPass() {
+        this.checkPassState = !this.checkPassState;
     }
+
+    signupFormSubmit() {}
 
         // Form controller 
     private signupFormController() {
@@ -31,7 +32,7 @@ export class SignupPageComponent implements OnInit {
             'firstname': new FormControl(null, Validators.required),
             'lastname': new FormControl(null, Validators.required),
             'email': new FormControl(null, [Validators.required, Validators.email]),
-            'password': new FormControl(null, Validators.required),
+            'password': new FormControl(null, [Validators.required, Validators.minLength(6)]),
             'cpassword': new FormControl(null, [Validators.required])
         });
     }
