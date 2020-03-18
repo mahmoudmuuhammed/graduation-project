@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormsServices } from 'src/app/services/forms.service';
 
 @Component({
     selector: 'signin-page',
@@ -10,11 +11,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class SigninPageComponent implements OnInit {
     signinForm: FormGroup;
     checkPassState: boolean = false;
-    validationErrorMessage = {
-        requiredError: 'required',
-        validEmail: 'not valid email'
-    };
-
+    validationErrorMessage = this.forms.validationErrors;
+    constructor(private forms: FormsServices) {}
     ngOnInit() {
         this.signinFormController();
     }
@@ -23,16 +21,8 @@ export class SigninPageComponent implements OnInit {
 
     }
 
-    showPasswordToggle(passValue: HTMLInputElement) {
+    toggleShowPass() {
         this.checkPassState = !this.checkPassState;
-
-        if(this.checkPassState) {
-            passValue.setAttribute('type', 'text');
-        }
-
-        else {
-            passValue.setAttribute('type', 'password');
-        }
     }
 
     private signinFormController() {

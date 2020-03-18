@@ -47,19 +47,29 @@
                             <use xlink:href="../../../../assets/svgs/exclamation.svg#Capa_1"></use>
                         </svg>
                         <p *ngIf="emailControl.errors.required">
-                            {{ validationErrorMessage.requiredError }}
+                            {{ validationErrorMessage.required }}
                         </p>
                         <p *ngIf="emailControl.errors.email">
-                            {{ validationErrorMessage.validEmail }}
+                            {{ validationErrorMessage.notValidEmail }}
+                        </p>
+                    </div>
+                    <div class="validation" 
+                        *ngIf="validationErrorMessage.notFound">
+    
+                        <svg class="validation__icon">
+                            <use xlink:href="../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                        </svg>
+                        <p>
+                            {{ validationErrorMessage.notFound }}
                         </p>
                     </div>
                 </div>
                 <div class="form__fgroup rel u-mrgb-1">
                     <label class="form__fgroup-label" for="password">Password</label>
                     <div 
-                        (click)="showPasswordToggle(passInput)" 
-                        style="position: absolute; top: 42px; right: 27px; cursor: pointer;">
-    
+                        style="position: absolute; top: 42px; right: 27px; cursor: pointer;" 
+                        [showPassword]="checkPassState" 
+                        (click)="toggleShowPass()">
                         <svg 
                             *ngIf="!checkPassState"
                             style="width: 18px; height: 18px; fill: #56565a">
@@ -73,11 +83,10 @@
                     </div>
                     <input
                         type="password"
-                        class="form__fgroup-control"
+                        class="form__fgroup-control input-ref"
                         placeholder="Enter your password"
                         id="password" 
-                        formControlName="password"
-                        #passInput>
+                        formControlName="password">
                     
                     <div class="validation" 
                     *ngIf="!passwordControl.valid && passwordControl.touched">
@@ -86,7 +95,7 @@
                         <use xlink:href="../../../../assets/svgs/exclamation.svg#Capa_1"></use>
                     </svg>
                     <p *ngIf="passwordControl.errors.required">
-                        {{ validationErrorMessage.requiredError }}
+                        {{ validationErrorMessage.required }}
                     </p>
                 </div>
                 </div>
@@ -112,7 +121,5 @@
                 <a href="" class="homeback__link">Back to home.</a>
             </div>
         </div>
-        
     </section>
-
-    <img class="leftBottomImg" src="../../../../assets/images/quarterCircleAbs.svg">
+<img class="leftBottomImg" src="../../../../assets/images/quarterCircleAbs.svg">
