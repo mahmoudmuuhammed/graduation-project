@@ -18,7 +18,20 @@ export class SigninPageComponent implements OnInit {
     }
 
     signinFormSubmit() {
+        let emailValue = this.signinForm.get('email').value;
+        let passValue = this.signinForm.get('password').value;
+        if(this.signinForm.status == 'VALID') {
+            this.forms.onSigninWithEmail(emailValue, passValue);
+            return;
+        }
+        this.signinForm.markAllAsTouched();
+    }
+    facebookSignin() {
+        this.forms.facebookAuth();
+    }
 
+    googleSignin() {
+        this.forms.googleAuth();
     }
 
     toggleShowPass() {

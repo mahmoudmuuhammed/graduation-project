@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "medkitc": {
+      "hosting": {
+        "medkit-app": [
+          "medkitc"
+        ]
+      }
+    }
+  }
+}
