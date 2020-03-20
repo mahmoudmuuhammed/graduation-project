@@ -1,3 +1,5 @@
+@import "../../abstracts/variables";
+
 .mainHeader {
     background: url("../../../assets/images/homeBack.svg") no-repeat;
     background-size: cover;
@@ -127,44 +129,204 @@
 
 .sectionContainer {
     position: relative;
-    height: 2500px;
-    margin-top: 100px;
-
-    .backGroundDiv1 {
-        position: absolute;
-        top: 100px;
-        right: -300px;
-
-        img {
-            height: 800px;
-        }
-    }
+    margin-top: 50px;
 
     .SeviceSection {
         .sectionHeader {
             text-align: center;
             color: #555;
-            margin: 20px auto;
+            margin: 0 auto 70px auto;
         }
 
-        .col-md-4 {
+        .featureDivContainer {
             z-index: 1;
+            max-width: 500px;
+            margin: 20px auto;
 
             .featureDiv {
-                background: #fff;
-                box-shadow: 0px 0px 5px #aaa;
-                height: 400px;
-                border-radius: 30px;
-                ;
+                height: 450px;
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: 0px 0px 3px #aaa;
+                margin: 0px 20px;
+
+                header {
+                    img {
+                        width: 100%;
+                        height: 170px;
+                    }
+                }
+
+                section {
+                    header {
+                        h4 {
+                            text-align: center;
+                            margin: 5px;
+                            color: #333;
+                            margin: 20px auto;
+                        }
+                    }
+
+                    .featureDescription {
+                        p {
+                            color: #333;
+                            text-align: center;
+                            font-size: 18px;
+                            padding: 0px 20px;
+                        }
+                    }
+                }
+            }
+
+            .featureDiv1 {
+                background: linear-gradient(15deg, #ded6ef -50%, #fff)
+            }
+
+            .featureDiv2 {
+                background: linear-gradient(15deg, #c6d8f2 -50%, #fff);
+            }
+
+            .featureDiv3 {
+                background: linear-gradient(15deg, #f8c4c4 -50%, #fff);
+            }
+
+        }
+    }
+}
+
+
+.donationContainer {
+    margin: 50px 0;
+
+    .donationDiv {
+        .donateSectionCol {
+            display: flex;
+            align-items: center;
+
+            .donationSection {
+                margin-left: 50px;
+
+                h1 {
+                    color: #333;
+                    margin-bottom: 50px;
+                    font-size: 3rem;
+                }
+
+                P {
+                    color: #444;
+                }
+            }
+        }
+
+        .donationImgDiv {
+            padding-right: 0px;
+
+            img {
+                width: 500px;
+                float: right;
             }
         }
     }
 }
 
+
+footer {
+    background: url(../../../assets/images/footer.svg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 300px;
+    position: relative;
+
+    .container-fluid {
+        padding-top: 100px
+    }
+
+    .footerImgDiv {
+        img {
+            width: 200px;
+            padding-top: 40px;
+        }
+    }
+
+    .contactDiv {
+        padding: 40px 0 0 50px;
+
+        header {
+            color: #FBC02D;
+        }
+
+        section {
+            p {
+                margin: 10px 0;
+                color: #fff
+            }
+        }
+
+    }
+
+
+    .footerLinksCol {
+        text-align: center;
+        padding-top: 40px;
+
+        ul {
+            width: max-content;
+            margin: auto;
+
+            h5 {
+                text-align: start;
+                color: #FBC02D;
+            }
+
+            li {
+                list-style-type: none;
+                text-align: start;
+                cursor: pointer;
+                padding: 5px 0;
+
+                a {
+                    text-decoration: none;
+                    color: #fff;
+                }
+
+                &:hover {
+                    a {
+                        color: rgb(252, 202, 76);
+                    }
+                }
+            }
+        }
+    }
+
+    .footerSocialCol {
+        display: flex;
+        justify-content: flex-end;
+        padding: 40px 40px 0 0;
+
+        .socialLink {
+            font-size: 25px;
+            margin: 0 20px;
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+
+            &:hover {
+                color: #FBC02D;
+            }
+        }
+    }
+
+    .rightCol {
+        padding: 30px 0 10px 0;
+        text-align: center;
+        color: #fff;
+        font-size: 17px;
+
+    }
+}
+
+
 @media screen and (max-width:768px) {
     .mainHeader {
-
-
 
         .fixFixedPositionDiv {
             height: 200px;
@@ -221,12 +383,58 @@
 
     }
 
+    .donationContainer {
+        margin: 50px 0;
+
+        .donationDiv {
+            .donateSectionCol {
+                z-index: 1;
+                background: rgba(255, 255, 255, .7);
+                padding: 20px 15px 150px 15px;
+                border-radius: 15px;
+                box-shadow: 0px 0px 5px #aaa;
+                margin: 0px 15px;
+
+                .donationSection {
+                    margin: unset;
+                }
+            }
+
+            .donationImgDiv {
+                position: absolute;
+
+                img {
+                    top: 0;
+                    right: 0;
+                    z-index: 0;
+                    width: 350px;
+                    float: right;
+                }
+            }
+        }
+    }
+
+
+    footer {
+        background: linear-gradient(to bottom, #764BCB, #4F3388);
+
+        .container-fluid {
+            padding-top: 0px
+        }
+
+        .footerSocialCol {
+            justify-content: center;
+            padding-right: 0px;
+        }
+
+    }
+
 }
 
 @media (max-width:576px) {
     .mainHeader {
 
-        .navContainer{
+        .navContainer {
             .navbarNav {
                 .navItem {
                     a {
