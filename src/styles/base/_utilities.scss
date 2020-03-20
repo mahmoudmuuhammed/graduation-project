@@ -155,3 +155,8 @@
 input.ng-invalid.ng-touched {
     border: 1px solid red;
 }
+
+.hidden {
+    display: none;
+    height: 0;
+}

@@ -1,0 +1,60 @@
+@import "../../abstracts/variables";
+@import "../../abstracts/mixins";
+@import "../../base/utilities";
+@import "../../base/typography";
+
+.notfound {
+    width: 100%;
+    height: 70vh;
+    @include flexbox;
+    justify-content: center;
+
+    &__content {
+        width: 100%;
+        @include flexbox;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1em;
+    }
+}
+
+.navbar {
+    width: 100%;
+    @include flexbox;
+    
+    &__brand {
+        width: 120px;
+    }
+}
+
+.items {
+    @include flexbox;
+    flex-direction: column;
+    align-items: center;
+
+    &__img {
+        width: 400px;
+        height: auto;
+    }
+
+    &__desc {
+        @include flexbox;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        &-title {
+            color: $primary-text;
+            margin-bottom: .3em;
+        }
+
+        &-details {
+            color: rgba($secondary-text, .9);
+        }
+        &-link {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            color: $primary-color;
+        }
+    }
+}

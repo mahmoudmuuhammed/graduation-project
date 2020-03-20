@@ -5,26 +5,32 @@ import { CommonModule } from '@angular/common';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-
 import { ShowPasswordDirective } from 'src/app/directives/show-pass.directive';
 import { SigninPageComponent } from './signin-page/signin.component';
 import { SignupPageComponent } from './signup-page/signup.component';
+import { EmailVerificationComponent } from './email-verify/e-verify.component';
+import { CollapseDirective } from 'src/app/directives/collapse.directive';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
     declarations: [
         SigninPageComponent,
         SignupPageComponent,
-        ShowPasswordDirective
+        ShowPasswordDirective,
+        CollapseDirective,
+        EmailVerificationComponent
     ],
     imports: [
         ReactiveFormsModule,
         CommonModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
-        AngularFireAuthModule
+        AngularFireAuthModule,
+        SharedModule
     ],
     exports: [
         SigninPageComponent,
-        SignupPageComponent
+        SignupPageComponent,
+        EmailVerificationComponent
     ]
 })
 

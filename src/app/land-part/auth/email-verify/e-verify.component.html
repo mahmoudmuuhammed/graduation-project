@@ -1,0 +1,68 @@
+<section class="verify">
+    <nav class="navbar">
+        <div class="navbar__brand">
+            <medkit-logo 
+                [textColor]="'#2d2d2d'" 
+                [smIcon]="'#764BCB'"></medkit-logo>
+        </div>
+        <div class="navbar__userinfo">
+            <p class="navbar__userinfo-name sm-text">
+                Signed in as 
+                <span class="navbar__userinfo-name--custom">Mahmoud Mohamed</span>
+            </p>
+            <a class="navbar__userinfo-signout sm-text" href="#">Sign out</a>
+        </div>
+    </nav>
+    <div class="verify__content">
+        <div class="items u-mrgb-5">
+            <img
+                class="items__img u-mrgb-2"
+                src="../../../../assets/svgs/verify-icon.svg"
+                alt="email verification image">
+            
+            <div class="items__desc u-mrgb-2">
+                <h5 class="items__desc-title sm-title">Verify your email to proceed</h5>
+                <p class="items__desc-details sm-text">
+                    We just sent an email to the address: 
+                    <span class="items__desc-details--custom">mahmoud3313@outlook.com</span>
+                    Please check your email and click on the link provided to verify your address.
+                </p>
+            </div>
+            <div class="chmail u-mrgb-2">
+                <a 
+                    class="chmail__collapse u-mrgb-1" 
+                    collapse>Change your email</a>
+                <form 
+                    [formGroup]="updateForm"
+                    class="chmail__form hidden">
+                    <div class="chmail__fgroup">
+                        <input 
+                            type="email" 
+                            class="chmail__fgroup-control" 
+                            formControlName="updatedEmail">
+                        <button 
+                            class="chmail__fgroup-resend">Update</button>
+                    </div>
+                    <div class="validation" 
+                        *ngIf="!updatedEmailControl.valid && updatedEmailControl.touched">
+    
+                        <svg class="validation__icon">
+                            <use xlink:href="../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                        </svg>
+                        <p *ngIf="updatedEmailControl.errors.required">
+                            {{ validationErrorMessage.required }}
+                        </p>
+                        <p *ngIf="updatedEmailControl.errors.email">
+                            {{ validationErrorMessage.notValidEmail }}
+                        </p>
+                    </div>
+                </form>
+            </div>
+            <button 
+                class="re-verify" 
+                type="button">Resend Verification Email</button>
+        </div>
+    </div>
+</section>
+
+
