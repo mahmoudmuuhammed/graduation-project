@@ -4,6 +4,7 @@ import { HomePageComponent } from './home/home.component';
 import { BlogPageComponent } from './blog/blog.component';
 import { DonationPageComponent } from './donation/donation.component';
 import { BlogNavComponent } from './blog/blog-nav/blog-nav.component';
+import { LandRoutingModule } from './land-routing.module';
 
 @NgModule({
     declarations: [
@@ -13,14 +14,15 @@ import { BlogNavComponent } from './blog/blog-nav/blog-nav.component';
         DonationPageComponent
     ],
     imports: [
-        AuthModule
+        AuthModule,
+        LandRoutingModule
     ],
     exports: [
         AuthModule,
         HomePageComponent,
         BlogPageComponent,
         BlogNavComponent,
-        DonationPageComponent
+        DonationPageComponent,
     ]
 })
 

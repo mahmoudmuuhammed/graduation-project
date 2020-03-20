@@ -3,6 +3,7 @@ import { FormsValidationComponent } from './forms-validation/forms-validation.co
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MedkitLogoComponent } from './medkit-logo/mk-logo.component';
+import { LandRoutingModule } from '../land-part/land-routing.module';
 
 @NgModule({
     declarations: [
@@ -11,6 +12,7 @@ import { MedkitLogoComponent } from './medkit-logo/mk-logo.component';
         NotFoundComponent,
         MedkitLogoComponent
     ],
+    imports: [ LandRoutingModule ],
     exports: [
         FormsValidationComponent,
         LoadingSpinnerComponent,

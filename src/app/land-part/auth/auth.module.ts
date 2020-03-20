@@ -11,6 +11,7 @@ import { SignupPageComponent } from './signup-page/signup.component';
 import { EmailVerificationComponent } from './email-verify/e-verify.component';
 import { CollapseDirective } from 'src/app/directives/collapse.directive';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { LandRoutingModule } from '../land-routing.module';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
         CommonModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireAuthModule,
-        SharedModule
+        SharedModule,
+        LandRoutingModule
     ],
     exports: [
         SigninPageComponent,

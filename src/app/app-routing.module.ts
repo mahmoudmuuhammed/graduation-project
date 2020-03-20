@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomePageComponent } from './land-part/home/home.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
+
 
 const routes: Routes = [
+  { path: '', loadChildren: './land-part/land.module#LandModule' },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
