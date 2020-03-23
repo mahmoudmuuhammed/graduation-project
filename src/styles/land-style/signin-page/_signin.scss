@@ -72,7 +72,7 @@
 .orDiv {
     p {
         font-size: 20px;
-        color: $primary-text;
+        color: #666;
         display: flex;
         align-items: center;
         margin:1rem 0;
@@ -82,7 +82,7 @@
             content: "";
             width: 40%;
             height: 2px;
-            background-color: $primary-text;
+            background-color: #999;
             display: block;
             position: absolute;
             left: 0;
@@ -93,7 +93,7 @@
             content: "";
             width: 40%;
             height: 2px;
-            background-color: $primary-text;
+            background-color: #999;
             display: block;
             position: absolute;
             right: 0;

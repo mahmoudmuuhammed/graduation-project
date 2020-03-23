@@ -1,9 +1,25 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'donation-page',
-    templateUrl: './donation.component.html',
-    styleUrls: ['./donation.component.scss']
+  selector: 'app-donation',
+  templateUrl: './donation.component.html',
+  styleUrls: ['./donation.component.scss']
 })
+export class DonationComponent implements OnInit {
 
-export class DonationPageComponent {}
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+
+  scroll() {
+    let donate = <HTMLSelectElement>document.getElementById('DonationExplationCont');
+    donate.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  activeAmountBtn() {
+
+  }
+
+}

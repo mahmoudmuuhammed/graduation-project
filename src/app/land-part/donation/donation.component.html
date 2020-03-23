@@ -1,0 +1,59 @@
+<app-home-top-nav></app-home-top-nav>
+
+<div class="DonationIntroDiv">
+    <div class="downDiv" id="downDiv" (click)="scroll()">
+        <div>
+            <i class="fas fa-chevron-down downArrow"></i>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="DonationExplationCont" id="DonationExplationCont">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-8 col-12">
+                        <div class="DonationExplation">
+                            <h4>Help us to provide the poor a free medical consultation.</h4>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has
+                                been the industry's standard dummy text ever since the 1500s
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-none d-md-block">
+                        <img src="../../../assets/images/donationDescBack.png">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="creditMainDiv">
+        <div class="row creditRow">
+            <div class="col-md-6">
+                <div class="donationAmountDiv">
+                    <h4 class="donationHeader">Choose the ammount of donation</h4>
+                    <div class="amountMainDiv">
+                        <div class="amountDiv" (click)="activeAmountBtn()">20 EGP</div>
+                        <div class="amountDiv" (click)="activeAmountBtn()">50 EGP</div>
+                        <div class="amountDiv" (click)="activeAmountBtn()">100 EGP</div>
+                        <div class="amountDiv" (click)="activeAmountBtn()">200 EGP</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ng-payment-card></ng-payment-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-home-footer></app-home-footer>

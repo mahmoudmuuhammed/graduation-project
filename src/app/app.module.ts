@@ -8,9 +8,10 @@ import { LandModule } from './land-part/land.module';
 import { CommunityModule } from './community-part/community.module';
 import { SharedModule } from './shared/shared.module';
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -18,8 +19,8 @@ import { SharedModule } from './shared/shared.module';
     CoreModule,
     LandModule,
     CommunityModule,
-    SharedModule
+    SharedModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,]
 })
 export class AppModule { }

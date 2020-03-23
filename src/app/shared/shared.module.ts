@@ -10,14 +10,14 @@ import { LandRoutingModule } from '../land-part/land-routing.module';
         FormsValidationComponent,
         LoadingSpinnerComponent,
         NotFoundComponent,
-        MedkitLogoComponent
+        MedkitLogoComponent,
     ],
     imports: [ LandRoutingModule ],
     exports: [
         FormsValidationComponent,
         LoadingSpinnerComponent,
         NotFoundComponent,
-        MedkitLogoComponent
+        MedkitLogoComponent,
     ]
 })
 
