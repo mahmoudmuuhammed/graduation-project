@@ -22,6 +22,66 @@
     }
 }
 
+:host ::ng-deep .cc-wrapper {
+    height: auto !important;
+    max-width: 600px;
+    margin: auto !important;
+
+    .cc-box--flip:hover {
+        transform: none !important;
+    }
+
+    .cc-box__front,
+    .cc-box__back {
+        height: 200px !important;
+        width: 90% !important;
+        background: linear-gradient(135deg, #764bcb, #421e51) !important;
+    }
+
+    .cc-box__front {
+        transform: rotateY(0)translateX(-50%) !important;
+        left: 50% !important;
+    }
+
+    .cc-box__back {
+        left: 18px !important
+    }
+
+    .cc-form__label--first {
+        margin-top: 10% !important;
+    }
+
+    .cc-form__button {
+        background-color: #764bcb !important;
+        padding: 10px !important;
+    }
+
+    .cc-form__input,
+    .cc-form__select {
+        height: 30px !important;
+        padding-left: 5px !important;
+    }
+
+    @media(max-width:576px) {
+
+        .cc-box {
+            width: 80% !important;
+            margin-top: 20px;
+        }
+
+        .cc-box__front,
+        .cc-box__back {
+            height: 180px !important;
+            width: 100% !important;
+        }
+
+        .cc-form__label--first {
+            margin-top: 0px !important;
+        }
+    }
+}
+
+
 .DonationIntroDiv {
     width: 100vw;
     height: 70vh;
@@ -67,6 +127,12 @@
     box-shadow: 0px 0px 3px #aaa;
 
     .DonationExplation {
+
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
         p {
             font-size: 17px;
             margin-top: 20px;
@@ -90,8 +156,6 @@
 
     .DonationExplationCont {
         position: relative;
-        margin-left: 15px;
-        margin-right: 15px;
 
         &::after {
             content: "";
@@ -133,7 +197,7 @@
 
 .creditMainDiv {
     margin: 80px auto;
-    padding: 50px 20px;
+    padding: 20px 20px 0 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 3px #aaa;
 
@@ -145,37 +209,93 @@
         }
 
         .amountMainDiv {
-            display: flex;
-            justify-content: space-evenly;
-            flex-wrap: wrap;
+            margin-top: 100px;
 
-            .amountDiv {
-                width: 100px;
-                height: 50px;
-                border-radius: 10px;
-                cursor: pointer;
+            ul {
+                list-style: none;
+
+                li {
+                    color: #555;
+                    width: 50%;
+                    display: inline-flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    margin: 20px auto;
+
+                    input[type=radio] {
+                        visibility: hidden;
+                    }
+
+                    label {
+                        display: block;
+                        font-weight: 300;
+                        font-size: 1.5rem;
+                        cursor: pointer;
+                    }
+
+                    .check {
+                        display: block;
+                        position: relative;
+                        border: 4px solid #aaa;
+                        border-radius: 100%;
+                        height: 24px;
+                        width: 24px;
+                        margin-right: 10px;
+                    }
+
+                    .check::before {
+                        position: absolute;
+                        content: "";
+                        border-radius: 100%;
+                        height: 10px;
+                        width: 10px;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+
+
+                    input[type=radio]:checked~.check {
+                        border: 4px solid #774CCB;
+                    }
+
+                    input[type=radio]:checked~.check::before {
+                        background: #774CCB;
+                    }
+
+                    input[type=radio]:checked~label {
+                        color: #774CCB;
+                    }
+                }
+            }
+
+            .otherAmountCont {
+                background: #ddd;
                 display: flex;
                 align-items: center;
-                justify-content: center;
-                color: #fff;
-                font-size: 20px;
-                margin: 20px auto;
+                justify-content: flex-start;
+                padding: 2px 2px 2px 5px;
+                min-width: 350px;
+                margin: 20px 0 0 10px;
+                width: max-content;
+                border-radius: 3px;
+                max-width: 100%;
 
 
-                &:nth-of-type(1) {
-                    background: #8E61B6;
+                .curency {
+                    font-size: 1.4rem;
+                    color: #333;
+                    margin-right: 5px;
+                    padding: 0px 10px;
                 }
 
-                &:nth-of-type(2) {
-                    background: #66369D;
-                }
-
-                &:nth-of-type(3) {
-                    background: #522888;
-                }
-
-                &:nth-of-type(4) {
-                    background: #2D164B;
+                .amountInput {
+                    font-size: 1.3rem;
+                    width: 100%;
+                    border: none;
+                    border-radius: 0 3px 3px 0;
+                    padding-left: 5px;
+                    height: 30px;
                 }
             }
         }
@@ -192,6 +312,27 @@
 
                 .donationHeader {
                     margin-top: 0px;
+                }
+            }
+        }
+    }
+
+    .creditMainDiv {
+        .creditRow {
+            .amountMainDiv {
+                margin-top: 0px;
+
+                ul {
+                    display: flex;
+                    flex-wrap: wrap;
+
+                    li {
+                        justify-content: center;
+                    }
+                }
+
+                .otherAmountCont {
+                    margin: auto;
                 }
             }
         }

@@ -8,35 +8,17 @@ body {
   overflow-x: hidden;
 }
 
-/* width */
+
+//scrolBar
 ::-webkit-scrollbar {
   width: 10px;
 }
-
-/* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
-
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #888;
 }
-
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-
-.cc-wrapper {
-  height: auto !important;
-  max-width: 600px;
-  margin: auto !important;
-}
-
-@media(max-width:768px) {
-
-  .cc-box__front,.cc-box__back{
-    height: 200px!important;
-  }
 }

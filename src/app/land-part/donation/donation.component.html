@@ -39,12 +39,36 @@
         <div class="row creditRow">
             <div class="col-md-6">
                 <div class="donationAmountDiv">
-                    <h4 class="donationHeader">Choose the ammount of donation</h4>
+                    <h3 class="donationHeader">Choose the ammount of donation</h3>
                     <div class="amountMainDiv">
-                        <div class="amountDiv" (click)="activeAmountBtn()">20 EGP</div>
-                        <div class="amountDiv" (click)="activeAmountBtn()">50 EGP</div>
-                        <div class="amountDiv" (click)="activeAmountBtn()">100 EGP</div>
-                        <div class="amountDiv" (click)="activeAmountBtn()">200 EGP</div>
+                        <ul>
+                            <li>
+                                <input type="radio" id="1-option" name="selector">
+                                <div class="check"></div>
+                                <label for="1-option">20 £</label>
+                            </li>
+                    
+                            <li>
+                                <input type="radio" id="2-option" name="selector">
+                                <div class="check"></div>
+                                <label for="2-option">50 £</label>
+                            </li>
+                    
+                            <li>
+                                <input type="radio" id="3-option" name="selector">
+                                <div class="check"></div>
+                                <label for="3-option">100 £</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="4-option" name="selector">
+                                <div class="check"></div>
+                                <label for="4-option">200 £</label>
+                            </li>
+                        </ul>
+                        <div class="otherAmountCont">
+                            <div class="curency">£</div>
+                            <input type="text" class="amountInput" placeholder="Other amount">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -54,6 +78,5 @@
         </div>
     </div>
 </div>
-
 
 <app-home-footer></app-home-footer>
