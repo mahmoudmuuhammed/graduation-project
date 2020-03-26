@@ -1,0 +1,58 @@
+@import "../../abstracts/variables";
+@import "../../abstracts/mixins";
+@import "../../base/utilities";
+@import "../../base/typography";
+
+
+.items {
+    @include flexbox;
+    flex-direction: column;
+    align-items: center;
+    &__info {
+        text-align: center;
+        color: $primary-text;
+    }
+}
+
+.document {
+    @include flexbox;
+    flex-direction: column;
+    align-items: center;
+
+    &__img {
+        width: 130px;
+        height: 130px;
+    }
+
+    &__custom {
+        border-radius: 50%;
+    }
+
+    &__upload {
+        background-color: transparent;
+        color: $primary-color;
+        font-weight: 500;
+        padding: .3em 1em;
+        font-size: 12px;
+        border-radius: 5px;
+        border: 1px solid $primary-color;
+        cursor: pointer;
+    }
+}
+
+.actions {
+
+    &__submit {
+        @include buttons;
+
+        &--custom {
+            background-color: transparent;
+            font-weight: 700;
+            color: $primary-color;
+        }
+    }
+}
+
+input[type="file"] {
+    display: none;
+}

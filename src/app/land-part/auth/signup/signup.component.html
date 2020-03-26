@@ -1,0 +1,117 @@
+<nav class="navbar u-mrgb-2">
+    <div class="navbar__brand">
+        <medkit-logo 
+            [textColor]="'#2d2d2d'" 
+            [smIcon]="'#764BCB'"></medkit-logo>
+    </div>
+    <ul class="navbar__list">
+        <li class="navbar__list-item">
+            <a routerLink="/signin" class="navbar__list-link">Sign in</a>
+        </li>
+        <li class="navbar__list-item">
+            <a routerLink="/" class="navbar__list-link">Back to home</a>
+        </li>
+    </ul>
+</nav>
+<section class="signup u-mrgt-4">
+    <div class="content">
+        <div class="info sm-title u-mrgb-1">
+            Create your account now.
+        </div>
+        <div class="stepper">
+            <mat-vertical-stepper linear #stepper>
+                <mat-step [completed]="forms.accountForm.valid">
+                    <ng-template matStepLabel>
+                        <label class="stepper__label">
+                            Account Information
+                        </label>
+                    </ng-template>
+                    <account-form></account-form>
+                    <div class="stepper__actions">
+                        <button 
+                            class="stepper__actions-submit u-mrgt-1" 
+                            matStepperNext>
+                            Next
+                        </button>
+                    </div>
+                </mat-step>
+                <mat-step [completed]="forms.generalForm.valid">
+                    <ng-template matStepLabel>
+                        <label class="stepper__label">
+                            General Information
+                        </label>
+                    </ng-template>
+                    <general-form></general-form>
+                    <div class="stepper__actions">
+                        <button 
+                            class="stepper__actions-submit custom u-mrgt-1" matStepperPrevious>
+                            back
+                        </button>
+                        <button class="stepper__actions-submit u-mrgt-1" matStepperNext>
+                            Next
+                        </button>
+                    </div>
+                </mat-step>
+                <mat-step [completed]="forms.doctorForm.valid">
+                    <ng-template matStepLabel>
+                        <label class="stepper__label">
+                            Doctor Career 
+                            <span class="stepper__label--custom">
+                                (For doctors only)
+                            </span>
+                        </label>
+                    </ng-template>
+                    <doctor-info></doctor-info>
+                    <div class="stepper__actions">
+                        <button 
+                            class="stepper__actions-submit custom u-mrgt-1" matStepperPrevious>
+                            back
+                        </button>
+                        <button class="stepper__actions-submit u-mrgt-1" matStepperNext>
+                            Next
+                        </button>
+                    </div>
+                </mat-step>
+                <mat-step optional>
+                    <ng-template matStepLabel>
+                        <label class="stepper__label">
+                            Upload your photo
+                        </label>
+                    </ng-template>
+                    <upload-photo></upload-photo>
+                    <div class="stepper__actions">
+                        <button 
+                            class="stepper__actions-submit custom u-mrgt-1" matStepperNext>
+                            skip
+                        </button>
+                        <button 
+                            class="stepper__actions-submit custom u-mrgt-1" matStepperPrevious>
+                            back
+                        </button>
+                        <button class="stepper__actions-submit u-mrgt-1" matStepperNext>
+                            Next
+                        </button>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <label class="stepper__label">
+                            Congratolations!
+                        </label>
+                    </ng-template>
+                    <div class="stepper__items">
+                        <img 
+                            class="stepper__img"
+                            src="../../../../assets/svgs/completed-steps.svg" 
+                            alt="">
+                        <button (click)="submitingForms()"
+                            class="stepper__actions-submit u-mrgt-1">
+                            Sign up
+                        </button>
+                    </div>
+                </mat-step>
+            </mat-vertical-stepper>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</section>

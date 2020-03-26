@@ -1,0 +1,118 @@
+<form 
+    [formGroup]="forms.doctorForm" 
+    class="form" 
+    (ngSubmit)="doctorInfoSubmit()">
+
+    <div class="form__fgroup u-mrgb-2">
+        <div class="form__fgroup-label">
+            <label>Type of account?</label>
+            <div class="validation" 
+                *ngIf="!forms.usertypeControl.valid && forms.usertypeControl.touched">
+                <span *ngIf="forms.usertypeControl.errors.required">
+                    {{ forms.validationErrors.required }}
+                </span>
+                <svg class="validation__icon">
+                    <use xlink:href="../../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                </svg>
+            </div>
+        </div>
+        <div style="display: flex;">
+            <label *ngFor="let type of items.type">
+                <input 
+                    type="radio" 
+                    name="usertype" 
+                    [value]="type" 
+                    formControlName="usertype">
+                <div class="form__fgroup-box u-mrgr-2">
+                    <span>{{ type }}</span>
+                </div>
+            </label>
+        </div>
+    </div>
+
+    <!-- ------------------------- -->
+    <div class="form__fgroup u-mrgb-1" *ngIf="forms.disableForPatient">
+        <div class="form__fgroup-label">
+            <label for="specialty">Role & Specialty</label>
+            <div class="validation" 
+                *ngIf="!forms.specialtyControl.valid && forms.specialtyControl.touched">
+                <span *ngIf="forms.specialtyControl.errors.required">
+                    {{ forms.validationErrors.required }}
+                </span>
+                <svg class="validation__icon">
+                    <use xlink:href="../../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                </svg>
+            </div>
+        </div>
+        <input 
+            type="text" 
+            class="form__fgroup-control form__fgroup-control--cu"
+            id="specialty"
+            placeholder="Enetr your specialty"
+            formControlName="specialty">
+    </div>
+    <div class="form__fgroup u-mrgb-1" *ngIf="forms.disableForPatient">
+        <div class="form__fgroup-label">
+            <label for="g-faculty">Graduation Faculty</label>
+            <div class="validation" 
+                *ngIf="!forms.gFacultyControl.valid && forms.gFacultyControl.touched">
+                <span *ngIf="forms.gFacultyControl.errors.required">
+                    {{ forms.validationErrors.required }}
+                </span>
+                <svg class="validation__icon">
+                    <use xlink:href="../../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                </svg>
+            </div>
+        </div>
+        <input 
+            type="text" 
+            class="form__fgroup-control" 
+            id="g-faculty" 
+            placeholder="Enetr your graduation faculty" 
+            formControlName="g-faculty">
+    </div>
+    <div class="form__fgroup u-mrgb-2" *ngIf="forms.disableForPatient">
+        <div class="form__fgroup-label">
+            <label for="g-year">Graduation Year</label>
+            <div class="validation" 
+                *ngIf="!forms.gYearControl.valid && forms.gYearControl.touched">
+                <span *ngIf="forms.gYearControl.errors.required">
+                    {{ forms.validationErrors.required }}
+                </span>
+                <svg class="validation__icon">
+                    <use xlink:href="../../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                </svg>
+            </div>
+        </div>
+        <input 
+            type="number" 
+            class="form__fgroup-control form__fgroup-control--custom" 
+            id="g-year" 
+            placeholder="Enetr your graduation year" 
+            formControlName="g-year">
+    </div>
+    <!-- --------------------------  -->
+
+    <div class="items" *ngIf="forms.disableForPatient">
+        <div class="items__info sm-text u-mrgb-2">
+            We were unable to automatically verify your 
+            physician credentials. For faster verification 
+            please upload the requested information below.
+        </div>
+        <div class="document u-mrgb-2">
+            <img
+                src="../../../../../assets/svgs/id-card.svg"
+                alt="id-card"
+                class="u-mrgb-2 document__img">
+            <label class="document__upload">
+                <input 
+                    type="file"
+                    accept="image/*"
+                    #files
+                    (change)="preview(files.files)">
+                Upload your license
+            </label>
+        </div>
+    </div>
+</form>
+<!-- https://www.youtube.com/watch?v=YkvqLNcJz3Y -->

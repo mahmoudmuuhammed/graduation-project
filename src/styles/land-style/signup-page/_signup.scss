@@ -3,216 +3,106 @@
 @import "../../base/utilities";
 @import "../../base/typography";
 
-.signup {
-    @include pages;
-    position: relative;
-    &__content {
-        @include flexbox;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        position: relative;
-        width: min-content;
-    }
-}
-
-.info {
+.navbar {
+    width: 100%;
     @include flexbox;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    height: 50px;
+    background-color: rgba($divider-color, .7);
+    position: fixed;
+    top: 0;
+    left: 0;
     justify-content: flex-start;
     text-align: center;
 
     &__title {
         color: $primary-text;
-        margin: .8rem 0;
+        margin: .4em auto 1em auto;
         text-shadow: 1px -1px 0px #fff;
+        font-size: 45px;
 
+    &__brand {
+        width: 100px;
+        text-align: center;
+        margin-left: 1em;
     }
 
-    &__details {
-        color: rgba($secondary-text, .9);
-        text-shadow: 1px -1px 0px #fff;
+    &__list {
+        @include flexbox;
+        justify-content: space-around;
+        align-items: center;
+        width: 250px;
+        margin: 0;
+        &-item {
+            list-style: none;
+        }
+        &-link {
+            @include links(16px, $primary-color);
+            font-weight: 600;
+            font-size: 15px;
+        }
 
         @media only screen and (max-width: 600px) {
-            width: 100%;
+            width: 220px;
         }
     }
 }
 
-.sociallog {
+.signup {
     @include flexbox;
-    flex-direction: row;
     justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url(src\assets\svgs\abstract-bg.svg);
+    background-size: cover;
+}
+
+.content {
+    @include flexbox;
+    flex-direction: column;
     align-items: center;
-
-    &__item {
-        padding: .7em;
-        border-radius: 5px;
-        @include flexbox;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        &--g {
-            background-color: #DF4930;
-        }
-
-        &--fb {
-            background-color: #507CC0;
-        }
-    }
-
-    &__icon {
-        width: 20px;
-        height: 20px;
-        fill: $divider-color;
-    }
-
-    &__link {
-        @include links(13px, $divider-color);
-        padding-left: .8em;
-    }
+    width: 500px;
 }
 
-.form {
-    @include forms;
-    &__fgroup {
-        @include form-groups;
-        &-label {
-            @include form-labels;
-        }
-
-        &-control {
-            @include form-controls;
-        }
-    }
-
-    &__submit {
-        @include buttons(120px, 14px);
-        align-self: center;
-        color: $divider-color;
-    }
-}
-
-.al-signed {
-    
-    &__link {
-        font-size: 14px;
-        font-weight: 400;
-        color: $primary-text;
+.stepper {
+    width: 100%;
+    &__label {
+        @include form-labels;
+        cursor: pointer;
 
         &--custom {
-            font-weight: 600;
-            font-size: 16px;
             color: $primary-color;
-            text-decoration: none;
+            font-weight: 400;
+            font-size: 12px;
         }
+    }
+
+    &__actions {
+
+        &-submit {
+            @include buttons;
+        }
+    }
+
+    &__items {
+        @include flexbox;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    &__img {
+        width: 200px;
     }
 }
 
-.copyright {
+.info {
+    color: $primary-text;
+}
+
+.custom {
+    background-color: transparent;
+    color: $primary-color;
     font-size: 14px;
-    color: $secondary-text;
-    text-align: center;
-    padding: 1em;
-    @media only screen and (max-width: 600px) {
-        width: 100%;
-    }
-    
-    &__text {
-        font-weight: 300;
-
-    }
-
-    &__link {
-        font-weight: 500;
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-}
-
-.orDiv {
-    p {
-        font-size: 20px;
-        color: #555;
-        display: flex;
-        align-items: center;
-        margin:2rem 0;
-        
-
-        &::before {
-            content: "";
-            width: 40%;
-            height: 2px;
-            background-color: #555;
-            display: block;
-            position: absolute;
-            left: 0;
-        }
-
-
-        &::after {
-            content: "";
-            width: 40%;
-            height: 2px;
-            background-color: #555;
-            display: block;
-            position: absolute;
-            right: 0;
-        }
-    }
-
-}
-
-
-.backDiv {
-    position: absolute;
-    top: 0px;
-    right: 0;
-
-    img {
-        width: 500px;
-    }
-}
-
-.leftImg {
-    position: absolute;
-    top: 50%;
-    left: -50px;
-    transform: translateY(-50%);
-    height: 500px;
-
-}
-.rightBottomImg {
-    position: absolute;
-    bottom: 0px;
-    right:0px;
-    width: 250px;  
-
-}
-@media(min-width:1200px){
-    .rightBottomImg{
-        width: 500px;
-    }
-}
-@media (max-width:768px){
-    .backDiv{
-        img{
-            width: 100%;
-        }
-    }
-    .leftImg {
-        left: -100px;
-    }
-    .rightBottomImg{
-        width: 170px;
-    }
-}
-@media(max-width:600px){
-    .leftImg,.rightBottomImg{
-        display: none;
-    }
+    font-weight: 700;
 }

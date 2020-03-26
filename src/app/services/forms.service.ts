@@ -1,89 +1,137 @@
 import { Injectable } from "@angular/core";
-import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class FormsServices {
+    accountForm: FormGroup;
+    generalForm: FormGroup;
+    doctorForm: FormGroup;
+    signinForm: FormGroup;
+    disableForPatient: boolean = true;
     // global validation for forms
     validationErrors: 
         { required: string, 
-            notValidEmail: string, 
-            matching: string, 
+            notValidEmail: string,
             emailExist: string, 
-            minLength: string, 
+            minLength: string,
+            notValidPhone: string,
+            userType: string
             notFound: string,
             incorrectPass: string } = {
                 required: 'required',
                 notValidEmail: 'not valid email',
-                matching: '',
+                userType: 'select type of account',
                 emailExist: '',
-                minLength: 'password must be at least 6 characters',
+                notValidPhone: 'not valid phone number',
+                minLength: 'must be at least 6 characters',
                 notFound: '',
                 incorrectPass: ''
     };
-        // initialize authintication firebase 
-    constructor(public authService: AngularFireAuth) {}
-        // email verfication
-    onEmailVerification() {
-        return this.authService.auth.currentUser.sendEmailVerification()
-            .then(
-                response => {
-                    console.log('verify');
-                }
-            )
+
+    constructor() {}
+
+    accountFormController() {
+        this.accountForm = new FormGroup({
+            'fullname': new FormControl(null, Validators.required),
+            'email': new FormControl(null, [Validators.required, Validators.email]),
+            'password': new FormControl(null, [Validators.required, Validators.minLength(6)]),
+        });
     }
-        // sign up with email address
-    onSignupWithEmail(emailValue: string, passwordValue: string) {
-        this.authService.auth.createUserWithEmailAndPassword(emailValue, passwordValue)
-            .then(
-                response => {
-                    this.onEmailVerification();
-                    console.log(response);
-                }
-            ).catch(
-                error => {
-                    this.validationErrors.emailExist = 'this email is already exist'
-                }
-            );
+    
+    generalFormController() {
+        this.generalForm = new FormGroup({
+            'gender': new FormControl(null, Validators.required),
+            'age': new FormControl(null, Validators.required),
+        });
     }
-        // facebook authntication
-    facebookAuth() {
-        const provider = new auth.FacebookAuthProvider();
-        this.authService.auth.signInWithPopup(provider).then(
-            response => {  
-                console.log(response);
-            }
-        )
-    }
-        // google authntication
-    googleAuth() {
-        const provider = new auth.GoogleAuthProvider();
-        this.authService.auth.signInWithPopup(provider)
-            .then(
-                response => {
-                    console.log(response);
+    
+    doctorFormController() {
+        this.doctorForm = new FormGroup({
+            'specialty': new FormControl(null, Validators.required),
+            'g-faculty': new FormControl(null, Validators.required),
+            'g-year': new FormControl(null, Validators.required),
+            'usertype': new FormControl(null, Validators.required),
+        });
+        this.usertypeControl.valueChanges.subscribe(
+            (value) => {
+                if(value == 'Patient'){
+                    this.disableForPatient = false;
+                    this.specialtyControl.disable();
+                    this.gYearControl.disable();
+                    this.gFacultyControl.disable();
+                    console.log(this.doctorForm.status);
+                    return;
                 }
-            )
+                this.disableForPatient = true;
+                this.specialtyControl.enable();
+                this.gYearControl.enable();
+                this.gFacultyControl.enable();
+                console.log(this.doctorForm.status);
+            }  
+        );
     }
-        // sign in method
-    onSigninWithEmail(userEmail: string, userPassword: string) {
-       this.authService.auth.signInWithEmailAndPassword(userEmail, userPassword)
-            .then(
-                response => { 
-                    window.alert('success');
-                    console.log(response);
-                 }
-            ).catch(
-                error => {
-                    if(error.code == 'auth/user-not-found') {
-                        this.validationErrors.notFound = 'this email not found'
-                    } else if(error.code == 'auth/wrong-password') {
-                        this.validationErrors.incorrectPass = 'incorrect password'
-                    }
-                }
-            )
+
+    get fullnameControl() {
+        return this.accountForm.get('fullname');
+    }
+    
+    get emailControl() {
+        return this.accountForm.get('email');
+    }
+    
+    get passwordControl() {
+        return this.accountForm.get('password');
+    }
+    
+    get usertypeControl() {
+        return this.doctorForm.get('usertype');
+    }
+    
+    get genderControl() {
+        return this.generalForm.get('gender');
+    }
+    
+    get ageControl() {
+        return this.generalForm.get('age');
+    }
+
+    get specialtyControl() {
+        return this.doctorForm.get('specialty');
+    }
+    
+    get gFacultyControl() {
+        return this.doctorForm.get('g-faculty');
+    }
+    
+    get gYearControl() {
+        return this.doctorForm.get('g-year');
+    }
+
+    get createUsername() {
+        const nameField: string = this.fullnameControl.value
+        .toLowerCase()
+        .trim()
+        .replace(/\s/g, "");
+        const nameFieldId = Math.floor(Math.random());
+        const username = '@' + nameField + nameFieldId;
+
+        return username;
+    }
+
+    signinFormController() {
+        this.signinForm = new FormGroup({
+            'email': new FormControl(null, [Validators.required, Validators.email]),
+            'password': new FormControl(null, Validators.required)
+        });
+    }
+
+    get signinEmailControl() {
+        return this.signinForm.get('email');
+    }
+    get signinPasswordControl() {
+        return this.signinForm.get('password');
     }
 }

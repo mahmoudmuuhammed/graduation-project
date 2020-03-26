@@ -3,76 +3,67 @@
 @import "../../base/utilities";
 @import "../../base/typography";
 
+
 .signin {
-    @include pages;
-
-    &__content {
-        @include flexbox;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        position: relative;
-    }
+    @include forms-pages;
+    background-image: url(src\assets\svgs\abstract-bg.svg);
+    background-size: cover;
 }
 
-.sociallog {
+.navbar {
+    width: 100%;
     @include flexbox;
-    flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-
-    &__item {
-        padding: .7em;
-        border-radius: 5px;
+    padding: .5em;
+    background-color: rgba($divider-color, .7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    &__brand {
+        width: 100px;
+        text-align: center;
+        margin-left: 1em;
+    }
+    &__list {
         @include flexbox;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-
-        &--g {
-            background-color: #DF4930;
+        justify-content: space-around;
+        width: 250px;
+        &-item {
+            list-style: none;
+        }
+        &-link {
+            @include links(16px, $primary-color);
+            font-weight: 600;
+            font-size: 15px;
         }
 
-        &--fb {
-            background-color: #507CC0;
+        @media only screen and (max-width: 600px) {
+            width: 220px;
         }
-    }
-
-    &__icon {
-        width: 20px;
-        height: 20px;
-        fill: $divider-color;
-    }
-
-    &__link {
-        @include links(13px, $divider-color);
-        padding-left: .8em;
     }
 }
 
-.info {
+.content {
+    background-color: $divider-color;
+    padding: 2em;
+    border-radius: 5px;
     @include flexbox;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
-
-    &__title {
-        color: $primary-text;
-        margin-bottom: 1em;
-        text-shadow: 1px -1px 0px #fff;
-    }
-
-    &__details {
-        color: rgba($secondary-text, .9);
-        width: 80%;
-    }
+    width: 400px;
 }
 
+<<<<<<< HEAD
+.title {
+    font-size: 25px;
+    font-weight: 600;
+    color: #101830;
+    align-self: flex-start;
+=======
 .orDiv {
     p {
         font-size: 20px;
-        color: $primary-text;
+        color: #666;
         display: flex;
         align-items: center;
         margin:1rem 0;
@@ -82,7 +73,7 @@
             content: "";
             width: 40%;
             height: 2px;
-            background-color: $primary-text;
+            background-color: #999;
             display: block;
             position: absolute;
             left: 0;
@@ -93,128 +84,94 @@
             content: "";
             width: 40%;
             height: 2px;
-            background-color: $primary-text;
+            background-color: #999;
             display: block;
             position: absolute;
             right: 0;
         }
     }
 
+>>>>>>> ce23efcbdbdf952fed331816670f2d7288a052ba
 }
 
 .form {
     @include forms;
-
     &__fgroup {
         @include form-groups;
-
         &-label {
             @include form-labels;
         }
-
         &-control {
             @include form-controls;
         }
     }
-
-    &__controllers {
-        width: 100%;
-        @include flexbox;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-
-        &-items {
-            @include flexbox;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        &-chbox {
-            width: 14px;
-            height: 14px;
-        }
-
-        &-smlabel {
-            font-size: 13px;
-            font-weight: 400;
-            color: $primary-text;
-            margin-left: .5em;
-        }
-
-        &-fgotlink {
-            @include links(12px, $primary-text);
-        }
-    }
-
-    &__submit {
-        align-self: center;
-        color: $divider-color;
-        @include buttons(120px, 15px);
-    }
 }
 
-.al-signed {
-    font-size: 14px;
-    font-weight: 400;
-    color: $primary-text;
+
+.controllers {
+    width: 100%;
     @include flexbox;
+    justify-content: space-between;
     align-items: center;
 
-    &__link {
-        @include links(16px, $primary-color);
-        font-weight: 600;
-        margin-left: .4em;
-    }
-}
-
-.homeback {
-    &__link {
-        @include links(15px, $primary-color);
-        font-weight: 600;
-    }
-}
-
-.rel {
-    position: relative;
-}
-
-
-.backDiv {
-    position: absolute;
-    top: 0px;
-    right: 0;
-
-    img {
-        width: 500px;
-    }
-}
-
-.leftBottomImg {
-    position: absolute;
-    bottom: 0px;
-    left: -50px;
-    height: 350px;
-
-}
-
-@media(max-width:768px) {
-
-    .backDiv {
-        width: 80%;
-
-        img {
-            width: 100%;
+    &__items {
+        @include flexbox;
+        align-items: center;
+        font-size: 13px;
+        font-weight: 400;
+        color: $primary-text;
+        &-chbox {
+            width: 15px;
+            height: 15px;
         }
-    }
 
-    .leftBottomImg {
-        display: none;
-    }
-    .info{
-        &__title{
-            margin:2rem 0;
+        &-fgot {
+            text-decoration: none;
+            font-size: 13px;
+            color: $primary-color;
         }
     }
 }
+
+.submit {
+    width: 100%;
+    text-align: center;
+    &__btn {
+        @include buttons;
+    }
+}
+
+.sociallog {
+    @include flexbox;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+     &__item {
+         @include buttons;
+         @include flexbox;
+         align-items: center;
+         font-size: 13px;
+
+         &--g {
+             background-color: #DF4930;
+         }
+         &--fb {
+             background-color: #507CC0;
+         }
+         &--email {
+             background-color: transparent;
+             border: .4px solid $secondary-text;
+             color: $primary-text;
+         }
+     }
+ 
+     &__icon {
+         width: 18px;
+         height: 18px;
+         fill: $divider-color;
+         margin-right: .7em;
+         &--custom {
+             fill: rgba($secondary-text, .7);
+         }
+     }
+ }

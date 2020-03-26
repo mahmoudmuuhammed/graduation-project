@@ -1,0 +1,20 @@
+{
+    "Users": {
+        "@mahmoudmohamed": {
+            "fullname": "Mahmoud Mohamed",
+            "email": "mahmoud@yahoo.com",
+            "gender": "Male",
+            "phone": "01293322",
+            "age": 12,
+            "imgUrl": "https://ffffff",
+            "reason": "This is my first visit",
+            "userType": {
+                "type": "Patient",
+                "specialty": null,
+                "grad-year": null,
+                "grad-faculty": null,
+                "licenseUrl": null
+            }
+        }
+    }
+}

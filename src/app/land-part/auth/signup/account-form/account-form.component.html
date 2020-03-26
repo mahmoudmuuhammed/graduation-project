@@ -1,0 +1,71 @@
+<form 
+    [formGroup]="forms.accountForm"
+    (ngSubmit)="accountFormSubmit()"
+    class="form">
+    <div class="form__fgroup u-mrgb-1">
+        <div class="form__fgroup-label">
+            <label for="fullname">Full name</label>
+            <div class="validation" 
+                *ngIf="!forms.fullnameControl.valid && forms.fullnameControl.touched">
+                <span *ngIf="forms.fullnameControl.errors.required">
+                    {{ forms.validationErrors.required }}
+                </span>
+                <svg class="validation__icon">
+                    <use xlink:href="../../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                </svg>
+            </div>
+        </div>
+        <input 
+            type="text" 
+            class="form__fgroup-control" 
+            id="fullname" 
+            placeholder="Enter your full name" 
+            formControlName="fullname">
+    </div>
+    <div class="form__fgroup u-mrgb-1">
+        <div class="form__fgroup-label">
+            <label for="email">Email</label>
+            <div class="validation" 
+                *ngIf="!forms.emailControl.valid && forms.emailControl.touched">
+                <span *ngIf="forms.emailControl.errors.required">
+                    {{ forms.validationErrors.required }}
+                </span>
+                <span *ngIf="forms.emailControl.errors.email">
+                    {{ forms.validationErrors.notValidEmail }}
+                </span>
+                <svg class="validation__icon">
+                    <use xlink:href="../../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                </svg>
+            </div>
+        </div>
+        <input 
+            type="email"
+            class="form__fgroup-control"
+            id="email"
+            placeholder="Enter your email" 
+            formControlName="email">
+    </div>
+    <div class="form__fgroup u-mrgb-1">
+        <div class="form__fgroup-label">
+            <label for="password">Password</label>
+            <div class="validation" 
+                *ngIf="!forms.passwordControl.valid && forms.passwordControl.touched">
+                <span *ngIf="forms.passwordControl.errors.required">
+                    {{ forms.validationErrors.required }}
+                </span>
+                <span *ngIf="forms.passwordControl.errors.minlength">
+                    {{ forms.validationErrors.minLength }}
+                </span>
+                <svg class="validation__icon">
+                    <use xlink:href="../../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                </svg>
+            </div>
+        </div>
+        <input 
+            type="password"
+            class="form__fgroup-control"
+            id="password"
+            placeholder="Enter your password"
+            formControlName="password">
+    </div>
+</form>

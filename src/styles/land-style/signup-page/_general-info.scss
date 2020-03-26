@@ -1,0 +1,80 @@
+@import "../../abstracts/variables";
+@import "../../abstracts/mixins";
+@import "../../base/utilities";
+
+
+.form {
+    @include forms;
+    &__fgroup {
+        @include form-groups;
+        &-label {
+            @include form-labels;
+            &--custom {
+                font-size: 10px;
+                font-weight: 600;
+            }
+        }
+
+        &-control {
+            @include form-controls;
+            &--age {
+                width: 30%;
+            }
+
+            &--phone {
+                width: 80%;
+                border-radius: 5px;
+            }   
+        }
+
+        &-textarea {
+            @include form-controls;
+        }
+
+        
+        input[type="radio"] {
+            display: none;
+            &:checked + .form__fgroup-box {
+                background-color: $primary-color;
+                span {
+                    color: $divider-color;
+                }
+            }
+        }
+
+        &-box {
+            width: 90px;
+            height: 33px;
+            background-color: transparent;
+            border: 1px solid $primary-color;
+            transition: all 250ms ease;
+            will-change: transition;
+            cursor: pointer;
+            position: relative;
+            border-radius: 5px; 
+            span {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 12px;
+                font-weight: 500;
+                color: $primary-color;
+                line-height: normal;
+            }
+        }
+    }
+
+    &__actions {
+
+        &-submit {
+            @include buttons;
+            &--custom {
+                background-color: transparent;
+                color: $primary-color;
+                font-weight: 700;
+            }
+        }
+    }
+}
+

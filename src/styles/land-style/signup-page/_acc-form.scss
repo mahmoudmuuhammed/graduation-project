@@ -1,0 +1,21 @@
+@import "../../abstracts/variables";
+@import "../../abstracts/mixins";
+@import "../../base/utilities";
+
+.form {
+    @include forms;
+    &__fgroup {
+        @include form-groups;
+        &-label {
+            @include form-labels;
+        }
+
+        &-control {
+            @include form-controls;
+        }
+    }
+
+    &__submit {
+        @include buttons;
+    }
+}

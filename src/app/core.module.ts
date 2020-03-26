@@ -3,7 +3,7 @@ import { NgModule } from "@angular/core";
 
 @NgModule({
     providers: [
-        FormsServices
+        FormsServices,
     ]
 })
 

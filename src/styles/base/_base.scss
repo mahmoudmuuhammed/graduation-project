@@ -2,12 +2,35 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    outline: none !important;
+    transition: all .2s ease-in-out;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif !important;
     letter-spacing: .3px;
     line-height: 25px;
+    overflow-x: hidden;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

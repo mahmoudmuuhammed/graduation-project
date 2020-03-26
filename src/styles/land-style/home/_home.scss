@@ -5,90 +5,6 @@
     background-size: cover;
     min-height: 102vh;
 
-    .navContainer {
-        position: fixed;
-        top: 0;
-        left: 0px;
-        width: 100%;
-        z-index: 10;
-
-        .navBar {
-            padding: 10px;
-        }
-
-        .logo {
-            img {
-                max-width: 300px;
-                height: 30px;
-            }
-        }
-
-        .miniLogo {
-            img {
-                max-width: 150px;
-                height: 30px;
-            }
-        }
-
-        .navbarNav {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            list-style: none;
-
-            .navItem {
-
-                margin-top: 2px;
-
-                a {
-                    color: #fff;
-                    text-decoration: none;
-                    font-size: 18px;
-                    margin: 5px 10px;
-                    padding: 0 10px;
-                    display: inline-block;
-
-                    &::after {
-                        content: '';
-                        display: block;
-                        width: 0;
-                        height: 2px;
-                        background: #fff;
-                        margin-top: 2px;
-                        transition: width .2s ease-in-out;
-                    }
-
-                    &:hover {
-                        &::after {
-                            width: 100%;
-                        }
-                    }
-                }
-            }
-        }
-
-        &.white {
-            background: #fff;
-            box-shadow: 0px 3px 5px -5px #000;
-
-            .navbarNav {
-                .navItem {
-                    a {
-                        color: #222;
-
-                        &::after {
-                            background-color: #222;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    .fixFixedPositionDiv {
-        height: 60px;
-    }
-
     .sloganDiv {
         .slogan {
             display: flex;
@@ -328,27 +244,6 @@ footer {
 @media screen and (max-width:768px) {
     .mainHeader {
 
-        .fixFixedPositionDiv {
-            height: 200px;
-        }
-
-        .navContainer {
-            .navbar-brand {
-                margin: 0px;
-            }
-
-            .navbarNav {
-                margin-top: 5px;
-                justify-content: center;
-
-                .navItem {
-                    a {
-                        margin: 5px 0;
-                    }
-                }
-            }
-        }
-
         .sloganDiv {
             .slogan {
                 h1 {
@@ -433,24 +328,6 @@ footer {
 
 @media (max-width:576px) {
     .mainHeader {
-
-        .navContainer {
-            .navbarNav {
-                .navItem {
-                    a {
-                        margin: 5px 10px;
-                    }
-                }
-            }
-        }
-
-        .miniLogo {
-            img {
-                display: block !important;
-                margin: auto;
-            }
-        }
-
         .ViewDiv {
             .lapViewImg {
                 bottom: 0;

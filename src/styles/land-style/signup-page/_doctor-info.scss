@@ -1,0 +1,158 @@
+@import "../../abstracts/variables";
+@import "../../abstracts/mixins";
+@import "../../base/utilities";
+@import "../../base/typography";
+@import "./upload-document";
+
+
+.form {
+    @include forms;
+    &__fgroup {
+        @include form-groups;
+        &-label {
+            @include form-labels;
+        }
+
+        &-control {
+            @include form-controls;
+            &--cu {
+                cursor: pointer;
+            }
+            &--custom {
+                width: 50%;
+            }
+        }
+
+        input[type="radio"] {
+            display: none;
+            &:checked + .form__fgroup-box {
+                background-color: $primary-color;
+                span {
+                    color: $divider-color;
+                }
+            }
+        }
+
+        &-box {
+            width: 90px;
+            height: 33px;
+            background-color: transparent;
+            border: 1px solid $primary-color;
+            transition: all 250ms ease;
+            will-change: transition;
+            cursor: pointer;
+            position: relative;
+            border-radius: 5px; 
+            span {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 12px;
+                font-weight: 500;
+                color: $primary-color;
+                line-height: normal;
+            }
+        }
+    }
+
+    &__actions {
+
+        &-submit {
+            @include buttons;
+            &--custom {
+                background-color: transparent;
+                color: $primary-color;
+                font-weight: 700;
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 500px;
+    background-color: $divider-color;
+    border-radius: 5px;
+    @include flexbox;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.role {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba($primary-text, .5);
+    z-index: 9999;
+
+    &__title {
+        padding: .7em;
+        width: 100%;
+        border-bottom: .5px solid rgba($secondary-text, .4);
+        position: relative;
+
+        span {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            cursor: pointer;
+        }
+    }
+
+    &__details {
+        color: rgba($secondary-text, .7);
+        padding: .7em;
+    }
+
+    &__list {
+        @include flexbox;
+        flex-direction: column;
+        padding: .7em;
+        &-item {
+            list-style: none;
+            position: relative;
+            margin-bottom: 1em;
+            padding-left: 1.5em;
+            @include flexbox;
+            align-items: center;
+            &::after {
+                content: '';
+                height: .7em;
+                width: .7em;
+                margin-top: .2em;
+                background: rgba($primary-color, .7);
+                display: block;
+                position: absolute;
+                transform: rotate(45deg);
+                top: .25em;
+                left: 0;
+            }
+        }
+        &-link {
+            font-size: 14px;
+            font-weight: 600;
+            color: $primary-text;
+            cursor: pointer;
+        }
+    }
+}
+
+.actions {
+    width: 100%;
+    padding: .7em;
+    border-top: .5px solid rgba($secondary-text, .4);
+    @include flexbox;
+    justify-content: flex-end;
+    &__submit {
+        @include buttons;
+    }
+}

@@ -1,0 +1,19 @@
+<div class="items">
+    <div class="items__info md-text u-mrgb-2">
+        You can upload your photo now to make communicate easier!
+    </div>
+    <div class="document u-mrgb-2">
+        <img
+            src="../../../../../assets/svgs/man.svg" 
+            alt="id-card" 
+            class="document__img document__custom u-mrgb-2">
+        <label class="document__upload">
+            <input 
+            type="file" 
+            accept="image/*" 
+            #files
+            (change)="preview(files.files)">
+            Upload your photo
+        </label>
+    </div>
+</div>

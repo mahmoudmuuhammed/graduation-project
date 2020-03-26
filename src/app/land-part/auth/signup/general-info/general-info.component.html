@@ -1,0 +1,65 @@
+<form 
+    class="form" 
+    [formGroup]="forms.generalForm"
+    (ngSubmit)="generalFormSubmit()">
+    <div class="form__fgroup u-mrgb-1">
+        <div class="form__fgroup-label">
+            <label>Gender</label>
+            <div class="validation" 
+                *ngIf="!forms.genderControl.valid && forms.genderControl.touched">
+                <span *ngIf="forms.genderControl.errors.required">
+                    {{ forms.validationErrors.required }}
+                </span>
+                <svg class="validation__icon">
+                    <use xlink:href="../../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                </svg>
+            </div>
+        </div>
+        <div style="display: flex;">
+            <label *ngFor="let gender of items.gender">
+                <input 
+                    type="radio" 
+                    name="gender" 
+                    formControlName="gender" 
+                    [value]="gender">
+                <div class="form__fgroup-box u-mrgr-2">
+                    <span>{{ gender }}</span>
+                </div>
+            </label>
+        </div>
+    </div>
+    <div class="form__fgroup u-mrgb-1">
+        <div class="form__fgroup-label">
+            <label for="age">Age</label>
+            <div class="validation" 
+                *ngIf="!forms.ageControl.valid && forms.ageControl.touched">
+                <span *ngIf="forms.ageControl.errors.required">
+                    {{ forms.validationErrors.required }}
+                </span>
+                <svg class="validation__icon">
+                    <use xlink:href="../../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                </svg>
+            </div>
+        </div>
+        <input 
+            type="number" 
+            class="form__fgroup-control form__fgroup-control--age" 
+            placeholder="your age" 
+            id="age" 
+            formControlName="age">
+    </div>
+    <div class="form__fgroup u-mrgb-1">
+        <div class="form__fgroup-label">
+            <label for="reason">
+                What's your reason for join medkit?
+                <span class="form__fgroup-label--custom">(Optional)</span>
+            </label>
+        </div>
+        <textarea
+            name="reason" 
+            class="form__fgroup-textarea"
+            id="reason" 
+            cols="30" 
+            rows="5"></textarea>
+    </div>
+</form>

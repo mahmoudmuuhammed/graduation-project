@@ -1,13 +1,16 @@
-import { Component ,HostListener , Inject } from "@angular/core";
-import { DOCUMENT } from "@angular/common";
+import { Component } from "@angular/core";
+
 
 @Component({
-    selector: 'home-page',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss']
+  selector: 'home-page',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 
 export class HomePageComponent {
+
+
+  isVisible: boolean = false;
 
     constructor(@Inject(DOCUMENT) private document: Document) { }
 
@@ -25,4 +28,12 @@ export class HomePageComponent {
     }
   }
   name = 'Angular';
+
+  hideSignupPopup() {
+    this.isVisible = false;
+  }
+  
+  onShowPopup() {
+    this.isVisible = true;
+  }
 }

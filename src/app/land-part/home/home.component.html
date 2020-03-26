@@ -1,7 +1,6 @@
 <!-- <div class="homeBackground">
     <img src="../../../assets/images/homeBack.svg">
 </div> -->
-
 <header class="mainHeader">
     <div class="container-fluid navContainer" id="navContainer">
         <div class="row navBar">
@@ -21,7 +20,10 @@
                         <a class="navLink" routerLink="/donation">Donation</a>
                     </li>
                     <li class="navItem">
-                        <a class="navLink" routerLink="/signup">Sign up</a>
+                        <a 
+                            routerLink="/auth"
+                            class="navLink" 
+                            style="cursor: pointer;">Sign up</a>
                     </li>
                     <li class="navItem">
                         <a class="navLink" routerLink="/signin">Sign in</a>
@@ -31,6 +33,14 @@
         </div>
     </div>
     <div class="fixFixedPositionDiv"></div>
+
+    
+    <app-home-top-nav></app-home-top-nav>
+
+
+    
+    <app-home-top-nav></app-home-top-nav>
+
 
     <div class="container-fluid sloganDiv">
         <div class="row">
