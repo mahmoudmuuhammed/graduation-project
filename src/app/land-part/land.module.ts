@@ -7,7 +7,7 @@ import { LandRoutingModule } from './land-routing.module';
 import { HomeTopNavComponent } from './home-top-nav/home-top-nav.component';
 import { HomeFooterComponent } from './home-footer/home-footer.component';
 import { DonationComponent } from './donation/donation.component';
-import { NgPaymentCardModule } from 'ng-payment-card';
+// import { NgPaymentCardModule } from 'ng-payment-card';
 
 @NgModule({
     declarations: [
@@ -21,7 +21,7 @@ import { NgPaymentCardModule } from 'ng-payment-card';
     imports: [
         AuthModule,
         LandRoutingModule,
-        NgPaymentCardModule,
+        // NgPaymentCardModule,
 
     ],
     exports: [

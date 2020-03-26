@@ -53,45 +53,11 @@
     width: 400px;
 }
 
-<<<<<<< HEAD
 .title {
     font-size: 25px;
     font-weight: 600;
     color: #101830;
     align-self: flex-start;
-=======
-.orDiv {
-    p {
-        font-size: 20px;
-        color: #666;
-        display: flex;
-        align-items: center;
-        margin:1rem 0;
-        
-
-        &::before {
-            content: "";
-            width: 40%;
-            height: 2px;
-            background-color: #999;
-            display: block;
-            position: absolute;
-            left: 0;
-        }
-
-
-        &::after {
-            content: "";
-            width: 40%;
-            height: 2px;
-            background-color: #999;
-            display: block;
-            position: absolute;
-            right: 0;
-        }
-    }
-
->>>>>>> ce23efcbdbdf952fed331816670f2d7288a052ba
 }
 
 .form {

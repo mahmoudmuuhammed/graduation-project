@@ -13,14 +13,6 @@
     position: fixed;
     top: 0;
     left: 0;
-    justify-content: flex-start;
-    text-align: center;
-
-    &__title {
-        color: $primary-text;
-        margin: .4em auto 1em auto;
-        text-shadow: 1px -1px 0px #fff;
-        font-size: 45px;
 
     &__brand {
         width: 100px;
