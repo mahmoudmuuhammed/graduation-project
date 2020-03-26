@@ -10,7 +10,6 @@ import { Component } from "@angular/core";
 export class HomePageComponent {
 
 
-  isVisible: boolean = false;
 
     constructor(@Inject(DOCUMENT) private document: Document) { }
 
@@ -28,12 +27,5 @@ export class HomePageComponent {
     }
   }
   name = 'Angular';
-
-  hideSignupPopup() {
-    this.isVisible = false;
-  }
   
-  onShowPopup() {
-    this.isVisible = true;
-  }
 }
