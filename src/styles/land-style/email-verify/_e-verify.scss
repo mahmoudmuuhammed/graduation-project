@@ -3,140 +3,104 @@
 @import "../../base/utilities";
 @import "../../base/typography";
 
-.verify {
-    width: 100%;
-    height: 100vh;
-    @include flexbox;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-
-    &__content {
-        @include flexbox;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        width: 100%;
-        padding: 1em;
-    }
-}
-
 .navbar {
+    width: 100%;
     @include flexbox;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    padding: 1em;
+    background-color: rgba($divider-color, .7);
+    position: fixed;
+    top: 0;
+    left: 0;
 
     &__brand {
-        width: 120px;
+        width: 100px;
+        text-align: center;
+        margin-left: 1em;
     }
 
-    &__userinfo {
+    &__list {
         @include flexbox;
         flex-direction: column;
-
-        &-name {
-            color: $primary-text;
-            margin-bottom: .3em;
+        font-size: 16px;
+        &-item {
+            list-style: none;
             &--custom {
                 font-weight: 600;
             }
         }
 
-        &-signout {
+        &-link {
             color: $primary-color;
-            text-decoration: none;
-            font-weight: 700;
-            align-self: flex-end;
+            font-weight: 500;
         }
     }
+}
+
+.content {
+    @include flexbox;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.verify {
+    width: 100%;
+    height: 100vh;
+    @include flexbox;
+    justify-content: center;
 }
 
 .items {
     @include flexbox;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-
+    text-align: center;
     &__img {
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
     }
 
     &__desc {
-        @include flexbox;
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
 
         &-title {
             color: $primary-text;
-            margin-bottom: .4em;
         }
+
         &-details {
-            width: 55%;
-            color: rgba($secondary-text, .9);
-
+            color: $secondary-text;
+            width: 500px;
             &--custom {
-                font-weight: 600;
-                color: $secondary-text;
-            }
-
-            @media only screen and (max-width: 600px) {
-                width: 100%;
+                font-weight: 700;
+                font-size: 14px;
             }
         }
     }
 }
 
 .chmail {
-    @include flexbox;
-    flex-direction: column;
-    align-items: center;
 
     &__collapse {
-        @include links(13px, $primary-color);
+        color: $primary-color;
         font-weight: 600;
-        transition: all 2s;
+        font-size: 14px;
         cursor: pointer;
     }
 
-    &__form {
-        transition: all .6s ease-in-out;
-        height: auto;
-    }
-
     &__fgroup {
+
         &-control {
             @include form-controls;
         }
 
         &-resend {
-            border: 1px solid $primary-color;
-            padding: .3em 1em;
-            width: 90px;
-            color: $primary-color;
-            font-weight: 600;
-            font-size: 15px;
-            height: 40px;
+            @include buttons;
             background-color: transparent;
-            border-radius: 5px;
-            margin-left: 1em;
-            cursor: pointer;
+            border: 1px solid $primary-color;
+            color: $primary-color;
         }
     }
 }
 
 .re-verify {
-    border: none;
-    padding: .3em 1em;
-    color: $divider-color;
-    font-weight: 600;
-    font-size: 15px;
-    background-color: $primary-color;
-    height: 40px;
-    border-radius: 5px;
-    margin-left: 1em;
-    cursor: pointer;
+    @include buttons;
 }

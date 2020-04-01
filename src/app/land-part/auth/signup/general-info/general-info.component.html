@@ -41,11 +41,12 @@
                 </svg>
             </div>
         </div>
-        <input 
-            type="number" 
-            class="form__fgroup-control form__fgroup-control--age" 
-            placeholder="your age" 
-            id="age" 
+        <input
+            type="number"
+            class="form__fgroup-control form__fgroup-control--age"
+            placeholder="your age"
+            id="age"
+            maxlength="2"
             formControlName="age">
     </div>
     <div class="form__fgroup u-mrgb-1">
@@ -60,6 +61,7 @@
             class="form__fgroup-textarea"
             id="reason" 
             cols="30" 
-            rows="5"></textarea>
+            rows="5" 
+            formControlName="reason"></textarea>
     </div>
 </form>

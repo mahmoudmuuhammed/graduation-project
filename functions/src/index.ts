@@ -9,3 +9,6 @@ export const helloWorld = functions.https.onRequest((request, response) => {
  response.send("Hello from Firebase!");
 });
 
+export const fileUpload = functions.storage.bucket('users').object().onChange(event => {
+    console.log(event);
+})

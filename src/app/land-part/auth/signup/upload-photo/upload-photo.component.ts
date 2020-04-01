@@ -1,4 +1,5 @@
-import { Component, Renderer2 } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { UploadingService } from 'src/app/services/uploading.service';
 
 @Component({
     selector: 'upload-photo',
@@ -6,19 +7,11 @@ import { Component, Renderer2 } from "@angular/core";
     styleUrls: ['./upload-photo.component.scss']
 })
 
-export class UploadPhotoComponent {
-    imgPath;
-    imgUrl: any;
-    constructor(private element: Renderer2) {}
+export class UploadPhotoComponent implements OnInit {
+    
+    constructor(public uploading: UploadingService) {}
 
-    preview(files) {
-        let ref = document.querySelector('.document__img');
-        var reader = new FileReader();
-        this.imgPath = files;
-        reader.readAsDataURL(files[0]);
-        reader.onload = (e) => {
-            this.imgUrl = reader.result;
-            this.element.setAttribute(ref, 'src', this.imgUrl);
-        }
+    ngOnInit() {
+        
     }
 }

@@ -20,7 +20,7 @@
         </div>
         <div class="stepper">
             <mat-vertical-stepper linear #stepper>
-                <mat-step [completed]="forms.accountForm.valid">
+                <mat-step [completed]="forms.accountForm.valid" >
                     <ng-template matStepLabel>
                         <label class="stepper__label">
                             Account Information
@@ -28,26 +28,8 @@
                     </ng-template>
                     <account-form></account-form>
                     <div class="stepper__actions">
-                        <button 
-                            class="stepper__actions-submit u-mrgt-1" 
-                            matStepperNext>
-                            Next
-                        </button>
-                    </div>
-                </mat-step>
-                <mat-step [completed]="forms.generalForm.valid">
-                    <ng-template matStepLabel>
-                        <label class="stepper__label">
-                            General Information
-                        </label>
-                    </ng-template>
-                    <general-form></general-form>
-                    <div class="stepper__actions">
-                        <button 
-                            class="stepper__actions-submit custom u-mrgt-1" matStepperPrevious>
-                            back
-                        </button>
-                        <button class="stepper__actions-submit u-mrgt-1" matStepperNext>
+                        <button matStepperNext
+                            class="stepper__actions-submit u-mrgt-1">
                             Next
                         </button>
                     </div>
@@ -72,45 +54,31 @@
                         </button>
                     </div>
                 </mat-step>
-                <mat-step optional>
+                <mat-step>
                     <ng-template matStepLabel>
                         <label class="stepper__label">
-                            Upload your photo
+                            Well Done!
                         </label>
                     </ng-template>
-                    <upload-photo></upload-photo>
-                    <div class="stepper__actions">
-                        <button 
-                            class="stepper__actions-submit custom u-mrgt-1" matStepperNext>
-                            skip
-                        </button>
+                    <div class="stepper__actions" style="text-align: center;"
+                        *ngIf="!authService.isLoading">
                         <button 
                             class="stepper__actions-submit custom u-mrgt-1" matStepperPrevious>
                             back
                         </button>
-                        <button class="stepper__actions-submit u-mrgt-1" matStepperNext>
-                            Next
+                        <button class="stepper__actions-submit u-mrgt-1" 
+                            matStepperNext (click)="submiting(stepper)">
+                            Create account
                         </button>
                     </div>
-                </mat-step>
-                <mat-step>
-                    <ng-template matStepLabel>
-                        <label class="stepper__label">
-                            Congratolations!
-                        </label>
-                    </ng-template>
-                    <div class="stepper__items">
-                        <img 
-                            class="stepper__img"
-                            src="../../../../assets/svgs/completed-steps.svg" 
-                            alt="">
-                        <button (click)="submitingForms()"
-                            class="stepper__actions-submit u-mrgt-1">
-                            Sign up
-                        </button>
+                    <div class="loading" *ngIf="authService.isLoading">
+                        <span class="u-mrgb-2">Creating account ... </span>
+                        <loading-spinner></loading-spinner>
                     </div>
                 </mat-step>
             </mat-vertical-stepper>
         </div>
     </div>
 </section>
+
+

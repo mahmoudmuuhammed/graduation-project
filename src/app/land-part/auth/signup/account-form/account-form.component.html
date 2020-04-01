@@ -37,6 +37,12 @@
                     <use xlink:href="../../../../../assets/svgs/exclamation.svg#Capa_1"></use>
                 </svg>
             </div>
+            <div class="validation" 
+                *ngIf="forms.validationErrors.emailExist">
+                <span>
+                    {{ forms.validationErrors.emailExist }}
+                </span>
+            </div>
         </div>
         <input 
             type="email"

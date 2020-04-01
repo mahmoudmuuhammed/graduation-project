@@ -22,14 +22,6 @@ export class DoctorInfoComponent implements OnInit {
 
     doctorInfoSubmit() {}
 
-    preview(files) {
-        let ref = document.querySelector('.document__img');
-        var reader = new FileReader();
-        this.imgPath = files;
-        reader.readAsDataURL(files[0]);
-        reader.onload = (e) => {
-            this.imgUrl = reader.result;
-            this.element.setAttribute(ref, 'src', this.imgUrl);
-        }
+    preview() {
     }
 }

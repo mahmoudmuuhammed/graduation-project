@@ -22,7 +22,6 @@ import { NgPaymentCardModule } from 'ng-payment-card';
         AuthModule,
         LandRoutingModule,
         NgPaymentCardModule,
-
     ],
     exports: [
         AuthModule,

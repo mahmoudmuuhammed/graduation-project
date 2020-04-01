@@ -17,13 +17,17 @@
     <div class="content">
         <div class="title sm-title u-mrgb-1">Welcome back.</div>
         <div class="sociallog u-mrgb-1">
-            <button class="sociallog__item sociallog__item--g u-mrgb-1">
+            <button 
+                class="sociallog__item sociallog__item--g u-mrgb-1" 
+                (click)="googleProviderAuth()">
                 <svg class="sociallog__icon">
                     <use xlink:href="../../../../../assets/sprites/auth-icons.svg#google"></use>
                 </svg>
                 <span>Sign up with Google</span>
             </button>
-            <button class="sociallog__item sociallog__item--fb">
+            <button 
+                class="sociallog__item sociallog__item--fb" 
+                (click)="facebookProviderAuth()">
                 <svg class="sociallog__icon">
                     <use xlink:href="../../../../../assets/sprites/auth-icons.svg#facebook"></use>
                 </svg>
@@ -31,7 +35,8 @@
             </button>
         </div>
         <form 
-            [formGroup]="forms.signinForm" 
+            *ngIf="!authService.isLoading"
+            [formGroup]="forms.signinForm"
             class="form">
             <div class="form__fgroup u-mrgb-1">
                 <div class="form__fgroup-label">
@@ -43,6 +48,15 @@
                         </span>
                         <span *ngIf="forms.signinEmailControl.errors.email">
                             {{ forms.validationErrors.notValidEmail }}
+                        </span>
+                        <svg class="validation__icon">
+                            <use xlink:href="../../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                        </svg>
+                    </div>
+                    <div class="validation" 
+                        *ngIf="forms.validationErrors.notFound">
+                        <span>
+                            {{ forms.validationErrors.notFound }}
                         </span>
                         <svg class="validation__icon">
                             <use xlink:href="../../../../../assets/svgs/exclamation.svg#Capa_1"></use>
@@ -86,8 +100,15 @@
                 <a href="#" class="controllers__items-fgot">Forget password?</a>
             </div>
             <div class="submit">
-                <button class="submit__btn">Sign in</button>
+                <button
+                    class="submit__btn"
+                    (click)="signinSubmit()">Sign in</button>
             </div>
         </form>
+        <div class="loading" 
+            style="align-self: center;" 
+            *ngIf="authService.isLoading">
+            <loading-spinner></loading-spinner>
+        </div>
     </div>
 </section>

@@ -10,6 +10,7 @@ export class FormsServices {
     generalForm: FormGroup;
     doctorForm: FormGroup;
     signinForm: FormGroup;
+    updateEmail: FormGroup;
     disableForPatient: boolean = true;
     // global validation for forms
     validationErrors: 
@@ -45,6 +46,7 @@ export class FormsServices {
         this.generalForm = new FormGroup({
             'gender': new FormControl(null, Validators.required),
             'age': new FormControl(null, Validators.required),
+            'reason': new FormControl(null)
         });
     }
     
@@ -74,6 +76,20 @@ export class FormsServices {
         );
     }
 
+    signinFormController() {
+        this.signinForm = new FormGroup({
+            'email': new FormControl(null, [Validators.required, Validators.email]),
+            'password': new FormControl(null, Validators.required)
+        });
+    }
+
+
+    updateEmailFormController() {
+        this.updateEmail = new FormGroup({
+            'email': new FormControl(null, [Validators.email])
+        });
+    }
+
     get fullnameControl() {
         return this.accountForm.get('fullname');
     }
@@ -98,6 +114,10 @@ export class FormsServices {
         return this.generalForm.get('age');
     }
 
+    get reasonControl() {
+        return this.generalForm.get('reason');
+    }
+
     get specialtyControl() {
         return this.doctorForm.get('specialty');
     }
@@ -110,27 +130,14 @@ export class FormsServices {
         return this.doctorForm.get('g-year');
     }
 
-    get createUsername() {
-        const nameField: string = this.fullnameControl.value
-        .toLowerCase()
-        .trim()
-        .replace(/\s/g, "");
-        const nameFieldId = Math.floor(Math.random());
-        const username = '@' + nameField + nameFieldId;
-
-        return username;
+    get updateEmailControl() {
+        return this.updateEmail.get('email');
     }
-
-    signinFormController() {
-        this.signinForm = new FormGroup({
-            'email': new FormControl(null, [Validators.required, Validators.email]),
-            'password': new FormControl(null, Validators.required)
-        });
-    }
-
+    
     get signinEmailControl() {
         return this.signinForm.get('email');
     }
+    
     get signinPasswordControl() {
         return this.signinForm.get('password');
     }

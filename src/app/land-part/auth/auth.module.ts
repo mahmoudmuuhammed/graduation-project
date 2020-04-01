@@ -6,10 +6,10 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { MatStepperModule } from '@angular/material/stepper';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { ShowPasswordDirective } from 'src/app/directives/show-pass.directive';
 import { SigninPageComponent } from './signin-page/signin.component';
-import { EmailVerificationComponent } from './email-verify/e-verify.component';
 import { CollapseDirective } from 'src/app/directives/collapse.directive';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LandRoutingModule } from '../land-routing.module';
@@ -19,19 +19,22 @@ import { GeneralFormComponent } from './signup/general-info/general-info.compone
 import { UploadPhotoComponent } from './signup/upload-photo/upload-photo.component';
 import { DoctorInfoComponent } from './signup/doctor-info/doctor-info.component';
 import { SocialLogComponent } from './social-log/social-log.component';
+import { VerificationPageComponent } from './verification/verification.component';
+import { UserTypeComponent } from './user-type/user-type.component';
 
 @NgModule({
     declarations: [
         SigninPageComponent,
         ShowPasswordDirective,
         CollapseDirective,
-        EmailVerificationComponent,
         SignupComponent,
         AccountFormComponent,
         GeneralFormComponent,
         UploadPhotoComponent,
         DoctorInfoComponent,
-        SocialLogComponent
+        SocialLogComponent,
+        VerificationPageComponent,
+        UserTypeComponent
     ],
     imports: [
         ReactiveFormsModule,
@@ -41,17 +44,19 @@ import { SocialLogComponent } from './social-log/social-log.component';
         SharedModule,
         LandRoutingModule,
         MatStepperModule,
-        AngularFirestoreModule
+        AngularFirestoreModule,
+        AngularFireStorageModule
     ],
     exports: [
         SigninPageComponent,
-        EmailVerificationComponent,
         SignupComponent,
         AccountFormComponent,
         GeneralFormComponent,
         UploadPhotoComponent,
         DoctorInfoComponent,
-        SocialLogComponent
+        SocialLogComponent,
+        VerificationPageComponent,
+        UserTypeComponent
     ]
 })
 

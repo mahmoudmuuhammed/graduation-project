@@ -1,0 +1,67 @@
+<nav class="navbar u-mrgb-2">
+    <div class="navbar__brand">
+        <medkit-logo 
+            [textColor]="'#2d2d2d'" 
+            [smIcon]="'#764BCB'"></medkit-logo>
+    </div>
+    <ul class="navbar__list">
+        <li class="navbar__list-item">
+            Signed as 
+            <p class="navbar__list-item--custom">
+                {{ authService.determineCurrentUser.displayName }}
+            </p>
+        </li>
+        <li class="navbar__list-item">
+            <a href="#" class="navbar__list-link">Sign out</a>
+        </li>
+    </ul>
+</nav>
+<section class="verify u-mrgt-3">
+    <div class="content">
+        <div class="items">
+            <img
+                class="items__img u-mrgb-2"
+                src="../../../../assets/svgs/verify-icon.svg"
+                alt="email verification image">
+            <div class="items__desc u-mrgb-1">
+                <h5 class="items__desc-title sm-title">Verify your email to proceed</h5>
+                <p class="items__desc-details sm-text">
+                    We just sent an email to the address: 
+                    <span class="items__desc-details--custom">
+                        {{ authService.determineCurrentUser.email }}
+                    </span>
+                    Please check your email and click on the link provided to verify your address.
+                </p>
+            </div>
+            <div class="chmail u-mrgb-2">
+                <a 
+                    class="chmail__collapse u-mrgb-2"
+                    collapse>Change your email</a>
+                <form
+                    [formGroup]="forms.updateEmail"
+                    class="chmail__form hidden">
+                    <div class="chmail__fgroup">
+                        <input
+                            type="email"
+                            class="chmail__fgroup-control u-mrgb-1"
+                            formControlName="email">
+                        <div class="validation"
+                            *ngIf="!forms.updateEmailControl.valid && forms.updateEmailControl.touched">
+                            <span *ngIf="forms.updateEmailControl.errors.email">
+                                {{ forms.validationErrors.notValidEmail }}
+                            </span>
+                            <svg class="validation__icon">
+                                <use xlink:href="../../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                            </svg>
+                        </div>
+                        <button 
+                            class="chmail__fgroup-resend">Update</button>
+                    </div>
+                </form>
+            </div>
+            <button 
+                class="re-verify" 
+                type="button">Resend Verification Email</button>
+        </div>
+    </div>
+</section>
