@@ -13,6 +13,7 @@
     z-index: 10;
     top:0px;
     left: 0px;
+    width: 100%;
 }
 
 .navbar-brand {
@@ -456,99 +457,3 @@
         }
     }
 }
-
-// .top-nav {
-//     width: 100%;
-//     height: 4rem;
-//     background-color: #344151;
-//     @include flexbox;
-//     flex-direction: row;
-//     justify-content: space-between;
-//     align-items: center;
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-// }
-
-// .brand {
-//     width: 100px;
-//     text-align: center;
-//     &__link {
-//         font-weight: 900;
-//         color: $divider-color;
-//         text-decoration: none;
-//         font-size: 25px;
-//     }
-// }
-
-// .items {
-
-//     @include flexbox;
-//     flex-direction: row;
-//     margin-right: 20px;
-
-
-//     &__usage {
-//         @include flexbox;
-//         flex-direction: row;
-//         width: 65px;
-//         justify-content: space-between;
-//         align-items: center;
-
-//         &-icons {
-//             width: 18px;
-//             height: 18px;
-//             cursor: pointer;
-//             fill: #eee;
-//         }
-//     }
-
-//     &__user {
-//         @include flexbox;
-//         justify-content: space-around;
-//         align-items: center;
-//         width: 270px;
-
-//         &::before {
-//             content: "";
-//             height: 25px;
-//             display: block;
-//             margin: 0 20px;
-//             border: 1px solid $divider-color;
-//         }
-
-//         &-info {
-//             @include flexbox;
-//             flex-direction: column;
-//             align-items: flex-start;
-//             justify-content: center;
-//             color: $divider-color;
-//         }
-
-//         &-name {
-//             font-size: 15px;
-//             font-weight: 500;
-//             cursor: pointer;
-//         }
-
-//         &-username {
-//             font-size: 300;
-//             font-size: 12px;
-//             padding: .2em;
-//         }
-
-//         &-img {
-//             width: 50px;
-//             height: 50px;
-//             border-radius: 50%;
-//             cursor: pointer;
-//         }
-
-//         &-dropdown {
-//             width: 12px;
-//             height: 12px;
-//             fill: $divider-color;
-//             cursor: pointer;
-//         }
-//     }
-// }

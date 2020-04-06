@@ -1,44 +1,9 @@
-<!-- Eldod's previous work
-<nav class="top-nav">
-    <div class="brand">
-        <a href="#" class="brand__link">Medkit</a>
-    </div>
-    <div class="items">
-        <div class="items__usage">
-            <svg class="items__usage-icons">
-                <use xlink:href="../../../assets/sprites/topnav-icons.svg#search"></use>
-            </svg>
-            <svg class="items__usage-icons" (click)="onShowNotificationToggle()">
-                <use xlink:href="../../../assets/sprites/topnav-icons.svg#notification"></use>
-            </svg>
-        </div>
-        <div class="items__user">
-            <div class="items__user-info">
-                <p class="items__user-name">John Smith</p>
-                <p class="items__user-username">@john22</p>
-            </div>
-            <img 
-                src="../../../assets/images/user1.jpg" 
-                alt="user image" 
-                class="items__user-img">
-
-            <svg class="items__user-dropdown">
-                <use xlink:href="../../../assets/sprites/topnav-icons.svg#more-arrow"></use>
-            </svg>
-        </div>
-    </div>
-    <notification 
-        *ngIf="showNotification"></notification>
-</nav>
--->
-
-<!--moemen's topnav-->
 <div style="height: 55px;"></div>
 <nav class="navbar navbar-expand-md fixed-top topNavbar">
-
     <div style="display: flex;align-items: center;">
         <!-- Nav Toggler Btn -->
-        <button class="navbar-toggler mainNavBtn" type="button" (click)="mainNavBtnClick()" data-toggle="offcanvas">
+        <button class="navbar-toggler mainNavBtn" id="sideNaveToggler" type="button" (click)="mainNavBtnClick($event)"
+            data-toggle="offcanvas">
             <span class="navTrigger" [ngClass]="navCollabseStatus ? 'active' : ''">
                 <i></i><i></i><i></i>
             </span>
@@ -63,25 +28,27 @@
         </div>
 
 
-        <div class="AccountOptionDiv" >
+        <div class="AccountOptionDiv">
             <!-- BellBtn Area -->
-            <div style="position: relative;">
-                <button class="bellBtn" data-toggle="collapse" data-target="#notificationDiv" aria-expanded="false"
-                    aria-controls="collapseExample">
-                    <i class="far fa-bell notificationBell"></i>
-                    <div class="bellDot"></div>
-                </button>
-            </div>
-            <div class="collapse notificationDivContainer" id="notificationDiv">
-                <header class="notificationHeader">Notification</header>
-                <notification></notification>
+            <div appDdCollabse>
+                <div style="position: relative;">
+                    <button class="bellBtn" data-toggle="collapse" data-target="#notificationDiv" aria-expanded="false"
+                        aria-controls="collapseExample">
+                        <i class="far fa-bell notificationBell"></i>
+                        <div class="bellDot"></div>
+                    </button>
+                </div>
+                <div class="collapse notificationDivContainer" id="notificationDiv">
+                    <header class="notificationHeader">Notification</header>
+                    <notification></notification>
+                </div>
             </div>
             <!-- Account Picture and Option -->
             <div class="accountDetails">
                 <img src="./assets/images/profile.jpg" class="accountImg">
                 <span class=" d-none d-md-block accountName">Moemen said</span>
                 <!-- Account option -->
-                <div class="AccountOption">
+                <div class="AccountOption" appDdCollabse>
                     <button class="AccountBtn" type="button" data-toggle="collapse" data-target="#AccountOptionDiv"
                         aria-expanded="false" aria-controls="AccountOptionDiv">
                         <i class="fas fa-caret-down"></i>
@@ -103,6 +70,3 @@
         </div>
     </div>
 </nav>
-
-
-

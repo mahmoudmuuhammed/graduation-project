@@ -1,0 +1,255 @@
+@import "../../abstracts/variables";
+
+.postingOuterDiv {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: rgba(255, 255, 255, .6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    .postingInnerDiv {
+        margin: 30px auto;
+        width: 600px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 3px #888;
+
+
+        header {
+            position: relative;
+            height: 40px;
+            border-bottom: 2px solid #ddd;
+
+            h5 {
+                text-align: center;
+                color: #555;
+                line-height: 40px;
+            }
+
+            .fa-times {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                color: #555;
+                cursor: pointer;
+            }
+        }
+
+        .contentDiv {
+            .postContentHeader {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                margin: 10px 0px;
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    margin-left: 20px;
+                }
+
+                .postingDate,
+                .postingCategory {
+                    font-size: 14px;
+                    color: #555;
+                    border: 1px solid #eee;
+                    box-shadow: 0px 0px 2px #aaa;
+                    border-radius: 5px;
+                    margin-left: 15px;
+                    padding: 2px 5px;
+                }
+
+                .postingDate p {
+                    font-size: 13px;
+                }
+
+                .postingCategory {
+                    display: flex;
+                    align-items: center;
+
+                    button {
+                        background-color: transparent;
+                        border: none;
+                        margin-left: 5px;
+                        color: #888;
+                        cursor: pointer;
+
+                        .fa-times {
+                            margin-bottom: -2px;
+                        }
+                    }
+                }
+
+            }
+
+            .postDescription {
+                margin: 0px 20px;
+                font-size: 16px;
+
+                textarea {
+                    width: 100%;
+                    border: none;
+                    font-size: 16px;
+                    resize: none;
+                    font-family: inherit;
+                    overflow: hidden;
+                    transition-duration: 0s;
+                }
+            }
+
+            .postImg {
+                img {
+                    width: 100%;
+                    max-height: 300px;
+                    object-fit: cover;
+                    object-position: center;
+
+                }
+            }
+        }
+
+        .postingOptionDiv {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .postingOption {
+                display: flex;
+                padding: 10px;
+
+            }
+
+            .addingPhotoDiv {
+                font-size: 15px;
+                color: #333;
+                border: 1px solid #eee;
+                box-shadow: 0px 0px 2px #aaa;
+                border-radius: 5px;
+                margin-left: 10px;
+                position: relative;
+                display: inline-block;
+                height: 35px;
+
+                input[type=file] {
+                    opacity: 0;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    cursor: pointer;
+                }
+
+                .addPhotoContainer {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0px 8px;
+                    height: 100%;
+
+                    img {
+                        width: 30px;
+                    }
+
+                    span {
+                        margin-left: 10px;
+                    }
+                }
+            }
+
+            .CategorySelectionContainer {
+                border: 1px solid #eee;
+                box-shadow: 0px 0px 2px #aaa;
+                border-radius: 5px;
+                position: relative;
+                padding: 0px 8px;
+                margin-left: 20px;
+                height: 35px;
+                display: flex;
+                align-items: center;
+
+                button {
+                    border: none;
+                    background-color: transparent;
+                    font-size: 15px;
+                    color: #333;
+
+                    .fa-angle-down {
+                        margin-left: 5px;
+                        font-size: 16px;
+                        color: inherit;
+                        margin-bottom: -2px;
+                    }
+                }
+
+                #collapseCategory {
+                    position: absolute;
+                    background-color: #fff;
+                    top: 36px;
+                    width: 100%;
+                    max-height: 160px;
+                    left: 0;
+                    padding: 5px 0px;
+                    border-radius: 5px;
+                    box-shadow: 0px 0px 2px #999;
+
+                    span {
+                        display: block;
+                        font-size: 14px;
+                        cursor: pointer;
+                        padding: 0px 15px;
+
+                        &:hover {
+                            background-color: #eee;
+                        }
+                    }
+                }
+            }
+        }
+
+        .postBtn {
+            background-color: $primary-color;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            height: 35px;
+            padding: 10px 30px;
+            margin-right: 20px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    }
+}
+
+@media(max-width:768px) {
+    .postingOuterDiv {
+        .postingInnerDiv {
+            width: auto;
+            margin: 70px 10px;
+
+            .contentDiv {
+                .postContentHeader {
+                    .postingCategory {
+                        button {
+                            .fa-times {
+                                margin-bottom: 0px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .postingOptionDiv {
+                .addingPhotoDiv {
+                    font-size: 13px;
+                    margin-left: 0px;
+                }
+            }
+
+            .postBtn {
+                margin-right: 10px;
+            }
+        }
+    }
+}

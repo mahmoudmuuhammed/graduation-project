@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component ,Output} from "@angular/core";
 import {NotificationComponent} from "../notification/notification.component";
+import { EventEmitter } from 'protractor';
 
 @Component({
     selector: 'c-topnav',
@@ -8,16 +9,11 @@ import {NotificationComponent} from "../notification/notification.component";
 })
 
 export class TopnavComponent {
-    showNotification: boolean = false;
-
-
-    onShowNotificationToggle() {
-        this.showNotification = !this.showNotification;
-    }
-
+    //@Output() sideButtonClicked = new EventEmitter();
 
     navCollabseStatus: boolean = false;
-    mainNavBtnClick() {
+    mainNavBtnClick(event) {
         this.navCollabseStatus = !this.navCollabseStatus;
+        //this.sideButtonClicked.emit(event);
     }
 }

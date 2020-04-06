@@ -1,0 +1,52 @@
+<div #postingOuterDiv class="postingOuterDiv">
+    <div class="postingInnerDiv">
+        <header>
+            <h5>Add Post</h5>
+            <span (click)="closePosting()"><i class="fas fa-times"></i></span>
+        </header>
+        <div class="contentDiv">
+            <div class="postContentHeader">
+                <img src="../../../assets/images/profile.jpg">
+                <div class="postingDate">
+                    <p>{{currentDate | date:'d MMMM yyyy - h:mm a'}}</p>
+                </div>
+                <div class="postingCategory"  *ngIf="postCategoyString != null">
+                    <p>{{postCategoyString}}</p>
+                    <button (click)="deleteCategory()"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <div class="postDescription">
+                <textarea appTxHightAdjust rows="1" placeholder="Write your problem here" #postDescription></textarea>
+            </div>
+            <div class="postImg">
+                <img [src]="imgURL" *ngIf="imgURL">
+            </div>
+        </div>
+        <div class="postingOptionDiv">
+            <div class="postingOption">
+                <div class="addingPhotoDiv">
+                    <input #file type="file" accept='image/png, image/jpeg' (change)="preview(file.files)">
+                    <div class="addPhotoContainer">
+                        <img src="../../../assets/images/photoSelection.png">
+                        <span>Add Photo</span>
+                    </div>
+                </div>
+                <div class="CategorySelectionContainer" appDdCollabse>
+                    <button data-target="#collapseCategory" aria-controls="collapseCategory">
+                        <span>Type of disease</span>
+                        <i class="fas fa-angle-down"></i>
+                    </button>
+                    <div class="collapse" id="collapseCategory">
+                        <span (click)="postCategory($event)" vlaue="Corona">Corona</span>
+                        <span (click)="postCategory($event)" value="Diabetes">Diabetes</span>
+                        <span (click)="postCategory($event)" value="Heart">Heart</span>
+                        <span (click)="postCategory($event)" value="Skin">Skin</span>
+                        <span (click)="postCategory($event)" value="Alzheimer">Alzheimer</span>
+                        <span (click)="postCategory($event)" value="Infiction">Infiction</span>
+                    </div>
+                </div>
+            </div>
+            <button class="postBtn">Post</button>
+        </div>
+    </div>
+</div>

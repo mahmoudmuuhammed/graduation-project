@@ -1,9 +1,11 @@
-<div class="dangerDiv">
-    <button class="dangerBtn btn btn-danger">Emergency call</button>
+<div class="dangerDiv" #dangerDiv>
+    <div class="dangerMobBtn" (click)=showDangerDiv()></div>
+    <button class="dangerBtn">Emergency Alert</button>
     <div class="trustPeopleDiv">
         <header>
-            <label>Current Trusted People</label>
-            <span class="NoOfPeople">2</span>
+            <label>Trusted People<span class="maxNo">up to 3 person</span></label>
+            <span class="editTrusted"><i class="fas fa-edit"></i></span>
+            <div style="clear: both;"></div>
         </header>
         <div class="trustPeopleContainer">
                 <a href="#" class="personLink">
@@ -18,7 +20,6 @@
                         <span class="personName">Moemen said</span>
                     </div>
                 </a>
-            <button class="addPeopleBtn">Add</button>
         </div>
     </div>
 </div>

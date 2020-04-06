@@ -1,14 +1,13 @@
 @import "../../abstracts/variables";
 @import "../../abstracts/mixins";
 
-
-
 .offcanvas-collapse {
     position: sticky;
     top: 55px;
     box-shadow: 1px 0px 3px -1px #aaa;
     z-index: 1;
     height: calc(100vh - 55px);
+    background-color: #fff;
 }
 
 .navLinkDiv {

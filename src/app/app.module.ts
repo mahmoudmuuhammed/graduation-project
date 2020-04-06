@@ -9,6 +9,7 @@ import { LandModule } from './land-part/land.module';
 import { CommunityModule } from './community-part/community.module';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+  import { from } from 'rxjs';
 
 
 
@@ -25,7 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommunityModule,
     SharedModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   bootstrap: [AppComponent,]
 })
