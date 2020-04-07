@@ -9,6 +9,7 @@ import { CommunityContainerComponent } from './community-container/community-con
 import { AddPostComponent } from './add-post/add-post.component';
 import { DdColabseDirective } from '../directives/dd-colabse.directive';
 import { HeightAdjustDirective } from '../directives/height-adjust.directive';
+import { SideBarToggler } from '../services/sideBar.service';
 
 @NgModule({
     declarations: [
@@ -34,6 +35,9 @@ import { HeightAdjustDirective } from '../directives/height-adjust.directive';
         CommunityContainerComponent,
         AddPostComponent,
         DdColabseDirective,
+    ],
+    providers:[
+        SideBarToggler,
     ]
 })
 

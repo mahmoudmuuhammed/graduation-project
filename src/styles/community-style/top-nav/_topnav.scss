@@ -11,7 +11,7 @@
     box-shadow: 0px 2px 5px -3px #aaa;
     position: fixed;
     z-index: 10;
-    top:0px;
+    top: 0px;
     left: 0px;
     width: 100%;
 }
@@ -19,11 +19,12 @@
 .navbar-brand {
     width: 250px;
     height: auto;
-    padding:0 0 0 10px;
+    padding: 0 0 0 10px;
 
-    .logo{
+    .logo {
         height: 35px;
     }
+
     .smallLogo {
         width: 150px;
     }
@@ -271,9 +272,10 @@
 
         .searchContainer {
             padding: 5px 20px 5px 10px;
-            background-color: $main-background;
+            background-color: #eeeeee;
             border-radius: 3px;
             display: flex;
+            border: 1px solid #ddd;
 
             button {
                 background-color: transparent;
