@@ -30,7 +30,6 @@
             ],
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
-              "node_modules/bootstrap/scss/bootstrap.scss",
               "src/styles/main.scss",
               "src/styles.scss"
             ],

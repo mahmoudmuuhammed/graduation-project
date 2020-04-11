@@ -1,0 +1,61 @@
+@import "../../abstracts/variables";
+@import "../../abstracts/mixins";
+@import "../../base/typography";
+@import "../../base/utilities";
+
+
+
+.d-sidenav {
+    position: fixed;
+    width: 230px;
+    left: 0;
+    top: 62px;
+    height: 100vh;
+    border-right: 1px solid rgba($secondary-text, .1);
+    &__list {
+        padding-top: 2em;
+
+        &-item {
+            margin-bottom: 1em;
+            padding: .8em 1.2em;
+
+            &:hover {
+                background-color: rgba(#eee, .5);
+            }
+
+            &--custom {
+                background-color: rgba(#eee, .5);
+            }
+        }
+
+        &-link {
+            width: 100%;
+            @include flexbox;
+            justify-content: flex-start;
+            align-items: center;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            color: $secondary-text;
+
+            &--custom {
+                font-weight: 700;
+                color: $primary-color;
+            }
+        }
+
+        &-icon {
+            width: 19px;
+            height: 19px;
+            fill: rgba($secondary-text, .4);
+
+            &--custom {
+                fill: $primary-color;
+            }
+        }
+
+        &-text {
+            margin-left: 2em;
+        }
+    }
+}

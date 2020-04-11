@@ -1,0 +1,35 @@
+@import "../../abstracts/variables";
+@import "../../abstracts/mixins";
+@import "../../base/typography";
+@import "../../base/utilities";
+
+.community {
+    width: 100%;
+    min-height: 100vh;
+    @include flexbox;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    
+
+    &__sidebar {
+        width: 230px;
+        height: 100vh;
+    }
+
+    &__overall {
+        @include flexbox;
+        justify-content: flex-start;
+    }
+
+    &__router {
+        width: calc(100vw - 230px);
+        padding: .7em;
+    }
+}
+
+.topnav {
+    height: 62px;
+    width: 100%;
+}
+
