@@ -1,5 +1,5 @@
 <div style="height: 55px;"></div>
-<nav class="navbar navbar-expand-md fixed-top topNavbar">
+<nav class="navbar navbar-expand-md topNavbar" id="topNav">
     <div style="display: flex;align-items: center;">
         <!-- Nav Toggler Btn -->
         <button class="navbar-toggler mainNavBtn" id="sideNaveToggler" type="button" (click)="mainNavBtnClick($event)"
@@ -23,17 +23,16 @@
                 <button>
                     <i class="fas fa-search"></i>
                 </button>
-                <input type="text">
+                <input type="text" placeholder="Search for doctors">
             </div>
         </div>
 
 
         <div class="AccountOptionDiv">
-            <!-- BellBtn Area -->
+            <!-- Notification Area -->
             <div appDdCollabse>
                 <div style="position: relative;">
-                    <button class="bellBtn" data-toggle="collapse" data-target="#notificationDiv" aria-expanded="false"
-                        aria-controls="collapseExample">
+                    <button class="bellBtn" data-toggle="collapse" data-target="#notificationDiv">
                         <i class="far fa-bell notificationBell"></i>
                         <div class="bellDot"></div>
                     </button>

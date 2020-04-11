@@ -5,7 +5,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { CommonModule } from '@angular/common';
 import { PostComponent } from './post/post.component';
 import { DangerAreaComponent } from './danger-area/danger-area.component';
-import { CommunityContainerComponent } from './community-container/community-container.component';
+import { CommunityContainerComponent } from './community.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { DdColabseDirective } from '../directives/dd-colabse.directive';
 import { HeightAdjustDirective } from '../directives/height-adjust.directive';
@@ -14,6 +14,12 @@ import { DocTopNavComponent } from './doctor-comm-controller/d-top-nav/d-topnav.
 import { DocSideNavComponent } from './doctor-comm-controller/d-side-nav/d-sidenav.component';
 import { GettingStartedComponent } from './getting-started/g-started.component';
 import { SharedModule } from '../shared/shared.module';
+import { SideBarToggler } from '../services/sideBar.service';
+import { ShowPostingService } from '../services/showPosting.service';
+import { ChatsComponent } from './chats/chats.component';
+import { PostandFilterComponent } from './addPost-and-filter/PostAndFilter.component';
+import { TimelineComponent } from './timeline/timeline.component';
+import { MsgTimeDirective } from '../directives/msg-time.directive';
 
 @NgModule({
     declarations: [
@@ -30,6 +36,10 @@ import { SharedModule } from '../shared/shared.module';
         DocTopNavComponent,
         DocSideNavComponent,
         GettingStartedComponent
+        ChatsComponent,
+        PostandFilterComponent,
+        TimelineComponent,
+        MsgTimeDirective,
     ],
     imports: [
         CommonModule,
@@ -45,6 +55,10 @@ import { SharedModule } from '../shared/shared.module';
         AddPostComponent,
         DdColabseDirective,
         DoctorCommunityController
+    ],
+    providers:[
+        SideBarToggler,
+        ShowPostingService,
     ]
 })
 

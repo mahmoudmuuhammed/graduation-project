@@ -1,4 +1,4 @@
-<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault" [ngClass]="{open: sideBarStatus=== true}" >
 
     <div class="navLinkDiv">
 
@@ -6,7 +6,7 @@
             <div class="sideNavItemImgDiv"><img class="sideNavItemImg" src="../assets/images/timeLine.svg"></div>
             <span class="sideNavItemSpan">Timeline</span>
         </div>
-        <div>
+        <div style="display: none;">
             <div class="sideNavItemImgDiv"><img class="sideNavItemImg" src="../assets/images/dashboard.svg"></div>
             <span class="sideNavItemSpan">Dashboard</span>
         </div>

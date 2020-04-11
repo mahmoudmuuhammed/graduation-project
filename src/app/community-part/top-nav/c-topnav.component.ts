@@ -1,6 +1,6 @@
 import { Component ,Output} from "@angular/core";
-import {NotificationComponent} from "../notification/notification.component";
-import { EventEmitter } from 'protractor';
+
+import { SideBarToggler } from "../../services/sideBar.service"
 
 @Component({
     selector: 'c-topnav',
@@ -9,11 +9,13 @@ import { EventEmitter } from 'protractor';
 })
 
 export class TopnavComponent {
-    //@Output() sideButtonClicked = new EventEmitter();
+    
+    constructor(private sidebarToggler:SideBarToggler){}
+
 
     navCollabseStatus: boolean = false;
     mainNavBtnClick(event) {
         this.navCollabseStatus = !this.navCollabseStatus;
-        //this.sideButtonClicked.emit(event);
+        this.sidebarToggler.topNavTogBtnClicked.emit(this.navCollabseStatus)
     }
 }

@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-md-3 col-sm-2 p-0 previousChatsDiv">
+        <div class="userMainDivCont">
+            <div class="userMainDiv" *ngFor="let user of lastPeople" (click)="ShowUserMsgs($event)">
+                <img src={{user.imgSrc}}>
+                <span class="userName">{{user.name}}</span>
+                <span class="lastMessageTime">{{user.lastMsgTime}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9 col-sm-10 p-md-0">
+        <div class="messagesDiv">
+            <div class="pivateMessages" MsgTime>
+
+                <!-- structure of otherChat -->
+                <div class="otherUserChat">
+                    <div class="ouImgDiv">
+                        <img src="../../../assets/images/dod.jpg">
+                    </div>
+                    <div class="msgDiv">
+                        <span class="msgContent">Text 1</span>
+                        <span class="msgTime">02:30 am</span>
+                    </div>
+                </div>
+                <!-- structure of curentUser -->
+                <div class="currentUserChat">
+                    <div class="msgDiv">
+                        <span class="msgContent">text</span>
+                        <span class="msgTime">02:30 am</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="messageInputDivCont">
+                <div class="messageInputDiv">
+                    <div class="InputFileDiv">
+                        <input type="file">
+                        <img src="/assets/images/attach.svg">
+                    </div>
+                    <div class="inputTextDiv">
+                        <input class="inputText" type="text" placeholder="enter your message"
+                            (keyup)="sendMessageViaEnter($event)">
+                    </div>
+
+                    <button class="senderBtn" (click)="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

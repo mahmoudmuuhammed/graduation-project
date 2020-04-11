@@ -1,0 +1,22 @@
+<c-topnav></c-topnav>
+<div class="container-fluid mainCommunityDiv">
+    <div class="row">
+        <div class="col-md-2 p-0">
+            <c-sidebar></c-sidebar>
+        </div>
+
+        <div class="col-md-8 col-12">
+            <!-- <timeline></timeline> -->
+            <chats></chats>
+        </div>
+
+        <div class="col-md-2 dangerArea">
+            <danger-area></danger-area>
+        </div>
+
+    </div>
+</div>
+
+<div #postingDiv class="addingPostingArea">
+    <add-post (closeDivEmit)="hidePostingDiv()" [currentDate]="currentDateClicked"></add-post>
+</div>

@@ -7,15 +7,20 @@ export class DdColabseDirective {
   constructor(private el: ElementRef) { }
 
   @HostBinding('class.show') isShown = false;
-  @HostListener('click') toggleShow() {
+  @HostListener('click',['$event.target']) toggleShow() {
     this.isShown = !this.isShown;
     var parent = this.el.nativeElement;
     var child = parent.querySelector("div.collapse");
-    if (!child.classList.contains('show')) {
-      child.classList.add('show');
+    if (!parent.classList.contains('show')) {
+      parent.classList.add('show');
+      child.classList.add('show','animated','fadeIn');
+      child.classList.remove('fadeOut');
     }
-    else {
-      child.classList.remove('show');
+    else{
+      parent.classList.remove('show');
+      child.classList.remove('fadeIn');
+      child.classList.add('fadeOut');
+      setTimeout(function(){child.classList.remove('show')},200)
     }
   }
 
