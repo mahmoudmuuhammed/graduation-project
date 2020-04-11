@@ -1,0 +1,26 @@
+    <div class="postingDiv">
+        <div class="postingArea" (click)="showPostingDiv()">
+            <img src="../../../assets/images/profile.jpg">
+            <p>Click here to add your problem</p>
+        </div>
+        <div class="filterArea">
+            <div>
+                <p class="filterTitle">filter posts</p>
+            </div>
+            <div class="CategorySelectionContainer" appDdCollabse>
+                <button data-target="#collapseCategory" aria-controls="collapseCategory">
+                    <span>{{postCategory}}</span>
+                    <i class="fas fa-angle-down"></i>
+                </button>
+                <div class="collapse" id="collapseCategory">
+                    <span (click)="CategorySelection($event)" vlaue="allPost">All post</span>
+                    <span (click)="CategorySelection($event)" vlaue="Corona">Corona</span>
+                    <span (click)="CategorySelection($event)" value="Diabetes">Diabetes</span>
+                    <span (click)="CategorySelection($event)" value="Heart">Heart</span>
+                    <span (click)="CategorySelection($event)" value="Skin">Skin</span>
+                    <span (click)="CategorySelection($event)" value="Alzheimer">Alzheimer</span>
+                    <span (click)="CategorySelection($event)" value="Infiction">Infiction</span>
+                </div>
+            </div>
+        </div>
+    </div>

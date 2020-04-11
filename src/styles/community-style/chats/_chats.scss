@@ -1,0 +1,302 @@
+.previousChatsDiv {
+    position: sticky;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: calc(100vh - 55px);
+    top: 0;
+
+    .userMainDivCont {
+        width: calc(100% - 20px);
+        background-color: #eee;
+        border-right: 1px solid #ccc;
+        height: 100%;
+
+        .userMainDiv {
+            position: relative;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px;
+            cursor: pointer;
+            transition: 0s;
+
+            img {
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                border: 2px solid #eee;
+                transition: 0s;
+            }
+
+            .userName {
+                color: #555;
+                font-size: 12px;
+                font-weight: 800;
+                margin-left: 10px;
+                transition: 0s;
+            }
+
+            .lastMessageTime {
+                position: absolute;
+                top: 0;
+                right: 5px;
+                color: #aaa;
+                font-size: 11px;
+                font-weight: 500;
+                transition: 0s;
+            }
+
+        }
+
+
+        .active {
+            background-color: #894bcb;
+
+
+            &:after {
+                content: "";
+                display: block;
+                position: absolute;
+                right: -10px;
+                top: 0px;
+                height: 100%;
+                width: 10px;
+                border-radius: 0px 5px 5px 0;
+                background-color: #894bcb;
+                box-shadow: 4px 0px 5px -2px #888;
+            }
+
+            .userName {
+                color: #fff;
+            }
+
+            img {
+                border-color: #fff;
+            }
+        }
+    }
+}
+
+.messagesDiv {
+    .pivateMessages {
+        height: calc(100vh - 107px);
+        width: 100%;
+        overflow-y: auto;
+        padding-top: 10px;
+        background: url(../../../assets/images/chatsBackgound.svg) no-repeat center center;
+        background-size: cover;
+
+        .currentUserChat,
+        .otherUserChat {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+
+            .msgDiv {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                margin: 10px 5px 0px 5px;
+
+                .msgContent {
+                    background-color: #e5e5e5;
+                    padding: 2px 10px;
+                    border-radius: 5px 0px 5px 5px;
+                    font-size: 13px;
+                    margin: 2px 15px;
+                    position: relative;
+
+                    &::before {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        right: -10px;
+                        top: 0;
+                        width: 10px;
+                        height: 20px;
+                        background-image: url(../../../assets/images/rightMsg.png);
+                        background-size: cover;
+                    }
+
+
+                }
+
+                .msgTime {
+                    font-size: 11px;
+                    font-weight: 600;
+                    font-family: inherit;
+                    color: #555;
+                    display: none;
+                    direction: ltr;
+                }
+            }
+        }
+
+        .currentUserChat {
+            direction: rtl;
+            margin-right: 20px;
+
+        }
+
+        .otherUserChat {
+            .msgDiv {
+                .msgContent {
+                    border-radius: 0px 5px 5px 5px;
+
+                    &::before {
+                        left: -10px;
+                        right: unset;
+                        background-image: url(../../../assets/images/leftMsg.png);
+                    }
+                }
+            }
+        }
+    }
+
+    .messageInputDivCont {
+        border-top: 2px solid #e5e5e5;
+        display: none;
+        margin-left: -20px;
+        padding-left: 10px;
+
+        .messageInputDiv {
+            height: 50px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+
+            .InputFileDiv {
+                width: 40px;
+                height: 100%;
+                cursor: pointer;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                input[type=file] {
+                    opacity: 0;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+
+                img {
+                    height: 22px;
+                }
+            }
+
+            .inputTextDiv {
+                width: 100%;
+                padding-right: 10px;
+
+                input {
+                    font-size: 18px;
+                    border: none;
+                    color: #222;
+                    width: 100%;
+                    background-color: transparent;
+                    font-family: inherit;
+                }
+            }
+
+            .senderBtn {
+                border: none;
+                background-color: transparent;
+                padding: 10px 15px;
+                color: #894bcb;
+                font-size: 15px;
+                font-family: inherit;
+                font-weight: 600;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media(max-width:768px) {
+
+    .previousChatsDiv {
+        position: relative;
+        overflow: auto;
+        background-color: #eee;
+
+        .userMainDivCont {
+            width: 100%;
+            border: none;
+            background-color: transparent;
+
+            .userMainDiv {
+                border: none;
+
+                img {
+                    width: 50px;
+                    height: 50px;
+                    border: none;
+                    display: block;
+                    margin: auto;
+                }
+
+                .userName {
+                    display: none;
+                }
+
+                .lastMessageTime {
+                    display: none;
+                }
+
+            }
+
+
+            .active {
+                &:after {
+                    display: none;
+                }
+
+                img {
+                    border: 2px solid #fff;
+                }
+            }
+        }
+    }
+
+    .messageInputDivCont {
+        margin-left: 0px;
+        padding-left: 0px;
+
+        .messagesDiv {
+            .messageInputDiv {
+                margin-left: -15px;
+            }
+        }
+    }
+}
+
+@media(max-width:576px) {
+    .previousChatsDiv {
+        height: auto;
+
+        .userMainDivCont {
+            width: 100%;
+            height: auto;
+            border: none;
+            display: flex;
+        }
+    }
+
+    .messagesDiv {
+        .pivateMessages {
+            height: calc(100vh - 175px);
+        }
+    }
+}

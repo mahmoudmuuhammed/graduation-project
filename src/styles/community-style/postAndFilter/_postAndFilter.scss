@@ -1,0 +1,95 @@
+
+.postingDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .postingArea {
+        width: 600px;
+        height: 50px;
+        margin: 20px auto;
+        background-color: #fff;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+
+        p {
+            color: #888;
+            margin-left: 20px;
+        }
+    }
+
+    .filterArea {
+        min-width: 100px;
+
+        .CategorySelectionContainer {
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            position: relative;
+            padding: 5px 8px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background-color: #fff;
+
+            button {
+                border: none;
+                background-color: transparent;
+                font-size: 15px;
+                color: #333;
+
+                .fa-angle-down {
+                    font-size: 16px;
+                    color: inherit;
+                    margin-bottom: -2px;
+                    position: absolute;
+                    right: 7px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+
+            #collapseCategory {
+                position: absolute;
+                background-color: #fff;
+                top: 30px;
+                width: 100%;
+                left: 0;
+                padding: 5px 0px;
+                border-radius: 5px;
+                box-shadow: 0px 0px 2px #999;
+                z-index: 5;
+
+                span {
+                    display: block;
+                    font-size: 15px;
+                    cursor: pointer;
+                    padding: 0px 15px;
+
+                    &:hover {
+                        background-color: #eee;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:768px) {
+    .postingDiv {
+        display: block;
+
+        .postingArea {
+            width: auto;
+        }
+    }
+}
