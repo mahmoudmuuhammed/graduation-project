@@ -9,6 +9,11 @@ import { CommunityContainerComponent } from './community.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { DdColabseDirective } from '../directives/dd-colabse.directive';
 import { HeightAdjustDirective } from '../directives/height-adjust.directive';
+import { DoctorCommunityController } from './doctor-comm-controller/doc-community.component';
+import { DocTopNavComponent } from './doctor-comm-controller/d-top-nav/d-topnav.component';
+import { DocSideNavComponent } from './doctor-comm-controller/d-side-nav/d-sidenav.component';
+import { GettingStartedComponent } from './getting-started/g-started.component';
+import { SharedModule } from '../shared/shared.module';
 import { SideBarToggler } from '../services/sideBar.service';
 import { ShowPostingService } from '../services/showPosting.service';
 import { ChatsComponent } from './chats/chats.component';
@@ -27,13 +32,18 @@ import { MsgTimeDirective } from '../directives/msg-time.directive';
         AddPostComponent,
         DdColabseDirective,
         HeightAdjustDirective,
+        DoctorCommunityController,
+        DocTopNavComponent,
+        DocSideNavComponent,
+        GettingStartedComponent
         ChatsComponent,
         PostandFilterComponent,
         TimelineComponent,
         MsgTimeDirective,
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        SharedModule
     ],
     exports: [
         SidebarComponent,
@@ -44,6 +54,7 @@ import { MsgTimeDirective } from '../directives/msg-time.directive';
         CommunityContainerComponent,
         AddPostComponent,
         DdColabseDirective,
+        DoctorCommunityController
     ],
     providers:[
         SideBarToggler,

@@ -1,0 +1,66 @@
+@import "../../abstracts/variables";
+@import "../../abstracts/mixins";
+@import "../../base/typography";
+@import "../../base/utilities";
+
+.d-topnav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: .5em;
+    height: 62px;
+    @include flexbox;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba($secondary-text, .1);
+    background-color: white;
+}
+
+.brand {
+    width: 110px;
+    margin-left: .6em;
+}
+
+.items {
+    @include flexbox;
+    align-items: center;
+
+    &__list {
+        @include flexbox;
+        align-items: center;
+        padding-right: 1em;
+        border-right: 1px solid rgba($secondary-text, .5);
+        &-item {
+            list-style: none;
+            cursor: pointer;
+        }
+
+        &-icon {
+            width: 18px;
+            height: 18px;
+            fill: rgba($primary-text, .8);
+        }
+    }
+
+    &__user {
+        @include flexbox;
+        align-items: center;
+        padding-left: 1em;
+
+        &-name {
+            font-size: 15px;
+            font-weight: 500;
+            color: $primary-text;
+        }
+
+        &-img {
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    }
+}

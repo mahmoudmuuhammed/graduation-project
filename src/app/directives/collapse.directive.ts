@@ -11,7 +11,7 @@ export class CollapseDirective {
 
     @HostListener('click') onCollapse() {
         this.isCollapsed = !this.isCollapsed;
-        let elementRef = document.querySelector('.chmail__form');
+        let elementRef = document.querySelector('.collapsed');
         if(this.isCollapsed) {
             this.usage.removeClass(elementRef, 'hidden');
             return;

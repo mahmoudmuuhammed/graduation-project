@@ -1,0 +1,98 @@
+@import "../../abstracts/variables";
+@import "../../abstracts/mixins";
+@import "../../base/typography";
+@import "../../base/utilities";
+
+.content {
+    @include flexbox;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1em;
+}
+
+.welcome {
+    color: $primary-text;
+    font-size: 30px;
+    margin-bottom: 2em;
+    &__txt {
+        font-weight: 600;
+        line-height: 40px;
+        &--custom {
+            font-weight: 300;
+            display: block;
+        }
+    }
+}
+
+.user {
+    @include flexbox;
+    justify-content: flex-start;
+    align-items: center;
+
+    &__upload {
+        padding: 1em 1.3em;
+        border-radius: 50%;
+        border: 1px solid $primary-color;
+        position: relative;
+        text-align: center;
+
+        &-img {
+            width: 90px;
+            height: 90px;
+        }
+
+        &-action {
+            position: absolute;
+            bottom: 2px;
+            right: 10px;
+            background-color: $primary-color;
+            border-radius: 50%;
+            padding: .4em .4em;
+            @include flexbox;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        &-icon {
+            width: 18px;
+            height: 18px;
+            fill: $divider-color;
+            transition: all 2s;
+        }
+    }
+
+    &__info {
+        @include flexbox;
+        flex-direction: column;
+        align-items: flex-start;
+
+        &-name {
+            font-weight: 700;
+            line-height: 28px;
+            font-size: 20px;
+            color: $primary-text;
+
+            &--custom {
+                display: block;
+                font-weight: 500;
+                font-size: 14px;
+                color: rgba($secondary-text, .8);
+            }
+        }
+
+        &-btn {
+            background-color: #eee;
+            padding: .4em .9em;
+            font-size: 13px;
+            color: $primary-text;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    }
+}
+
+input[type="file"] {
+    display: none;
+}
