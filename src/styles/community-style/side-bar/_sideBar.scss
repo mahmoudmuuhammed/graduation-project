@@ -11,16 +11,19 @@
 }
 
 .navLinkDiv {
-    display: flex;
-    flex-direction: column;
     padding-top: 20px;
 
     &>div {
-        display: flex;
-        align-items: center;
-        padding: 10px 0px;
-        margin: 10px 0;
-        cursor: pointer;
+        margin: 5px 0;
+
+        a {
+            display: flex;
+            align-items: center;
+            padding: 15px 0px;
+            cursor: pointer;
+            font-family: inherit;
+            text-decoration: none;
+        }
     }
 
     &>div:hover {
@@ -34,12 +37,19 @@
         span {
             color: $primary-color;
             font-weight: 600;
+            transition: 0s;
+        }
+
+        .sideNavItemImg {
+            color: $primary-color;
         }
     }
 
     .sideNavItemImg {
-        width: 25px;
-        margin-left: 30px;
+        margin-left: 20px;
+        font-size: 25px;
+        color: #aaa;
+        transition: 0s;
     }
 
     .sideNavItemImgDiv {
@@ -70,7 +80,7 @@
 }
 
 
-@media (max-width: 767.98px) {
+@media (max-width: 768px) {
     .offcanvas-collapse {
         position: fixed;
         top: 55px;
@@ -84,10 +94,26 @@
         transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
         -webkit-transform: translateX(-100%);
         transform: translateX(-100%);
+
+        &.open {
+            -webkit-transform: translateX(0rem);
+            transform: translateX(0rem);
+        }
     }
 
-    .offcanvas-collapse.open {
-        -webkit-transform: translateX(0rem);
-        transform: translateX(0rem);
+
+}
+
+@media (min-width:768px) and (max-width:992px) {
+    .navLinkDiv {
+        .sideNavItemImg {
+            margin-left: 10px;
+            font-size: 20px;
+            width: 20px;
+        }
+
+        .sideNavItemSpan {
+            margin-left: 10px;
+        }
     }
 }

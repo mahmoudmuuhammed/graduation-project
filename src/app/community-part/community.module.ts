@@ -16,10 +16,13 @@ import { GettingStartedComponent } from './getting-started/g-started.component';
 import { SharedModule } from '../shared/shared.module';
 import { SideBarToggler } from '../services/sideBar.service';
 import { ShowPostingService } from '../services/showPosting.service';
-import { ChatsComponent } from './chats/chats.component';
+import { Chats } from './chats/chats.component';
 import { PostandFilterComponent } from './addPost-and-filter/PostAndFilter.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { MsgTimeDirective } from '../directives/msg-time.directive';
+import { communityRoutingModule } from './community-routing.module';
+import { Profile } from './profile/profile.component';
+import { DoctorPreviewComponent } from './doctor-preview/doctor-preview.component'
 
 @NgModule({
     declarations: [
@@ -35,15 +38,18 @@ import { MsgTimeDirective } from '../directives/msg-time.directive';
         DoctorCommunityController,
         DocTopNavComponent,
         DocSideNavComponent,
-        GettingStartedComponent
-        ChatsComponent,
+        GettingStartedComponent,
+        Chats,
         PostandFilterComponent,
         TimelineComponent,
         MsgTimeDirective,
+        Profile,
+        DoctorPreviewComponent,
     ],
     imports: [
         CommonModule,
-        SharedModule
+        SharedModule,
+        communityRoutingModule
     ],
     exports: [
         SidebarComponent,
@@ -54,7 +60,8 @@ import { MsgTimeDirective } from '../directives/msg-time.directive';
         CommunityContainerComponent,
         AddPostComponent,
         DdColabseDirective,
-        DoctorCommunityController
+        DoctorCommunityController,
+        Profile
     ],
     providers:[
         SideBarToggler,

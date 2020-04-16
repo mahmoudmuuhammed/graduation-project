@@ -1,12 +1,20 @@
 import { NgModule, Component } from "@angular/core";
 import { Routes, RouterModule } from '@angular/router';
 
+import { CommunityContainerComponent } from './community.component'
 import { TimelineComponent } from './timeline/timeline.component';
-import { ChatsComponent } from './chats/chats.component';
+import { Profile } from './profile/profile.component';
+import { Chats } from './chats/chats.component';
 
 const communityRoutes: Routes = [
-    { path: 'timeline', component: TimelineComponent },
-    { path: 'ChatsComponent', component: ChatsComponent }
+    {
+        path: '', component: CommunityContainerComponent, children: [
+            { path: '', component: TimelineComponent },
+            { path: 'Timeline', component: TimelineComponent },
+            { path: 'Chats', component: Chats },
+            { path: 'Profile', component: Profile },
+        ]
+    }
 ];
 
 @NgModule({
@@ -14,4 +22,4 @@ const communityRoutes: Routes = [
     exports: [RouterModule]
 })
 
-export class LandRoutingModule { }
+export class communityRoutingModule { }

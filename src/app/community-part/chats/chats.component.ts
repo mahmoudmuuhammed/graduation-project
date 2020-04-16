@@ -8,7 +8,7 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./chats.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ChatsComponent {
+export class Chats {
   pivateMessages;
   message: string;
   messageDiv;

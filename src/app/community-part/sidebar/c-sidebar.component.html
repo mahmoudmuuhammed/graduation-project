@@ -1,45 +1,61 @@
-<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault" [ngClass]="{open: sideBarStatus=== true}" >
+<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault" [ngClass]="{open: sideBarStatus=== true}">
 
     <div class="navLinkDiv">
-
-        <div class="activeNavLinkItem">
-            <div class="sideNavItemImgDiv"><img class="sideNavItemImg" src="../assets/images/timeLine.svg"></div>
-            <span class="sideNavItemSpan">Timeline</span>
+        <div routerLinkActive="activeNavLinkItem">
+            <a routerLink='Profile'>
+                <div class="sideNavItemImgDiv"><i class="fas fa-user sideNavItemImg"></i></div>
+                <span class="sideNavItemSpan">Profile</span>
+            </a>
         </div>
-        <div style="display: none;">
-            <div class="sideNavItemImgDiv"><img class="sideNavItemImg" src="../assets/images/dashboard.svg"></div>
-            <span class="sideNavItemSpan">Dashboard</span>
+        <div routerLinkActive="activeNavLinkItem">
+            <a routerLink='Timeline'>
+                <div class="sideNavItemImgDiv"><i class="fas fa-stream sideNavItemImg"></i></div>
+                <span class="sideNavItemSpan">Timeline</span>
+            </a>
         </div>
-        <div>
-            <div class="sideNavItemImgDiv"><img class="sideNavItemImg" src="../assets/images/chats.svg"></div>
-            <span class="sideNavItemSpan">Chats</span>
+        <div routerLinkActive="activeNavLinkItem">
+            <a routerLink="Chats">
+                <div class="sideNavItemImgDiv"><i class="fas fa-comments sideNavItemImg"></i></div>
+                <span class="sideNavItemSpan">Chats</span>
+            </a>
         </div>
-        <div>
-            <div class="sideNavItemImgDiv"><img class="sideNavItemImg" src="../assets/images/doctor.svg"></div>
-            <span class="sideNavItemSpan">Doctor</span>
+        <div routerLinkActive="activeNavLinkItem">
+            <a routerLink='Doctors'>
+                <div class="sideNavItemImgDiv"><i class="fas fa-user-md sideNavItemImg"></i></div>
+                <span class="sideNavItemSpan">Doctor</span>
+            </a>
+        </div>
+        <div routerLinkActive="activeNavLinkItem" style="display: none;">
+            <a routerLink='/Dashboard'>
+                <div class="sideNavItemImgDiv"><img class="sideNavItemImg" src="../assets/images/dashboard.svg"></div>
+                <span class="sideNavItemSpan">Dashboard</span>
+            </a>
         </div>
     </div>
 
 
-    <div class="downArrowDiv">
+    <div class="downArrowDiv d-none d-lg-block">
         <span>For helping you</span>
     </div>
 
     <div class="navLinkDiv">
-        <div>
-            <div class="sideNavItemImgDiv"><img class="sideNavItemImg" src="../assets/images/blog.svg"
-                    style="width: 20px;"></div>
-            <span class="sideNavItemSpan">Blogs</span>
+        <div routerLinkActive="activeNavLinkItem">
+            <a routerLink='/Blog'>
+                <div class="sideNavItemImgDiv"><i class="fas fa-blog sideNavItemImg"></i></div>
+                <span class="sideNavItemSpan">Blog</span>
+            </a>
         </div>
-        <div>
-            <div class="sideNavItemImgDiv"><img class="sideNavItemImg" src="../assets/images/healthBeat.svg"
-                    style="width: 20px;"></div>
-            <span class="sideNavItemSpan">Health Beat</span>
+        <div routerLinkActive="activeNavLinkItem">
+            <a routerLink='/HealthBeat'>
+                <div class="sideNavItemImgDiv"><i class="fas fa-heartbeat sideNavItemImg"></i></div>
+                <span class="sideNavItemSpan">Health Beat</span>
+            </a>
         </div>
-        <div>
-            <div class="sideNavItemImgDiv"><img class="sideNavItemImg" src="../assets/images/help.svg"
-                    style="width: 20px;"></div>
-            <span class="sideNavItemSpan">Help & Support</span>
+        <div routerLinkActive="activeNavLinkItem">
+            <a routerLink='/Support'>
+                <div class="sideNavItemImgDiv"><i class="fas fa-user-cog sideNavItemImg"></i></div>
+                <span class="sideNavItemSpan">Help & Support</span>
+            </a>
         </div>
 
     </div>

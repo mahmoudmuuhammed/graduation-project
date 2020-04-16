@@ -1,0 +1,155 @@
+@import "../../abstracts/variables";
+
+.UserpostContainer {
+    padding-top: 20px;
+
+    .title {
+        h4 {
+            margin-bottom: -10px;
+            margin-left: 5px;
+            color: #888;
+        }
+    }
+}
+
+.acountDataMainDiv {
+    padding: 20px;
+    padding-right: 5px;
+
+    .accountDataCont {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px #aaa;
+        padding: 20px 0px 10px 0px;
+        top: 75px;
+        position: sticky;
+
+        .imgDiv {
+            img {
+                width: 170px;
+                height: 170px;
+                display: block;
+                margin: auto;
+                border-radius: 50%;
+            }
+        }
+
+        .userNameDiv {
+            text-align: center;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .counterDiv {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+            color: #555;
+            font-size: 14px;
+
+            .postsCountDiv,
+            .commentsCountDiv {
+
+                .noOfPostsSpan,
+                .noOfCommentsSpan {
+                    font-weight: 600;
+                    font-size: 15px;
+                }
+            }
+        }
+
+        .additionalData {
+            border-top: 1px solid #ccc;
+            padding: 15px;
+
+
+            .additionDataCont {
+                margin: 5px 0px;
+                display: flex;
+                align-items: center;
+                font-size: 16px;
+
+                span {
+                    font-size: 14px;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+
+                .icon {
+                    font-size: 20px;
+                    color: #bbb;
+                    width: 20px;
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        .editBtnDiv {
+            button {
+                background-color: $primary-color;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                padding: 10px 20px;
+                margin: 0px auto 10px auto;
+                display: block;
+                font-size: 16px;
+                cursor: pointer;
+                width: 90%;
+            }
+        }
+
+        .clinicDiv {
+            border-top: 1px solid #ccc;
+            padding: 10px;
+
+            h6 {
+                margin-top: 10px;
+                color: #555;
+            }
+
+            .BookDiv {
+                button {
+                    background-color: $primary-color;
+                    color: #fff;
+                    border: none;
+                    border-radius: 5px;
+                    padding: 10px 30px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:768px) {
+
+    .acountDataMainDiv {
+        padding-right: 20px;
+
+        .accountDataCont {
+            position: static;
+            top: unset;
+        }
+    }
+}
+
+@media (min-width:768px) and (max-width:992px) {
+    .acountDataMainDiv {
+        .accountDataCont {
+            .imgDiv {
+                img {
+                    width: 150px;
+                    height: 150px;
+                }
+            }
+
+            .counterDiv {
+                font-size: 14px;
+            }
+        }
+    }
+}

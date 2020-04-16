@@ -4,8 +4,14 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 
 const routes: Routes = [
-  { path: '', 
-    loadChildren: () => import ('./land-part/land.module').then(m => m.LandModule) },
+  {
+    path: '',
+    loadChildren: () => import('./land-part/land.module').then(m => m.LandModule)
+  },
+  {
+    path: 'community',
+    loadChildren: './community-part/community.module#CommunityModule'
+  },
   { path: '**', component: NotFoundComponent }
 ];
 
