@@ -1,31 +1,31 @@
 <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault" [ngClass]="{open: sideBarStatus=== true}">
 
     <div class="navLinkDiv">
-        <div routerLinkActive="activeNavLinkItem">
+        <div routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
             <a routerLink='Profile'>
                 <div class="sideNavItemImgDiv"><i class="fas fa-user sideNavItemImg"></i></div>
                 <span class="sideNavItemSpan">Profile</span>
             </a>
         </div>
-        <div routerLinkActive="activeNavLinkItem">
+        <div routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
             <a routerLink='Timeline'>
                 <div class="sideNavItemImgDiv"><i class="fas fa-stream sideNavItemImg"></i></div>
                 <span class="sideNavItemSpan">Timeline</span>
             </a>
         </div>
-        <div routerLinkActive="activeNavLinkItem">
+        <div routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
             <a routerLink="Chats">
                 <div class="sideNavItemImgDiv"><i class="fas fa-comments sideNavItemImg"></i></div>
                 <span class="sideNavItemSpan">Chats</span>
             </a>
         </div>
-        <div routerLinkActive="activeNavLinkItem">
+        <div routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
             <a routerLink='Doctors'>
                 <div class="sideNavItemImgDiv"><i class="fas fa-user-md sideNavItemImg"></i></div>
                 <span class="sideNavItemSpan">Doctor</span>
             </a>
         </div>
-        <div routerLinkActive="activeNavLinkItem" style="display: none;">
+        <div routerLinkActive="activeNavLinkItem" (click)="hideSideBar()" style="display: none;">
             <a routerLink='/Dashboard'>
                 <div class="sideNavItemImgDiv"><img class="sideNavItemImg" src="../assets/images/dashboard.svg"></div>
                 <span class="sideNavItemSpan">Dashboard</span>
@@ -39,19 +39,19 @@
     </div>
 
     <div class="navLinkDiv">
-        <div routerLinkActive="activeNavLinkItem">
+        <div routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
             <a routerLink='/Blog'>
                 <div class="sideNavItemImgDiv"><i class="fas fa-blog sideNavItemImg"></i></div>
                 <span class="sideNavItemSpan">Blog</span>
             </a>
         </div>
-        <div routerLinkActive="activeNavLinkItem">
+        <div routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
             <a routerLink='/HealthBeat'>
                 <div class="sideNavItemImgDiv"><i class="fas fa-heartbeat sideNavItemImg"></i></div>
                 <span class="sideNavItemSpan">Health Beat</span>
             </a>
         </div>
-        <div routerLinkActive="activeNavLinkItem">
+        <div routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
             <a routerLink='/Support'>
                 <div class="sideNavItemImgDiv"><i class="fas fa-user-cog sideNavItemImg"></i></div>
                 <span class="sideNavItemSpan">Help & Support</span>

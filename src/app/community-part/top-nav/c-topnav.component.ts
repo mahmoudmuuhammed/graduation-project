@@ -9,11 +9,13 @@ import { SideBarToggler } from "../../services/sideBar.service"
 })
 
 export class TopnavComponent {
-    
-    constructor(private sidebarToggler:SideBarToggler){}
-
-
     navCollabseStatus: boolean = false;
+    
+    constructor(private sidebarToggler:SideBarToggler){
+        this.sidebarToggler.sideBarNavItemClicked.subscribe((navStatus:boolean) => this.navCollabseStatus=navStatus)
+    }
+
+
     mainNavBtnClick(event) {
         this.navCollabseStatus = !this.navCollabseStatus;
         this.sidebarToggler.topNavTogBtnClicked.emit(this.navCollabseStatus)
