@@ -35,7 +35,7 @@ import { MsgTimeDirective } from '../directives/msg-time.directive';
         DoctorCommunityController,
         DocTopNavComponent,
         DocSideNavComponent,
-        GettingStartedComponent
+        GettingStartedComponent,
         ChatsComponent,
         PostandFilterComponent,
         TimelineComponent,

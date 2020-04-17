@@ -10,6 +10,7 @@ export class UploadingService {
     
     fileUploaded: File;
     imgUrl: any = 'https://firebasestorage.googleapis.com/v0/b/medkitc.appspot.com/o/users%2Fman.jpg?alt=media&token=33adad58-5726-4090-b66b-cbd157593862';
+    postPhotoUrl: string;
 
     constructor(private storage: AngularFireStorage) {}
 
@@ -32,5 +33,9 @@ export class UploadingService {
                 }
             )
         }
+    }
+
+    postPhotoUploading() {
+        
     }
 }
