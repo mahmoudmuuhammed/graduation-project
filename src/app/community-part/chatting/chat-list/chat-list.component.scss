@@ -1,0 +1,14 @@
+@import "../../../../styles/abstracts/variables";
+@import "../../../../styles/abstracts/mixins";
+@import "../../../../styles/base/utilities";
+@import "../../../../styles/base/typography";
+
+
+.search {
+    @include flexbox;
+    align-items: center;
+    margin-bottom: 1em;
+    &__control {
+        @include form-controls;
+    }
+}

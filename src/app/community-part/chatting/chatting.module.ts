@@ -28,7 +28,9 @@ import { ChatRoomComponent } from './chat-room/chat-room.component';
     imports: [
         CommonModule
     ],
-    exports: []
+    exports: [
+        ChattingComponent
+    ]
 })
 
 export class ChattingModule {}
