@@ -13,7 +13,12 @@ export class SidebarComponent {
         this.sidebarToggler.topNavTogBtnClicked.subscribe(
             (status: boolean) => this.sideBarStatus=status
         )
-        
+    }
+
+    hideSideBar(){
+        this.sideBarStatus=false;
+        this.sidebarToggler.sideBarNavItemClicked.emit(this.sideBarStatus);
+        document.querySelector('.offcanvas-collapse').classList.remove('open')
     }
 
 }
