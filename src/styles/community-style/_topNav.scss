@@ -1,5 +1,5 @@
-@import "../../abstracts/variables";
-@import "../../abstracts/mixins";
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
 
 
 .topNavbar {
@@ -272,20 +272,19 @@
         margin-right: 20px;
 
         .searchContainer {
-            padding: 5px 20px 5px 10px;
             background-color: #eeeeee;
             border-radius: 3px;
             display: flex;
             border: 1px solid #ddd;
 
             button {
-                background-color: transparent;
+                background-color: #e5e5e5;
                 border: none;
-                color: #888;
                 cursor: pointer;
+                padding:0px 5px;
 
-                i {
-                    color: $secondary-text;
+                img{
+                    width: 20px;
                 }
             }
 
@@ -293,7 +292,7 @@
                 background-color: transparent;
                 border: none;
                 max-width: 178px;
-                padding: 5px 10px
+                padding: 10px
             }
         }
     }

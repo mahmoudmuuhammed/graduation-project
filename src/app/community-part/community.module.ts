@@ -22,7 +22,8 @@ import { TimelineComponent } from './timeline/timeline.component';
 import { MsgTimeDirective } from '../directives/msg-time.directive';
 import { communityRoutingModule } from './community-routing.module';
 import { Profile } from './profile/profile.component';
-import { DoctorPreviewComponent } from './doctor-preview/doctor-preview.component'
+import { DoctorPreviewComponent } from './doctor-preview/doctor-preview.component';
+import { DoctorCardComponent } from './doctor-card/doctor-card.component'
 
 @NgModule({
     declarations: [
@@ -45,6 +46,7 @@ import { DoctorPreviewComponent } from './doctor-preview/doctor-preview.componen
         MsgTimeDirective,
         Profile,
         DoctorPreviewComponent,
+        DoctorCardComponent,
     ],
     imports: [
         CommonModule,

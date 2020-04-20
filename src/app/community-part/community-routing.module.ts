@@ -5,6 +5,7 @@ import { CommunityContainerComponent } from './community.component'
 import { TimelineComponent } from './timeline/timeline.component';
 import { Profile } from './profile/profile.component';
 import { Chats } from './chats/chats.component';
+import { DoctorPreviewComponent } from './doctor-preview/doctor-preview.component';
 
 const communityRoutes: Routes = [
     {
@@ -13,6 +14,8 @@ const communityRoutes: Routes = [
             { path: 'Timeline', component: TimelineComponent },
             { path: 'Chats', component: Chats },
             { path: 'Profile', component: Profile },
+            { path: 'Doctors', component: DoctorPreviewComponent },
+            
         ]
     }
 ];
