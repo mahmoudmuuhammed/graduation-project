@@ -1,0 +1,75 @@
+@import "../../../../../styles/abstracts/variables";
+@import "../../../../../styles/abstracts/mixins";
+@import "../../../../../styles/base/utilities";
+@import "../../../../../styles/base/typography";
+
+
+.chat-head {
+    @include flexbox;
+    justify-content: space-between;
+    align-items: center;
+    padding: .4em;
+    border-bottom: 1px solid rgba(#eee, .9);
+
+    &__owner {
+        @include flexbox;
+        align-items: center;
+        justify-content: flex-start;
+
+        &-img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+
+        &-details {
+            @include flexbox;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            margin-left: 1em;
+        }
+
+        &-name {
+            font-size: 13px;
+            font-weight: 500;
+            color: $primary-text;
+        }
+
+
+        &-status {
+            font-size: 11px;
+            font-weight: 400;
+            color: rgba($secondary-text, .7);
+        }
+    }
+
+    &__actions {
+        @include flexbox;
+        width: 130px;
+        justify-content: space-between;
+        align-items: center;
+
+        &-icon {
+            padding: .3em;
+            width: 30px;
+            border-radius: 6px;
+            height: 30px;
+            fill: $primary-color;
+            cursor: pointer;
+            &:hover {
+                background-color: #eee;
+            }
+        }
+    }
+}
+
+.chat-head__owner-status::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: red;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: .6em;
+}
