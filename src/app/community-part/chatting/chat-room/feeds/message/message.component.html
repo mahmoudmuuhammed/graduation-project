@@ -1,54 +1,15 @@
 <div class="message">
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
+    <img 
+        src="../../../../../../assets/svgs/man.svg" 
+        alt="" 
+        class="message__img">
+    <div class="message__content" 
+        [ngClass]="{ 'inbound': incoming, 'outbound': !incoming }">
+        <span class="message__content-text">
+            {{ message?.content }}
+        </span>
+        <span class="message__content-time">
+            {{ message.timeStamp | date:'shortTime' }}
+        </span>
+    </div>
 </div>

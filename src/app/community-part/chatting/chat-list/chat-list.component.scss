@@ -3,12 +3,34 @@
 @import "../../../../styles/base/utilities";
 @import "../../../../styles/base/typography";
 
-
 .search {
+    padding: 10px;
     @include flexbox;
     align-items: center;
-    margin-bottom: 1em;
-    &__control {
-        @include form-controls;
+    justify-content: center;
+    position: relative;
+    &__icon {
+        width: 14px;
+        height: 14px;
+        fill: rgba($secondary-text, .7);
+        position: absolute;
+        left: 43px;
+    }
+
+    &__input {
+        border: .7px solid #eee;
+        border-radius: 5px;
+        padding: .7em 3em;
+        font-family: 'Inter';
+        font-size: 13px;
+        color: $primary-text;
+        font-weight: 400;
+        background-color: rgba($secondary-text, .03);
+
+        &::-webkit-input-placeholder {
+            font-size: 12px;
+            font-weight: 400;
+            color: rgba($secondary-text, .7);
+        }
     }
 }

@@ -11,6 +11,7 @@ import { MessageComponent } from './chat-room/feeds/message/message.component';
 import { ChatFormComponent } from './chat-room/chat-form/chat-form.component';
 import { ChatHeadComponent } from './chat-room/chat-head/chat-head.component';
 import { ChatRoomComponent } from './chat-room/chat-room.component';
+import { communityRoutingModule } from '../community-routing.module';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,9 @@ import { ChatRoomComponent } from './chat-room/chat-room.component';
         ChatRoomComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        communityRoutingModule,
+        
     ],
     exports: [
         ChattingComponent

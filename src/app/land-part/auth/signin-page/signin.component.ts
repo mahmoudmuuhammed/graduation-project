@@ -16,14 +16,15 @@ export class SigninPageComponent implements OnInit {
     }
 
     signinSubmit() {
-        this.authService.SignIn();
+        // this.authService.SignIn();
+        this.authService.login();
     }
 
     facebookProviderAuth() {
-        this.authService.facebookAuthentication();
+        // this.authService.facebookAuthentication();
     }
 
     googleProviderAuth() {
-        this.authService.googleAuthentication();
+        // this.authService.googleAuthentication();
     }
 }

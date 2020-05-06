@@ -61,7 +61,7 @@
                         </label>
                     </ng-template>
                     <div class="stepper__actions" style="text-align: center;"
-                        *ngIf="!authService.isLoading">
+                        >
                         <button 
                             class="stepper__actions-submit custom u-mrgt-1" matStepperPrevious>
                             back
@@ -71,10 +71,10 @@
                             Create account
                         </button>
                     </div>
-                    <div class="loading" *ngIf="authService.isLoading">
+                    <!-- <div class="loading" *ngIf="">
                         <span class="u-mrgb-2">Creating account ... </span>
                         <loading-spinner></loading-spinner>
-                    </div>
+                    </div> -->
                 </mat-step>
             </mat-vertical-stepper>
         </div>

@@ -1,28 +1,29 @@
-<div class="chat-head">
-    <div class="chat-head__owner">
+<div class="head">
+    <div class="head__action">
+        <svg class="head__action-icon head__action-icon--custom">
+            <use xlink:href="../../../../../assets/sprites/chat-icons.svg#ellipsis"></use>
+        </svg>
+    </div>
+    <div class="head__user">
         <img 
-            src="../../../../../assets/images/medra.jpg" 
-            alt="user img" 
-            class="chat-head__owner-img">
-        
-        <div class="chat-head__owner-details">
-            <span class="chat-head__owner-name">
-                Mahmoud Mohamed
+            src="../../../../../assets/svgs/man.svg" 
+            alt="" 
+            class="head__user-img">
+        <div class="head__user-info">
+            <span class="head__user-info__name">
+                {{ userData?.fullname }}
             </span>
-            <span class="chat-head__owner-status">
-                Active
+            <span class="head__user-info__status">
+                Active now
             </span>
         </div>
     </div>
-    <div class="chat-head__actions">
-        <svg class="chat-head__actions-icon">
-            <use xlink:href="../../../../../assets/sprites/chat-icons.svg#phone-call"></use>
-        </svg>
-        <svg class="chat-head__actions-icon">
+    <div class="head__action">
+        <svg class="head__action-icon">
             <use xlink:href="../../../../../assets/sprites/chat-icons.svg#videocall"></use>
         </svg>
-        <svg class="chat-head__actions-icon">
-            <use xlink:href="../../../../../assets/sprites/chat-icons.svg#ellipsis"></use>
+        <svg class="head__action-icon">
+            <use xlink:href="../../../../../assets/sprites/chat-icons.svg#phone-call"></use>
         </svg>
     </div>
 </div>

@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-xl-12 col-lg-12">
+        <div class="contacts">
+            <span class="contacts__title">
+                Contacts
+            </span>
+
+            <div class="contacts__list" *ngFor="let user of users | async">
+                <user-list-item [user]="user"></user-list-item>
+            </div>
+        </div>
+    </div>
+</div>

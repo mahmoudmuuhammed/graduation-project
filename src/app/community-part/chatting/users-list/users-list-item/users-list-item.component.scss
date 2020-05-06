@@ -1,0 +1,29 @@
+@import "../../../../../styles/abstracts/variables";
+@import "../../../../../styles/abstracts/mixins";
+@import "../../../../../styles/base/utilities";
+@import "../../../../../styles/base/typography";
+
+.user {
+
+    @include flexbox;
+    align-items: center;
+    padding: 1.2em;
+    cursor: pointer;
+
+    &__img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    &__name {
+        font-size: 14px;
+        font-weight: 500;
+        color: $primary-text;
+        margin-left: 1em;
+    }
+
+    &:hover {
+        background-color: rgba($secondary-text, .02);
+    }
+}

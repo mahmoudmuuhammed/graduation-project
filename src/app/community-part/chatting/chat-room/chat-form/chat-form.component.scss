@@ -3,70 +3,57 @@
 @import "../../../../../styles/base/utilities";
 @import "../../../../../styles/base/typography";
 
-:host {
-    align-self: flex-end;
+.chat-sending {
+    background-color: red;
+    @include flexbox;
+    align-items: center;
+    position: relative;
 }
 
-.chat-form {
+.message-attachments {
+    position: absolute;
+    left: 20px;
     @include flexbox;
-    flex-direction: column;
-    justify-content: flex-start;
+}
 
-    &__control {
-        margin-bottom: 1em;
-        padding: 1em;
-        border-radius: 5px;
-        border: 1px solid #eee;
-        background-color: rgba(#eee, .3);
-        overflow: hidden;
-        resize: none;
+.message-input {
+    resize: none;
+    padding: 1.5em 6em;
+    overflow: hidden;
+    width: 100%;
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 500;
+    color: $primary-text;
+    border: none;
+    border-top: .3px solid rgba($secondary-text, .5);
+
+    &::-webkit-input-placeholder {
         font-size: 14px;
         font-weight: 400;
-        font-family: 'Inter';
-        color: $primary-text;
+        color: rgba($secondary-text, .7);
+    }
+}
 
-        &::-webkit-input-placeholder {
-            color: $secondary-text;
-            font-weight: 400;
-            color: rgba($secondary-text, .6);
-            font-size: 13px;
-        }
+.send-btn {
+    position: absolute;
+    right: 20px;
+    padding: .4em;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.icon {
+    width: 17px;
+    height: 17px;
+    margin: .3em;
+    cursor: pointer;
+
+    &--attach {
+        fill: rgba($secondary-text, .7);
     }
 
-    &__actions {
-        @include flexbox;
-        justify-content: space-between;
-        align-items: center;
-
-        &-wrapper {
-            @include flexbox;
-        }
-
-        &-icon {
-            width: 17px;
-            height: 17px;
-            margin-right: 1em;
-            fill: $primary-color;
-            cursor: pointer;
-        }
-
-        &-send {
-            padding: .8em 1em;
-            color: $divider-color;
-            background-color: $primary-color;
-            @include flexbox;
-            align-items: center;
-            border: none;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        &-btn {
-            width: 14px;
-            height: 14px;
-            margin-left: 1em;
-            fill: $divider-color;
-        }
+    &--send {
+        fill: $primary-color;
     }
 }

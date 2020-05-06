@@ -4,52 +4,49 @@
 @import "../../../../../styles/base/typography";
 
 
-.chat-item {
+.chat-litem {
     @include flexbox;
     flex-direction: column;
     align-items: flex-start;
-    text-decoration: none;
-    padding: 1em;
+    padding: 30px 18px;
+    border-right: 2.5px solid $primary-color;
+    background-color: rgba(#eee, .3);
+}
 
-    &__msg {
+.user {
+    @include flexbox;
+    align-items: center;
+    margin-bottom: 1em;
+
+    &__img {
+        width: 35px;
+        height: 35px;
+        padding: .1em;
+        background-color: $light-primary-color;
+        border-radius: 50%;
+    }
+
+    &__info {
         @include flexbox;
-        justify-content: flex-start;
-        margin-bottom: .7em;
-
-        &-img {
-            width: 40px;
-            height: 40px;
-        }
-
-        &-details {
-            @include flexbox;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            margin-left: 1em;
-        }
+        flex-direction: column;
+        font-weight: 500;
+        margin-left: 1.1em;
 
         &-name {
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 13px;
             color: $primary-text;
-            margin-bottom: .4em;
+            margin-bottom: .2em;
         }
 
-        &-date {
-            font-size: 11px;
-            color: rgba($secondary-text, .8);
-            font-weight: 400;
+        &-time {
+            font-size: 10px;
+            color: rgba($secondary-text, .7);
         }
     }
+}
 
-    &__lastmsg {
-        color: rgba($secondary-text, .7);
-        font-weight: 500;
-        font-size: 12px;
-    }
-
-    &--active {
-        background-color: rgba(#eee, .4);
-    }
+.lmsg {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba($secondary-text, .9);
 }

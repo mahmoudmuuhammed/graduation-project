@@ -1,72 +1,21 @@
-<a class="chat-item chat-item--active" href="">
-    <div class="chat-item__msg">
+<div class="chat-litem" [routerLink]="['/chat', (userData | async)?.uid]">
+    <div class="user">
         <img 
-            src="../../../../../assets/svgs/man.svg" 
-            alt="user img"
-            class="chat-item__msg-img">
-        <div class="chat-item__msg-details">
-            <span class="chat-item__msg-name">
-                Mahmoud Mohamed
+            src="../../../../../assets/svgs/man.svg"
+            alt="user img" 
+            class="user__img">
+        <div class="user__info">
+            <span class="user__info-name">
+                {{ (userData | async)?.fullname }}
             </span>
-            <p class="chat-item__msg-date">
-                01:28 PM
-            </p>
+            <span class="user__info-time">
+                {{ thread.timeStamp | date:'shortTime' }}
+            </span>
         </div>
     </div>
-
-    <div class="chat-item__lastmsg">
+    <div class="lmsg">
         <span>
-            A successfull message can be short that can be to added 
-            to edit text to search for every title
+            {{ thread.lastMsg }}
         </span>
     </div>
-</a>
-
-<a class="chat-item" href="">
-    <div class="chat-item__msg">
-        <img 
-            src="../../../../../assets/svgs/man.svg" 
-            alt="user img"
-            class="chat-item__msg-img">
-        <div class="chat-item__msg-details">
-            <span class="chat-item__msg-name">
-                Mahmoud Mohamed
-            </span>
-            <p class="chat-item__msg-date">
-                01:28 PM
-            </p>
-        </div>
-    </div>
-
-    <div class="chat-item__lastmsg">
-        <span>
-            A successfull message can be short that can be to added 
-            to edit text to search for every title
-        </span>
-    </div>
-</a>
-
-
-<a class="chat-item" href="">
-    <div class="chat-item__msg">
-        <img 
-            src="../../../../../assets/svgs/man.svg" 
-            alt="user img"
-            class="chat-item__msg-img">
-        <div class="chat-item__msg-details">
-            <span class="chat-item__msg-name">
-                Mahmoud Mohamed
-            </span>
-            <p class="chat-item__msg-date">
-                01:28 PM
-            </p>
-        </div>
-    </div>
-
-    <div class="chat-item__lastmsg">
-        <span>
-            A successfull message can be short that can be to added 
-            to edit text to search for every title
-        </span>
-    </div>
-</a>
+</div>

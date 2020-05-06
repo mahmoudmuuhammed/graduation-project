@@ -35,7 +35,6 @@
             </button>
         </div>
         <form 
-            *ngIf="!authService.isLoading"
             [formGroup]="forms.signinForm"
             class="form">
             <div class="form__fgroup u-mrgb-1">
@@ -107,7 +106,7 @@
         </form>
         <div class="loading" 
             style="align-self: center;" 
-            *ngIf="authService.isLoading">
+            *ngIf="">
             <loading-spinner></loading-spinner>
         </div>
     </div>

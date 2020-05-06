@@ -1,24 +1,30 @@
-import { Injectable } from "@angular/core";
-import { AngularFirestore } from '@angular/fire/firestore';
-import { UploadingService } from './uploading.service';
-import { AuthService } from './auth.service';
+import { Injectable, EventEmitter } from "@angular/core";
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { UserModel } from '../models/user.model';
+import { Subject, BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class FirestoreService {
-    constructor(private fireDb: AngularFirestore, 
-                private uploadingService: UploadingService,
-                private authService: AuthService) {}
+    userEventData = new Subject<string>();
+    users: AngularFirestoreCollection<UserModel>;
+    user: AngularFirestoreDocument<UserModel>;
 
-    addPostController(postBody: string, postCategory: string) {
-        this.fireDb.collection('Posts').add({
-            postBody: postBody,
-            postCategory: postCategory,
-            postPhotoUrl: this.uploadingService.postPhotoUrl,
-            postOwnerId: this.authService.currentUser.uid,
-            
-        })
+    constructor(
+        private fireDb: AngularFirestore
+    ) {}
+
+    getUsers() {
+        this.users = this.fireDb.collection('Users');
+        return this.users.valueChanges();
+    }
+    
+    getUser(profileId: string) {
+        const path = `Users/${ profileId }`;
+        this.user = this.fireDb.doc(path);
+        return this.user.valueChanges();
     }
 }

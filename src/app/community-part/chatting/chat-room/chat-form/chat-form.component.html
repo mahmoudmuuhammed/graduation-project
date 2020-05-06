@@ -1,26 +1,25 @@
-<div class="chat-form">
+<div class="chat-sending">
+    <div class="message-attachments">
+        <svg class="icon icon--attach">
+            <use xlink:href="../../../../../assets/sprites/chat-icons.svg#paperclip"></use>
+        </svg>
+        <svg class="icon icon--attach">
+            <use xlink:href="../../../../../assets/sprites/chat-icons.svg#image"></use>
+        </svg>
+    </div>
     <textarea 
-        name="chat-input" 
-        id="chat-input"
+        name="messageInput" 
+        id="messageInput" 
         cols="30" 
-        rows="2" 
+        rows="1" 
+        class="message-input" 
         placeholder="Type a message..." 
-        class="chat-form__control"></textarea>
-    
-    <div class="chat-form__actions">
-        <div class="chat-form__actions-wrapper">
-            <svg class="chat-form__actions-icon">
-                <use xlink:href="../../../../../assets/sprites/chat-icons.svg#paperclip"></use>
-            </svg>
-            <svg class="chat-form__actions-icon">
-                <use xlink:href="../../../../../assets/sprites/chat-icons.svg#image"></use>
-            </svg>
-        </div>
-        <button class="chat-form__actions-send">
-            <span>Send Message</span>
-            <svg class="chat-form__actions-btn">
-                <use xlink:href="../../../../../assets/sprites/chat-icons.svg#send"></use>
-            </svg>
-        </button>
+        #messageInput 
+        (keyup)="handleSendMessage($event)"></textarea>
+
+    <div class="send-btn" (click)="sendingMessage()">
+        <svg class="icon icon--send">
+            <use xlink:href="../../../../../assets/sprites/chat-icons.svg#send"></use>
+        </svg>
     </div>
 </div>

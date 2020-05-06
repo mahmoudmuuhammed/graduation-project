@@ -1,4 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
+import { UserModel } from 'src/app/models/user.model';
+import { Router } from '@angular/router';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
     selector: 'user-list-item',
@@ -6,4 +9,18 @@ import { Component } from "@angular/core";
     styleUrls: ['./users-list-item.component.scss']
 })
 
-export class UsersListItemComponent {}
+export class UsersListItemComponent {
+    @Input() user: UserModel;
+    constructor(private router: Router, private sharedService: SharedService) {}
+
+    ngOnInit() {}
+
+    navigate() {
+        this.router.navigate(['/chat', this.user.uid])
+        .then(
+            navigated => {
+                this.sharedService.closeUsersList();
+            }
+        )
+    }
+}

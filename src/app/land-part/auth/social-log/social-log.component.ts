@@ -12,10 +12,10 @@ export class SocialLogComponent {
     constructor(public authService: AuthService) {}
 
     onFacebookAuthentication() {
-        this.authService.facebookAuthentication();
+        // this.authService.facebookAuthentication();
     }
 
     ongoogleAuthentication() {
-        this.authService.googleAuthentication();
+        // this.authService.googleAuthentication();
     }
 }

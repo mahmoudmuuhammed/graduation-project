@@ -1,7 +1,3 @@
-<div class="row">
-    <div class="col-xl-12 col-lg-12">
-        <div style="height: 430px; overflow-y: auto; padding: .3em;">
-            <message></message>
-        </div>
-    </div>
+<div class="message-container" *ngFor="let message of messages | async">
+    <message [message]="message"></message>
 </div>

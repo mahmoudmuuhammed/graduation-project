@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { FormsServices } from 'src/app/services/forms.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
     selector: 'signup',
@@ -10,7 +11,8 @@ import { AuthService } from 'src/app/services/auth.service';
 
 export class SignupComponent implements OnInit {
     constructor(public forms: FormsServices, 
-        public authService: AuthService) {}
+        public authService: AuthService,
+        private fire: FirestoreService) {}
     ngOnInit() {
         this.forms.accountFormController();
         this.forms.generalFormController();
@@ -18,6 +20,8 @@ export class SignupComponent implements OnInit {
     }
     
     submiting(stepper) {
-        this.authService.onAuthentication(stepper);
+        // this.authService.onAuthentication(stepper);
+        // this.fire.sendingRequest();
+        this.authService.sendingAuthRequest();
     }
 }

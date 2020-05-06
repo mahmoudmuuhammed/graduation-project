@@ -1,0 +1,46 @@
+@import "../../../../../../styles/abstracts/variables";
+@import "../../../../../../styles/abstracts/mixins";
+
+
+.message {
+    @include flexbox;
+    align-items: flex-start;
+    padding: 12px;
+    &__img {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        padding: .1em;
+        background-color: $light-primary-color;
+    }
+
+    &__content {
+        padding: .8em;
+        border-radius: 5px;
+        margin-left: .8em;
+        @include flexbox;
+        justify-content: space-between;
+        align-items: center;
+        
+        &-text {
+            font-weight: 500;
+            color: $primary-text;
+            font-size: 14px;
+            margin-right: 1em;
+        }
+
+        &-time {
+            font-weight: 400;
+            color: rgba($secondary-text, .7);
+            font-size: 11px;
+        }
+    }
+}
+
+.outbound {
+    background-color: $light-primary-color;
+}
+
+.inbound {
+    border: .6px solid $light-primary-color;
+}

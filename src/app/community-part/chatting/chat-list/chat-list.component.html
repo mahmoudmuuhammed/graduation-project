@@ -1,15 +1,21 @@
 <div class="row">
     <div class="col-xl-12 col-lg-12">
         <div class="search">
-            <input
-                type="text"
-                class="search__control"
-                placeholder="Search inbox">
+            <svg class="search__icon">
+                <use xlink:href="../../../../assets/sprites/topnav-icons.svg#search"></use>
+            </svg>
+            <input 
+                type="text" 
+                class="search__input" 
+                placeholder="Search for chats" 
+                (click)="sharedService.showUsersList()">
         </div>
-    </div>
+    </div> 
 </div>
 <div class="row">
     <div class="col-xl-12 col-lg-12">
-        <chat-list-item></chat-list-item>
+        <div class="chat-list" *ngFor="let thread of threads | async">
+            <chat-list-item [thread]="thread"></chat-list-item>
+        </div>
     </div>
 </div>

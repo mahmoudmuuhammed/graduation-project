@@ -48,6 +48,6 @@ export class UserTypeComponent {
 
     constructor(private authService: AuthService) {}
     completeSubmitForProviders() {
-        this.authService.userTypeAfterProvider();
+        // this.authService.userTypeAfterProvider();
     }
 }

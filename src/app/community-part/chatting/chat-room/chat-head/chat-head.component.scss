@@ -4,72 +4,67 @@
 @import "../../../../../styles/base/typography";
 
 
-.chat-head {
+.head {
+    padding: .8em 2em;
     @include flexbox;
     justify-content: space-between;
     align-items: center;
-    padding: .4em;
-    border-bottom: 1px solid rgba(#eee, .9);
+    border-bottom: .3px solid rgba($secondary-text, .6);
 
-    &__owner {
+    &__user {
         @include flexbox;
         align-items: center;
-        justify-content: flex-start;
 
         &-img {
-            width: 35px;
-            height: 35px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
+            padding: .1em;
+            background-color: $light-primary-color;
         }
 
-        &-details {
+        &-info {
             @include flexbox;
             flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
             margin-left: 1em;
-        }
 
-        &-name {
-            font-size: 13px;
-            font-weight: 500;
-            color: $primary-text;
-        }
+            &__name {
+                font-size: 12px;
+                font-weight: 700;
+                color: $primary-text;
+                margin-bottom: .3em;
+            }
 
+            &__status {
+                font-size: 10px;
+                font-weight: 400;
+                color: rgba($secondary-text, .7);
 
-        &-status {
-            font-size: 11px;
-            font-weight: 400;
-            color: rgba($secondary-text, .7);
-        }
-    }
-
-    &__actions {
-        @include flexbox;
-        width: 130px;
-        justify-content: space-between;
-        align-items: center;
-
-        &-icon {
-            padding: .3em;
-            width: 30px;
-            border-radius: 6px;
-            height: 30px;
-            fill: $primary-color;
-            cursor: pointer;
-            &:hover {
-                background-color: #eee;
+                &::before {
+                    content: "";
+                    width: 8px;
+                    height: 8px;
+                    background-color: red;
+                    display: inline-block;
+                    border-radius: 50%;
+                    margin-right: 10px;
+                    text-align: center;
+                }
             }
         }
     }
-}
 
-.chat-head__owner-status::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    background-color: red;
-    display: inline-block;
-    border-radius: 50%;
-    margin-right: .6em;
+    &__action {
+        &-icon {
+            cursor: pointer;
+            width: 22px;
+            height: 22px;
+            fill: $primary-color;
+            margin-right: 3em;
+
+            &--custom {
+                fill: rgba($secondary-text, .7);
+            }
+        }
+    }
 }

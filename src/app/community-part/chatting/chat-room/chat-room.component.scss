@@ -1,10 +1,9 @@
 @import "../../../../styles/abstracts/mixins";
 
 
-.chat-room {
-    @include flexbox;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 100%;
+
+
+.feeds-container {
+    height: 485px;
+    overflow: auto;
 }
