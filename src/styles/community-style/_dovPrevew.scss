@@ -1,0 +1,179 @@
+@import '../abstracts/variables';
+
+.docSerachCont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    border-radius: 10px;
+
+    .specialityDiv {
+        position: relative;
+
+        .title {
+            position: absolute;
+            left: 10px;
+            font-size: 11px;
+            font-weight: 600;
+            font-family: inherit;
+            color: #888;
+        }
+
+        .specialistSelectionContainer {
+            &>button {
+                height: 60px;
+                min-width: 150px;
+                border-radius: 10px 0 0 10px;
+                border: 1px solid #888;
+                padding: 0 15px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                font-size: 16px;
+                font-family: inherit;
+                color: #000;
+                background-color: #fff;
+                color: $primary-color;
+                font-weight: 500;
+
+                span {
+                    margin-bottom: -10px;
+                }
+
+                .fa-angle-down {
+                    margin-left: 5px;
+                    color: #888;
+                    margin-bottom: -10px;
+                }
+            }
+
+
+            #collapseSpecialist {
+                position: absolute;
+                background-color: #fff;
+                top: 62px;
+                width: 100%;
+                left: 0;
+                padding: 5px 0px;
+                border-radius: 5px;
+                box-shadow: 0px 0px 2px #999;
+                z-index: 5;
+
+                span {
+                    display: block;
+                    font-size: 15px;
+                    cursor: pointer;
+                    padding: 0px 15px;
+
+                    &:hover {
+                        background-color: #eee;
+                    }
+                }
+            }
+        }
+    }
+
+    .searchInputDiv {
+        height: 60px;
+        position: relative;
+        border-top: 1px solid #888;
+        border-bottom: 1px solid #888;
+        background: #fff;
+
+        .title {
+            position: absolute;
+            left: 10px;
+            font-size: 11px;
+            font-weight: 600;
+            font-family: inherit;
+            color: #888;
+        }
+
+        input {
+            padding: 25px 20px 0px 20px;
+            background-color: transparent;
+            border: none;
+            font-size: 18px;
+            color: #222;
+            width: 350px;
+        }
+
+
+    }
+
+    .serachBtnDiv {
+        button {
+            background-color: $primary-color;
+            color: #fff;
+            border: none;
+            border-radius: 0px 10px 10px 0;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 20px;
+            cursor: pointer;
+
+            img {
+                width: 25px;
+            }
+
+            span {
+                font-family: inherit;
+                font-size: 18px;
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+.docsContainer {
+    padding-top: 30px;
+}
+
+@media(max-width:768px) {
+
+    .docSerachCont {
+        flex-direction: column;
+
+        &>div {
+            width: 100%;
+        }
+
+        .specialityDiv {
+            .specialistSelectionContainer {
+                &>button {
+                    border-radius: 10px 10px 0 0;
+                    width: 100%;
+
+                    .fa-angle-down{
+                        margin-right: 20px;
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+
+        .searchInputDiv {
+            border: none;
+            border-left: 1px solid #888;
+            border-right: 1px solid #888;
+
+            input {
+                width: auto;
+            }
+        }
+
+        .serachBtnDiv {
+            button {
+                border-radius: 0 0 10px 10px;
+                width: 100%;
+
+                img{
+                    display: none;
+                }
+            }
+        }
+
+    }
+}

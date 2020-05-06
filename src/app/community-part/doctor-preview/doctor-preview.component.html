@@ -1,1 +1,41 @@
-<p>doctor-preview works!</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="docSerachCont">
+            <div class="specialityDiv">
+                <span class="title">Speciality</span>
+                <div class="specialistSelectionContainer" appDdCollabse>
+                    <button data-target="#collapseSpecialist" aria-controls="collapseSpecialist">
+                        <span>{{selectedSpeciality}}</span>
+                        <i class="fas fa-angle-down"></i>
+                    </button>
+                    <div class="collapse" id="collapseSpecialist">
+                        <span (click)="specialitySelected($event)">All Speciality</span>
+                        <span (click)="specialitySelected($event)">Corona</span>
+                        <span (click)="specialitySelected($event)">Diabetes</span>
+                        <span (click)="specialitySelected($event)">Heart</span>
+                        <span (click)="specialitySelected($event)">Skin</span>
+                        <span (click)="specialitySelected($event)">Alzheimer</span>
+                        <span (click)="specialitySelected($event)">Infiction</span>
+                    </div>
+                </div>
+            </div>
+            <div class="searchInputDiv">
+                <span class="title">Doctor's name</span>
+                <input type="text" placeholder="Doctor's name">
+            </div>
+            <div class="serachBtnDiv">
+                <button>
+                    <img src="../../../assets/images/search.svg">
+                    <span>Search</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="docsContainer">
+            <div class="row">
+                <doctorCard *ngFor="let doc of docs" class="col-md-6"></doctorCard>
+            </div>
+        </div>
+    </div>
+</div>

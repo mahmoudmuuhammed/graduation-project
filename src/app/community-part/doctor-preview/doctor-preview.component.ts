@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-doctor-preview',
+  selector: 'doctorsPreview',
   templateUrl: './doctor-preview.component.html',
   styleUrls: ['./doctor-preview.component.scss']
 })
-export class DoctorPreviewComponent implements OnInit {
+export class DoctorPreviewComponent {
+
+  selectedSpeciality: string = "All Speciality"
+  docs = [1, 2, 3, 4, 5, 6, 7, 8]
 
   constructor() { }
 
-  ngOnInit(): void {
+  specialitySelected(event) {
+    this.selectedSpeciality= event.target.innerText;
   }
 
 }

@@ -1,0 +1,89 @@
+@import '../abstracts/variables';
+
+.docCardOuter {
+    margin: 70px auto 10px auto;
+
+    .docCardInner {
+        margin: 10px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 3px #aaa;
+        position: relative;
+
+        header {
+            img {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                border: 5px solid #fff;
+                box-shadow: 0px -5px 5px -5px #aaa;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: -50px;
+            }
+
+            h5 {
+                padding-top: 50px;
+                text-align: center;
+                color: #444;
+                margin: 0;
+            }
+
+            .docBio {
+                text-align: center;
+                font-family: inherit;
+                font-size: 12px;
+                font-weight: 600;
+                color: #888;
+            }
+        }
+
+        main {
+            padding: 15px;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+
+            .docDetailsDiv {
+                display: flex;
+                align-items: center;
+                margin: 5px;
+
+                img {
+                    width: 20px;
+                }
+
+                .detailsDescription {
+                    color: #555;
+                    margin-left: 10px;
+                }
+            }
+        }
+
+        footer {
+            padding: 20px 0;
+
+            button {
+                background-color: $primary-color;
+                color: #fff;
+                border: none;
+                border-radius: 10px;
+                padding: 10px 30px;
+                font-size: 16px;
+                cursor: pointer;
+                width: 80%;
+                margin: auto;
+                display: block;
+                font-family: inherit;
+            }
+        }
+    }
+}
+
+@media(max-width:768px) {
+    .docCardOuter {
+        .docCardInner {
+            margin: 0px
+        }
+    }
+}
