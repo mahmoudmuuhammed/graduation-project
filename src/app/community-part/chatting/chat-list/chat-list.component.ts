@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Thread } from 'src/app/models/thread.model';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ChattingService } from 'src/app/services/chatting.service';
+import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'chat-list',
@@ -13,6 +14,7 @@ import { ChattingService } from 'src/app/services/chatting.service';
 
 export class ChatListComponent implements OnInit {
     threads: Observable<Thread[]>;
+    profilerId: string;
     currentUser: firebase.User;
     constructor(
         public sharedService: SharedService,
@@ -21,7 +23,6 @@ export class ChatListComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.currentUser = this.auth.auth.currentUser;
         this.currentUser = this.auth.auth.currentUser;
         this.threads = this.chat.getThreads(this.currentUser.uid);
     }
