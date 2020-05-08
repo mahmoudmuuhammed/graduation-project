@@ -3,7 +3,7 @@
 .mainHeader {
     background: url("../../../assets/images/homeBack.svg") no-repeat;
     background-size: cover;
-    min-height: 102vh;
+    min-height: 100vh;
 
     .sloganDiv {
         .slogan {
@@ -42,7 +42,9 @@
         }
     }
 }
-
+.serviceSection{
+    background: url(../../../assets/images/homeBack2.svg) no-repeat bottom;
+}
 .sectionContainer {
     position: relative;
     margin-top: 50px;

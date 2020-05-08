@@ -115,7 +115,7 @@
             left: 50%;
             top: 40%;
             transform: translate(-50%, -40%);
-            animation: downScroll 1s .5s infinite ease-in-out;
+            animation: downScroll 1s .5s infinite ease-in-out !important;
         }
     }
 }
