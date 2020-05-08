@@ -12,6 +12,7 @@ import { Thread, Members } from '../models/thread.model';
 
 export class ChattingService {
     threadCollection: AngularFirestoreCollection<Thread>;
+    channelsCollection: AngularFirestoreCollection<Thread>;
     threadDoc: AngularFirestoreDocument<Thread>;
 
     messagesCollection: AngularFirestoreCollection<Message>;
@@ -53,9 +54,6 @@ export class ChattingService {
             senderId: currentUser,
             timeStamp: Date.now()
         };
-
-        // const members = { [profileId]: true, [currentUser]: true };
-        // const members = { myuid: currentUser, touid: profileId };
         const members: Members = { myuid: currentUser, touid: profileId };
         const thread: Thread = { threadId, members };
         const path = `Chats/${ threadId }/Messages`;

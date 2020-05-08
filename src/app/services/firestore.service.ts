@@ -1,7 +1,7 @@
-import { Injectable, EventEmitter } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserModel } from '../models/user.model';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { Thread } from '../models/thread.model';
 
 
 @Injectable({
@@ -9,7 +9,6 @@ import { Subject, BehaviorSubject } from 'rxjs';
 })
 
 export class FirestoreService {
-    userEventData = new Subject<string>();
     users: AngularFirestoreCollection<UserModel>;
     user: AngularFirestoreDocument<UserModel>;
 
@@ -27,4 +26,9 @@ export class FirestoreService {
         this.user = this.fireDb.doc(path);
         return this.user.valueChanges();
     }
+
+    getChannelsUsers(threadId: string) {
+        return this.fireDb.doc<Thread>(`Chats/${threadId}`);
+    }
+    
 }

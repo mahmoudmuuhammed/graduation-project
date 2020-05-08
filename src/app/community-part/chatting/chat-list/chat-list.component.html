@@ -15,7 +15,8 @@
 <div class="row">
     <div class="col-xl-12 col-lg-12">
         <div class="chat-list" *ngFor="let thread of threads | async">
-            <chat-list-item [thread]="thread"></chat-list-item>
+            <chat-list-item 
+                [thread]="thread"></chat-list-item>
         </div>
     </div>
 </div>
