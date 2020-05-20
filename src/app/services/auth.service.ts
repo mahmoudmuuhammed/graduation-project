@@ -1,13 +1,13 @@
+import { map } from 'rxjs/operators';
 import { Injectable, NgZone } from "@angular/core";
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FormsServices } from './forms.service';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { UserModel } from '../models/user.model'
 import { AngularFireMessaging } from '@angular/fire/messaging';
-import { take } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -18,6 +18,7 @@ export class AuthService {
     user: Observable<firebase.User>;
     userSubject = new BehaviorSubject<UserModel>(null);
     authState: any;
+
     constructor(
         private auth: AngularFireAuth,
         private forms: FormsServices,
@@ -98,6 +99,8 @@ export class AuthService {
         this.auth.auth.signInWithEmailAndPassword(email, password)
             .then(
                 authenticated => {
+                    const status = 'online';
+                    this.updateUserStatus(status);
                     this.auth.auth.currentUser.getIdToken(true).then(Usertoken => {
                         const userData = new UserModel(email, authenticated.user.uid, Usertoken);
                         this.userSubject.next(userData);
@@ -147,8 +150,29 @@ export class AuthService {
         this.fireDb.collection('ActiveUsers').doc(userData.userId).delete().then(() => {
             localStorage.removeItem('userData');
             firebase.auth().signOut();
-        }).then(() => this.router.navigate(['']))
+        }).then(() => {
+            this.router.navigate(['']);
+            const status = 'offline';
+            this.updateUserStatus(status);
+        });
+    }
 
+    updateUserStatus(status: string) {
+        const path = `Users/${ this.currentUser }`;
+        this.fireDb.doc<UserModel>(path)
+        .update({ status: status });
+    }
+
+    updateStatusOnIdle() {
+        document.onvisibilitychange = (e) => {
+            if(document.visibilityState === 'hidden') {
+                const status = 'away';
+                this.updateUserStatus(status);
+            } else {
+                const status = 'online';
+                this.updateUserStatus(status);
+            };
+        };
     }
 }
 
