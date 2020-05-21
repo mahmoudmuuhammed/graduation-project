@@ -1,0 +1,29 @@
+<div class="comment">
+    <div class="comment__info">
+        <div class="comment__info-user">
+            <img 
+                src="../../../../../assets/svgs/man.svg" 
+                alt="user image" 
+                class="comment__info-user__img">
+            <span class="comment__info-user__name">
+                Mahmoud Mohamed
+            </span>
+            <span class="comment__info-user__date">
+                {{ commentData?.creationTime }}
+            </span>
+        </div>
+        <div class="comment__info-rate">
+            <svg class="comment__info-rate__icon">
+                <use xlink:href="../../../../../assets/sprites/icons.svg#percussion-instrument"></use>
+            </svg>
+            <span class="comment__info-rate__counter">
+                2.4k
+            </span>
+        </div>
+    </div>
+    <div class="comment__content">
+        <span>
+            {{ commentData?.content }}
+        </span>
+    </div>
+</div>

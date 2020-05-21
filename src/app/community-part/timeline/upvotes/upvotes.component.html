@@ -1,0 +1,17 @@
+<div style="display: flex; align-items: center;">
+    <svg 
+        class="icon icon--custom icon--up" 
+        (click)="upVote()" 
+        [ngClass]="{ 'up-active' : userVote > 0 }">
+        <use xlink:href="../../../../assets/sprites/posts-icons.svg#up-arrow"></use>
+    </svg>
+    <span class="counter">
+        {{ votesCount }}
+    </span>
+    <svg 
+        class="icon icon--custom icon--down" 
+        (click)="downVote()" 
+        [ngClass]="{ 'down-active' : userVote < 0 }">
+        <use xlink:href="../../../../assets/sprites/posts-icons.svg#down-arrow"></use>
+    </svg>
+</div>

@@ -1,0 +1,48 @@
+@import "../../../../styles/abstracts/variables";
+@import "../../../../styles/abstracts/mixins";
+
+.icon {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    fill: rgba($primary-text, .7);
+
+    &--custom {
+        padding: 9px;
+        width: 37px;
+        height: 37px;
+        border-radius: 5px;
+        transition: none;
+    }
+
+    &--up {
+        &:hover {
+            background-color: $light-primary-color;
+            fill: $primary-color;
+        }
+    }
+
+    &--down {
+        &:hover {
+            background-color: rgba(221, 77, 77, 0.205);
+            fill: rgb(221, 77, 77);
+        }
+    }
+}
+
+.up-active {
+    background-color: $light-primary-color;
+    fill: $primary-color;
+}
+
+.down-active {
+    background-color: rgba(221, 77, 77, 0.205);
+    fill: rgb(221, 77, 77);
+}
+
+.counter {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba($primary-text, .7);
+    margin: 0 .5em;
+}

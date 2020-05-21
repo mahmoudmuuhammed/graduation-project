@@ -1,0 +1,68 @@
+@import "../../../../../styles/abstracts/variables";
+@import "../../../../../styles/abstracts/mixins";
+
+.comment {
+    @include flexbox;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1em;
+
+    &__info {
+        @include flexbox;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+        margin-bottom: 12px;
+
+        &-user {
+            @include flexbox;
+            align-items: flex-start;
+
+            &__img {
+                width: 27px;
+                height: 27px;
+                padding: .1em;
+                background-color: #eee;
+                border-radius: 50%;
+                margin-right: .4em;
+            }
+
+            &__name {
+                font-size: 11px;
+                font-weight: 500;
+                color: $primary-text;
+                margin-right: .4em;
+            }
+
+            &__date {
+                font-size: 11px;
+                font-weight: 500;
+                color: rgba($secondary-text, .7);
+            }
+        }
+
+        &-rate {
+
+            &__icon {
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+                fill: rgba($secondary-text, .7);
+            }
+
+            &__counter {
+                font-weight: 700;
+                font-size: 12px;
+                color: rgba($secondary-text, .7);
+                margin-left: .5em;
+            }
+        }
+    }
+
+    &__content {
+        font-size: 13px;
+        font-weight: 500;
+        color: $primary-text;
+    }
+}

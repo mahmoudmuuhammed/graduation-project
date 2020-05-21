@@ -1,0 +1,12 @@
+import { Component, Input } from "@angular/core";
+import { Post } from 'src/app/models/post.model';
+
+@Component({
+    selector: 'post-list-item',
+    templateUrl: './post-list-item.component.html',
+    styleUrls: ['./post-list-item.component.scss']
+})
+
+export class PostListItemComponent {
+    @Input() postData: Post;
+}

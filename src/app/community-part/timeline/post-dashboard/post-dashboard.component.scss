@@ -1,0 +1,109 @@
+@import "../../../../styles/abstracts/variables";
+@import "../../../../styles/abstracts/mixins";
+
+.post-form {
+    padding: 10px;
+    background-color: $divider-color;
+    border-radius: 5px;
+    margin: 1em;
+    border: .7px solid rgba($secondary-text, .2);
+    min-height: 50px;
+    @include forms;
+
+    &__group {
+        width: 100%;
+        @include flexbox;
+        align-items: center;
+        justify-content: space-between;
+        
+        &-control {
+            resize: none;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            font-size: 15px;
+            color: $primary-text;
+            overflow: hidden;
+            font-family: 'Inter';
+            background-color: transparent;
+
+            &::-webkit-input-placeholder {
+                color: rgba($secondary-text, .6);
+                font-weight: 700;
+            }
+
+            &--custom {
+                &::-webkit-input-placeholder {
+                    font-weight: 500;
+                }
+            }
+        }
+
+        &-img {
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    &__actions {
+        margin-left: .5em;
+        &-icon {
+            width: 18.5px;
+            margin-right: 1.3em;
+            height: 18.5px;
+            fill: $secondary-text;
+            cursor: pointer;
+
+            &--custom {
+                width: 14px;
+                height: 14px;
+            }
+
+            &--drop {
+                width: 13px;
+                height: 13px;
+            }
+
+            &:hover {
+                fill: rgba($secondary-text, .6);
+                transition: none;
+            }
+        }
+    }
+
+    &__submit {
+        position: relative;
+        @include flexbox;
+        align-items: center;
+
+        &-btn {
+            padding: 8px 20px;
+            background-color: $primary-color;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            color: $divider-color;
+            font-weight: 700px;
+            cursor: pointer;
+
+            &:disabled {
+                cursor: not-allowed;
+                pointer-events: all !important;
+                background-color: rgba($primary-color, .4);
+                
+            }
+        }
+
+        &-category {
+            text-align: center;
+            &__btn {
+                background-color: transparent;
+                color: rgba($secondary-text, 1);
+                font-weight: 700;
+                padding: 0px 10px;
+                border-left: 1px solid rgba($primary-color, .4);
+                border-radius: 0;
+            }
+        }
+    }
+}

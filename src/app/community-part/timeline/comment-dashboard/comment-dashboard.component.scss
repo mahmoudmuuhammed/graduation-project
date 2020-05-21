@@ -1,0 +1,41 @@
+@import "../../../../styles/abstracts/variables";
+@import "../../../../styles/abstracts/mixins";
+
+.comment-form {
+    padding: 12px;
+    background-color: $divider-color;
+
+    &__group {
+        @include flexbox;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+
+        &-control {
+            padding: 12px;
+            border: none;
+            resize: none;
+            overflow: hidden;
+            background-color: transparent;
+            width: 100%;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 13px;
+            &::-webkit-input-placeholder {
+                font-size: 13px;
+                color: rgba($secondary-text, .6);
+            }
+        }
+    }
+
+    &__submit {
+        border: none;
+        border-radius: 5px;
+        background-color: $primary-color;
+        font-size: 12px;
+        font-weight: 700;
+        font-family: 'Inter';
+        padding: 8px 12px;
+        color: $divider-color;
+    }
+}
