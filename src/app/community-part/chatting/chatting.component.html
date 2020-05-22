@@ -1,14 +1,12 @@
 <section class="chat">
     <div class="row">
-        <div class="col-xl-3 col-lg-3" 
-            style="padding-right: 0;">
+        <div class="col-md-3 col-sm-2 col-12 p-0 userList" >
             <div class="chat-list-container">
                 <chat-list *ngIf="!sharedService.showingUsersList"></chat-list>
                 <users-list *ngIf="sharedService.showingUsersList"></users-list>
             </div>
         </div>
-        <div class="col-xl-9 col-lg-9"
-            style="padding: 0;">
+        <div class="col-md-9 col-sm-10 col-12 p-0">
             <div class="chat-room-container">
                 <router-outlet></router-outlet>
             </div>

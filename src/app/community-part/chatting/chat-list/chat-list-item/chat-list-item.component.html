@@ -1,21 +1,23 @@
-<div class="chat-litem" [routerLink]="['/chat', (userData | async)?.uid]">
+<div class="chat-litem" (click)='toggleActiveClass($event)' [routerLink]="['/chat', (userData | async)?.uid]">
     <div class="user">
-        <img 
-            src="../../../../../assets/svgs/man.svg"
-            alt="user img" 
-            class="user__img">
-        <div class="user__info">
-            <span class="user__info-name">
-                {{ (userData | async)?.fullname }}
-            </span>
-            <span class="user__info-time">
-                {{ thread.timeStamp | date:'shortTime' }}
-            </span>
+        <img src="../../../../../assets/svgs/man.svg" alt="user img" class="user__img">
+        <div class="userInfoContainer">
+            <div class="user__info">
+                <span class="user__info-name">
+                    {{ (userData | async)?.fullname }}
+                    <!-- Moemen Said -->
+                </span>
+                <span class="user__info-time">
+                    {{ thread.timeStamp | date:'shortTime' }}
+                    <!-- {{currentDate | date:'shortTime'}} -->
+                </span>
+            </div>
+            <div class="lmsg">
+                <span>
+                    {{ thread.lastMsg }}
+                    <!-- klgh hg jahgjkf adhgjkad hguih gkhguihdgu djkfhdg -->
+                </span>
+            </div>
         </div>
-    </div>
-    <div class="lmsg">
-        <span>
-            {{ thread.lastMsg }}
-        </span>
     </div>
 </div>

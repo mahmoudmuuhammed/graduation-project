@@ -14,6 +14,7 @@ import { map } from 'rxjs/operators';
 
 export class ChatListComponent implements OnInit {
     threads: Observable<Thread[]>;
+    //threads=[1,2,3];
     profilerId: string;
     currentUser: firebase.User;
     constructor(

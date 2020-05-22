@@ -9,6 +9,5 @@ export class UserModel {
                 gradFaculty?: string;
                 gradYear?: number, specialty: string };
 
-    constructor(email: string, uid: string, userToken: string) {}
-
+                constructor(private userEmail: string, private userId, private tokenID: string) { }
 };

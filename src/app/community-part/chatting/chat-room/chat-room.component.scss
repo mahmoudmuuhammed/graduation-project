@@ -1,9 +1,23 @@
 @import "../../../../styles/abstracts/mixins";
 
+.chatRoomContainer {
+    position: relative;
+    height: calc(100vh - 55px);
 
+    .chatMessages {
+        overflow-y: auto;
+        height: calc(100vh - 170px); //topnav + chatHeader + chatInput + (((height of otherUsers in future to be added)))
 
+        ::-webkit-scrollbar {
+            width: 2px;
+          }
+    }
 
-.feeds-container {
-    height: 485px;
-    overflow: auto;
+    .chatInput {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+    }
+
 }
