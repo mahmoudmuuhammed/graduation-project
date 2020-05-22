@@ -8,6 +8,8 @@
     @include forms-pages;
     background-image: url(src\assets\svgs\abstract-bg.svg);
     background-size: cover;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .navbar {
@@ -20,18 +22,22 @@
     position: fixed;
     top: 0;
     left: 0;
+
     &__brand {
         width: 100px;
         text-align: center;
         margin-left: 1em;
     }
+
     &__list {
         @include flexbox;
         justify-content: space-around;
         width: 250px;
+
         &-item {
             list-style: none;
         }
+
         &-link {
             @include links(16px, $primary-color);
             font-weight: 600;
@@ -45,28 +51,31 @@
 }
 
 .content {
-    background-color: $divider-color;
+    background-color: rgba(255, 255, 255, .7);
     padding: 2em;
     border-radius: 5px;
     @include flexbox;
     flex-direction: column;
-    width: 400px;
+    min-width: 400px;
 }
 
 .title {
     font-size: 25px;
     font-weight: 600;
     color: #101830;
-    align-self: flex-start;
+    align-self: center;
 }
 
 .form {
     @include forms;
+
     &__fgroup {
         @include form-groups;
+
         &-label {
             @include form-labels;
         }
+
         &-control {
             @include form-controls;
         }
@@ -86,6 +95,7 @@
         font-size: 13px;
         font-weight: 400;
         color: $primary-text;
+
         &-chbox {
             width: 15px;
             height: 15px;
@@ -102,6 +112,7 @@
 .submit {
     width: 100%;
     text-align: center;
+
     &__btn {
         @include buttons;
     }
@@ -110,34 +121,60 @@
 .sociallog {
     @include flexbox;
     width: 100%;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
-     &__item {
-         @include buttons;
-         @include flexbox;
-         align-items: center;
-         font-size: 13px;
 
-         &--g {
-             background-color: #DF4930;
-         }
-         &--fb {
-             background-color: #507CC0;
-         }
-         &--email {
-             background-color: transparent;
-             border: .4px solid $secondary-text;
-             color: $primary-text;
-         }
-     }
- 
-     &__icon {
-         width: 18px;
-         height: 18px;
-         fill: $divider-color;
-         margin-right: .7em;
-         &--custom {
-             fill: rgba($secondary-text, .7);
-         }
-     }
- }
+    &__item {
+        @include buttons;
+        @include flexbox;
+        align-items: center;
+        font-size: 13px;
+        padding: 1em;
+
+        &--g {
+            background-color: #DF4930;
+            margin-right: 2px;
+        }
+
+        &--fb {
+            background-color: #507CC0;
+            margin-left: 2px;
+            ;
+        }
+
+        &--email {
+            background-color: transparent;
+            border: .4px solid $secondary-text;
+            color: $primary-text;
+        }
+    }
+
+    &__icon {
+        width: 18px;
+        height: 18px;
+        fill: $divider-color;
+        margin-right: .7em;
+
+        &--custom {
+            fill: rgba($secondary-text, .7);
+        }
+    }
+}
+
+@media(max-width:576px) {
+    .sociallog {
+        flex-direction: column;
+
+        &__item {
+            &--g {
+                margin:5px 0px;
+                width:100%
+            }
+
+            &--fb {
+                margin:0px;
+                width:100%
+            }
+        }
+    }
+}

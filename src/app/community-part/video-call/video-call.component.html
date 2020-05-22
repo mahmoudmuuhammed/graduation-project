@@ -1,0 +1,14 @@
+<div class="outerVideoCall">
+  <div>
+    <h2 class="callerName">{{CallerName}}</h2>
+  </div>
+  <div class="innerVideoCall">
+    <div id="agora_local"></div>
+    <div class="remote-containers">
+      <div class="remote_calls" *ngFor="let remote of remoteCalls;" [id]="remote"></div>
+    </div>
+  </div>
+  <button class="btn endCallBtn" (click)="endCall()">
+    <img src="../../../assets/images/decline.svg">
+  </button>
+</div>

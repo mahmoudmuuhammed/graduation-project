@@ -6,9 +6,6 @@
         </div>
 
         <div class="col-md-10 col-lg-8 col-12">
-            <!-- <timeline></!-->
-            <!-- <chats></chats> -->
-            <!-- <profile></profile> -->
             <router-outlet></router-outlet>
         </div>
 
@@ -19,6 +16,14 @@
     </div>
 </div>
 
-<div #postingDiv class="addingPostingArea">
+<!-- <div #postingDiv class="addingPostingArea">
     <add-post (closeDivEmit)="hidePostingDiv()" [currentDate]="currentDateClicked"></add-post>
+</div> -->
+
+<div #callingAlert *ngIf="callComming">
+    <callingAlert [CallerData]='callerData'></callingAlert>
+</div>
+
+<div #videoCallDiv *ngIf="callAccepted">
+    <videoCall [channelName]='currentChannelName' [CallerName]='currentCallerName'></videoCall>
 </div>

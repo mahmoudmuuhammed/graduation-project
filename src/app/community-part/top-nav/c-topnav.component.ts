@@ -1,6 +1,7 @@
 import { Component ,Output} from "@angular/core";
 
-import { SideBarToggler } from "../../services/sideBar.service"
+import { SharedService } from "../../services/shared.service"
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
     selector: 'c-topnav',
@@ -11,13 +12,17 @@ import { SideBarToggler } from "../../services/sideBar.service"
 export class TopnavComponent {
     navCollabseStatus: boolean = false;
     
-    constructor(private sidebarToggler:SideBarToggler){
-        this.sidebarToggler.sideBarNavItemClicked.subscribe((navStatus:boolean) => this.navCollabseStatus=navStatus)
+    constructor(private sharedService:SharedService,private authService:AuthService){
+        this.sharedService.sideBarNavItemClicked.subscribe((navStatus:boolean) => this.navCollabseStatus=navStatus)
     }
 
 
     mainNavBtnClick(event) {
         this.navCollabseStatus = !this.navCollabseStatus;
-        this.sidebarToggler.topNavTogBtnClicked.emit(this.navCollabseStatus)
+        this.sharedService.topNavTogBtnClicked.emit(this.navCollabseStatus)
+    }
+
+    onLogout(){
+        this.authService.logout();
     }
 }

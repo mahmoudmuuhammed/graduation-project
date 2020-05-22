@@ -5,6 +5,8 @@ import { UploadingService } from './services/uploading.service';
 import { FirestoreService } from './services/firestore.service';
 import { ChattingService } from './services/chatting.service';
 import { SharedService } from './services/shared.service';
+import { AngularFireMessaging } from '@angular/fire/messaging'
+
 
 @NgModule({
     providers: [
@@ -13,7 +15,8 @@ import { SharedService } from './services/shared.service';
         UploadingService,
         FirestoreService,
         ChattingService,
-        SharedService
+        SharedService,
+        AngularFireMessaging
     ]
 })
 

@@ -8,10 +8,10 @@
                 <i></i><i></i><i></i>
             </span>
         </button>
-        <a class="navbar-brand d-none d-md-block logo" href="#">
+        <a class="navbar-brand d-none d-md-block logo">
             <img src="../assets/images/logo.svg" class="d-inline-block align-top" alt="Logo">
         </a>
-        <a class="navbar-brand d-md-none d-block smallLogo" href="#" style="margin-top:-5px;width:160px">
+        <a class="navbar-brand d-md-none d-block smallLogo" style="margin-top:-5px;width:160px">
             <img src="../assets/images/miniLogo.svg" class="d-inline-block align-top" alt="Logo">
         </a>
     </div>
@@ -59,7 +59,7 @@
                                     <span class="slider round"></span>
                                 </label>
                             </div>
-                            <div class="optionDiv"><a href="#">Logout</a></div>
+                            <div (click)='onLogout()' class="optionDiv"><a>Logout</a></div>
                         </div>
                     </div>
                 </div>
