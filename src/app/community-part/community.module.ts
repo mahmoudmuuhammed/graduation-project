@@ -13,6 +13,8 @@ import { CommunityTopnavComponent } from './community-topnav/community-topnav.co
 import { DoctorPreviewModule } from './doctor-preview/doctor-preview.module';
 import { TopnavComponent } from './top-nav/c-topnav.component';
 import { SidebarComponent } from './sidebar/c-sidebar.component';
+import { CallingComponent } from './callingAlert/callingAlert.component';
+import { VideoCallComponent } from './video-call/video-call.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { SidebarComponent } from './sidebar/c-sidebar.component';
         CommunitySidebarComponent,
         CommunityTopnavComponent,
         TopnavComponent,
-        SidebarComponent
+        SidebarComponent,
+        CallingComponent,
+        VideoCallComponent
     ],
     imports: [
         CommonModule,

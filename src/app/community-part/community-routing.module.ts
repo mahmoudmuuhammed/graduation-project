@@ -1,4 +1,4 @@
-import { NgModule, Component } from "@angular/core";
+import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from '@angular/router';
 
 import { CommunityContainerComponent } from './community.component'
@@ -20,6 +20,7 @@ const communityRoutes: Routes = [
                 ]
             },
             { path: 'Profile', component: Profile },
+            // { path: 'Chats', component: ChattingComponent },
             { path: 'Doctors', component: DoctorPreviewComponent },
         ]
     }

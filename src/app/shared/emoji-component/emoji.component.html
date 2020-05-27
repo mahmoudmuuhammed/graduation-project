@@ -1,0 +1,7 @@
+<div class="emoji">
+    <ul class="emoji__list">
+        <li class="emoji__list-item" *ngFor="let emoji of emojis | async">
+            {{ emoji.character }}
+        </li>
+    </ul>
+</div>

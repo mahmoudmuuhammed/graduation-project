@@ -1,0 +1,43 @@
+@import "../../../../styles/abstracts/variables";
+@import "../../../../styles/abstracts/mixins";
+
+.sociallog {
+    @include flexbox;
+    flex-direction: column;
+    align-items: flex-start;
+
+
+    &__item {
+         @include buttons;
+         @include flexbox;
+         font-size: 13px;
+         margin-bottom: 1em;
+
+         &--g {
+             background-color: #DF4930;
+         }
+         &--fb {
+             background-color: #507CC0;
+         }
+         &--email {
+             background-color: transparent;
+             border: .4px solid $primary-color;
+             color: $primary-text;
+
+             a {
+                text-decoration: none;
+                color: $primary-text;
+             }
+         }
+     }
+ 
+     &__icon {
+         width: 18px;
+         height: 18px;
+         fill: $divider-color;
+         margin-right: .7em;
+         &--custom {
+             fill: rgba($secondary-text, .7);
+         }
+     }
+}

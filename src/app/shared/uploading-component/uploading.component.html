@@ -1,0 +1,28 @@
+<section class="upload">
+    <div class="upload__content">
+        <label class="upload__area">
+            <input type="file" (change)="onPreviewFileUploaded($event)">
+            <svg class="upload__area-icon">
+                <use xlink:href="../../../assets/sprites/icons.svg#document"></use>
+            </svg>
+            <span class="upload__area-title">
+                Select A File To Upload
+            </span>
+            <span class="upload__area-dragdrop">
+                Upload your files and images
+            </span>
+        </label>
+
+        <!-- <div class="preview">
+            <img 
+                src="../../../assets/images/example.jpg" 
+                alt="" class="preview__img">
+            
+            <button class="preview__upload">Upload</button>
+        </div> -->
+
+        <div class="upload__close">
+            <span>&times;</span>
+        </div>
+    </div>
+</section>
