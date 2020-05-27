@@ -20,8 +20,7 @@ export class UpvotesComponent implements OnInit, OnDestroy {
         this.subscribtion = this.feedsService.getTotalVotesOnPost(this.postId)
         .subscribe(
             postData => {
-                this.userVote = postData.upvotes['test1'];
-                const values = Object.values(postData.upvotes);
+                const values = Object.values(postData.upVotes);
                 for(const value of values) {
                     this.votesCount += value;
                 };

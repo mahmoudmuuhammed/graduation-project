@@ -6,63 +6,81 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 1em;
+    padding: .5em 1em;
 
     &__info {
         @include flexbox;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: flex-start;
         width: 100%;
-        margin-bottom: 12px;
+        margin-bottom: 5px;
 
-        &-user {
-            @include flexbox;
-            align-items: flex-start;
-
-            &__img {
-                width: 27px;
-                height: 27px;
-                padding: .1em;
+        .userImgDiv {
+            img {
+                width: 35px;
+                height: 35px;
                 background-color: #eee;
                 border-radius: 50%;
                 margin-right: .4em;
             }
+        }
 
-            &__name {
-                font-size: 11px;
+        .commentDataDiv {
+            width: 100%;
+            background: #efefef;
+            padding: 5px 15px; 
+            border-radius: 5px;
+
+            .userdata {
+                display: flex;
+                justify-content: space-between;
+
+                .comment__info-user {
+                    &__name {
+                        font-size: 14px;
+                        font-weight: 600;
+                        color: $primary-text;
+                        margin-right: .4em;
+                    }
+
+                    &__date {
+                        font-size: 12px;
+                        font-weight: 500;
+                        color: rgba($secondary-text, .7);
+                    }
+                }
+
+                .comment__info-rate {
+                    &__counter {
+                        font-weight: 700;
+                        font-size: 12px;
+                        color: rgba($secondary-text, .7);
+                    }
+                }
+            }
+
+            .commentContentDiv {
+                font-size: 13px;
                 font-weight: 500;
                 color: $primary-text;
-                margin-right: .4em;
-            }
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
 
-            &__date {
-                font-size: 11px;
-                font-weight: 500;
-                color: rgba($secondary-text, .7);
-            }
-        }
-
-        &-rate {
-
-            &__icon {
-                width: 20px;
-                height: 20px;
-                cursor: pointer;
-                fill: rgba($secondary-text, .7);
-            }
-
-            &__counter {
-                font-weight: 700;
-                font-size: 12px;
-                color: rgba($secondary-text, .7);
-                margin-left: .5em;
+                .clappingIcon {
+                    width: 30px;
+                    height: 30px;
+                    fill: rgba(86, 86, 90, 0.7);
+                    cursor: pointer;
+                    margin: 5px;
+                    border-radius: 5px;
+                    padding: 5px;
+                    background: #ccc;
+                }
             }
         }
+
     }
 
-    &__content {
-        font-size: 13px;
-        font-weight: 500;
-        color: $primary-text;
-    }
+
 }

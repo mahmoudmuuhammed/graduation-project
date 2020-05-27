@@ -3,6 +3,7 @@ import { AngularFireMessaging } from '@angular/fire/messaging'
 import { Subject } from 'rxjs';
 
 import { notificationStructure } from '../models/callNotification.model'
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({ providedIn: 'root' })
 
@@ -10,7 +11,8 @@ export class AgouraServic {
     CallSubject = new Subject<notificationStructure>();
     audio = new Audio("../../assets/ringtone/ringtone.wav");
 
-    constructor(private fireMsg: AngularFireMessaging) {}
+    constructor(private fireMsg: AngularFireMessaging,
+        private firestore:AngularFirestore) {}
 
     requestPermission() {
         this.fireMsg.requestToken.subscribe(() => {},
@@ -29,6 +31,7 @@ export class AgouraServic {
                             this.CallSubject.next(notificationAlert)
                             this.playsound();
                         }
+                        // console.log(notificationAlert)
                     })
                 }
             }
@@ -43,5 +46,11 @@ export class AgouraServic {
 
     stopRingtone() {
         this.audio.pause();
+    }
+
+    setUserStatus(userId:string,status:string){
+        const path = `Users/${userId}`;
+        this.firestore.doc(path)
+            .update({ status: status });
     }
 }

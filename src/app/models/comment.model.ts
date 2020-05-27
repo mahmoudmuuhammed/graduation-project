@@ -1,6 +1,8 @@
 export class Comment {
+    postId:string
     commentId?: string;
     content: string;
-    ownerId: string;
-    creationTime: number
+    userId: string;
+    createdTime: number;
+    userName:string;
 };

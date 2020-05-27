@@ -1,34 +1,8 @@
-<div class="notificationDiv">
-    <a href="#">
-        <div class="notificationContentDiv">
-            <div><img src="./assets/images/profile.jpg"></div>
-            <div>
-                <p>moemen added new post</p>
-            </div>
-        </div>
-    </a>
-    <a href="#">
-        <div class="notificationContentDiv">
-            <div><img src="./assets/images/profile.jpg"></div>
-            <div>
-                <p>moemen added new post</p>
-            </div>
-        </div>
-    </a>
-    <a href="#">
-        <div class="notificationContentDiv">
-            <div><img src="./assets/images/profile.jpg"></div>
-            <div>
-                <p>moemen added new post</p>
-            </div>
-        </div>
-    </a>
-    <a href="#">
-        <div class="notificationContentDiv">
-            <div><img src="./assets/images/profile.jpg"></div>
-            <div>
-                <p>moemen added new post</p>
-            </div>
-        </div>
-    </a>
+<div class="notificationDivCont">
+    <div class="notificationDiv" *ngFor="let notification of notifications | async">
+        <notification-item [notificationData]='notification'></notification-item>
+    </div>
+    <!-- <div *ngIf="noNotification">
+        <h5 class="noNotificationTitle">No notification yet</h5>
+    </div> -->
 </div>

@@ -1,16 +1,13 @@
 <div class="post-item">
     <div class="post-details">
         <div class="post-details__user">
-            <div class="postData">
-                <img src="../../../../../assets/svgs/man.svg" alt="user img" class="post-details__user-img">
-                <div class="postOwnerandCategory">
-                    <span class="postOwner">{{postOwner}}</span>
-                    <span class="postCategory">{{postData.category}}</span>
-                </div>
-            </div>
-            <span class="postTimeDiv">
-                <i class="far fa-clock"></i>
-                <span>{{postData.createdTime | date:'d,LLL h:m aa'}}</span>
+            <img src="../../../../../assets/svgs/man.svg" alt="user img" class="post-details__user-img">
+            <span>
+                {{ postOwner }} in <b>{{ postData?.category }}</b>
+            </span>
+            <span class="span"></span>
+            <span>
+                {{ postData?.createdTime | date:'short' }}
             </span>
         </div>
     </div>
@@ -23,7 +20,7 @@
         </span>
     </div>
     <div class="image-container">
-        <img src="../../../../../assets/images/img1.png" alt="post image" class="image-container__img">
+        <img src="../../../../../assets/images/example.jpg" alt="post image" class="image-container__img">
 
     </div>
 

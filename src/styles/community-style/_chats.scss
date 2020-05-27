@@ -1,4 +1,4 @@
-.previousChatsDiv {
+.userList {
     position: sticky;
     overflow-x: hidden;
     overflow-y: auto;
@@ -231,7 +231,7 @@
 
 @media(max-width:768px) {
 
-    .previousChatsDiv {
+    .userList {
         position: relative;
         overflow: auto;
         background-color: #e5e5e5;
@@ -289,7 +289,7 @@
 }
 
 @media(max-width:576px) {
-    .previousChatsDiv {
+    .userList {
         height: auto;
 
         .userMainDivCont {

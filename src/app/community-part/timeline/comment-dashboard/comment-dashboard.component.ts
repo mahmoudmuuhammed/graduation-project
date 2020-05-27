@@ -11,7 +11,7 @@ import { FeedsService } from 'src/app/services/feeds.service';
 export class CommentDashboardComponent implements OnInit {
     commentForm: FormGroup;
     @Input() postId: string;
-    constructor(private feedsService: FeedsService) {}
+    constructor(private feedsService: FeedsService) { }
 
     ngOnInit() {
         this.commentFormController();
@@ -26,12 +26,12 @@ export class CommentDashboardComponent implements OnInit {
 
     addComment() {
         const commentContent = this.commentForm.get('content').value;
-        this.feedsService.setupComment(this.postId, commentContent);
-        this.commentForm.reset();
+            this.feedsService.setupComment(this.postId, commentContent);
+            this.commentForm.reset();
     }
 
     handleEnterAction(event) {
-        if(event.keyCode === 13) {
+        if (event.keyCode === 13) {
             this.addComment();
         }
     }

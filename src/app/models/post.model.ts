@@ -1,10 +1,10 @@
 export class Post {
-    postId?: string;
-    authorId: string;
+    postKey?: string;
+    userID: string;
     title: string;
     description: string;
     category: string;
-    creationTime: number;
-    postImgUrl?: string;
-    upvotes?: object;
+    createdTime: number;
+    postPhoto?: string;
+    upVotes?: object;
 };

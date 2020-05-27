@@ -8,19 +8,21 @@
     &__group {
         @include flexbox;
         width: 100%;
-        align-items: center;
         justify-content: space-between;
 
         &-control {
             padding: 12px;
-            border: none;
+            border: 1px solid #ccc;
             resize: none;
             overflow: hidden;
             background-color: transparent;
             width: 100%;
-            border-radius: 5px;
+            border-radius: 5px 0 0 5px;
             font-weight: 500;
             font-size: 13px;
+            font-family: inherit;
+            border-right: none;
+
             &::-webkit-input-placeholder {
                 font-size: 13px;
                 color: rgba($secondary-text, .6);
@@ -30,12 +32,13 @@
 
     &__submit {
         border: none;
-        border-radius: 5px;
-        background-color: $primary-color;
+        border-radius: 0 5px 5px 0;
+        background-color: #764BCB;
         font-size: 12px;
         font-weight: 700;
-        font-family: 'Inter';
+        font-family: "Inter";
         padding: 8px 12px;
-        color: $divider-color;
+        color: #fff;
+        cursor: pointer;
     }
 }

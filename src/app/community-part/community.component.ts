@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/co
 
 import { AgouraServic } from 'src/app/services/agora.service';
 import { SharedService } from '../services/shared.service'
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'community',
@@ -10,31 +11,21 @@ import { SharedService } from '../services/shared.service'
 })
 
 export class CommunityContainerComponent {
-  //currentDateClicked: Date;
-  // @ViewChild('postingDiv') postingDiv: ElementRef;
   callerData: { callerName: string, callerImgSrc: string, channelName: string };
-  currentChannelName: string;
-  currentCallerName: string = '';
+  channelName: string
   callAccepted: boolean = false;
   callComming: boolean = false;
   @ViewChild('callingAlert') callingAlert: ElementRef;
 
   constructor(private sharedService: SharedService,
     private agoraService: AgouraServic,
-    private changeDetector: ChangeDetectorRef) {
+    private changeDetector: ChangeDetectorRef,
+    private authService: AuthService) {
 
-    // this.sharedService.showPostEmitter.subscribe(
-    //   currentDate => {
-    //     this.currentDateClicked = currentDate;
-    //     this.postingDiv.nativeElement.style.display = 'block';
-    //     document.querySelector('body').style.cssText = 'overflow-y:hidden;padding-right:10px';
-    //     typeof window.orientation === 'undefined' ? document.getElementById('topNav').style.paddingRight = '20px' : ''
-    //   });
-
-    //sending Call
+    //Making Call
     this.sharedService.callingSubject.subscribe(
       val => {
-        this.currentChannelName = val.channelName
+        this.channelName = val.channelName
         this.callAccepted = val.state;
         this.changeDetector.detectChanges();
       }
@@ -53,17 +44,13 @@ export class CommunityContainerComponent {
     this.agoraService.requestPermission();
     this.agoraService.receiveMessage();
     this.agoraService.CallSubject.subscribe((notification) => {
-      this.currentChannelName = notification.data["gcm.notification.channelName"]
+      console.log(notification.data.channelName)
+      this.channelName = notification.data.channelName
       this.callComming = true
       this.changeDetector.detectChanges();
     })
 
-  }
+    this.authService.updateStatusOnIdle();
 
-  // hidePostingDiv() {
-  //   this.postingDiv.nativeElement.style.display = 'none'
-  //   document.querySelector('body').style.cssText = 'overflow-y:scroll;padding-right:0px';
-  //   if (typeof window.orientation === 'undefined')
-  //     document.getElementById('topNav').style.paddingRight = '10px'
-  // }
+  }
 }

@@ -1,29 +1,39 @@
 <div class="comment">
     <div class="comment__info">
-        <div class="comment__info-user">
-            <img 
-                src="../../../../../assets/svgs/man.svg" 
-                alt="user image" 
-                class="comment__info-user__img">
-            <span class="comment__info-user__name">
-                Mahmoud Mohamed
-            </span>
-            <span class="comment__info-user__date">
-                {{ commentData?.creationTime }}
-            </span>
+        <div class="userImgDiv">
+            <img src="../../../../../assets/svgs/man.svg" alt="user image" class="comment__info-user__img">
         </div>
-        <div class="comment__info-rate">
-            <svg class="comment__info-rate__icon">
-                <use xlink:href="../../../../../assets/sprites/icons.svg#percussion-instrument"></use>
-            </svg>
-            <span class="comment__info-rate__counter">
-                2.4k
-            </span>
+        <div class="commentDataDiv">
+            <div class="userdata">
+                <div class="comment__info-user">
+
+                    <span class="comment__info-user__name">
+                        <a>
+                            {{ commentData?.userName}}
+                        </a>
+                    </span>
+                    <span class="comment__info-user__date">
+                        in {{ commentData?.createdTime |date:'d,LLL h:m aa'}}
+                    </span>
+                </div>
+                <div class="comment__info-rate">
+                    
+                    <span class="comment__info-rate__counter">
+                        2 clapping
+                    </span>
+                </div>
+            </div>
+            <div class="commentContentDiv">
+                <span>
+                    {{ commentData?.content }}
+                </span>
+                <div  (click)="clapping()">
+                    <svg class="clappingIcon">
+                        <use xlink:href="../../../../../assets/sprites/posts-icons.svg#percussion-instrument"></use>
+                    </svg>
+                </div>
+                
+            </div>
         </div>
-    </div>
-    <div class="comment__content">
-        <span>
-            {{ commentData?.content }}
-        </span>
     </div>
 </div>
