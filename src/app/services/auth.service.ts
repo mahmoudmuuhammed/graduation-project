@@ -63,7 +63,7 @@ export class AuthService {
             uid: this.currentUser,
             email: email,
             photoUrl: 'dsadad',
-            creationTime: creationTime,
+            createdTime: creationTime,
             fullName: fullname,
             userType: userType
         })

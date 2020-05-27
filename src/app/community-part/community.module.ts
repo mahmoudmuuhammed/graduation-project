@@ -15,6 +15,8 @@ import { TopnavComponent } from './top-nav/c-topnav.component';
 import { SidebarComponent } from './sidebar/c-sidebar.component';
 import { CallingComponent } from './callingAlert/callingAlert.component';
 import { VideoCallComponent } from './video-call/video-call.component';
+import { NotificationComponent } from './notification/notification.component';
+import { NotificationItemComponent } from './notification/notification-item/notification-item.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { VideoCallComponent } from './video-call/video-call.component';
         TopnavComponent,
         SidebarComponent,
         CallingComponent,
-        VideoCallComponent
+        VideoCallComponent,
+        NotificationComponent,
+        NotificationItemComponent
     ],
     imports: [
         CommonModule,

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CommunityContainerComponent } from './community.component'
 import { TimelineComponent } from './timeline/timeline.component';
-import { Profile } from './profile/profile.component';
+import { ProfileComponent } from './profile/profile.component';
 import { ChattingComponent } from '../community-part/chatting/chatting.component';
 import { ChatRoomComponent } from '../community-part/chatting/chat-room/chat-room.component';
 import { DoctorPreviewComponent } from './doctor-preview/doctor-preview.component';
@@ -19,7 +19,7 @@ const communityRoutes: Routes = [
                     { path: ':id', component: ChatRoomComponent }
                 ]
             },
-            { path: 'Profile', component: Profile },
+            { path: 'Profile', component: ProfileComponent },
             // { path: 'Chats', component: ChattingComponent },
             { path: 'Doctors', component: DoctorPreviewComponent },
         ]

@@ -6,8 +6,6 @@ import { FirestoreService } from './services/firestore.service';
 import { ChattingService } from './services/chatting.service';
 import { SharedService } from './services/shared.service';
 import { FeedsService } from './services/feeds.service';
-import { SideBarToggler } from './services/sideBar.service';
-import { ShowPostingService } from './services/showPosting.service';
 import { AngularFireMessaging } from '@angular/fire/messaging'
 
 
@@ -20,8 +18,6 @@ import { AngularFireMessaging } from '@angular/fire/messaging'
         ChattingService,
         SharedService,
         FeedsService,
-        SideBarToggler,
-        ShowPostingService,
         AngularFireMessaging
     ]
 })
