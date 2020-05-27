@@ -11,7 +11,9 @@ export const environment = {
     appId: "1:155055518569:web:b607e06a4bb3276a7203f8",
     measurementId: "G-QFC77J5M9S"
   },
-  
+  mapboxConfig: {
+    apiKey: 'pk.eyJ1IjoibWFobW91ZDIyMzM5OSIsImEiOiJja2FnN2UzOXgwM3djMnFuN3J5bmljYmFsIn0.kwyqLrBQZIEJOYyiQVs9Ug'
+  },
    agoraConfig: {
     AppID: '0aa38281b2a84016b2c5b0ed745d13a0',
   }

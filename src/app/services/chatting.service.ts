@@ -12,7 +12,6 @@ import { Thread, Members } from '../models/thread.model';
 
 export class ChattingService {
     threadCollection: AngularFirestoreCollection<Thread>;
-    channelsCollection: AngularFirestoreCollection<Thread>;
     threadDoc: AngularFirestoreDocument<Thread>;
 
     messagesCollection: AngularFirestoreCollection<Message>;
@@ -54,7 +53,7 @@ export class ChattingService {
             senderId: currentUser,
             timeStamp: Date.now()
         };
-        const members: Members = { myuid: currentUser, touid: profileId };
+        const members = { [currentUser]: 0, [profileId]: 0 };
         const thread: Thread = { threadId, members };
         const path = `Chats/${ threadId }/Messages`;
         this.afs.collection(`Chats`)
@@ -75,9 +74,10 @@ export class ChattingService {
     }
 
     getThreads(currentUserId: string) {
-        this.threadCollection = this.afs.collection('Chats', 
-        ref => { return ref.where('members.myuid' || 'members.touid', '==', currentUserId)
-    .orderBy('timeStamp', 'desc') });
+        this.threadCollection = this.afs.collection('Chats',
+        ref => { return ref
+            .where(`members.${currentUserId}`, '<=', 0)
+             });
         return this.threadCollection.valueChanges();
     }
 
@@ -91,6 +91,7 @@ export class ChattingService {
             lastMsg: message,
             timeStamp: Date.now()
         };
+
         return this.afs.doc(`Chats/${threadId}`).update(data);
     }
 }

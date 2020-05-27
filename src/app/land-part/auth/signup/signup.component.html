@@ -20,6 +20,20 @@
         </div>
         <div class="stepper">
             <mat-vertical-stepper linear #stepper>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <label class="stepper__label">
+                            Social Sign up
+                        </label>
+                    </ng-template>
+                    <social></social>
+                    <div class="stepper__actions">
+                        <button matStepperNext
+                            class="stepper__actions-submit u-mrgt-1">
+                            Sign up with email
+                        </button>
+                    </div>
+                </mat-step>
                 <mat-step [completed]="forms.accountForm.valid" >
                     <ng-template matStepLabel>
                         <label class="stepper__label">

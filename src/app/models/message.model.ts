@@ -3,4 +3,4 @@ export class Message {
     timeStamp: number;
     senderId: string;
     content: string;
-}
+};

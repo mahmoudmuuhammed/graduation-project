@@ -5,10 +5,13 @@ export class UserModel {
     photoUrl?: string;
     createdTime?: string;
     status?: string;
+    userType: AccountType;
     notification_token_id?: string;
-    userType: {
-        type: string;
-        gradFaculty?: string;
-        gradYear?: number, specialty: string
-    };
+};
+
+export class AccountType {
+    usertype: string;
+    gradFaculty?: string;
+    gradYear?: string;
+    specialty?: string;
 }

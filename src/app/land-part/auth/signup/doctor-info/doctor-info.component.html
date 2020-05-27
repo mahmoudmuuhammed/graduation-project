@@ -71,6 +71,32 @@
             placeholder="Enetr your graduation faculty" 
             formControlName="g-faculty">
     </div>
+    <div class="form__fgroup u-mrgb-1" *ngIf="forms.disableForPatient">
+        <div class="form__fgroup-label">
+            <label for="location">Location</label>
+            <div class="validation" 
+                *ngIf="!forms.locationControl.valid && forms.locationControl.touched">
+                <span *ngIf="forms.locationControl.errors.required">
+                    {{ forms.validationErrors.required }}
+                </span>
+                <svg class="validation__icon">
+                    <use xlink:href="../../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                </svg>
+            </div>
+        </div>
+        <input 
+            type="text" 
+            class="form__fgroup-control" 
+            id="location" 
+            placeholder="Enetr your location" 
+            formControlName="location" (keyup)="onSearch($event)" [value]="selectedAddress">
+    </div>
+    <ul class="location-list" *ngIf="addresses.length > 0">
+        <li 
+            class="location-list__item" 
+            *ngFor="let address of addresses" 
+            (click)="onSelect(address)">{{ address }}</li>
+    </ul>
     <div class="form__fgroup u-mrgb-2" *ngIf="forms.disableForPatient">
         <div class="form__fgroup-label">
             <label for="g-year">Graduation Year</label>
@@ -91,6 +117,7 @@
             placeholder="Enetr your graduation year" 
             formControlName="g-year">
     </div>
+    
     <!-- --------------------------  -->
 
     <div class="items" *ngIf="forms.disableForPatient">
@@ -101,15 +128,23 @@
         </div>
         <div class="document u-mrgb-2">
             <img
-                src="../../../../../assets/svgs/id-card.svg"
+                [src]="imgSrc"
                 alt="id-card"
                 class="u-mrgb-2 document__img">
-            <label class="document__upload">
+            <label class="document__upload u-mrgb-1">
                 <input 
                     type="file"
-                    accept="image/*">
+                    accept="image/*" 
+                    (change)="preview($event)">
                 Upload your license
             </label>
+            <button 
+                class="document__upload" 
+                [hidden]="!checkBtn"
+                (click)="checkingLicesne()">
+                Checking
+            </button>
+            <p *ngIf="checkingMessage">{{ checkingMessage }}</p>
         </div>
     </div>
 </form>

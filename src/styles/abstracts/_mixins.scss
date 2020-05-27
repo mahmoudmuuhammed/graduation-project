@@ -36,7 +36,7 @@
 @mixin forms {
     @include flexbox;
     align-items: flex-start;
-    flex-direction: column;
+    flex-direction: column; 
 }
 
 @mixin form-groups {
@@ -59,20 +59,20 @@
 
 @mixin form-controls {
     width: 100%;
-    padding: .6em .8em;
+    padding: .9em .8em;
     border: 1px solid #eee;
     border-radius: 5px;
-    font-size: 15px;
-    font-weight: 400;
+    font-size: 13px;
+    font-weight: 500;
     font-family: 'Inter' !important;
     &:focus {
         border: 1px solid $primary-color;
     }
 
     &::-webkit-input-placeholder {
-        font-size: 12px;
-        font-weight: 400;
-        color: rgba($secondary-text, .8);
+        font-size: 13px;
+        font-weight: 500;
+        color: rgba($secondary-text, .7);
         font-family: 'Inter' !important;
     }
 }

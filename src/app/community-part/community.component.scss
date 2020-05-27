@@ -1,1 +1,36 @@
-@import "../../styles/community-style/communityContainer";
+@import "../../styles/abstracts/variables";
+@import "../../styles/abstracts/mixins";
+
+
+.community {
+    width: 100%;
+    min-height: 100vh;
+    @include flexbox;
+    
+
+    &__sidebar {
+        width: 256px;
+        height: 100vh;
+        background-color: #334150;
+        position: sticky;
+        top: 0;
+    }
+
+    &__main {
+        width: calc(100% - 256px);
+
+        &-topnav {
+            height: auto;
+            border-bottom: 1px solid rgba(#eee, .5);
+            position: sticky;
+            top: 0;
+            background-color: $divider-color;
+            z-index: 50;
+        }
+
+        &-router {
+            min-height: 545px;
+            background-color: #F3F5F6;
+        }
+    }
+}

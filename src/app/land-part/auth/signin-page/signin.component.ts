@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormsServices } from 'src/app/services/forms.service';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -16,8 +15,7 @@ export class SigninPageComponent implements OnInit {
     }
 
     signinSubmit() {
-        // this.authService.SignIn();
-        this.authService.login();
+        this.authService.loginRequest();
     }
 
     facebookProviderAuth() {
