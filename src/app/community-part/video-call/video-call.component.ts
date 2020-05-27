@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
 import { AngularAgoraRtcService, Stream } from 'angular-agora-rtc';
 import { SharedService } from 'src/app/services/shared.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { AgouraServic } from 'src/app/services/agora.service';
 
 @Component({
   selector: 'videoCall',
@@ -18,7 +20,9 @@ export class VideoCallComponent implements OnInit {
 
   constructor(private agoraService: AngularAgoraRtcService,
     private detectChange: ChangeDetectorRef,
-    private sharedService: SharedService) {
+    private sharedService: SharedService,
+    private authService:AuthService,
+    private customAgoraService:AgouraServic) {
     this.agoraService.createClient();
   }
 
@@ -37,6 +41,8 @@ export class VideoCallComponent implements OnInit {
   }
 
   endCall() {
+    const userId=this.authService.currentUser
+    this.customAgoraService.setUserStatus(userId, 'Online')
     this.localStream.close();
     this.localStream.stop();
     this.agoraService.client.leave();
