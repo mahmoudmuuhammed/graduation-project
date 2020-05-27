@@ -1,13 +1,14 @@
 export class UserModel {
     uid: string;
     email: string;
-    fullname: string;
+    fullName: string;
     photoUrl?: string;
-    creationTime?: string;
+    createdTime?: string;
     status?: string;
-    userType: { type: string;
-                gradFaculty?: string;
-                gradYear?: number, specialty: string };
-
-                constructor(private userEmail: string, private userId, private tokenID: string) { }
-};
+    notification_token_id?: string;
+    userType: {
+        type: string;
+        gradFaculty?: string;
+        gradYear?: number, specialty: string
+    };
+}

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ShowPostingService } from '../../services/showPosting.service'
+import { SharedService } from '../../services/shared.service'
 
 @Component({
   selector: 'postAndFilter',
@@ -8,14 +8,14 @@ import { ShowPostingService } from '../../services/showPosting.service'
   styleUrls: ['./PostAndFilter.component.scss']
 })
 export class PostandFilterComponent {
-  constructor(private showPostingService: ShowPostingService) { }
+  constructor(private sharedService: SharedService) { }
 
   currentDateWhenClicked: Date;
   postCategory: string = 'All post';
 
   showPostingDiv() {
     this.currentDateWhenClicked = new Date;
-    this.showPostingService.showPostEmitter.emit(this.currentDateWhenClicked);
+    this.sharedService.showPostEmitter.emit(this.currentDateWhenClicked);
   }
 
 

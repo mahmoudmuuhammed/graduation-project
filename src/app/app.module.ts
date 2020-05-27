@@ -11,9 +11,6 @@ import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChattingModule } from './community-part/chatting/chatting.module';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -27,7 +27,8 @@ import { DoctorPreviewComponent } from './doctor-preview/doctor-preview.componen
 import { DoctorCardComponent } from './doctor-card/doctor-card.component';
 import { CallingComponent } from './callingAlert/callingAlert.component';
 import { VideoCallComponent } from './video-call/video-call.component';
-import { TimelineModule } from './timeline/timeline.module'
+import { TimelineModule } from './timeline/timeline.module';
+import { NotificationItemComponent } from './notification/notification-item/notification-item.component'
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { TimelineModule } from './timeline/timeline.module'
         DoctorCardComponent,
         CallingComponent,
         VideoCallComponent,
+        NotificationItemComponent,
     ],
     imports: [
         CommonModule,

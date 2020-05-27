@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
 import { ChattingService } from './services/chatting.service';
 import { Observable } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
 import { Thread, Members } from './models/thread.model';
-import { UserModel } from './models/user.model';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
+
 
 
 
@@ -15,16 +15,16 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class AppComponent implements OnInit {
   title = 'medkit-app';
-  threads: Observable<Thread[]>;
-  membersList: any[] = [];
-  profileList: Members[] = [];
-  constructor(private chat: ChattingService, private db: AngularFirestore) {
-    
-  }
-  items;
+  // threads: Observable<Thread[]>;
+  // membersList: any[] = [];
+  // profileList: Members[] = [];
+  // items;
+  constructor(private authService:AuthService) {}
   ngOnInit() {
-    // this.threads = this.chat.getThreads();
 
+    this.authService.autoLogin()
+
+    // this.threads = this.chat.getThreads();
     // this.threads.pipe(
     //   map(user => user.filter(u => this.membersList.push(u.members.touid)))
     // ).subscribe(
