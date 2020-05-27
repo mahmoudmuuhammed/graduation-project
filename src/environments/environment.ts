@@ -2,8 +2,11 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { AgoraConfig } from 'angular-agora-rtc';
+
 export const environment = {
   production: false,
+
   firebaseConfig: {
     apiKey: "AIzaSyCPBUsCCVJ5j_AAHmKyMHLAc0Tgu7gQaQc",
     authDomain: "medkitc.firebaseapp.com",
@@ -17,7 +20,12 @@ export const environment = {
   mapboxConfig: {
     apiKey: 'pk.eyJ1IjoibWFobW91ZDIyMzM5OSIsImEiOiJja2FwcXIzOXAwNHhqMnhwd2RyamRuZzFrIn0.Zy578QQBG6yZWla3XgM42w'
   }
-};
+  
+  , agoraConfig: {
+    AppID: '0aa38281b2a84016b2c5b0ed745d13a0',
+  }
+}
+
 
 /*
  * For easier debugging in development mode, you can import the following file

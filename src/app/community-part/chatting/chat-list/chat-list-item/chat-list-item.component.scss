@@ -5,37 +5,40 @@
 
 
 .chat-litem {
-    @include flexbox;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 30px 18px;
-    border-right: 2.5px solid $primary-color;
-    background-color: rgba(#eee, .3);
+    padding: 10px;
+    margin-bottom: 5px;
+    //border-right: 2.5px solid $primary-color;
+    //background-color: rgba(#eee, .3);
 }
 
 .user {
     @include flexbox;
     align-items: center;
-    margin-bottom: 1em;
+    margin-bottom: .5em;
+    cursor: pointer;
+
+    .userInfoContainer {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+    }
 
     &__img {
-        width: 35px;
-        height: 35px;
-        padding: .1em;
+        width: 40px;
+        height: 40px;
         background-color: $light-primary-color;
         border-radius: 50%;
     }
 
     &__info {
         @include flexbox;
-        flex-direction: column;
+        justify-content: space-between;
         font-weight: 500;
-        margin-left: 1.1em;
+        margin-left: .5rem;
 
         &-name {
-            font-size: 13px;
+            font-size: 14px;
             color: $primary-text;
-            margin-bottom: .2em;
         }
 
         &-time {
@@ -49,4 +52,40 @@
     font-size: 11px;
     font-weight: 700;
     color: rgba($secondary-text, .9);
+    margin-left: .5rem;
+
+    span {
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}
+
+@media(max-width:768px) {
+    .user {
+        margin: 0px;
+
+        &__img {
+            margin: auto;
+            width: 50px;
+            height: 50px;
+        }
+
+        &__info,
+        .lmsg {
+            display: none;
+        }
+    }
+}
+
+@media(max-width:576px) {
+    .chat-litem {
+        padding: 5px;
+        margin-bottom: 0px;
+    }
+
+    .user {
+        cursor: auto;
+    }
 }

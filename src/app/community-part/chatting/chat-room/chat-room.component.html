@@ -1,21 +1,11 @@
-<div class="row">
-    <div class="col-xl-12 col-lg-12">
-        <chat-head 
-            [userData]="(userData) | async"></chat-head>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xl-12 col-lg-12">
-        <div class="feeds-container" #scroller>
-            <chat-feeds 
-                [messages]="messages"></chat-feeds>
+<div class="chatRoomContainer">
+        <div class="chatHeader">
+            <chat-head [userData]="(userData) | async"></chat-head>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xl-12 col-lg-12">
-        <chat-form 
-            [threadId]="threadId" 
-            [routeId]="activeRoute"></chat-form>
-    </div>
+            <div class="chatMessages" #scroller>
+                <chat-feeds [messages]="messages"></chat-feeds>
+            </div>
+            <div class="chatInput">
+                <chat-form [threadId]="threadId" [routeId]="activeRoute"></chat-form>
+            </div>
 </div>

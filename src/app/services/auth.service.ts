@@ -15,31 +15,27 @@ import { AngularFireMessaging } from '@angular/fire/messaging';
 export class AuthService {
 
     user: Observable<firebase.User>;
-    userSubject = new BehaviorSubject<UserModel>(null);
     authState: any;
 
     constructor(
         private auth: AngularFireAuth,
         private forms: FormsServices,
         private fireDb: AngularFirestore,
-        private router: Router,
         private fireMsg: AngularFireMessaging,
-        private ngZone:NgZone
+        private router: Router,
+        private ngZone: NgZone
     ) {
         this.user = auth.authState;
     }
 
-    get currentUser(): string {
-        return this.authState !== null ? this.authState.uid : '';
+    // get currentUser(): string {
+    //     return this.authState !== null ? this.authState.uid : '';
+    // }
+
+    get currentUser() {
+        //return this.auth.authState.pipe(take(1), map(res => { return res.uid }))
+        return firebase.auth().currentUser.uid
     }
-
-    userCheck() {
-        firebase.auth().onAuthStateChanged(user => {
-            user ? user : console.log("")
-        })
-    }
-
-
 
     sendingAuthRequest() {
         const emailValue = this.forms.emailControl.value;
@@ -51,19 +47,12 @@ export class AuthService {
                 user => {
                     this.authState = user.user;
                     const email = user.user.email;
-                    user.user.updateProfile({
-                        displayName: displayName,
-
-                    });
+                    user.user.updateProfile({ displayName: displayName });
                     const creationTime = user.user.metadata.creationTime;
                     this.setUserData(email, creationTime);
                 }
             )
-            .catch(
-                err => {
-                    console.log(err);
-                }
-            );
+            .catch(err => { console.log(err) })
     }
 
     setUserData(email: string, creationTime: string) {
@@ -74,10 +63,10 @@ export class AuthService {
         this.fireDb.doc<UserModel>(path).set({
             uid: this.currentUser,
             email: email,
-            fullname: fullname,
-            photoUrl: 'test',
+            photoUrl: 'dsadad',
             creationTime: creationTime,
-            accountType: userType
+            fullName: fullname,
+            userType: userType
         })
         .then(
             userData => {
@@ -95,45 +84,23 @@ export class AuthService {
     loginRequest() {
         const email = this.forms.signinEmailControl.value;
         const password = this.forms.signinPasswordControl.value;
-
         this.auth.auth.signInWithEmailAndPassword(email, password)
-            .then(
-                authenticated => {
+            .then(() => {
+                this.fireMsg.requestToken.subscribe((msgToken) => {
+                    const path = `Users/${this.currentUser}`;
+                    this.fireDb.doc(path).update({ notification_token_id: msgToken })
                     const status = 'online';
                     this.updateUserStatus(status);
-                    this.auth.auth.currentUser.getIdToken(true).then(Usertoken => {
-                        const userData = new UserModel(email, authenticated.user.uid, Usertoken);
-                        this.userSubject.next(userData);
-                        localStorage.setItem('userData', JSON.stringify(userData))
-                    })
-                        .then(() => {
-                            this.fireMsg.requestToken.subscribe((res) => {
-                                //console.log(res)
-                                const ref = this.fireDb.collection('ActiveUsers').doc(authenticated.user.uid);
-                                ref.set({
-                                    email: email,
-                                    uid: authenticated.user.uid,
-                                    msgToken: res
-                                })
-                            })
-                        })
-                        .then(() => { this.router.navigate(['/community/Timeline']) })
-                }
-            )
+                })
+            })
+            .then(() => {
+                this.router.navigate(['/community/Timeline'])
+            })
             .catch(
                 err => {
                     console.log(err);
                 }
             )
-    }
-
-    autoLogin() {
-        firebase.auth().onAuthStateChanged(user => {
-            console
-            if (!!user) {
-                this.ngZone.run(()=>this.router.navigate(['/community/Timeline']))
-            }
-        })
     }
 
     login() {
@@ -145,27 +112,30 @@ export class AuthService {
             )
     }
 
+    autoLogin() {
+        firebase.auth().onAuthStateChanged(user => {
+            if (!!user) {
+                this.ngZone.run(() => this.router.navigate(['/community/Timeline']))
+            }
+        })
+    }
+
     logout() {
-        const userData: { userEmail: string, userId: string, tokenID: string } = JSON.parse(localStorage.getItem('userData'))
-        this.fireDb.collection('ActiveUsers').doc(userData.userId).delete().then(() => {
-            localStorage.removeItem('userData');
-            firebase.auth().signOut();
-        }).then(() => {
-            this.router.navigate(['']);
-            const status = 'offline';
-            this.updateUserStatus(status);
-        });
+        const status = 'offline';
+        this.updateUserStatus(status);
+        firebase.auth().signOut();
+        this.router.navigate(['']);
     }
 
     updateUserStatus(status: string) {
-        const path = `Users/${ this.currentUser }`;
+        const path = `Users/${this.currentUser}`;
         this.fireDb.doc<UserModel>(path)
-        .update({ status: status });
+            .update({ status: status });
     }
 
     updateStatusOnIdle() {
         document.onvisibilitychange = (e) => {
-            if(document.visibilityState === 'hidden') {
+            if (document.visibilityState === 'hidden') {
                 const status = 'away';
                 this.updateUserStatus(status);
             } else {

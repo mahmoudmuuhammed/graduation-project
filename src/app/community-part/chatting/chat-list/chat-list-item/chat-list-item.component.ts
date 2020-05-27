@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from "@angular/core";
+import { Component, Input, OnInit, OnDestroy, Renderer2, ViewChild, ElementRef } from "@angular/core";
 import { Thread } from 'src/app/models/thread.model';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { UserModel } from 'src/app/models/user.model';
@@ -12,7 +12,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 
 export class ChatListItemComponent implements OnInit, OnDestroy {
-
+    //currentDate: Date;
     @Input() thread: Thread;
     profilerId: string;
     cuurentUser: firebase.User;

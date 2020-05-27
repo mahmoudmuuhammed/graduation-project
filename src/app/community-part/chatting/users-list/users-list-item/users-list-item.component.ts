@@ -16,7 +16,7 @@ export class UsersListItemComponent {
     ngOnInit() {}
 
     navigate() {
-        this.router.navigate(['/chat', this.user.uid])
+        this.router.navigate(['community/Chat', this.user.uid])
         .then(
             navigated => {
                 this.sharedService.closeUsersList();

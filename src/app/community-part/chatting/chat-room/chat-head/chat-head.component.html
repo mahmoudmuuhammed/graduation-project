@@ -1,9 +1,4 @@
 <div class="head">
-    <div class="head__action">
-        <svg class="head__action-icon head__action-icon--custom">
-            <use xlink:href="../../../../../assets/sprites/chat-icons.svg#ellipsis"></use>
-        </svg>
-    </div>
     <div class="head__user">
         <img 
             src="../../../../../assets/svgs/man.svg" 
@@ -19,11 +14,8 @@
         </div>
     </div>
     <div class="head__action">
-        <svg class="head__action-icon">
+        <svg class="head__action-icon" (click)="call()">
             <use xlink:href="../../../../../assets/sprites/chat-icons.svg#videocall"></use>
-        </svg>
-        <svg class="head__action-icon">
-            <use xlink:href="../../../../../assets/sprites/chat-icons.svg#phone-call"></use>
         </svg>
     </div>
 </div>

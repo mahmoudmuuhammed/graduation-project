@@ -1,10 +1,6 @@
-<div class="message">
-    <img 
-        src="../../../../../../assets/svgs/man.svg" 
-        alt="" 
-        class="message__img">
-    <div class="message__content" 
-        [ngClass]="{ 'inbound': incoming, 'outbound': !incoming }">
+<div class="message" [ngClass]="{ 'inbound': incoming, 'outbound': !incoming }">
+    <img src="../../../../../../assets/svgs/man.svg" alt="" class="message__img">
+    <div class="message__content" [ngClass]="{ 'inboundContent': incoming, 'outboundContent': !incoming }">
         <span class="message__content-text">
             {{ message?.content }}
         </span>

@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 
-import { SideBarToggler } from "../../services/sideBar.service"
+import { SharedService } from "../../services/shared.service"
 @Component({
     selector: 'c-sidebar',
     templateUrl: './c-sidebar.component.html',
@@ -9,15 +9,15 @@ import { SideBarToggler } from "../../services/sideBar.service"
 
 export class SidebarComponent {
     sideBarStatus:boolean;
-    constructor(private sidebarToggler: SideBarToggler) {
-        this.sidebarToggler.topNavTogBtnClicked.subscribe(
+    constructor(private sharedService: SharedService) {
+        this.sharedService.topNavTogBtnClicked.subscribe(
             (status: boolean) => this.sideBarStatus=status
         )
     }
 
     hideSideBar(){
         this.sideBarStatus=false;
-        this.sidebarToggler.sideBarNavItemClicked.emit(this.sideBarStatus);
+        this.sharedService.sideBarNavItemClicked.emit(this.sideBarStatus);
         document.querySelector('.offcanvas-collapse').classList.remove('open')
     }
 

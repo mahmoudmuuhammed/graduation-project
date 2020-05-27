@@ -1,0 +1,118 @@
+.outerVideoCall {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    background-color: #000;
+
+    div {
+        .callerName {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #fff;
+            text-shadow: 0px 0px 5px #000;
+        }
+    }
+
+    .innerVideoCall {
+        #agora_local {
+            div {
+                position: absolute !important;
+                width: 300px !important;
+                height: 150px !important;
+                bottom: 20px;
+                right: 20px;
+                border-radius: 5px;
+                background: transparent !important;
+            }
+        }
+
+        .remote_calls {
+            div {
+                position: static !important;
+                display: flex;
+                justify-content: center;
+
+                video {
+                    width: auto !important;
+                    height: 100vh !important;
+                    position: static !important;
+                }
+            }
+        }
+    }
+
+    .endCallBtn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #fff;
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        animation: endCallFadeIn 1s 1s ease-in-out forwards;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+@keyframes endCallFadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media(max-width:576px){
+    .outerVideoCall {    
+        div {
+            .callerName {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                color: #fff;
+                text-shadow: 0px 0px 5px #000;
+            }
+        }
+    
+        .innerVideoCall {
+            #agora_local {
+                div {
+                    top: 10px;
+                    right: 10px;
+                    bottom: unset;
+
+                    video{
+                        object-fit: contain !important;
+                        object-position: left;
+                    }
+                }
+            }
+    
+            .remote_calls {
+                div {
+                    height:100vh;
+                    align-items: center;
+    
+                    video {
+                        height: auto !important;
+                    }
+                }
+            }
+        }
+    }
+}

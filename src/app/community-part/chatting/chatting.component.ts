@@ -8,9 +8,5 @@ import { SharedService } from 'src/app/services/shared.service';
 
 export class ChattingComponent {
 
-    constructor(
-        public sharedService: SharedService,
-    ) {}
-
-    
+    constructor(public sharedService: SharedService) { }
 }

@@ -1,0 +1,28 @@
+<div class="outerDiv">
+    <div class="innerDiv">
+        <h5 class="title">Video call from</h5>
+        <div class="callerDatadiv">
+            <div class="callerImgDiv">
+                <div class="outerImgBorder">
+                    <div class="middleImgBorder">
+                        <div class="innerImgBorder">
+                            <div class="CallerImg" style="background-image: url({{CallerData?.callerImgSrc}});">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="callerData">
+                <h2 class="callerName">{{CallerData?.callerName}}</h2>
+                <div class="callControl">
+                    <div class="acceptDiv">
+                        <button class="btn btn-success acceptBtn" (click)="onAccept()">Accept</button>
+                    </div>
+                    <div class="declineDiv">
+                        <button class="btn btn-danger declineBtn" (click)="onDecline()">Decline</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

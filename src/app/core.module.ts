@@ -8,6 +8,8 @@ import { SharedService } from './services/shared.service';
 import { FeedsService } from './services/feeds.service';
 import { SideBarToggler } from './services/sideBar.service';
 import { ShowPostingService } from './services/showPosting.service';
+import { AngularFireMessaging } from '@angular/fire/messaging'
+
 
 @NgModule({
     providers: [
@@ -20,6 +22,7 @@ import { ShowPostingService } from './services/showPosting.service';
         FeedsService,
         SideBarToggler,
         ShowPostingService,
+        AngularFireMessaging
     ]
 })
 

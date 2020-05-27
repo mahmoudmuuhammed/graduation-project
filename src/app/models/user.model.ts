@@ -1,13 +1,11 @@
 export class UserModel {
     uid: string;
     email: string;
-    fullname: string;
+    fullName: string;
     photoUrl?: string;
     creationTime?: string;
     status?: string;
-    accountType: AccountType;
-    constructor(email: string, uid: string, userToken: string) {}
-
+    userType: AccountType;
 };
 
 export class AccountType {

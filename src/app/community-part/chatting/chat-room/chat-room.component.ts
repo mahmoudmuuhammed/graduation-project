@@ -11,6 +11,7 @@ import { UserModel } from 'src/app/models/user.model';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ChattingService } from 'src/app/services/chatting.service';
 import { Message } from 'src/app/models/message.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -33,6 +34,7 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked, OnDestroy {
         private fireDb: FirestoreService,
         private auth: AngularFireAuth,
         private chat: ChattingService,
+        private authService:AuthService
     ) {}
 
     ngOnInit() {
@@ -60,5 +62,9 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked, OnDestroy {
 
     ngOnDestroy() {
         this.subscribtion.unsubscribe();
+    }
+
+    logout(){
+        this.authService.logout();
     }
 }

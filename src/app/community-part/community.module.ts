@@ -11,13 +11,17 @@ import { CommunityContainerComponent } from './community.component';
 import { CommunitySidebarComponent } from './community-sidebar/community-sidebar.component';
 import { CommunityTopnavComponent } from './community-topnav/community-topnav.component';
 import { DoctorPreviewModule } from './doctor-preview/doctor-preview.module';
+import { TopnavComponent } from './top-nav/c-topnav.component';
+import { SidebarComponent } from './sidebar/c-sidebar.component';
 
 
 @NgModule({
     declarations: [
         CommunityContainerComponent,
         CommunitySidebarComponent,
-        CommunityTopnavComponent
+        CommunityTopnavComponent,
+        TopnavComponent,
+        SidebarComponent
     ],
     imports: [
         CommonModule,
