@@ -33,7 +33,6 @@ export class AuthService {
     // }
 
     get currentUser() {
-        //return this.auth.authState.pipe(take(1), map(res => { return res.uid }))
         return firebase.auth().currentUser.uid
     }
 
