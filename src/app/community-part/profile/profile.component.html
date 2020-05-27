@@ -1,65 +1,8 @@
-<div class="row">
-    <div class="col-md-4 acountDataMainDiv">
-        <div class="accountDataCont">
-            <div class="imgDiv"><img src="../../../assets/images/profile.jpg"></div>
-            <div class="userNameDiv">
-                <h4>{{user.name}}</h4>
-            </div>
-            <div class="counterDiv">
-                <div class="postsCountDiv">
-                    <span class="noOfPostsSpan">{{user.noOfPosts}}</span>
-                    <span>Posts</span>
-                </div>
-                <div class="commentsCountDiv">
-                    <span class="noOfCommentsSpan">{{user.noOfComments}}</span>
-                    <span>Comments</span>
-                </div>
-            </div>
-            <div class="additionalData">
-                <div class="additionDataCont">
-                    <i class="fas fa-venus-mars icon"></i>
-                    <span>{{user.gender}}</span>
-                </div>
-                <div class="additionDataCont">
-                    <i class="fas fa-map-marker-alt icon"></i>
-                    <span>{{user.location}}</span>
-                </div>
-                <div class="additionDataCont">
-                    <i class="fas fa-envelope icon"></i>
-                    <span>{{user.email}}</span>
-                </div>
-                <div class="additionDataCont">
-                    <i class="fas fa-phone-alt icon"></i>
-                    <span>{{user.phone}}</span>
-                </div>
-            </div>
-
-            <!-- edit area is ONLY if user view his profile-->
-            <div class="editBtnDiv">
-                <button>Update profile</button>
-            </div>
-
-            <!--Only if user is DOCTOR with Authntication methos DoctorType=1 userType=0 -->
-            <!-- <ng-template [ngIf]="user.type ==='1'">
-                <div class="clinicDiv">
-                    <h6>Book online consultation with DR.{{user.name}} now</h6>
-                    <div class="BookDiv">
-                        <button>Book</button>
-                    </div>
-                </div>
-
-            </ng-template> -->
-        </div>
+<div class="profile">
+    <div class="profile__info">
+        <user-profile-card></user-profile-card>
     </div>
-    <div class="col-md-8 UserpostContainer">
-        <div class="title">
-            <h4 *ngIf="user.gender==='Male'">His posts</h4>
-            <h4 *ngIf="user.gender==='Female'">Her posts</h4>
-        </div>
-        <post></post>
-        <post></post>
-        <post></post>
-        <post></post>
-        <post></post>
+    <div class="profile__content">
+        <profile-content></profile-content>
     </div>
 </div>

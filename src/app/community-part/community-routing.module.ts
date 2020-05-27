@@ -1,12 +1,8 @@
-import { NgModule, Component } from "@angular/core";
+import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from '@angular/router';
 
 import { CommunityContainerComponent } from './community.component'
 import { TimelineComponent } from './timeline/timeline.component';
-import { Profile } from './profile/profile.component';
-import { Chats } from './chats/chats.component';
-import { ChattingComponent } from './chatting/chatting.component';
-import { ChatRoomComponent } from './chatting/chat-room/chat-room.component';
 import { DoctorPreviewComponent } from './doctor-preview/doctor-preview.component';
 
 const communityRoutes: Routes = [
@@ -15,7 +11,6 @@ const communityRoutes: Routes = [
             { path: '', component: TimelineComponent },
             { path: 'Timeline', component: TimelineComponent },
             // { path: 'Chats', component: ChattingComponent },
-            { path: 'Profile', component: Profile },
             { path: 'Doctors', component: DoctorPreviewComponent },
             
         ]
