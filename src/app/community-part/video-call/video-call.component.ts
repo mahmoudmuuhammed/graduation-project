@@ -24,7 +24,6 @@ export class VideoCallComponent implements OnInit {
 
   ngOnInit() {
       this.startCall(null, this.channelName)
-   
   }
 
   startCall(token: string, channelName: string) {

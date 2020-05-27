@@ -6,7 +6,7 @@
             class="user__img">
         <div class="user__info">
             <span class="user__info-name">
-                {{ (userData | async)?.fullname }}
+                {{ (userData | async)?.fullName }}
             </span>
             <span class="user__info-time">
                 {{ thread?.timeStamp| date:'shortTime' }}
