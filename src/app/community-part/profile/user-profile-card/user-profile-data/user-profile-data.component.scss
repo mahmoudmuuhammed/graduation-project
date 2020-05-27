@@ -1,0 +1,37 @@
+@import "../../../../../styles/abstracts/variables";
+@import "../../../../../styles/abstracts/mixins";
+
+.profile-data {
+    @include flexbox;
+    flex-direction: column;
+    padding: 12px;
+
+    &__container {
+        @include flexbox;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px;
+        margin-bottom: 5px;
+
+        &-title {
+            @include flexbox;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba($secondary-text, 1);
+        }
+
+        &-desc {
+            font-size: 14px;
+            font-weight: 600;
+            color: $primary-text;
+        }
+    }
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    fill: rgba($secondary-text, .5);
+    margin-right: 10px;
+}

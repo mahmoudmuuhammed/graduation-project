@@ -1,0 +1,10 @@
+@import "../../../../styles/abstracts/variables";
+@import "../../../../styles/abstracts/mixins";
+
+.doc-confirm {
+    background-color: red;
+}
+
+input[type="file"] {
+    display: none;
+}
