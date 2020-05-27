@@ -4,20 +4,23 @@ import { Routes, RouterModule } from '@angular/router';
 import { CommunityContainerComponent } from './community.component'
 import { TimelineComponent } from './timeline/timeline.component';
 import { Profile } from './profile/profile.component';
-import { Chats } from './chats/chats.component';
-import { ChattingComponent } from './chatting/chatting.component';
-import { ChatRoomComponent } from './chatting/chat-room/chat-room.component';
+import { ChattingComponent } from '../community-part/chatting/chatting.component';
+import { ChatRoomComponent } from '../community-part/chatting/chat-room/chat-room.component';
 import { DoctorPreviewComponent } from './doctor-preview/doctor-preview.component';
+import { singlePostComponent } from './timeline/post/post.component';
 
 const communityRoutes: Routes = [
     {
         path: '', component: CommunityContainerComponent, children: [
-            { path: '', component: TimelineComponent },
             { path: 'Timeline', component: TimelineComponent },
-            // { path: 'Chats', component: ChattingComponent },
+            { path: 'Timeline/:postId', component: singlePostComponent },
+            {
+                path: 'Chat', component: ChattingComponent, children: [
+                    { path: ':id', component: ChatRoomComponent }
+                ]
+            },
             { path: 'Profile', component: Profile },
             { path: 'Doctors', component: DoctorPreviewComponent },
-            
         ]
     }
 ];
