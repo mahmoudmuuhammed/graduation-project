@@ -5,10 +5,14 @@ export class UserModel {
     photoUrl?: string;
     creationTime?: string;
     status?: string;
-    userType: { type: string;
-                gradFaculty?: string;
-                gradYear?: number, specialty: string };
-
+    accountType: AccountType;
     constructor(email: string, uid: string, userToken: string) {}
 
 };
+
+export class AccountType {
+    usertype: string;
+    gradFaculty?: string;
+    gradYear?: string;
+    specialty?: string;
+}

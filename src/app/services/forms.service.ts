@@ -56,6 +56,7 @@ export class FormsServices {
             'g-faculty': new FormControl(null, Validators.required),
             'g-year': new FormControl(null, Validators.required),
             'usertype': new FormControl(null, Validators.required),
+            'location': new FormControl(null, Validators.required)
         });
         this.usertypeControl.valueChanges.subscribe(
             (value) => {
@@ -128,6 +129,10 @@ export class FormsServices {
     
     get gYearControl() {
         return this.doctorForm.get('g-year');
+    }
+
+    get locationControl() {
+        return this.doctorForm.get('location');
     }
 
     get updateEmailControl() {

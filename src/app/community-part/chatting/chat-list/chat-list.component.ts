@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { Thread } from 'src/app/models/thread.model';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ChattingService } from 'src/app/services/chatting.service';
-import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'chat-list',
@@ -14,7 +13,6 @@ import { map } from 'rxjs/operators';
 
 export class ChatListComponent implements OnInit {
     threads: Observable<Thread[]>;
-    profilerId: string;
     currentUser: firebase.User;
     constructor(
         public sharedService: SharedService,

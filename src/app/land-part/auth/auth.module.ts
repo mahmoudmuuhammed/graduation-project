@@ -20,7 +20,10 @@ import { UploadPhotoComponent } from './signup/upload-photo/upload-photo.compone
 import { DoctorInfoComponent } from './signup/doctor-info/doctor-info.component';
 import { SocialLogComponent } from './social-log/social-log.component';
 import { VerificationPageComponent } from './verification/verification.component';
-import { UserTypeComponent } from './user-type/user-type.component';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { SocialComponent } from './social/social.component';
+import { DoctorConfirmComponent } from './doctor-confirm/doctor-confirm.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -34,10 +37,12 @@ import { UserTypeComponent } from './user-type/user-type.component';
         DoctorInfoComponent,
         SocialLogComponent,
         VerificationPageComponent,
-        UserTypeComponent
+        SocialComponent,
+        DoctorConfirmComponent
     ],
     imports: [
         ReactiveFormsModule,
+        HttpClientModule,
         CommonModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireAuthModule,
@@ -45,7 +50,8 @@ import { UserTypeComponent } from './user-type/user-type.component';
         LandRoutingModule,
         MatStepperModule,
         AngularFirestoreModule,
-        AngularFireStorageModule
+        AngularFireStorageModule,
+        AngularFireMessagingModule
     ],
     exports: [
         SigninPageComponent,
@@ -56,7 +62,6 @@ import { UserTypeComponent } from './user-type/user-type.component';
         DoctorInfoComponent,
         SocialLogComponent,
         VerificationPageComponent,
-        UserTypeComponent
     ]
 })
 

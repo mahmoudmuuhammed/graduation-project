@@ -1,4 +1,3 @@
-import { map } from 'rxjs/operators';
 import { Injectable, NgZone } from "@angular/core";
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FormsServices } from './forms.service';
@@ -6,7 +5,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
-import { UserModel } from '../models/user.model'
+import { UserModel, AccountType } from '../models/user.model'
 import { AngularFireMessaging } from '@angular/fire/messaging';
 
 @Injectable({
@@ -69,27 +68,28 @@ export class AuthService {
 
     setUserData(email: string, creationTime: string) {
         const fullname = this.forms.fullnameControl.value;
-        const userType = this.forms.doctorForm.value;
+        const userType: AccountType = this.forms.doctorForm.value;
+        const path = `Users/${ this.currentUser }`;
 
-        this.fireDb.collection('Users').doc(this.currentUser).set({
+        this.fireDb.doc<UserModel>(path).set({
             uid: this.currentUser,
             email: email,
-            photoUrl: 'dsadad',
-            creationTime: creationTime,
             fullname: fullname,
-            userType: userType
+            photoUrl: 'test',
+            creationTime: creationTime,
+            accountType: userType
         })
-            .then(
-                userData => {
-                    console.log('Success firestore');
-                    this.router.navigate(['/login']);
-                }
-            )
-            .catch(
-                err => {
-                    console.log(err);
-                }
-            );
+        .then(
+            userData => {
+                console.log('Success firestore');
+                this.router.navigate(['/login']);
+            }
+        )
+        .catch(
+            err => {
+                console.log(err);
+            }
+        );
     }
 
     loginRequest() {

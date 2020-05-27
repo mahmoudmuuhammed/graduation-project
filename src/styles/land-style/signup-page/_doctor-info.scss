@@ -156,3 +156,22 @@
         @include buttons;
     }
 }
+
+.location-list {
+    background-color: rgba(#eee, .4);
+    width: 100%;
+    border-radius: 5px;
+
+    &__item {
+        list-style: none;
+        padding: .6em;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        color: rgba($primary-text, .8);
+
+        &:hover {
+            background-color: rgba(#eee, .6);
+        }
+    }
+}

@@ -1,24 +1,16 @@
-<c-topnav></c-topnav>
-<div class="container-fluid mainCommunityDiv">
-    <div class="row">
-        <div class="col-md-2 p-0">
-            <c-sidebar></c-sidebar>
-        </div>
-
-        <div class="col-md-10 col-lg-8 col-12">
-            <!-- <timeline></!-->
-            <!-- <chats></chats> -->
-            <!-- <profile></profile> -->
-            <router-outlet></router-outlet>
-        </div>
-
-        <div class="col-lg-2 dangerArea">
-            <danger-area></danger-area>
-        </div>
-
+<section class="community">
+    <div class="community__sidebar">
+        <community-sidebar></community-sidebar>
     </div>
-</div>
-
-<div #postingDiv class="addingPostingArea">
-    <add-post (closeDivEmit)="hidePostingDiv()" [currentDate]="currentDateClicked"></add-post>
-</div>
+    <div class="community__main">
+        <div class="community__main-topnav">
+            <community-topnav></community-topnav>
+        </div>
+        <div class="community__main-router">
+            <!-- router injection  -->
+            <profile></profile>
+            <!-- <timeline></timeline> -->
+            <!-- <chatting-container></chatting-container> -->
+        </div>
+    </div>
+</section>

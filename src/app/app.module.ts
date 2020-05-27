@@ -10,9 +10,7 @@ import { CommunityModule } from './community-part/community.module';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChattingModule } from './community-part/chatting/chatting.module';
-
-
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,7 +25,8 @@ import { ChattingModule } from './community-part/chatting/chatting.module';
     SharedModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    ChattingModule
+    ChattingModule,
+    HttpClientModule
   ],
   bootstrap: [AppComponent,]
 })

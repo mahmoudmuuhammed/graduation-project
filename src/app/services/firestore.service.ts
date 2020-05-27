@@ -11,6 +11,7 @@ import { Thread } from '../models/thread.model';
 export class FirestoreService {
     users: AngularFirestoreCollection<UserModel>;
     user: AngularFirestoreDocument<UserModel>;
+    channelsData: AngularFirestoreDocument<Thread>;
 
     constructor(
         private fireDb: AngularFirestore
@@ -28,7 +29,8 @@ export class FirestoreService {
     }
 
     getChannelsUsers(threadId: string) {
-        return this.fireDb.doc<Thread>(`Chats/${threadId}`);
+        this.channelsData = this.fireDb.doc<Thread>(`Chats/${threadId}`);
+        return this.channelsData;
     }
     
 }

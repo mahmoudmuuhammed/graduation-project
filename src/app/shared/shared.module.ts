@@ -4,6 +4,10 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MedkitLogoComponent } from './medkit-logo/mk-logo.component';
 import { LandRoutingModule } from '../land-part/land-routing.module';
+import { EmojiComponent } from './emoji-component/emoji.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { UploadingComponent } from './uploading-component/uploading.component';
 
 @NgModule({
     declarations: [
@@ -11,13 +15,17 @@ import { LandRoutingModule } from '../land-part/land-routing.module';
         LoadingSpinnerComponent,
         NotFoundComponent,
         MedkitLogoComponent,
+        EmojiComponent,
+        UploadingComponent
     ],
-    imports: [ LandRoutingModule ],
+    imports: [ LandRoutingModule, HttpClientModule, CommonModule ],
     exports: [
         FormsValidationComponent,
         LoadingSpinnerComponent,
         NotFoundComponent,
         MedkitLogoComponent,
+        EmojiComponent,
+        UploadingComponent
     ]
 })
 

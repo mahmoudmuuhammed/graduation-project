@@ -9,13 +9,13 @@
                 {{ (userData | async)?.fullname }}
             </span>
             <span class="user__info-time">
-                {{ thread.timeStamp | date:'shortTime' }}
+                {{ thread?.timeStamp| date:'shortTime' }}
             </span>
         </div>
     </div>
     <div class="lmsg">
         <span>
-            {{ thread.lastMsg }}
+            {{ thread?.lastMsg }}
         </span>
     </div>
 </div>

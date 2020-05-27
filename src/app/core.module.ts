@@ -5,6 +5,9 @@ import { UploadingService } from './services/uploading.service';
 import { FirestoreService } from './services/firestore.service';
 import { ChattingService } from './services/chatting.service';
 import { SharedService } from './services/shared.service';
+import { FeedsService } from './services/feeds.service';
+import { SideBarToggler } from './services/sideBar.service';
+import { ShowPostingService } from './services/showPosting.service';
 
 @NgModule({
     providers: [
@@ -13,7 +16,10 @@ import { SharedService } from './services/shared.service';
         UploadingService,
         FirestoreService,
         ChattingService,
-        SharedService
+        SharedService,
+        FeedsService,
+        SideBarToggler,
+        ShowPostingService,
     ]
 })
 
