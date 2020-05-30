@@ -4,13 +4,13 @@
             <div class="postData">
                 <img src="../../../../../assets/svgs/man.svg" alt="user img" class="post-details__user-img">
                 <div class="postOwnerandCategory">
-                    <span class="postOwner">{{ postData.userName }}</span>
-                    <span class="postCategory">{{ postData.category }}</span>
+                    <span class="postOwner">{{ postData?.userName }}</span>
+                    <span class="postCategory">{{ postData?.category }}</span>
                 </div>
             </div>
             <span class="postTimeDiv">
                 <i class="far fa-clock"></i>
-                <span>{{ postData.createdTime | date:'d,LLL h:m aa' }}</span>
+                <span>{{ postData?.createdTime | date:'d,LLL h:m aa' }}</span>
             </span>
         </div>
     </div>
@@ -33,6 +33,6 @@
             <span>{{ commentCounter }} comment</span>
         </div>
     </div>
-    <comment-dashboard [postId]="postData.postKey"></comment-dashboard>
-    <comment-list [postId]="postData.postKey"></comment-list>
+    <comment-dashboard [postId]="postData?.postKey"></comment-dashboard>
+    <comment-list [postId]="postData?.postKey"></comment-list>
 </div>

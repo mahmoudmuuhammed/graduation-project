@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Notification } from '../../../models/notification.model'
+import { AuthService } from 'src/app/services/auth.service';
+import { FeedsService } from 'src/app/services/feeds.service';
 
 @Component({
   selector: 'notification-item',
@@ -9,9 +11,16 @@ import { Notification } from '../../../models/notification.model'
 })
 export class NotificationItemComponent implements OnInit {
   @Input() notificationData: Notification;
-  constructor() { }
+  isRead: boolean = false;
+  constructor(private authService:AuthService,private feedsService:FeedsService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.isRead = this.notificationData.read;
   }
 
+  changeReadState() {
+    const notificationId = this.notificationData.n_id;
+    const userId=this.authService.currentUser.uid;
+    this.feedsService.changeNotificationReadState(notificationId,userId);
+  }
 }

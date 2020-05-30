@@ -11,7 +11,7 @@
             placeholder="Add a comment" 
             formControlName="content" 
             (keyup)="handleEnterAction($event)"></textarea>
-        <button class="comment-form__submit">
+        <button class="comment-form__submit" [disabled]="!commentForm.valid">
             Comment
         </button>
     </div>

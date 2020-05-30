@@ -53,14 +53,14 @@
                 <use xlink:href="../../../../assets/sprites/chat-icons.svg#paper-clip"></use>
             </svg>
             <div class="post-form__submit-category">
-                <button class="post-form__submit-category__btn post-form__submit-btn">
+                <button type="button" class="post-form__submit-category__btn post-form__submit-btn">
                     Category
                 </button>
                 <svg class="post-form__actions-icon post-form__actions-icon--drop">
                     <use xlink:href="../../../../assets/sprites/posts-icons.svg#pointing"></use>
                 </svg>
             </div>
-            <button class="post-form__submit-btn" [disabled]="!postForm.valid">
+            <button class="post-form__submit-btn" type="submit" [disabled]="!postForm.valid">
                 Post
             </button>
         </div>

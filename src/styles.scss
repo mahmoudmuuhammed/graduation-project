@@ -1,3 +1,5 @@
+@import "./styles/abstracts/variables";
+
 //Window
 * {
   outline: none !important;
@@ -17,15 +19,15 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #ccc;
+  background: #dadada;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: $primary-color;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: $dark-primary-color;
 }
 
 .pivateMessages,.previousChatsDiv {
@@ -33,5 +35,3 @@ body {
     display: none;
   }
 }
-
-// @import "~bootstrap/dist/css/bootstrap.min.css";

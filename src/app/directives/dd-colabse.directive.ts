@@ -1,7 +1,7 @@
 import { Directive, HostBinding, HostListener, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[appDdCollabse]'
+  selector: '[dropDownCollabse]'
 })
 export class DdColabseDirective {
   constructor(private el: ElementRef) { }
@@ -23,17 +23,4 @@ export class DdColabseDirective {
       setTimeout(function(){child.classList.remove('show')},200)
     }
   }
-
-  // @HostListener('document:click', ['$event.target'])
-  // public onClickOutside(event) {
-  //   var parent = this.el.nativeElement;
-  //   var child = parent.querySelector("div.collapse");
-  //   const clickedInside = child.contains(event);
-  //   if (!clickedInside) {
-  //     parent.classList.remove('show');
-  //     child.classList.remove('show');
-  //     console.log("out")
-  //   }
-  // }
-
 }

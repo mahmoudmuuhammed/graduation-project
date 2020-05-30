@@ -7,7 +7,7 @@ import { DoctorCardComponent } from './doctor-card/doctor-card.component';
 @NgModule({
     declarations: [
         DoctorPreviewComponent,
-        DoctorCardComponent
+        DoctorCardComponent,
     ],
     imports: [
         CommonModule

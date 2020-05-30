@@ -10,6 +10,7 @@ export class SharedService {
     showPostEmitter = new EventEmitter<Date>();
     topNavTogBtnClicked = new EventEmitter<boolean>();
     sideBarNavItemClicked = new EventEmitter<boolean>();
+    newNotification = new EventEmitter<boolean>();
     callAcceptance = new Subject<boolean>();
     callingSubject = new Subject<{channelName:string,state:boolean}>();
 

@@ -2,19 +2,6 @@ import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 admin.initializeApp();
 
-// Start writing Firebase Functions
-// https://firebase.google.com/docs/functions/typescript
-
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
-
-// export const fileUpload = functions.storage.bucket('users').object().onChange(event => {
-//     console.log(event);
-// })
-
-
-
 export const videoCallNotification =
     functions.firestore.document('videoCallNotification/{notificaionID}')
         .onCreate((msgData) => {
@@ -28,7 +15,6 @@ export const videoCallNotification =
                 notification: {
                     title: 'Incoming Video Call',
                     body: message?.Caller,
-                    image: "https://cdn3.iconfinder.com/data/icons/basic-user-interface-application/32/INSTAGRAM_ICON_SETS-35-512.png"
                 }
             }
 
@@ -60,12 +46,41 @@ export const commentNotification =
             }).catch((err) => console.log(err))
         })
 
-// export const commentCounter =
-//     functions.firestore.document('Posts/{postId}/Comments/{CommentId}')
-//         .onCreate(comment => {
-//             const commentData = comment.data();
-//             const userId=commentData?.userId
+export const commentCounter =
+    functions.firestore.document('Posts/{postId}/Comments/{CommentId}')
+        .onCreate(comment => {
+            const userId = comment.data()?.userId;
+            return admin.firestore().doc(`Users/${userId}`).update({ commentCounter: admin.firestore.FieldValue.increment(1) })
+        })
 
-//             const userRef=comment.ref.parent.parent?.parent.parent?.collection(`Users/${userId}`)
-//             userRef.
-//         })
+export const commentCounterOnDelete =
+    functions.firestore.document('Posts/{postId}/Comments/{CommentId}')
+        .onDelete(comment => {
+            const commentData = comment.data();
+            const userId = commentData?.userId;
+            return admin.firestore().doc(`Users/${userId}`).update({ commentCounter: admin.firestore.FieldValue.increment(-1) })
+        })
+
+export const clappingCounter =
+    functions.firestore.document('Posts/{postId}/Comments/{CommentId}')
+        .onUpdate(comment => {
+            const newCommentData = comment.after.data();
+            const oldCommentData = comment.before.data();
+            const newClapping = newCommentData?.clappings
+            const oldClapping = oldCommentData?.clappings
+            var oldClappingCount: number = 0, newClappingCount: number = 0, changeValue: number = 0;
+            const userId = newCommentData?.userId
+
+            Object.values(oldClapping).forEach((value) => {
+                oldClappingCount += Number(value)
+            })
+            Object.values(newClapping).forEach((value) => {
+                newClappingCount += Number(value)
+            })
+
+            if (newClappingCount > oldClappingCount) { changeValue = 1 }
+            else if (newClappingCount < oldClappingCount) { changeValue = -1 }
+            else { changeValue = 0 }
+
+            return admin.firestore().doc(`Users/${userId}`).update({ clappingCounter: admin.firestore.FieldValue.increment(changeValue) })
+        })

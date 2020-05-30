@@ -17,6 +17,9 @@ import { CallingComponent } from './callingAlert/callingAlert.component';
 import { VideoCallComponent } from './video-call/video-call.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NotificationItemComponent } from './notification/notification-item/notification-item.component';
+import { DangerAreaComponent } from './danger-area/danger-area.component'
+import { singlePostComponent } from './post/post.component';
+import { DdColabseDirective } from '../directives/dd-colabse.directive';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { NotificationItemComponent } from './notification/notification-item/noti
         CallingComponent,
         VideoCallComponent,
         NotificationComponent,
-        NotificationItemComponent
+        NotificationItemComponent,
+        DangerAreaComponent,
+        singlePostComponent,
+        DdColabseDirective,
     ],
     imports: [
         CommonModule,

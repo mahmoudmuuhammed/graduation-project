@@ -70,12 +70,17 @@
                 .clappingIcon {
                     width: 30px;
                     height: 30px;
-                    fill: rgba(86, 86, 90, 0.7);
+                    fill: #fff;
                     cursor: pointer;
                     margin: 5px;
                     border-radius: 5px;
                     padding: 5px;
-                    background: #ccc;
+                    background: $primary-color;
+                    transition: all .2s ease-in-out;
+
+                    &:hover{
+                        box-shadow: 0px 0px 3px #aaa;
+                    }
                 }
             }
         }

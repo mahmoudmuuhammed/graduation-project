@@ -38,7 +38,7 @@ export class PostDashboardComponent implements OnInit {
     postFormController() {
         this.postForm = new FormGroup({
             'title': new FormControl(null, Validators.required),
-            'content': new FormControl(null, Validators.required)
+            'content': new FormControl(null),
         });
     }
 

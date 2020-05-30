@@ -16,7 +16,6 @@ export class UpvotesComponent implements OnInit, OnDestroy {
     constructor(private feedsService: FeedsService) {}
 
     ngOnInit() {
-        // const userId = this.feedsService.currentUser.uid;
         this.subscribtion = this.feedsService.getTotalVotesOnPost(this.postId)
         .subscribe(
             postData => {

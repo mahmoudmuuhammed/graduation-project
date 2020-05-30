@@ -28,11 +28,11 @@
 
         <div class="AccountOptionDiv">
             <!-- Notification Area -->
-            <div appDdCollabse>
-                <div style="position: relative;">
+            <div dropDownCollabse>
+                <div style="position: relative;" (click)="showNotification()">
                     <button class="bellBtn" data-toggle="collapse" data-target="#notificationDiv">
                         <i class="far fa-bell notificationBell"></i>
-                        <div class="bellDot"></div>
+                        <div [ngClass]="{'bellDot':newNotification}"></div>
                     </button>
                 </div>
                 <div class="collapse notificationDivContainer" id="notificationDiv">
@@ -43,9 +43,14 @@
             <!-- Account Picture and Option -->
             <div class="accountDetails">
                 <img src="./assets/images/profile.jpg" class="accountImg">
-                <span class=" d-none d-md-block accountName">Moemen said</span>
+                <span class=" d-none d-md-block accountName">{{userName | titlecase }}</span>
+                <div class="logOutOption" (click)='onLogout()'>
+                    <svg>
+                        <use xlink:href="../../../../assets/sprites/topnav-icons.svg#logout"></use>
+                    </svg>
+                </div>
                 <!-- Account option -->
-                <div class="AccountOption" appDdCollabse>
+                <!-- <div class="AccountOption" dropDownCollabse>
                     <button class="AccountBtn" type="button" data-toggle="collapse" data-target="#AccountOptionDiv"
                         aria-expanded="false" aria-controls="AccountOptionDiv">
                         <i class="fas fa-caret-down"></i>
@@ -59,10 +64,14 @@
                                     <span class="slider round"></span>
                                 </label>
                             </div>
-                            <div (click)='onLogout()' class="optionDiv"><a>Logout</a></div>
+                            <div class="optionDiv" (click)='onLogout()'>
+                                <svg>
+                                    <use xlink:href="../../../../assets/sprites/topnav-icons.svg#logout"></use>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

@@ -1,8 +1,9 @@
-<a routerLink="Timeline/{{notificationData?.post_id}}">
-    <div class="notificationContentDiv">
+<a routerLink="Post/{{notificationData?.post_id}}" (click)='changeReadState()'>
+    <div class="notificationContentDiv" [ngClass]="{'read':isRead}">
         <img src="./assets/images/profile.jpg">
         <div>
-            <p> {{notificationData?.from_full_name}} commented on your post</p>
+            <p> <b>{{notificationData?.from_full_name}}</b> has commented on your post</p>
         </div>
+        <div class="unreadDotDiv"></div>
     </div>
 </a>

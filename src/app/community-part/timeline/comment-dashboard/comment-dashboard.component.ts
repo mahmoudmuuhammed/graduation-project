@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl,Validators } from '@angular/forms';
 import { FeedsService } from 'src/app/services/feeds.service';
 
 @Component({
@@ -19,10 +19,9 @@ export class CommentDashboardComponent implements OnInit {
 
     commentFormController() {
         this.commentForm = new FormGroup({
-            'content': new FormControl(null)
+            'content': new FormControl(null,Validators.required)
         });
     }
-
 
     addComment() {
         const commentContent = this.commentForm.get('content').value;

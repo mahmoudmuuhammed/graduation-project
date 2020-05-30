@@ -59,12 +59,15 @@ export class FeedsService {
         const data: Post = {
             postKey: createdId,
             userID: this.auth.auth.currentUser.uid,
+            userName: this.auth.auth.currentUser.displayName,
             title: title,
             description: description,
             createdTime: Date.now(),
             category: category,
             postPhoto: null,
-            upVotes: {}
+            upVotes: {},
+            commentCounter: 0,
+            upVotesCounter:0,
         };
         this.db.collection('Posts')
             .doc(createdId)
@@ -72,20 +75,22 @@ export class FeedsService {
     }
 
     getComments(postId: string) {
-        const path = `Posts/${postId}/Comments`;
-        this.commentCollection = this.db.collection(path);
+        this.commentCollection = this.db.collection(`Posts/${postId}/Comments`,
+            ref => { return ref.orderBy('createdTime', 'desc') });
         return this.commentCollection.valueChanges();
     }
 
     setupComment(postId: string, content: string) {
         const commentId = this.db.createId();
         const data: Comment = {
-            postId:postId,
+            postId: postId,
             commentId: commentId,
+            userId: this.auth.auth.currentUser.uid,
+            userName: this.auth.auth.currentUser.displayName,
             createdTime: Date.now(),
             content: content,
-            userName: this.auth.auth.currentUser.displayName,
-            userId: this.auth.auth.currentUser.uid
+            clappingCounter:0,
+            clappings:{},
         };
         const path = `Posts/${postId}/Comments/${commentId}`;
         this.db.doc(path).set(data);
@@ -95,7 +100,7 @@ export class FeedsService {
 
     setupClapping(postId: string, commentId: string) {
         const path = `Posts/${postId}/Comments/${commentId}`;
-        this.db.doc(path).update({ clappingCounter: firestore.FieldValue.increment(1) })
+        this.db.doc<Comment>(path).update({ [`clappings.${this.auth.auth.currentUser.uid}`]: 1 });
     }
 
     getTotalVotesOnPost(postId: string) {
@@ -106,6 +111,16 @@ export class FeedsService {
     updateVoteOnPost(postId: string, vote: number) {
         const path = `Posts/${postId}`;
         this.db.doc<Post>(path).update({ [`upVotes.${this.auth.auth.currentUser.uid}`]: vote });
+    }
+
+    getTotalClapping(postId:string,commentId:string){
+        const path = `Posts/${postId}/Comments/${commentId}`;
+        return this.db.doc<Comment>(path).valueChanges();
+    }
+
+    getTotalCommentCount(postId:string){
+        const path = `Posts/${postId}/Comments`;
+        return this.db.collection<Comment>(path).valueChanges();
     }
 
     notificationSetup(postId: string) {
@@ -128,12 +143,15 @@ export class FeedsService {
     }
 
     getNotifications(userId: string) {
-        const path = `Users/${userId}/Notification`;
-        this.notificationCollection = this.db.collection(path);
+        this.notificationCollection = this.db.collection(`Users/${userId}/Notification`,
+            ref => { return ref.orderBy('createdTime', 'desc') });
         return this.notificationCollection.valueChanges();
     }
 
-    getPostOwnerName(userId: string) {
-        return this.db.collection('Users').doc(userId).valueChanges()
+    changeNotificationReadState(notificationId: string, userId: string) {
+        const path = `Users/${userId}/Notification/${notificationId}`
+        this.notificationDocument = this.db.doc(path);
+        this.notificationDocument.update({ read: true })
+
     }
 }

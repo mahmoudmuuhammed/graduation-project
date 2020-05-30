@@ -2,7 +2,7 @@
     <div class="notificationDiv" *ngFor="let notification of notifications | async">
         <notification-item [notificationData]='notification'></notification-item>
     </div>
-    <!-- <div *ngIf="noNotification">
+    <div *ngIf="noNotification">
         <h5 class="noNotificationTitle">No notification yet</h5>
-    </div> -->
+    </div>
 </div>

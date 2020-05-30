@@ -33,7 +33,7 @@ export class AuthService {
     // }
 
     get currentUser() {
-        return firebase.auth().currentUser.uid
+        return firebase.auth().currentUser
     }
 
     sendingAuthRequest() {
@@ -60,7 +60,7 @@ export class AuthService {
         const path = `Users/${ this.currentUser }`;
 
         this.fireDb.doc<UserModel>(path).set({
-            uid: this.currentUser,
+            uid: this.currentUser.uid,
             email: email,
             photoUrl: 'dsadad',
             createdTime: creationTime,

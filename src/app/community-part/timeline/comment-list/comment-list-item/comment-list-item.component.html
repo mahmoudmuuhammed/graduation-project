@@ -13,13 +13,13 @@
                         </a>
                     </span>
                     <span class="comment__info-user__date">
-                        in {{ commentData?.createdTime |date:'d,LLL h:m aa'}}
+                        in {{ commentData?.createdTime |date:'d,LLL h:mm aa'}}
                     </span>
                 </div>
                 <div class="comment__info-rate">
-                    
+
                     <span class="comment__info-rate__counter">
-                        2 clapping
+                        {{ clappingCounter }} clapping
                     </span>
                 </div>
             </div>
@@ -27,12 +27,12 @@
                 <span>
                     {{ commentData?.content }}
                 </span>
-                <div  (click)="clapping()">
+                <div (click)="clapping()">
                     <svg class="clappingIcon">
                         <use xlink:href="../../../../../assets/sprites/posts-icons.svg#percussion-instrument"></use>
                     </svg>
                 </div>
-                
+
             </div>
         </div>
     </div>

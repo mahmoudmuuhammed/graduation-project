@@ -34,3 +34,19 @@
         }
     }
 }
+
+.mainCommunityDiv{
+    background: #f5f6f7;
+}
+.communityRouterDiv{
+    height: calc(100vh - 55px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+@media(max-width:992px){
+    .communityRouterDiv{
+        height: auto;
+        overflow: auto;
+    }
+}

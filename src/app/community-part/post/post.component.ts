@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FeedsService } from 'src/app/services/feeds.service';
-import { UserModel } from 'src/app/models/user.model';
+import { Post } from 'src/app/models/post.model';
 
 @Component({
   selector: 'singlePost',
@@ -9,20 +9,23 @@ import { UserModel } from 'src/app/models/user.model';
   styleUrls: ['./post.component.scss']
 })
 export class singlePostComponent implements OnInit {
-  postData;
-  postOwner: string;
+  postData: Post
+  view: boolean = false
+  commentCounter: number = 0;
 
   constructor(private activatedRoute: ActivatedRoute,
     private feedsService: FeedsService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.activatedRoute.params.subscribe(res => {
-      let postId = res.postId
-      this.feedsService.getSinglePost(postId).subscribe(res => {
+      this.feedsService.getSinglePost(res.postId).subscribe(res => {
         this.postData = res[0];
-        const userID = this.postData.userID
-        this.feedsService.getPostOwnerName(userID).subscribe((res: UserModel) => {
-          this.postOwner = res.fullName
+        this.view = true
+      })
+      this.feedsService.getTotalCommentCount(res.postId).subscribe(res => {
+        this.commentCounter = 0;
+        Object.values(res).forEach(() => {
+          this.commentCounter++
         })
       })
     })

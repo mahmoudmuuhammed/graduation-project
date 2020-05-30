@@ -10,7 +10,6 @@ import { CommentListComponent } from './comment-list/comment-list.component';
 import { CommentListItemComponent } from './comment-list/comment-list-item/comment-list-item.component';
 import { UpvotesComponent } from './upvotes/upvotes.component';
 import { TimelineComponent } from './timeline.component';
-import { singlePostComponent } from './post/post.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +21,6 @@ import { singlePostComponent } from './post/post.component';
         CommentListComponent,
         CommentListItemComponent,
         UpvotesComponent,
-        singlePostComponent
     ],
     imports: [
         CommonModule,

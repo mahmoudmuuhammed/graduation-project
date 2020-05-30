@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Post } from 'src/app/models/post.model';
 import { FeedsService } from 'src/app/services/feeds.service';
-import { UserModel } from 'src/app/models/user.model';
 
 @Component({
     selector: 'post-list-item',
@@ -11,15 +10,18 @@ import { UserModel } from 'src/app/models/user.model';
 
 export class PostListItemComponent implements OnInit {
     @Input() postData: Post;
-    postOwner: string;
+    commentCounter: number = 0;
+    postId:string;
 
-    constructor(private feedsService: FeedsService) { }
-
-    ngOnInit() {
-        const userID = this.postData.userID
-        this.feedsService.getPostOwnerName(userID).subscribe((res: UserModel) => {
-            this.postOwner = res.fullName
+    constructor(private feedsService:FeedsService){}
+    
+    ngOnInit(){
+        this.postId = this.postData.postKey;
+        this.feedsService.getTotalCommentCount(this.postId).subscribe(res => {
+            this.commentCounter=0;
+            Object.values(res).forEach(() => {
+                this.commentCounter++
+            })
         })
-        //this.feedsService.getCommentsCounts(this.postData.postKey);
     }
 }

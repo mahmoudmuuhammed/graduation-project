@@ -281,9 +281,9 @@
                 background-color: #e5e5e5;
                 border: none;
                 cursor: pointer;
-                padding:0px 5px;
+                padding: 0px 5px;
 
-                img{
+                img {
                     width: 20px;
                 }
             }
@@ -325,20 +325,28 @@
         .notificationDivContainer {
             background: #fff;
             position: absolute;
-            min-width: 150px;
             right: 5px;
             top: 60px;
             border-radius: 5px;
             box-shadow: 0px 0px 3px #aaa;
-            background-color: #fff;
-            border-radius: 5px;
-            min-width: 300px;
+            max-height: 450px;
+            overflow-y: auto;
+            overflow-x: hidden;
 
 
             .notificationHeader {
                 padding: 5px 10px;
                 border-bottom: 1px solid #ddd;
             }
+
+            &::-webkit-scrollbar {
+                width: 5px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                border-radius: 5px;
+            }
+
         }
 
         .accountDetails {
@@ -356,6 +364,15 @@
 
             .accountName {
                 margin: 0 10px;
+            }
+
+            .logOutOption{
+                svg{
+                    height: 25px;
+                    width: 30px;
+                    margin-bottom: -7px;
+                    cursor: pointer;
+                }  
             }
 
             .AccountOption {
@@ -385,6 +402,7 @@
 
                     .optionDiv {
                         padding: 10px 0;
+                        cursor: pointer;
 
                         a {
                             text-decoration: none;
