@@ -6,7 +6,6 @@
         <div class="commentDataDiv">
             <div class="userdata">
                 <div class="comment__info-user">
-
                     <span class="comment__info-user__name">
                         <a>
                             {{ commentData?.userName}}
@@ -16,11 +15,23 @@
                         in {{ commentData?.createdTime |date:'d,LLL h:mm aa'}}
                     </span>
                 </div>
-                <div class="comment__info-rate">
-
-                    <span class="comment__info-rate__counter">
-                        {{ clappingCounter }} clapping
-                    </span>
+                <div class="commentHeader">
+                    <div class="comment__info-rate">
+                        <span class="comment__info-rate__counter">
+                            {{ clappingCounter }} clapping
+                        </span>
+                    </div>
+                    <div dropDownCollabse class="commentOption" *ngIf="isAuther">
+                        <a class="commentOption_caret"><i class="fas fa-caret-down"></i></a>
+                        <div class="collapse">
+                            <div (click)='deleteComment()'>
+                                <svg>
+                                    <use xlink:href="../../../../assets/sprites/posts-icons.svg#delete"></use>
+                                </svg>
+                                <span>Delete</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="commentContentDiv">

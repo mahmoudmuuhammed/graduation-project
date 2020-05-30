@@ -1,4 +1,4 @@
-<div style="height: 55px;"></div>
+<div class="fixFixedNav"></div>
 <nav class="navbar navbar-expand-md topNavbar" id="topNav">
     <div style="display: flex;align-items: center;">
         <!-- Nav Toggler Btn -->
@@ -29,14 +29,15 @@
         <div class="AccountOptionDiv">
             <!-- Notification Area -->
             <div dropDownCollabse>
-                <div style="position: relative;" (click)="showNotification()">
-                    <button class="bellBtn" data-toggle="collapse" data-target="#notificationDiv">
-                        <i class="far fa-bell notificationBell"></i>
-                        <div [ngClass]="{'bellDot':newNotification}"></div>
-                    </button>
-                </div>
+                <button class="bellBtn" data-toggle="collapse" data-target="#notificationDiv">
+                    <i class="far fa-bell notificationBell"></i>
+                    <div [ngClass]="{'bellDot':newNotification}"></div>
+                </button>
                 <div class="collapse notificationDivContainer" id="notificationDiv">
-                    <header class="notificationHeader">Notification</header>
+                    <header class="notificationHeader">
+                        <span>Notification</span>
+                        <i class="far fa-times-circle"></i>
+                    </header>
                     <notification></notification>
                 </div>
             </div>

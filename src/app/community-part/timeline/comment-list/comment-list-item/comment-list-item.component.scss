@@ -28,7 +28,7 @@
         .commentDataDiv {
             width: 100%;
             background: #efefef;
-            padding: 5px 15px; 
+            padding: 5px 15px;
             border-radius: 5px;
 
             .userdata {
@@ -50,11 +50,60 @@
                     }
                 }
 
+                .commentHeader {
+                    display: flex;
+                    align-items: center;
+                }
+
                 .comment__info-rate {
                     &__counter {
                         font-weight: 700;
                         font-size: 12px;
                         color: rgba($secondary-text, .7);
+                        margin-right: 10px;
+                    }
+                }
+
+                .commentOption {
+                    position: relative;
+
+                    &_caret {
+                        font-size: 18px;
+                        padding: 5px 0 5px 5px;
+                        cursor: pointer;
+                    }
+
+                    .collapse {
+                        position: absolute;
+                        right: 0px;
+                        box-shadow: 0px 0px 3px #888;
+                        padding: 5px 0px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        background-color: #fff;
+
+                        &>div {
+                            display: flex;
+                            align-items: center;
+                            padding: 0px 5px;
+
+                            svg {
+                                width: 15px;
+                                height: 20px;
+                                margin: -2px 4px 0px 4px;
+                                fill: #c3242d;
+                            }
+
+                            span {
+                                color: #c3242d;
+                                font-size: 13px;
+                                font-weight: 700;
+                            }
+
+                            &:hover {
+                                background: #efefef;
+                            }
+                        }
                     }
                 }
             }
@@ -78,14 +127,29 @@
                     background: $primary-color;
                     transition: all .2s ease-in-out;
 
-                    &:hover{
+                    &:hover {
                         box-shadow: 0px 0px 3px #aaa;
                     }
                 }
             }
         }
+    }
+}
 
+@media(max-width:576px) {
+    .comment__info-user {
+        flex-direction: column;
+        display: flex;
     }
 
+    .comment__info {
+        .commentDataDiv {
+            .userdata {
+                .commentHeader {
+                    align-items: flex-start;
+                }
+            }
+        }
+    }
 
 }

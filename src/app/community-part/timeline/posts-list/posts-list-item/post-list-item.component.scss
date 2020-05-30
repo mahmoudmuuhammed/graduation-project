@@ -69,6 +69,48 @@
             border-radius: 50%;
             background-color: #eee;
         }
+
+        .postOption {
+
+            &_caret {
+                font-size: 20px;
+                margin-right: 5px;
+                cursor: pointer;
+            }
+
+            .collapse {
+                position: absolute;
+                right: 20px;
+                top: 41px;
+                box-shadow: 0px 0px 3px #888;
+                padding: 5px 0px;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &>div {
+                    display: flex;
+                    align-items: center;
+                    padding: 0px 5px;
+
+                    svg {
+                        width: 15px;
+                        height: 20px;
+                        margin: -2px 4px 0px 4px;
+                        fill: #c3242d;
+                    }
+
+                    span {
+                        color: #c3242d;
+                        font-size: 14px;
+                        font-weight: 600;
+                    }
+
+                    &:hover {
+                        background: #efefef;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -141,4 +183,24 @@ select {
     -moz-appearance: none;
     text-indent: 1px;
     text-overflow: '';
+}
+
+@media(max-width:576px) {
+
+    .post-details {
+        .postTimeDiv {
+            font-size: 11px;
+        }
+
+        &__user {
+            .postData {
+                .postOwnerandCategory {
+                    .postCategory {
+                        padding: 0 5px;
+                        font-size: 11px;
+                    }
+                }
+            }
+        }
+    }
 }

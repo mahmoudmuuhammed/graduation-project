@@ -10,6 +10,7 @@ import { CommentListComponent } from './comment-list/comment-list.component';
 import { CommentListItemComponent } from './comment-list/comment-list-item/comment-list-item.component';
 import { UpvotesComponent } from './upvotes/upvotes.component';
 import { TimelineComponent } from './timeline.component';
+import { DdColabseDirective } from 'src/app/directives/dd-colabse.directive';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { TimelineComponent } from './timeline.component';
         CommentListComponent,
         CommentListItemComponent,
         UpvotesComponent,
+        DdColabseDirective
     ],
     imports: [
         CommonModule,
@@ -34,7 +36,8 @@ import { TimelineComponent } from './timeline.component';
         CommentDashboardComponent,
         CommentListComponent,
         CommentListItemComponent,
-        UpvotesComponent
+        UpvotesComponent,
+        DdColabseDirective
     ]
 })
 

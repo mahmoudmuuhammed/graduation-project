@@ -5,10 +5,20 @@
 .notificationDivCont {
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    height: 350px;
 
     .noNotificationTitle {
         text-align: center;
         padding: 20px;
         color: #222;
+    }
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 5px;
     }
 }

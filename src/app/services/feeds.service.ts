@@ -152,6 +152,17 @@ export class FeedsService {
         const path = `Users/${userId}/Notification/${notificationId}`
         this.notificationDocument = this.db.doc(path);
         this.notificationDocument.update({ read: true })
+    }
 
+    deletePost(postId:string){
+        const path = `Posts/${postId}`
+        this.postDocument = this.db.doc(path);
+        this.postDocument.delete()
+    }
+
+    deleteComment(postId:string,commentId:string){
+        const path = `Posts/${postId}/Comments/${commentId}`
+        this.postDocument = this.db.doc(path);
+        this.postDocument.delete()
     }
 }

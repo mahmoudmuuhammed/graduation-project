@@ -96,7 +96,7 @@
 
         .navbarNav {
             margin-top: 5px;
-            justify-content: center;
+            justify-content: space-evenly;
 
             .navItem {
                 a {
@@ -108,16 +108,6 @@
 }
 
 @media (max-width:576px) {
-
-    .navContainer {
-        .navbarNav {
-            .navItem {
-                a {
-                    margin: 5px 10px;
-                }
-            }
-        }
-    }
 
     .miniLogo {
         img {

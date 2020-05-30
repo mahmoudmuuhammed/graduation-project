@@ -1,68 +1,42 @@
-<form 
-    [formGroup]="postForm" 
-    class="post-form" 
-    (ngSubmit)="handleAddPost()">
-    <div class="post-form__group" 
-        *ngIf="postDashboardCase">
-        <textarea 
-            name="title" 
-            id="post-title" 
-            cols="30" 
-            rows="1" 
-            style="font-weight: 800;"
-            class="post-form__group-control" 
-            placeholder="Add title" 
-            formControlName="title"></textarea>
-    </div>
-    <div class="post-form__group">
-        <img 
-            src="../../../../assets/svgs/man.svg"
-            alt="user-img" 
-            class="post-form__group-img" 
-            *ngIf="!postDashboardCase">
-        <textarea 
-            name="content"
-            id="post-content"
-            cols="30"
-            [rows]="postDashboardCase ? '5' : '1'"
-            class="post-form__group-control post-form__group-control--custom"
-            placeholder="What's your problem?" 
-            style="font-weight: 600;"
-            formControlName="content"
-            (click)="showFullForm()"></textarea>
-    </div>
-    <div class="post-form__group" 
-        *ngIf="postDashboardCase">
-        <div class="post-form__actions">
-            <svg 
-                class="post-form__actions-icon post-form__actions-icon--custom"
-                (click)="hideForm()">
-                <use xlink:href="../../../../assets/sprites/posts-icons.svg#clear"></use>
-            </svg>
-
-            <svg class="post-form__actions-icon" (click)="resetForm()">
-                <use xlink:href="../../../../assets/sprites/posts-icons.svg#delete"></use>
-            </svg>
+<div class="postDashboardContainer">
+    <form [formGroup]="postForm" class="post-form" (ngSubmit)="handleAddPost()">
+        <div class="post-form__group" *ngIf="postDashboardCase">
+            <textarea name="title" id="post-title" cols="30" rows="1" style="font-weight: 800;"
+                class="post-form__group-control" placeholder="Add title" formControlName="title"></textarea>
         </div>
-        <div class="post-form__submit">
-            <svg class="post-form__actions-icon">
-                <use xlink:href="../../../../assets/sprites/chat-icons.svg#image"></use>
-            </svg>
-
-            <svg class="post-form__actions-icon">
-                <use xlink:href="../../../../assets/sprites/chat-icons.svg#paper-clip"></use>
-            </svg>
-            <div class="post-form__submit-category">
-                <button type="button" class="post-form__submit-category__btn post-form__submit-btn">
-                    Category
-                </button>
-                <svg class="post-form__actions-icon post-form__actions-icon--drop">
-                    <use xlink:href="../../../../assets/sprites/posts-icons.svg#pointing"></use>
+        <div class="post-form__group">
+            <img src="../../../../assets/svgs/man.svg" alt="user-img" class="post-form__group-img"
+                *ngIf="!postDashboardCase">
+            <textarea name="content" id="post-content" cols="30" [rows]="postDashboardCase ? '5' : '1'"
+                class="post-form__group-control post-form__group-control--custom" placeholder="What's your problem?"
+                style="font-weight: 600;" formControlName="content" (click)="showFullForm()"></textarea>
+        </div>
+        <div class="post-form__group" *ngIf="postDashboardCase">
+            <div class="post-form__actions">
+                <svg class="post-form__actions-icon post-form__actions-icon--custom" (click)="hideForm()">
+                    <use xlink:href="../../../../assets/sprites/posts-icons.svg#clear"></use>
                 </svg>
             </div>
-            <button class="post-form__submit-btn" type="submit" [disabled]="!postForm.valid">
-                Post
-            </button>
+            <div class="post-form__submit">
+                <svg class="post-form__actions-icon">
+                    <use xlink:href="../../../../assets/sprites/chat-icons.svg#image"></use>
+                </svg>
+
+                <svg class="post-form__actions-icon">
+                    <use xlink:href="../../../../assets/sprites/chat-icons.svg#paper-clip"></use>
+                </svg>
+                <div class="post-form__submit-category">
+                    <button type="button" class="post-form__submit-category__btn post-form__submit-btn">
+                        Category
+                    </button>
+                    <svg class="post-form__actions-icon post-form__actions-icon--drop">
+                        <use xlink:href="../../../../assets/sprites/posts-icons.svg#pointing"></use>
+                    </svg>
+                </div>
+                <button class="post-form__submit-btn" type="submit" [disabled]="!postForm.valid">
+                    Post
+                </button>
+            </div>
         </div>
-    </div>
-</form>
+    </form>
+</div>

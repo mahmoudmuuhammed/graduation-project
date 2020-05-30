@@ -4,7 +4,7 @@ import { Directive, HostBinding, HostListener, ElementRef } from '@angular/core'
   selector: '[dropDownCollabse]'
 })
 export class DdColabseDirective {
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef) {}
 
   @HostBinding('class.show') isShown = false;
   @HostListener('click',['$event.target']) toggleShow() {

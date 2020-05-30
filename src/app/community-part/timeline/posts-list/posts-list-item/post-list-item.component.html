@@ -8,10 +8,23 @@
                     <span class="postCategory">{{ postData.category }}</span>
                 </div>
             </div>
-            <span class="postTimeDiv">
-                <i class="far fa-clock"></i>
-                <span>{{ postData.createdTime | date:'d,LLL h:m aa' }}</span>
-            </span>
+            <div style="display: flex;">
+                <span class="postTimeDiv">
+                    <i class="far fa-clock"></i>
+                    <span>{{ postData.createdTime | date:'d,LLL h:m aa' }}</span>
+                </span>
+                <div dropDownCollabse class="postOption" *ngIf='isAuther'>
+                    <a class="postOption_caret"><i class="fas fa-caret-down"></i></a>
+                    <div class="collapse">
+                        <div (click)='deletePost()'>
+                            <svg>
+                                <use xlink:href="../../../../assets/sprites/posts-icons.svg#delete"></use>
+                            </svg>
+                            <span>Delete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="post-info">

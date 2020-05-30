@@ -20,7 +20,6 @@ const communityRoutes: Routes = [
                 ]
             },
             { path: 'Profile', component: ProfileComponent },
-            // { path: 'Chats', component: ChattingComponent },
             { path: 'Doctors', component: DoctorPreviewComponent },
         ]
     }

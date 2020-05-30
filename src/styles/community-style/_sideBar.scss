@@ -15,6 +15,7 @@
 
     &>div {
         margin-bottom: 10px;
+
         a {
             display: flex;
             align-items: center;
@@ -65,6 +66,19 @@
 
 
 
+@media (min-width:768px) and (max-width:992px) {
+    .navLinkDiv {
+        .sideNavItemImg {
+            margin-left: 10px;
+            font-size: 20px;
+            width: 20px;
+        }
+        
+        .sideNavItemSpan {
+            margin-left: 10px;
+        }
+    }
+}
 
 @media (max-width: 768px) {
     .offcanvas-collapse {
@@ -90,16 +104,8 @@
 
 }
 
-@media (min-width:768px) and (max-width:992px) {
-    .navLinkDiv {
-        .sideNavItemImg {
-            margin-left: 10px;
-            font-size: 20px;
-            width: 20px;
-        }
-
-        .sideNavItemSpan {
-            margin-left: 10px;
-        }
+@media (max-width: 576px) {
+    .offcanvas-collapse {
+        top: 50px;
     }
 }

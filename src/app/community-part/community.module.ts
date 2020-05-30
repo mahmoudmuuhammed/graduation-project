@@ -19,7 +19,6 @@ import { NotificationComponent } from './notification/notification.component';
 import { NotificationItemComponent } from './notification/notification-item/notification-item.component';
 import { DangerAreaComponent } from './danger-area/danger-area.component'
 import { singlePostComponent } from './post/post.component';
-import { DdColabseDirective } from '../directives/dd-colabse.directive';
 
 
 @NgModule({
@@ -35,7 +34,6 @@ import { DdColabseDirective } from '../directives/dd-colabse.directive';
         NotificationItemComponent,
         DangerAreaComponent,
         singlePostComponent,
-        DdColabseDirective,
     ],
     imports: [
         CommonModule,
@@ -47,7 +45,7 @@ import { DdColabseDirective } from '../directives/dd-colabse.directive';
         DoctorPreviewModule
     ],
     exports: [
-        CommunityContainerComponent
+        CommunityContainerComponent,
     ],
     providers:[]
 })
