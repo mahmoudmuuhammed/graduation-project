@@ -3,6 +3,7 @@
         <img src="./assets/images/profile.jpg">
         <div>
             <p> <b>{{notificationData?.from_full_name}}</b> has commented on your post</p>
+            <p class="notificationTime">in {{notificationData?.createdTime |date:'d,LLL h:m aa'}}</p>
         </div>
         <div class="unreadDotDiv"></div>
     </div>

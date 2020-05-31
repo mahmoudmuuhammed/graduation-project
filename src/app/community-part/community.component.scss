@@ -44,9 +44,14 @@
     overflow-x: hidden;
 }
 
-@media(max-width:992px){
+@media(max-width:991.99px){
     .communityRouterDiv{
         height: auto;
         overflow: auto;
+    }
+    .dangerArea{
+        position: fixed;
+        top: 40%;
+        transform: translateY(-50%);
     }
 }

@@ -6,8 +6,6 @@ export class Post {
     description: string;
     category: string;
     createdTime: number;
-    postPhoto?: string;
+    postPhoto: Boolean;
     upVotes?: object;
-    commentCounter:number;
-    upVotesCounter:number;
 };

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, OnDestroy } from "@angular/core";
 import { FeedsService } from 'src/app/services/feeds.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
     selector: 'upvotes',
@@ -13,18 +14,22 @@ export class UpvotesComponent implements OnInit, OnDestroy {
     votesCount: number = 0;
     userVote: number = 0;
     subscribtion: Subscription;
-    constructor(private feedsService: FeedsService) {}
+    constructor(private feedsService: FeedsService,
+        private authService:AuthService) { }
 
     ngOnInit() {
         this.subscribtion = this.feedsService.getTotalVotesOnPost(this.postId)
-        .subscribe(
-            postData => {
-                const values = Object.values(postData.upVotes);
-                for(const value of values) {
-                    this.votesCount += value;
-                };
-            }
-        )
+            .subscribe(
+                postData => {
+                    const votes = Object.entries(postData.upVotes);
+                    for (let [key, value] of votes) {
+                        this.votesCount += value;
+                        if (key == this.authService.currentUser.uid) {
+                            this.userVote = value
+                        }
+                    };
+                }
+            )
     }
 
     upVote() {

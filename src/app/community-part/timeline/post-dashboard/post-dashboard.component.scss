@@ -9,13 +9,14 @@
     border: .7px solid rgba($secondary-text, .2);
     min-height: 50px;
     @include forms;
-    max-width:600px;
+    max-width: 600px;
+
     &__group {
         width: 100%;
         @include flexbox;
         align-items: center;
         justify-content: space-between;
-        
+
         &-control {
             resize: none;
             border: none;
@@ -45,12 +46,20 @@
         }
     }
 
+    .imgPreviewDiv{
+        width: 100%;
+        img{
+            width: inherit;
+        }
+    }
+
     &__actions {
         margin-left: .5em;
+
         &-icon {
-            width: 18.5px;
+            width: 20px;
             margin-right: 1.3em;
-            height: 18.5px;
+            height: 20px;
             fill: $secondary-text;
             cursor: pointer;
 
@@ -90,12 +99,11 @@
                 cursor: not-allowed;
                 pointer-events: all !important;
                 background-color: rgba($primary-color, .4);
-                
+
             }
         }
 
         &-category {
-            text-align: center;
             &__btn {
                 background-color: transparent;
                 color: rgba($secondary-text, 1);
@@ -103,6 +111,49 @@
                 padding: 0px 10px;
                 border-left: 1px solid rgba($primary-color, .4);
                 border-radius: 0;
+                text-align: center;
+            }
+
+            .collapse {
+                position: absolute;
+                top: 40px;
+                background-color: #fff;
+                padding: 5px 0;
+                border-radius: 5px;
+                box-shadow: 0px 0px 5px #888;
+                z-index: 10;
+                width: max-content;
+
+                option {
+                    margin: 2px 0px;
+                    padding: 0px 20px;
+                    font-family: inherit;
+                    font-size: 13px;
+                    font-weight: 700;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #eee;
+                    }
+                }
+            }
+        }
+
+        .postImgInputDiv {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            margin-right: 20px;
+
+            input[type=file] {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                cursor: pointer;
             }
         }
     }

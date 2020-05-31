@@ -14,7 +14,9 @@
                     <span>{{ postData.createdTime | date:'d,LLL h:m aa' }}</span>
                 </span>
                 <div dropDownCollabse class="postOption" *ngIf='isAuther'>
-                    <a class="postOption_caret"><i class="fas fa-caret-down"></i></a>
+                    <svg>
+                        <use xlink:href="../../../../assets/sprites/posts-icons.svg#option"></use>
+                    </svg>
                     <div class="collapse">
                         <div (click)='deletePost()'>
                             <svg>
@@ -35,9 +37,8 @@
             {{ postData?.description }}
         </span>
     </div>
-    <div class="image-container">
-        <img src="../../../../../assets/images/img1.png" alt="post image" class="image-container__img">
-
+    <div class="image-container" *ngIf="postData.postPhoto">
+        <img src="{{postImgSrc}}" alt="post image" class="image-container__img">
     </div>
 
     <div class="post-actions">

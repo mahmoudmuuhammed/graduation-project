@@ -7,9 +7,12 @@
         <div class="post-form__group">
             <img src="../../../../assets/svgs/man.svg" alt="user-img" class="post-form__group-img"
                 *ngIf="!postDashboardCase">
-            <textarea name="content" id="post-content" cols="30" [rows]="postDashboardCase ? '5' : '1'"
+            <textarea name="content" id="post-content" cols="30" [rows]="postDashboardCase ? '3' : '1'"
                 class="post-form__group-control post-form__group-control--custom" placeholder="What's your problem?"
                 style="font-weight: 600;" formControlName="content" (click)="showFullForm()"></textarea>
+        </div>
+        <div class="imgPreviewDiv" *ngIf="isImgExist">
+            <img src="{{imageInputSrc}}">
         </div>
         <div class="post-form__group" *ngIf="postDashboardCase">
             <div class="post-form__actions">
@@ -18,20 +21,35 @@
                 </svg>
             </div>
             <div class="post-form__submit">
-                <svg class="post-form__actions-icon">
-                    <use xlink:href="../../../../assets/sprites/chat-icons.svg#image"></use>
-                </svg>
+                <div class="postImgInputDiv">
+                    <input type="file" #fileInput (change)="chooseImg(fileInput.files[0])" accept=".png,.jpg">
+                    <svg class="post-form__actions-icon">
+                        <use xlink:href="../../../../assets/sprites/chat-icons.svg#image"></use>
+                    </svg>
+                </div>
 
                 <svg class="post-form__actions-icon">
                     <use xlink:href="../../../../assets/sprites/chat-icons.svg#paper-clip"></use>
                 </svg>
-                <div class="post-form__submit-category">
+                <div dropDownCollabse class="post-form__submit-category">
                     <button type="button" class="post-form__submit-category__btn post-form__submit-btn">
-                        Category
+                        {{Category}}
+                        <i class="fas fa-caret-down"></i>
                     </button>
-                    <svg class="post-form__actions-icon post-form__actions-icon--drop">
-                        <use xlink:href="../../../../assets/sprites/posts-icons.svg#pointing"></use>
-                    </svg>
+                    <div class="collapse">
+                        <option value="General" (click)="categorySelection($event)">General</option>
+                        <option value="Corona" (click)="categorySelection($event)">Corona</option>
+                        <option value="Diabetes" (click)="categorySelection($event)">Diabetes</option>
+                        <option value="Heart" (click)="categorySelection($event)">Heart</option>
+                        <option value="Ophthalmology" (click)="categorySelection($event)">Ophthalmology</option>
+                        <option value="Laboratories" (click)="categorySelection($event)">Laboratories</option>
+                        <option value="Bones" (click)="categorySelection($event)">Bones</option>
+                        <option value="Muscles" (click)="categorySelection($event)">Muscles</option>
+                        <option value="Dentistry" (click)="categorySelection($event)">Dentistry</option>
+                        <option value="Physiotherapy" (click)="categorySelection($event)">Physiotherapy</option>
+                        <option value="Nutrition" (click)="categorySelection($event)">Nutrition</option>
+                        <option value="Psychitary" (click)="categorySelection($event)">Psychitary</option>
+                    </div>
                 </div>
                 <button class="post-form__submit-btn" type="submit" [disabled]="!postForm.valid">
                     Post

@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FeedsService } from 'src/app/services/feeds.service';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'post-dashboard',
@@ -11,16 +13,12 @@ import { FeedsService } from 'src/app/services/feeds.service';
 export class PostDashboardComponent implements OnInit {
     postDashboardCase: boolean = false;
     postForm: FormGroup;
-    categoriesList = [
-        'Varicose Veins',
-        'Influenza',
-        'Bad Breath',
-        'Kidney Stone',
-        'Acute Pharyngitis',
-        'Inflammation',
-        'Arthralgia'
-    ];
-    constructor(private feedService: FeedsService) {}
+    Category: string = 'General';
+    isImgExist: boolean = false;
+    imageInput: {};
+    imageInputSrc;
+    constructor(private feedService: FeedsService,
+        private fStorage: AngularFireStorage) { }
 
     ngOnInit() {
         this.postFormController();
@@ -31,6 +29,9 @@ export class PostDashboardComponent implements OnInit {
     }
 
     hideForm() {
+        this.isImgExist = false;
+        this.imageInput = {};
+        this.imageInputSrc = "";
         this.postDashboardCase = false;
         this.postForm.reset();
     }
@@ -45,12 +46,26 @@ export class PostDashboardComponent implements OnInit {
     handleAddPost() {
         const title: string = this.postForm.get('title').value;
         const content: string = this.postForm.get('content').value;
-        this.feedService.setupPost(title, content, 'general');
+        this.feedService.setupPost(title, content, this.Category, this.isImgExist, this.imageInput);
         this.postForm.reset();
         this.hideForm();
     }
 
     resetForm() {
         this.postForm.reset();
+    }
+
+    categorySelection(event) {
+        this.Category = event.target.value
+    }
+
+    chooseImg(file: File) {
+        this.imageInput = file;
+        this.isImgExist = true;
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            this.imageInputSrc = reader.result;
+        };
     }
 }

@@ -12,6 +12,7 @@ import { Comment } from '../models/comment.model';
 import { Notification } from '../models/notification.model';
 import { UserModel } from '../models/user.model';
 import { firestore } from 'firebase/app';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Injectable({
     providedIn: 'root'
@@ -30,6 +31,7 @@ export class FeedsService {
     constructor(
         private db: AngularFirestore,
         private auth: AngularFireAuth,
+        private fStorage: AngularFireStorage
     ) {
         if (auth.auth.currentUser !== undefined && auth.auth.currentUser !== null) {
             this.currentUser = auth.auth.currentUser;
@@ -54,7 +56,7 @@ export class FeedsService {
         return this.postCollection.valueChanges();
     }
 
-    setupPost(title: string, description: string, category: string) {
+    setupPost(title: string, description: string, category: string, isImg: boolean, img: {}) {
         const createdId = this.db.createId();
         const data: Post = {
             postKey: createdId,
@@ -64,14 +66,22 @@ export class FeedsService {
             description: description,
             createdTime: Date.now(),
             category: category,
-            postPhoto: null,
+            postPhoto: isImg,
             upVotes: {},
-            commentCounter: 0,
-            upVotesCounter:0,
         };
-        this.db.collection('Posts')
-            .doc(createdId)
-            .set(data);
+        if (isImg) {
+            this.fStorage.ref(`postImages/${createdId}`).put(img).then(() => {
+                this.db.collection('Posts').doc(createdId).set(data);
+            })
+        }
+        else {
+            this.db.collection('Posts').doc(createdId).set(data);
+        }
+
+    }
+
+    getPostImgSrc(postId: string) {
+        return this.fStorage.ref(`postImages/${postId}`).getDownloadURL()
     }
 
     getComments(postId: string) {
@@ -89,8 +99,7 @@ export class FeedsService {
             userName: this.auth.auth.currentUser.displayName,
             createdTime: Date.now(),
             content: content,
-            clappingCounter:0,
-            clappings:{},
+            clappings: {},
         };
         const path = `Posts/${postId}/Comments/${commentId}`;
         this.db.doc(path).set(data);
@@ -98,9 +107,9 @@ export class FeedsService {
         this.notificationSetup(postId)
     }
 
-    setupClapping(postId: string, commentId: string) {
+    setupClapping(postId: string, commentId: string, clapValue: number) {
         const path = `Posts/${postId}/Comments/${commentId}`;
-        this.db.doc<Comment>(path).update({ [`clappings.${this.auth.auth.currentUser.uid}`]: 1 });
+        this.db.doc<Comment>(path).update({ [`clappings.${this.auth.auth.currentUser.uid}`]: clapValue });
     }
 
     getTotalVotesOnPost(postId: string) {
@@ -113,12 +122,12 @@ export class FeedsService {
         this.db.doc<Post>(path).update({ [`upVotes.${this.auth.auth.currentUser.uid}`]: vote });
     }
 
-    getTotalClapping(postId:string,commentId:string){
+    getTotalClapping(postId: string, commentId: string) {
         const path = `Posts/${postId}/Comments/${commentId}`;
         return this.db.doc<Comment>(path).valueChanges();
     }
 
-    getTotalCommentCount(postId:string){
+    getTotalCommentCount(postId: string) {
         const path = `Posts/${postId}/Comments`;
         return this.db.collection<Comment>(path).valueChanges();
     }
@@ -154,13 +163,13 @@ export class FeedsService {
         this.notificationDocument.update({ read: true })
     }
 
-    deletePost(postId:string){
+    deletePost(postId: string) {
         const path = `Posts/${postId}`
         this.postDocument = this.db.doc(path);
         this.postDocument.delete()
     }
 
-    deleteComment(postId:string,commentId:string){
+    deleteComment(postId: string, commentId: string) {
         const path = `Posts/${postId}/Comments/${commentId}`
         this.postDocument = this.db.doc(path);
         this.postDocument.delete()

@@ -6,5 +6,4 @@ export class Comment {
     content: string;
     createdTime: number;
     clappings?: object;
-    clappingCounter:number
 };

@@ -67,10 +67,12 @@
                 .commentOption {
                     position: relative;
 
-                    &_caret {
-                        font-size: 18px;
-                        padding: 5px 0 5px 5px;
+                    svg {
+                        width: 30px;
+                        height: 20px;
+                        fill: #555;
                         cursor: pointer;
+                        margin-bottom: -5px
                     }
 
                     .collapse {
@@ -115,20 +117,31 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                margin-top: 15px;
 
-                .clappingIcon {
-                    width: 30px;
-                    height: 30px;
-                    fill: #fff;
-                    cursor: pointer;
-                    margin: 5px;
-                    border-radius: 5px;
-                    padding: 5px;
-                    background: $primary-color;
-                    transition: all .2s ease-in-out;
+                .clappingIconDiv {
+                    height: 40px;
+                    width: 40px;
 
-                    &:hover {
-                        box-shadow: 0px 0px 3px #aaa;
+                    .clappingIcon {
+                        width: 30px;
+                        height: 30px;
+                        fill: #555;
+                        cursor: pointer;
+                        margin: 5px;
+                        border-radius: 5px;
+                        padding: 5px;
+                        background: #ccc;
+                        transition: 0s;
+
+                        &:hover {
+                            box-shadow: 0px 0px 3px #aaa;
+                        }
+
+                        &.active {
+                            background: $primary-color;
+                            fill: #fff
+                        }
                     }
                 }
             }

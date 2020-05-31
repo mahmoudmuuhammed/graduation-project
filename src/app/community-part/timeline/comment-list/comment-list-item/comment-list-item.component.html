@@ -22,7 +22,11 @@
                         </span>
                     </div>
                     <div dropDownCollabse class="commentOption" *ngIf="isAuther">
-                        <a class="commentOption_caret"><i class="fas fa-caret-down"></i></a>
+                        <a class="commentOption_caret">
+                            <svg>
+                                <use xlink:href="../../../../assets/sprites/posts-icons.svg#option"></use>
+                            </svg>
+                        </a>
                         <div class="collapse">
                             <div (click)='deleteComment()'>
                                 <svg>
@@ -38,8 +42,8 @@
                 <span>
                     {{ commentData?.content }}
                 </span>
-                <div (click)="clapping()">
-                    <svg class="clappingIcon">
+                <div (click)="clapping()" class="clappingIconDiv">
+                    <svg class="clappingIcon" [ngClass]="{'active':clapped==true}">
                         <use xlink:href="../../../../../assets/sprites/posts-icons.svg#percussion-instrument"></use>
                     </svg>
                 </div>

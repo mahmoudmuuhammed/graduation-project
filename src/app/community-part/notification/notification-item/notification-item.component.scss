@@ -21,8 +21,14 @@ a {
     }
 
     p {
-        margin: 10px 5px;
+        margin: 0px 10px;
         font-size: 14px;
+    }
+    p.notificationTime{
+        font-size: 12px;
+        font-weight: 600;
+        margin-top: -2px;
+        color: #555;
     }
 
     .unreadDotDiv {
