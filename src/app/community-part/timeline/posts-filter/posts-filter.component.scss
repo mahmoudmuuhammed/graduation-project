@@ -1,0 +1,66 @@
+.postFilterMainDiv {
+    position: relative;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid rgba(86, 86, 90, 0.2);
+    width: 120px;
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 14px;
+        font-weight: 700;
+        color: #555;
+
+        p {
+            margin-left: 5px;
+        }
+    }
+
+    section {
+        position: relative;
+        cursor: pointer;
+
+        button {
+            background-color: #fff;
+            font-weight: 700;
+            border-radius: 5px;
+            text-align: left;
+            border: none;
+            color: #555;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        .collapse {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 5px;
+            z-index: 10;
+            width: -webkit-max-content;
+            width: -moz-max-content;
+            width: 100%;
+            left: 0;
+            top: 30px;
+            border: 1px solid rgba(86, 86, 90, 0.2);
+            border-top: none;
+
+            option {
+                margin: 2px 0px;
+                font-family: inherit;
+                font-size: 12px;
+                font-weight: 700;
+                cursor: pointer;
+                padding: 0px 5px;
+
+                &:hover {
+                    background-color: #eee;
+                }
+            }
+        }
+    }
+}
+@media(max-width:1340px){
+
+}

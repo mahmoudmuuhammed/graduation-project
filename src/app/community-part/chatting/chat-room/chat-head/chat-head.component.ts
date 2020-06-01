@@ -6,7 +6,7 @@ import { UserModel } from 'src/app/models/user.model';
 import { take } from 'rxjs/operators'
 import { AngularFireAuth } from '@angular/fire/auth';
 import { SharedService } from 'src/app/services/shared.service';
-import { AgouraServic } from 'src/app/services/agora.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
     selector: 'chat-head',
@@ -18,7 +18,7 @@ export class ChatHeadComponent {
     @Input() userData: UserModel;
     constructor(private firestore: AngularFirestore,
         private activatedRoute: ActivatedRoute,
-        private agoraService: AgouraServic,
+        private authService: AuthService,
         private fireAuth: AngularFireAuth,
         private sharedService: SharedService,
     ) { }
@@ -31,11 +31,11 @@ export class ChatHeadComponent {
             .subscribe(
                 (reciever: UserModel) => {
                     this.fireAuth.user.subscribe(Sender => {
-                        this.agoraService.setUserStatus(Sender.uid, 'Busy')
+                        this.authService.updateUserStatus('busy')
                         if (reciever.status == 'offline' || reciever.status == 'away') {
                             alert('User is offline')
                         }
-                        else if(reciever.status == 'Busy'){
+                        else if(reciever.status == 'busy'){
                             alert('User have another Call')
                         }
                         else {

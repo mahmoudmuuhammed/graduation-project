@@ -23,10 +23,10 @@ export class TopnavComponent implements OnInit {
 
     ngOnInit() {
         this.afAuth.authState.subscribe(user => {
-            user ? this.userName = this.authService.currentUser.displayName : ''
+            user ? this.authService.currentUser.subscribe(user => this.userName = user.displayName) : ''
         })
-        this.sharedService.newNotification.subscribe(res=>{
-            this.newNotification=res;
+        this.sharedService.newNotification.subscribe(res => {
+            this.newNotification = res;
         })
     }
 
@@ -35,7 +35,7 @@ export class TopnavComponent implements OnInit {
         this.sharedService.topNavTogBtnClicked.emit(this.navCollabseStatus)
     }
 
-    showNotification(){
+    showNotification() {
         this.sharedService.newNotification.emit(false);
     }
 

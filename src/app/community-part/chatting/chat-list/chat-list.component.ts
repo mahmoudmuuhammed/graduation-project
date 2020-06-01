@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Thread } from 'src/app/models/thread.model';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ChattingService } from 'src/app/services/chatting.service';
+import { take } from 'rxjs/operators';
 
 @Component({
     selector: 'chat-list',
@@ -21,7 +22,8 @@ export class ChatListComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.currentUser = this.auth.auth.currentUser;
-        this.threads = this.chat.getThreads(this.currentUser.uid);
+        this.auth.authState.pipe(take(1)).subscribe(user=>{
+            this.threads = this.chat.getThreads(user.uid);
+        })
     }
 }

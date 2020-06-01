@@ -29,8 +29,13 @@
         <div class="AccountOptionDiv">
             <!-- Notification Area -->
             <div dropDownCollabse>
-                <button class="bellBtn" data-toggle="collapse" data-target="#notificationDiv">
-                    <i class="far fa-bell notificationBell"></i>
+                <button class="bellBtn" data-toggle="collapse" data-target="#notificationDiv" (click)='showNotification()'>
+                    <div class="notification-bell" [ngClass]="{'bellAnimate':newNotification}">
+                        <span class="bell-top"></span>
+                        <span class="bell-middle"></span>
+                        <span class="bell-bottom"></span>
+                        <span class="bell-rad" [ngClass]="{'bellRadAnimate':newNotification}"></span>
+                      </div>
                     <div [ngClass]="{'bellDot':newNotification}"></div>
                 </button>
                 <div class="collapse notificationDivContainer" id="notificationDiv">

@@ -40,8 +40,7 @@ export class VideoCallComponent implements OnInit {
   }
 
   endCall() {
-    const userId=this.authService.currentUser.uid
-    this.customAgoraService.setUserStatus(userId, 'Online')
+   this.authService.updateUserStatus('online')
     this.localStream.close();
     this.localStream.stop();
     this.agoraService.client.leave();

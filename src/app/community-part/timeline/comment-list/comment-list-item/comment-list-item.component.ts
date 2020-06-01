@@ -13,7 +13,6 @@ export class CommentListItemComponent implements OnInit {
     @Input() commentData: Comment;
     postId: string;
     commentId: string;
-    userId = this.authService.currentUser.uid
     clappingCounter: number = 0;
     isAuther: boolean = false;
     clapped: boolean = false;
@@ -23,19 +22,23 @@ export class CommentListItemComponent implements OnInit {
     ngOnInit() {
         this.postId = this.commentData.postId;
         this.commentId = this.commentData.commentId
-        this.feedsService.getTotalClapping(this.postId, this.commentId).subscribe(commentData => {
-            const clappings = Object.entries(commentData.clappings);
-            for (let [key, value] of clappings) {
-                this.clappingCounter += value;
-                if (key == this.userId && value == 1) {
-                    this.clapped = true
-                }
-            };
+
+        this.authService.currentUser.subscribe(user => {
+            this.feedsService.getTotalClapping(this.postId, this.commentId).subscribe(commentData => {
+                const clappings = Object.entries(commentData.clappings);
+                for (let [key, value] of clappings) {
+                    this.clappingCounter += value;
+                    if (key == user.uid && value == 1) {
+                        this.clapped = true
+                    }
+                };
+            })
+
+            const commentAuther = this.commentData.userId;
+            user.uid == commentAuther ? this.isAuther = true : this.isAuther = false;
         })
 
-        const currentUserId = this.authService.currentUser.uid;
-        const commentAuther = this.commentData.userId;
-        currentUserId == commentAuther ? this.isAuther = true : this.isAuther = false;
+
     }
 
     clapping() {
