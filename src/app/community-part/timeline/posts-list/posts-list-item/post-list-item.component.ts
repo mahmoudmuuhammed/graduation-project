@@ -28,9 +28,11 @@ export class PostListItemComponent implements OnInit {
             })
         })
 
-        const currentUserId = this.authService.currentUser.uid;
-        const postAuther = this.postData.userID;
-        currentUserId == postAuther ? this.isAuther = true : this.isAuther = false;
+        this.authService.currentUser.subscribe(user=>{
+            const postAuther = this.postData.userID;
+            user.uid == postAuther ? this.isAuther = true : this.isAuther = false;
+        })
+        
 
         if(this.postData.postPhoto){
             this.feedsService.getPostImgSrc(this.postId).pipe(take(1)).subscribe(imgSrc => {

@@ -11,9 +11,12 @@ import { Post } from 'src/app/models/post.model';
 
 export class PostsListComponent implements OnInit {
     posts: Observable<Post[]>;
-    constructor(private feedsService: FeedsService) {}
+    constructor(private feedsService: FeedsService) { }
 
     ngOnInit() {
-        this.posts = this.feedsService.getPostsInTimeline();
+        this.posts = this.feedsService.getPostsInTimeline('All');
+        this.feedsService.filteredPostCategory.subscribe(categoryName => {
+            this.posts = this.feedsService.getPostsInTimeline(categoryName);
+        })
     }
 }

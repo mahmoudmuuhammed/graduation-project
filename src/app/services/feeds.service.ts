@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 import {
     AngularFirestore,
     AngularFirestoreCollection,
@@ -26,21 +26,27 @@ export class FeedsService {
     commentDocument: AngularFirestoreDocument<Comment>;
     notificationCollection: AngularFirestoreCollection<Notification>;
     notificationDocument: AngularFirestoreDocument<Notification>;
-
     currentUser: firebase.User;
-    constructor(
-        private db: AngularFirestore,
+    filteredPostCategory = new EventEmitter<string>();
+
+    constructor(private db: AngularFirestore,
         private auth: AngularFireAuth,
-        private fStorage: AngularFireStorage
-    ) {
+        private fStorage: AngularFireStorage) {
         if (auth.auth.currentUser !== undefined && auth.auth.currentUser !== null) {
             this.currentUser = auth.auth.currentUser;
         }
     }
 
-    getPostsInTimeline() {
-        this.postCollection = this.db.collection('Posts',
-            ref => { return ref.orderBy('createdTime', 'desc') });
+    getPostsInTimeline(category: string) {
+        if (category == 'All') {
+            this.postCollection = this.db.collection('Posts', ref => { return ref.orderBy('createdTime', 'desc') });
+        }
+        else {
+            this.postCollection = this.db.collection('Posts', ref => {
+                return ref.orderBy('createdTime', 'desc')
+                    .where('category', '==', category)
+            });
+        }
         return this.postCollection.valueChanges();
     }
 

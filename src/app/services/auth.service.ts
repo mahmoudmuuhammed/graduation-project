@@ -7,6 +7,7 @@ import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
 import { UserModel, AccountType } from '../models/user.model'
 import { AngularFireMessaging } from '@angular/fire/messaging';
+import { take } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +15,6 @@ import { AngularFireMessaging } from '@angular/fire/messaging';
 
 export class AuthService {
 
-    user: Observable<firebase.User>;
     authState: any;
 
     constructor(
@@ -24,16 +24,10 @@ export class AuthService {
         private fireMsg: AngularFireMessaging,
         private router: Router,
         private ngZone: NgZone
-    ) {
-        this.user = auth.authState;
-    }
-
-    // get currentUser(): string {
-    //     return this.authState !== null ? this.authState.uid : '';
-    // }
+    ) {}
 
     get currentUser() {
-        return firebase.auth().currentUser
+        return this.auth.authState.pipe(take(1))
     }
 
     sendingAuthRequest() {
@@ -55,29 +49,31 @@ export class AuthService {
     }
 
     setUserData(email: string, creationTime: string) {
-        const fullname = this.forms.fullnameControl.value;
-        const userType: AccountType = this.forms.doctorForm.value;
-        const path = `Users/${ this.currentUser }`;
+        this.currentUser.subscribe(user => {
+            const fullname = this.forms.fullnameControl.value;
+            const userType: AccountType = this.forms.doctorForm.value;
+            const path = `Users/${user.uid}`;
 
-        this.fireDb.doc<UserModel>(path).set({
-            uid: this.currentUser.uid,
-            email: email,
-            photoUrl: 'dsadad',
-            createdTime: creationTime,
-            fullName: fullname,
-            userType: userType
+            this.fireDb.doc<UserModel>(path).set({
+                uid: user.uid,
+                email: email,
+                photoUrl: 'dsadad',
+                createdTime: creationTime,
+                fullName: fullname,
+                userType: userType
+            })
+                .then(
+                    userData => {
+                        console.log('Success firestore');
+                        this.router.navigate(['/login']);
+                    }
+                )
+                .catch(
+                    err => {
+                        console.log(err);
+                    }
+                );
         })
-        .then(
-            userData => {
-                console.log('Success firestore');
-                this.router.navigate(['/login']);
-            }
-        )
-        .catch(
-            err => {
-                console.log(err);
-            }
-        );
     }
 
     loginRequest() {
@@ -85,11 +81,12 @@ export class AuthService {
         const password = this.forms.signinPasswordControl.value;
         this.auth.auth.signInWithEmailAndPassword(email, password)
             .then(() => {
-                this.fireMsg.requestToken.subscribe((msgToken) => {
-                    const path = `Users/${this.currentUser}`;
-                    this.fireDb.doc(path).update({ notification_token_id: msgToken })
-                    const status = 'online';
-                    this.updateUserStatus(status);
+                this.currentUser.subscribe(user => {
+                    this.fireMsg.requestToken.subscribe((msgToken) => {
+                        const path = `Users/${user.uid}`;
+                        this.fireDb.doc(path).update({ notification_token_id: msgToken })
+                        this.updateUserStatus('online');
+                    })
                 })
             })
             .then(() => {
@@ -120,29 +117,26 @@ export class AuthService {
     }
 
     logout() {
-        const status = 'offline';
-        this.updateUserStatus(status);
+        this.updateUserStatus('offline');
         firebase.auth().signOut();
         this.router.navigate(['']);
     }
 
     updateUserStatus(status: string) {
-        const path = `Users/${this.currentUser}`;
-        this.fireDb.doc<UserModel>(path)
-            .update({ status: status });
+        this.auth.authState.pipe(take(1)).subscribe(user => {
+            const path = `Users/${user.uid}`;
+            this.fireDb.doc<UserModel>(path)
+                .update({ status: status });
+        })
     }
 
     updateStatusOnIdle() {
         document.onvisibilitychange = (e) => {
             if (document.visibilityState === 'hidden') {
-                const status = 'away';
-                this.updateUserStatus(status);
+                this.updateUserStatus('away');
             } else {
-                const status = 'online';
-                this.updateUserStatus(status);
+                this.updateUserStatus('online');
             };
         };
     }
 }
-
-// auth/network-request-failed 

@@ -3,10 +3,10 @@
 
 .offcanvas-collapse {
     position: sticky;
-    top: 55px;
+    top: 50px;
     box-shadow: 1px 0px 3px -1px #aaa;
-    z-index: 1;
-    height: calc(100vh - 55px);
+    z-index: 10;
+    height: calc(100vh - 50px);
     background-color: #fff;
 }
 
@@ -83,7 +83,7 @@
 @media (max-width: 768px) {
     .offcanvas-collapse {
         position: fixed;
-        top: 55px;
+        top: 50px;
         bottom: 0;
         width: 100%;
         padding-right: 0;

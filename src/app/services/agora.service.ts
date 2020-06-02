@@ -47,10 +47,4 @@ export class AgouraServic {
     stopRingtone() {
         this.audio.pause();
     }
-
-    setUserStatus(userId:string,status:string){
-        const path = `Users/${userId}`;
-        this.firestore.doc(path)
-            .update({ status: status });
-    }
 }

@@ -20,7 +20,8 @@ export class NotificationItemComponent implements OnInit {
 
   changeReadState() {
     const notificationId = this.notificationData.n_id;
-    const userId=this.authService.currentUser.uid;
-    this.feedsService.changeNotificationReadState(notificationId,userId);
+    this.authService.currentUser.subscribe(user=>{
+      this.feedsService.changeNotificationReadState(notificationId,user.uid);
+    })
   }
 }

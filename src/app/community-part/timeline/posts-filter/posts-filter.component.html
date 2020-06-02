@@ -1,0 +1,28 @@
+<div class="postFilterMainDiv">
+    <header>
+        <p>filter posts</p>
+    </header>
+    <section>
+        <div dropDownCollabse class="postFilterDiv">
+            <button type="button">
+                {{Category}}
+                <i class="fas fa-caret-down"></i>
+            </button>
+            <div class="collapse">
+                <option value="All" (click)="postFilterSelection($event)">All</option>
+                <option value="General" (click)="postFilterSelection($event)">General</option>
+                <option value="Corona" (click)="postFilterSelection($event)">Corona</option>
+                <option value="Diabetes" (click)="postFilterSelection($event)">Diabetes</option>
+                <option value="Heart" (click)="postFilterSelection($event)">Heart</option>
+                <option value="Ophthalmology" (click)="postFilterSelection($event)">Ophthalmology</option>
+                <option value="Laboratories" (click)="postFilterSelection($event)">Laboratories</option>
+                <option value="Bones" (click)="postFilterSelection($event)">Bones</option>
+                <option value="Muscles" (click)="postFilterSelection($event)">Muscles</option>
+                <option value="Dentistry" (click)="postFilterSelection($event)">Dentistry</option>
+                <option value="Physiotherapy" (click)="postFilterSelection($event)">Physiotherapy</option>
+                <option value="Nutrition" (click)="postFilterSelection($event)">Nutrition</option>
+                <option value="Psychitary" (click)="postFilterSelection($event)">Psychitary</option>
+            </div>
+        </div>
+    </section>
+</div>

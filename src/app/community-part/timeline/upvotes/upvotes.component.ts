@@ -1,7 +1,7 @@
-import { Component, Input, OnInit, OnDestroy } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { FeedsService } from 'src/app/services/feeds.service';
-import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { take } from 'rxjs/operators';
 
 @Component({
     selector: 'upvotes',
@@ -9,40 +9,36 @@ import { AuthService } from 'src/app/services/auth.service';
     styleUrls: ['./upvotes.component.scss']
 })
 
-export class UpvotesComponent implements OnInit, OnDestroy {
+export class UpvotesComponent implements OnInit {
     @Input() postId: string;
     votesCount: number = 0;
     userVote: number = 0;
-    subscribtion: Subscription;
     constructor(private feedsService: FeedsService,
-        private authService:AuthService) { }
+        private authService: AuthService) { }
 
     ngOnInit() {
-        this.subscribtion = this.feedsService.getTotalVotesOnPost(this.postId)
-            .subscribe(
-                postData => {
-                    const votes = Object.entries(postData.upVotes);
-                    for (let [key, value] of votes) {
-                        this.votesCount += value;
-                        if (key == this.authService.currentUser.uid) {
-                            this.userVote = value
-                        }
-                    };
-                }
-            )
+        this.authService.currentUser.subscribe(user => {
+            this.feedsService.getTotalVotesOnPost(this.postId)
+                .pipe(take(1))
+                .subscribe(
+                    postData => {
+                        const votes = Object.entries(postData.upVotes);
+                        for (let [key, value] of votes) {
+                            this.votesCount += value;
+                            if (key == user.uid) {
+                                this.userVote = value
+                            }
+                        };
+                    }
+                )
+        })
     }
 
     upVote() {
-        let vote = this.userVote == 1 ? 0 : 1;
-        this.feedsService.updateVoteOnPost(this.postId, vote);
+        this.feedsService.updateVoteOnPost(this.postId, 1);
     }
 
     downVote() {
-        let vote = this.userVote == -1 ? 0 : -1;
-        this.feedsService.updateVoteOnPost(this.postId, vote);
-    }
-
-    ngOnDestroy() {
-        this.subscribtion.unsubscribe();
+        this.feedsService.updateVoteOnPost(this.postId, -1);
     }
 }

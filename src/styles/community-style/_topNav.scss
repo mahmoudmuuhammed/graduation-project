@@ -2,7 +2,7 @@
 @import "../abstracts/mixins";
 
 .fixFixedNav {
-    height: 55px;
+    height: 50px;
 }
 
 .topNavbar {
@@ -84,26 +84,91 @@
             background-color: transparent;
             padding: 0px;
             cursor: pointer;
+            position: relative;
 
             .bellDot {
                 position: absolute;
-                top: -1px;
-                right: 0px;
+                top: 2px;
+                right: -2px;
                 width: 10px;
                 height: 10px;
                 border-radius: 50%;
                 background: $primary-color;
+                box-shadow: 1px 1px 3px #fff;
             }
 
-            .notificationBell {
-                font-size: 25px;
+            .notification-bell {
+                margin-bottom: -5px;
+                * {
+                    display: block;
+                    margin: 0 auto;
+                    background-color: #fff;
+                    border: 2px solid #555;
+                }
+
+                .bell-top {
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 3px 3px 0 0;
+                }
+
+                .bell-middle {
+                    width: 15px;
+                    height: 15px;
+                    margin-top: -1px;
+                    border-radius: 12px 12px 0 0;
+                }
+
+                .bell-bottom {
+                    position: relative;
+                    z-index: 0;
+                    width: 20px;
+                    height: 0px;
+                    border-width: 1px;
+                }
+
+                .bell-bottom::before,
+                .bell-bottom::after {
+                    content: '';
+                    position: absolute;
+                    top: -3px;
+                    border-bottom: 4px solid #555;
+                }
+
+                .bell-bottom::before {
+                    left: 1px;
+                    border-right: 0 solid transparent;
+                    border-left: 3px solid transparent;
+                }
+
+                .bell-bottom::after {
+                    right: 1px;
+                    border-right: 4px solid transparent;
+                    border-left: 0 solid transparent;
+                }
+
+                .bell-rad {
+                    width: 8px;
+                    height: 4px;
+                    margin-top: 1px;
+                    border-radius: 0 0 4px 4px;
+
+                    &.bellRadAnimate {
+                        animation: rad 1s 1s both infinite !important;
+                    }
+                }
+
+                &.bellAnimate {
+                    animation: bell 1s 1s both infinite !important;
+
+                }
             }
         }
 
         .notificationDivContainer {
             background: #fff;
             position: absolute;
-            right: 5px;
+            right: 10px;
             top: 60px;
             border-radius: 5px;
             box-shadow: 0px 0px 3px #aaa;
@@ -118,7 +183,7 @@
                 align-items: center;
                 justify-content: space-between;
 
-                .fa-times-circle{
+                .fa-times-circle {
                     font-size: 20px;
                     columns: #555;
                     cursor: pointer;
@@ -133,8 +198,8 @@
             margin-left: 10px;
 
             .accountImg {
-                width: 45px;
-                height: 45px;
+                width: 40px;
+                height: 40px;
                 border-radius: 50%;
                 margin-left: 10px;
             }
@@ -359,16 +424,6 @@
     }
 }
 
-@-webkit-keyframes inM {
-    50% {
-        -webkit-transform: rotate(0deg);
-    }
-
-    100% {
-        -webkit-transform: rotate(45deg);
-    }
-}
-
 @keyframes inM {
     50% {
         transform: rotate(0deg);
@@ -379,16 +434,6 @@
     }
 }
 
-@-webkit-keyframes outM {
-    50% {
-        -webkit-transform: rotate(0deg);
-    }
-
-    100% {
-        -webkit-transform: rotate(45deg);
-    }
-}
-
 @keyframes outM {
     50% {
         transform: rotate(0deg);
@@ -396,20 +441,6 @@
 
     100% {
         transform: rotate(45deg);
-    }
-}
-
-@-webkit-keyframes inT {
-    0% {
-        -webkit-transform: translateY(0px) rotate(0deg);
-    }
-
-    50% {
-        -webkit-transform: translateY(9px) rotate(0deg);
-    }
-
-    100% {
-        -webkit-transform: translateY(9px) rotate(135deg);
     }
 }
 
@@ -427,20 +458,6 @@
     }
 }
 
-@-webkit-keyframes outT {
-    0% {
-        -webkit-transform: translateY(0px) rotate(0deg);
-    }
-
-    50% {
-        -webkit-transform: translateY(9px) rotate(0deg);
-    }
-
-    100% {
-        -webkit-transform: translateY(9px) rotate(135deg);
-    }
-}
-
 @keyframes outT {
     0% {
         transform: translateY(0px) rotate(0deg);
@@ -452,20 +469,6 @@
 
     100% {
         transform: translateY(9px) rotate(135deg);
-    }
-}
-
-@-webkit-keyframes inBtm {
-    0% {
-        -webkit-transform: translateY(0px) rotate(0deg);
-    }
-
-    50% {
-        -webkit-transform: translateY(-9px) rotate(0deg);
-    }
-
-    100% {
-        -webkit-transform: translateY(-9px) rotate(135deg);
     }
 }
 
@@ -483,20 +486,6 @@
     }
 }
 
-@-webkit-keyframes outBtm {
-    0% {
-        -webkit-transform: translateY(0px) rotate(0deg);
-    }
-
-    50% {
-        -webkit-transform: translateY(-9px) rotate(0deg);
-    }
-
-    100% {
-        -webkit-transform: translateY(-9px) rotate(135deg);
-    }
-}
-
 @keyframes outBtm {
     0% {
         transform: translateY(0px) rotate(0deg);
@@ -508,5 +497,57 @@
 
     100% {
         transform: translateY(-9px) rotate(135deg);
+    }
+}
+
+@keyframes bell {
+    0% {
+        transform: rotate(0);
+    }
+
+    10% {
+        transform: rotate(30deg);
+    }
+
+    20% {
+        transform: rotate(0);
+    }
+
+    80% {
+        transform: rotate(0);
+    }
+
+    90% {
+        transform: rotate(-30deg);
+    }
+
+    100% {
+        transform: rotate(0);
+    }
+}
+
+@keyframes rad {
+    0% {
+        transform: translateX(0);
+    }
+
+    10% {
+        transform: translateX(6px);
+    }
+
+    20% {
+        transform: translateX(0);
+    }
+
+    80% {
+        transform: translateX(0);
+    }
+
+    90% {
+        transform: translateX(-6px);
+    }
+
+    100% {
+        transform: translateX(0);
     }
 }

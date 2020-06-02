@@ -11,6 +11,7 @@ import { CommentListItemComponent } from './comment-list/comment-list-item/comme
 import { UpvotesComponent } from './upvotes/upvotes.component';
 import { TimelineComponent } from './timeline.component';
 import { DdColabseDirective } from 'src/app/directives/dd-colabse.directive';
+import { PostsFilterComponent } from './posts-filter/posts-filter.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { DdColabseDirective } from 'src/app/directives/dd-colabse.directive';
         CommentListComponent,
         CommentListItemComponent,
         UpvotesComponent,
-        DdColabseDirective
+        DdColabseDirective,
+        PostsFilterComponent
     ],
     imports: [
         CommonModule,
