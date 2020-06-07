@@ -4,23 +4,24 @@ import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
 import { AuthService } from './auth.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
-    constructor(private authService: AuthService, private router: Router) { }
+    constructor(private afAuth: AngularFireAuth, private authService: AuthService, private router: Router) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
         boolean |
         UrlTree |
         Promise<boolean | UrlTree> |
         Observable<boolean | UrlTree> {
-        // return this.authService.userSubject.pipe(
-        //     take(1),
-        //     map(user => {
-        //         const isAuth = !!user
-        //         if (isAuth) { return true }
-        //         return this.router.createUrlTree(['/signin']);
-        //     }))
-        return true
+        return this.afAuth.authState.pipe(map(user => {
+            if (user) {
+                return true
+            }
+            else {
+                return this.router.createUrlTree(['/signin']);
+            }
+        }))
     }
 }

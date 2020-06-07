@@ -21,6 +21,7 @@ import { DangerAreaComponent } from './danger-area/danger-area.component'
 import { singlePostComponent } from './post/post.component';
 
 
+
 @NgModule({
     declarations: [
         CommunityContainerComponent,

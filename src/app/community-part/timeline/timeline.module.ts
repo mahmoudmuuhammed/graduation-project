@@ -10,7 +10,6 @@ import { CommentListComponent } from './comment-list/comment-list.component';
 import { CommentListItemComponent } from './comment-list/comment-list-item/comment-list-item.component';
 import { UpvotesComponent } from './upvotes/upvotes.component';
 import { TimelineComponent } from './timeline.component';
-import { DdColabseDirective } from 'src/app/directives/dd-colabse.directive';
 import { PostsFilterComponent } from './posts-filter/posts-filter.component';
 
 @NgModule({
@@ -23,7 +22,6 @@ import { PostsFilterComponent } from './posts-filter/posts-filter.component';
         CommentListComponent,
         CommentListItemComponent,
         UpvotesComponent,
-        DdColabseDirective,
         PostsFilterComponent
     ],
     imports: [
@@ -39,7 +37,6 @@ import { PostsFilterComponent } from './posts-filter/posts-filter.component';
         CommentListComponent,
         CommentListItemComponent,
         UpvotesComponent,
-        DdColabseDirective
     ]
 })
 

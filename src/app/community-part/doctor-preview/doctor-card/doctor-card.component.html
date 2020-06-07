@@ -2,25 +2,29 @@
     <div class="docCardInner">
         <header>
             <img src="../../../assets/images/moemen.jpg">
-            <h5>Dr.Moemen Said</h5>
-            <p class="docBio">Professor - AL Azhar university</p>
+            <h5>Dr.{{DoctorData?.fullName}}</h5>
+            <p class="docFaculty">{{DoctorData.userType.gradFaculty?DoctorData.userType.gradFaculty:'_'}}</p>
         </header>
         <main>
             <div class="docDetailsDiv">
                 <img src="../../../assets/images/speciality.svg">
-                <p class="detailsDescription">Specialized in kol haga</p>
+                <p class="detailsDescription">{{DoctorData?.userType.specialty}}</p>
             </div>
             <div class="docDetailsDiv">
                 <img src="../../../assets/images/location.svg" style="width:17px;margin: 1.5px;">
-                <p class="detailsDescription">Egypt, Alexandria</p>
+                <p class="detailsDescription">{{DoctorData.userType.location}}</p>
             </div>
             <div class="docDetailsDiv">
                 <img src="../../../assets/images/star.svg">
-                <p class="detailsDescription">4.5</p>
+                <p class="detailsDescription">{{DoctorData.clappingCounter?DoctorData.clappingCounter:0}}</p>
+            </div>
+            <div class="docDetailsDiv">
+                <i class="fas fa-euro-sign"></i>
+                <p class="detailsDescription">{{DoctorData?.userType.fees}}</p>
             </div>
         </main>
         <footer>
-            <button>Book</button>
+            <button (click)="bookDoctor()">Book</button>
         </footer>
     </div>
 </div>

@@ -1,0 +1,36 @@
+<div class="doctorReservationOuter" *ngIf="showbooking">
+    <div class="doctorReservationInner">
+        <header>
+            <!-- <h4>Booking a consultation</!-->
+            <div class="closeButtonDiv">
+                <button (click)="onCloseBooking()"><i class="far fa-times-circle"></i></button>
+            </div>
+        </header>
+        <main>
+            <section class="docDataSection">
+                <div class="doctorImgDiv">
+                    <img src="../../../../assets/images/moemen.jpg">
+                </div>
+                <div class="docNameDiv">
+                    <h5>Dr.{{doctorData.fullName | titlecase}}</h5>
+                </div>
+                <div class="docDetails">
+                    <p>
+                        <!-- <img src="../../../assets/images/speciality.svg"> -->
+                        Specialized in</p>
+                    <p>{{doctorData.userType.specialty}}</p>
+                </div>
+                <div class="docDetails">
+                    <p>
+                        <!-- <i class="fas fa-euro-sign"></i> -->
+                        fees</p>
+                    <p>{{doctorData.userType.fees}} LE</p>
+                </div>
+            </section>
+            <section class="creditCardSection">
+                <ng-payment-card></ng-payment-card>
+            </section>
+            <button class="bookBtn" (click)="booking()">Book</button>
+        </main>
+    </div>
+</div>

@@ -1,41 +1,85 @@
-<div class="row">
-    <div class="col-md-12">
-        <div class="docSerachCont">
-            <div class="specialityDiv">
-                <span class="title">Speciality</span>
-                <div class="specialistSelectionContainer" dropDownCollabse>
-                    <button data-target="#collapseSpecialist" aria-controls="collapseSpecialist">
-                        <span>{{selectedSpeciality}}</span>
-                        <i class="fas fa-angle-down"></i>
-                    </button>
-                    <div class="collapse" id="collapseSpecialist">
-                        <span (click)="specialitySelected($event)">All Speciality</span>
-                        <span (click)="specialitySelected($event)">Corona</span>
-                        <span (click)="specialitySelected($event)">Diabetes</span>
-                        <span (click)="specialitySelected($event)">Heart</span>
-                        <span (click)="specialitySelected($event)">Skin</span>
-                        <span (click)="specialitySelected($event)">Alzheimer</span>
-                        <span (click)="specialitySelected($event)">Infiction</span>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="docSerachCont">
+                <div class="specialityDiv">
+                    <span class="title">Speciality</span>
+                    <div class="specialistSelectionContainer" dropDownCollabse>
+                        <button data-target="#collapseSpecialist" aria-controls="collapseSpecialist">
+                            <span>{{selectedSpeciality}}</span>
+                            <i class="fas fa-angle-down"></i>
+                        </button>
+                        <div class="collapse" id="collapseSpecialist">
+                            <option value="All" (click)="specialityFilterChange($event)">All</option>
+                            <option value="Diabetes" (click)="specialityFilterChange($event)">Diabetes</option>
+                            <option value="Corona" (click)="specialityFilterChange($event)">Corona</option>
+                            <option value="Heart" (click)="specialityFilterChange($event)">Heart</option>
+                            <option value="Ophthalmology" (click)="specialityFilterChange($event)">Ophthalmology
+                            </option>
+                            <option value="Laboratories" (click)="specialityFilterChange($event)">Laboratories</option>
+                            <option value="Bones" (click)="specialityFilterChange($event)">Bones</option>
+                            <option value="Muscles" (click)="specialityFilterChange($event)">Muscles</option>
+                            <option value="Dentistry" (click)="specialityFilterChange($event)">Dentistry</option>
+                            <option value="Physiotherapy" (click)="specialityFilterChange($event)">Physiotherapy
+                            </option>
+                            <option value="Nutrition" (click)="specialityFilterChange($event)">Nutrition</option>
+                            <option value="Psychitary" (click)="specialityFilterChange($event)">Psychitary</option>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="searchInputDiv">
-                <span class="title">Doctor's name</span>
-                <input type="text" placeholder="Doctor's name">
-            </div>
-            <div class="serachBtnDiv">
-                <button>
-                    <img src="../../../assets/images/search.svg">
-                    <span>Search</span>
-                </button>
+                <div class="sortDiv">
+                    <span class="title">Points sort</span>
+                    <div class="sortContainer" dropDownCollabse>
+                        <button data-target="#collapseSpecialist" aria-controls="collapseSpecialist">
+                            <span>{{pointsSort}}</span>
+                            <i class="fas fa-angle-down"></i>
+                        </button>
+                        <div class="collapse" id="collapseSpecialist">
+                            <option value="High to low" (click)="pointsSortChange($event)">High to low</option>
+                            <option value="Low to high" (click)="pointsSortChange($event)">Low to high</option>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="sortDiv">
+                    <span class="title">Fees sort</span>
+                    <div class="sortContainer" dropDownCollabse>
+                        <button data-target="#collapseSpecialist" aria-controls="collapseSpecialist">
+                            <span>{{feesSort}}</span>
+                            <i class="fas fa-angle-down"></i>
+                        </button>
+                        <div class="collapse" id="collapseSpecialist">
+                            <option value="High to low" (click)="feesSortChange($event)">High to low</option>
+                            <option value="Low to high" (click)="feesSortChange($event)">Low to high</option>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="searchInputDiv">
+                    <span class="title">By name</span>
+                    <input #inputSearch type="text" placeholder="Doctor's name" (input)='searchFilteredDoctors()'>
+                </div>
+                <!-- <div class="serachBtnDiv">
+                    <button>
+                        <img src="../../../assets/images/search.svg">
+                        <span>Search</span>
+                    </button>
+                </div> -->
             </div>
         </div>
-    </div>
-    <div class="col-md-12">
-        <div class="docsContainer">
-            <div class="row">
-                <doctorCard *ngFor="let doc of docs" class="col-md-6"></doctorCard>
+        <div class="col-md-12">
+            <div class="docsContainer">
+                <div class="row doctorList" *ngIf="!isSearching">
+                    <div class="col-md-5 col-12" *ngFor="let doctor of doctorsList | async">
+                        <doctorCard [DoctorData]="doctor"></doctorCard>
+                    </div>
+                </div>
+                <div class="row doctorList" *ngIf='isSearching'>
+                    <div class="col-md-5 col-12" *ngFor="let doctor of filterDoclist">
+                        <doctorCard [DoctorData]="doctor"></doctorCard>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<doctor-booking></doctor-booking>

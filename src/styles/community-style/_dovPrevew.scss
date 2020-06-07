@@ -7,7 +7,8 @@
     margin-top: 40px;
     border-radius: 10px;
 
-    .specialityDiv {
+    .specialityDiv,
+    .sortDiv {
         position: relative;
 
         .title {
@@ -19,22 +20,23 @@
             color: #888;
         }
 
-        .specialistSelectionContainer {
+        .specialistSelectionContainer,
+        .sortContainer {
             &>button {
                 height: 60px;
-                min-width: 150px;
+                min-width: 162px;
                 border-radius: 10px 0 0 10px;
-                border: 1px solid #888;
+                border: 1px solid #aaa;
                 padding: 0 15px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 font-size: 16px;
                 font-family: inherit;
-                color: #000;
                 background-color: #fff;
                 color: $primary-color;
                 font-weight: 500;
+                cursor: pointer;
 
                 span {
                     margin-bottom: -10px;
@@ -52,14 +54,14 @@
                 position: absolute;
                 background-color: #fff;
                 top: 62px;
-                width: 100%;
+                width: 95%;
                 left: 0;
                 padding: 5px 0px;
                 border-radius: 5px;
-                box-shadow: 0px 0px 2px #999;
+                box-shadow: 0px 0px 2px #555;
                 z-index: 5;
 
-                span {
+                option {
                     display: block;
                     font-size: 15px;
                     cursor: pointer;
@@ -73,12 +75,23 @@
         }
     }
 
+    .sortDiv {
+        .sortContainer {
+            &>button {
+                border-radius: 0px;
+                border-left: none;
+                min-width: 150px;
+            }
+        }
+    }
+
     .searchInputDiv {
         height: 60px;
         position: relative;
-        border-top: 1px solid #888;
-        border-bottom: 1px solid #888;
         background: #fff;
+        border-radius: 0px 10px 10px 0px;
+        border: 1px solid #aaa;
+        border-left: none;
 
         .title {
             position: absolute;
@@ -95,40 +108,45 @@
             border: none;
             font-size: 18px;
             color: #222;
-            width: 350px;
+            width: 300px;
+
         }
 
 
     }
 
-    .serachBtnDiv {
-        button {
-            background-color: $primary-color;
-            color: #fff;
-            border: none;
-            border-radius: 0px 10px 10px 0;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0px 20px;
-            cursor: pointer;
+    // .serachBtnDiv {
+    //     button {
+    //         background-color: $primary-color;
+    //         color: #fff;
+    //         border: none;
+    //         border-radius: 0px 10px 10px 0;
+    //         height: 60px;
+    //         display: flex;
+    //         justify-content: center;
+    //         align-items: center;
+    //         padding: 0px 20px;
+    //         cursor: pointer;
 
-            img {
-                width: 25px;
-            }
+    //         img {
+    //             width: 25px;
+    //         }
 
-            span {
-                font-family: inherit;
-                font-size: 18px;
-                margin-left: 10px;
-            }
-        }
-    }
+    //         span {
+    //             font-family: inherit;
+    //             font-size: 18px;
+    //             margin-left: 10px;
+    //         }
+    //     }
+    // }
 }
 
 .docsContainer {
     padding-top: 30px;
+
+    .doctorList {
+        justify-content: space-evenly;
+    }
 }
 
 @media(max-width:768px) {
@@ -140,24 +158,34 @@
             width: 100%;
         }
 
-        .specialityDiv {
-            .specialistSelectionContainer {
+        .specialityDiv,
+        .sortDiv {
+
+            .specialistSelectionContainer,
+            .sortContainer {
                 &>button {
                     border-radius: 10px 10px 0 0;
                     width: 100%;
+                    border-bottom: none;
 
-                    .fa-angle-down{
+                    .fa-angle-down {
                         margin-right: 20px;
                         font-size: 20px;
                     }
                 }
             }
+
+            .sortContainer {
+                &>button {
+                    border-left: 1px solid #aaa;
+                    border-radius: 0px;
+                }
+            }
         }
 
         .searchInputDiv {
-            border: none;
-            border-left: 1px solid #888;
-            border-right: 1px solid #888;
+            border: 1px solid #aaa;
+            border-radius: 0px 0px 10px 10px;
 
             input {
                 width: auto;
@@ -169,7 +197,7 @@
                 border-radius: 0 0 10px 10px;
                 width: 100%;
 
-                img{
+                img {
                     display: none;
                 }
             }

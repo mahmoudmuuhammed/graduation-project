@@ -53,10 +53,11 @@ export class FormsServices {
     doctorFormController() {
         this.doctorForm = new FormGroup({
             'specialty': new FormControl(null, Validators.required),
-            'g-faculty': new FormControl(null, Validators.required),
-            'g-year': new FormControl(null, Validators.required),
+            'gradFaculty': new FormControl(null, Validators.required),
+            'gradYear': new FormControl(null, Validators.required),
             'usertype': new FormControl(null, Validators.required),
-            'location': new FormControl(null, Validators.required)
+            'location': new FormControl(null, Validators.required),
+            'fees': new FormControl(null, Validators.required)
         });
         this.usertypeControl.valueChanges.subscribe(
             (value) => {
@@ -72,6 +73,7 @@ export class FormsServices {
                 this.specialtyControl.enable();
                 this.gYearControl.enable();
                 this.gFacultyControl.enable();
+                this.feesControl.enable();
                 console.log(this.doctorForm.status);
             }  
         );
@@ -124,11 +126,15 @@ export class FormsServices {
     }
     
     get gFacultyControl() {
-        return this.doctorForm.get('g-faculty');
+        return this.doctorForm.get('gradFaculty');
     }
     
     get gYearControl() {
-        return this.doctorForm.get('g-year');
+        return this.doctorForm.get('gradYear');
+    }
+
+    get feesControl() {
+        return this.doctorForm.get('fees');
     }
 
     get locationControl() {

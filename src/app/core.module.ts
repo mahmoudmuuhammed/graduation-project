@@ -18,7 +18,7 @@ import { AngularFireMessaging } from '@angular/fire/messaging'
         ChattingService,
         SharedService,
         FeedsService,
-        AngularFireMessaging
+        AngularFireMessaging,
     ]
 })
 

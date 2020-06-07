@@ -1,4 +1,4 @@
-<div class="post-item">
+<div class="post-item" *ngIf="isPostExistance">
     <div class="post-details">
         <div class="post-details__user">
             <div class="postData">
@@ -30,7 +30,7 @@
     <div class="post-actions">
         <upvotes [postId]="postData.postKey"></upvotes>
         <div class="post-actions__comments">
-            <span>{{ commentCounter }} comment</span>
+            <span>{{ postData?.commentCounter }} comment</span>
         </div>
     </div>
     <comment-dashboard [postId]="postData?.postKey"></comment-dashboard>

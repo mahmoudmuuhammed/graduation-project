@@ -74,6 +74,7 @@ export class FeedsService {
             category: category,
             postPhoto: isImg,
             upVotes: {},
+            commentCounter:0
         };
         if (isImg) {
             this.fStorage.ref(`postImages/${createdId}`).put(img).then(() => {
@@ -110,6 +111,8 @@ export class FeedsService {
         const path = `Posts/${postId}/Comments/${commentId}`;
         this.db.doc(path).set(data);
 
+        this.db.doc(`Posts/${postId}`).update({commentCounter:firestore.FieldValue.increment(1)})
+
         this.notificationSetup(postId)
     }
 
@@ -131,11 +134,6 @@ export class FeedsService {
     getTotalClapping(postId: string, commentId: string) {
         const path = `Posts/${postId}/Comments/${commentId}`;
         return this.db.doc<Comment>(path).valueChanges();
-    }
-
-    getTotalCommentCount(postId: string) {
-        const path = `Posts/${postId}/Comments`;
-        return this.db.collection<Comment>(path).valueChanges();
     }
 
     notificationSetup(postId: string) {

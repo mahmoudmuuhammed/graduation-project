@@ -21,13 +21,6 @@ export class PostListItemComponent implements OnInit {
 
     ngOnInit() {
         this.postId = this.postData.postKey;
-        this.feedsService.getTotalCommentCount(this.postId).subscribe(res => {
-            this.commentCounter = 0;
-            Object.values(res).forEach(() => {
-                this.commentCounter++
-            })
-        })
-
         this.authService.currentUser.subscribe(user=>{
             const postAuther = this.postData.userID;
             user.uid == postAuther ? this.isAuther = true : this.isAuther = false;

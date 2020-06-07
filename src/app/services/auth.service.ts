@@ -41,14 +41,14 @@ export class AuthService {
                     this.authState = user.user;
                     const email = user.user.email;
                     user.user.updateProfile({ displayName: displayName });
-                    const creationTime = user.user.metadata.creationTime;
+                    const creationTime = Date.now();
                     this.setUserData(email, creationTime);
                 }
             )
             .catch(err => { console.log(err) })
     }
 
-    setUserData(email: string, creationTime: string) {
+    setUserData(email: string, creationTime: number) {
         this.currentUser.subscribe(user => {
             const fullname = this.forms.fullnameControl.value;
             const userType: AccountType = this.forms.doctorForm.value;
@@ -65,7 +65,7 @@ export class AuthService {
                 .then(
                     userData => {
                         console.log('Success firestore');
-                        this.router.navigate(['/login']);
+                        this.router.navigate(['/signin']);
                     }
                 )
                 .catch(

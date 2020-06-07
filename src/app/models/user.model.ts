@@ -3,10 +3,12 @@ export class UserModel {
     email: string;
     fullName: string;
     photoUrl?: string;
-    createdTime?: string;
+    createdTime?: number;
     status?: string;
     userType: AccountType;
     notification_token_id?: string;
+    clappingCounter?: number;
+    commentCounter?: number;
 };
 
 export class AccountType {
@@ -14,4 +16,6 @@ export class AccountType {
     gradFaculty?: string;
     gradYear?: string;
     specialty?: string;
+    location?: string;
+    fees?:number;
 }

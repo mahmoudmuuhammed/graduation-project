@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { UserModel } from 'src/app/models/user.model';
+import { DoctorsService } from 'src/app/services/doctors.service';
 
 @Component({
   selector: 'doctorCard',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DoctorCardComponent implements OnInit {
 
-  constructor() { }
+  @Output() onBookDoctor: EventEmitter<boolean>;
+  @Input() DoctorData: UserModel
+
+  constructor(private doctorService: DoctorsService) { }
 
   ngOnInit(): void {
+  }
+
+  bookDoctor() {
+    this.doctorService.doctorDataSubjectOnBooking.next(this.DoctorData);
   }
 
 }

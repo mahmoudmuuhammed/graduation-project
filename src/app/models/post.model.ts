@@ -8,4 +8,5 @@ export class Post {
     createdTime: number;
     postPhoto: Boolean;
     upVotes?: object;
+    commentCounter?:number
 };

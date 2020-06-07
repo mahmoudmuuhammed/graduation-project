@@ -1,7 +1,7 @@
 @import '../abstracts/variables';
 
 .docCardOuter {
-    margin: 70px auto 10px auto;
+    margin-bottom: 30px;
 
     .docCardInner {
         margin: 10px;
@@ -9,28 +9,30 @@
         border-radius: 10px;
         box-shadow: 0px 0px 3px #aaa;
         position: relative;
+        min-height: 450px;
 
         header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
             img {
-                width: 100px;
-                height: 100px;
+                width: 130px;
+                height: 130px;
                 border-radius: 50%;
-                border: 5px solid #fff;
-                box-shadow: 0px -5px 5px -5px #aaa;
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                top: -50px;
+                border: 2px solid #fff;
+                box-shadow: 0px 0px 5px #aaa;
+                margin: 10px 0;
             }
 
             h5 {
-                padding-top: 50px;
+                padding-top: 5px;
                 text-align: center;
                 color: #444;
                 margin: 0;
             }
 
-            .docBio {
+            .docFaculty {
                 text-align: center;
                 font-family: inherit;
                 font-size: 12px;
@@ -53,9 +55,17 @@
                     width: 20px;
                 }
 
+                svg {
+                    width: 20px;
+                    font-size: 20px;
+                    color: #888;
+                }
+
                 .detailsDescription {
                     color: #555;
                     margin-left: 10px;
+                    font-size: 14px;
+                    font-weight: 600;
                 }
             }
         }

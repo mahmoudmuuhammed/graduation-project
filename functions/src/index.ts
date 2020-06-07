@@ -2,10 +2,18 @@ import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 admin.initializeApp();
 
+import algoliasearch from 'algoliasearch';
+
+const client = algoliasearch('LKPW2MSVDG', '8fb123fa3e5e050c888a0a31b3518533',{timeouts: {
+    connect: 20,
+    read: 20,
+    write: 20
+  }});
+const index = client.initIndex('Doctors');
+
 export const videoCallNotification =
     functions.firestore.document('videoCallNotification/{notificaionID}')
         .onCreate((msgData) => {
-
             const message = msgData.data();
             const recieverMsgToken = message?.RecieverMsgToken;
             const payload = {
@@ -17,7 +25,6 @@ export const videoCallNotification =
                     body: message?.Caller,
                 }
             }
-
             return admin.messaging().sendToDevice(recieverMsgToken, payload)
         })
 
@@ -25,24 +32,18 @@ export const commentNotification =
     functions.firestore.document('Users/{userId}/Notification/{notificationId}')
         .onCreate((notification) => {
             const notificationData = notification.data();
-
             const recieverRef = notification.ref;
             const recieverUserRef = recieverRef.parent.parent;
-
             recieverUserRef?.get().then((user) => {
                 const userData = user.data();
                 const recieverMsgToken = userData?.notification_token_id
-
                 const payload = {
-
                     notification: {
                         title: 'New comment on your post',
                         body: 'from ' + notificationData?.from_full_name
                     }
                 }
-
                 return admin.messaging().sendToDevice(recieverMsgToken, payload)
-
             }).catch((err) => console.log(err))
         })
 
@@ -68,7 +69,7 @@ export const clappingCounter =
             const oldCommentData = comment.before.data();
             const newClapping = newCommentData?.clappings
             const oldClapping = oldCommentData?.clappings
-            var oldClappingCount: number = 0, newClappingCount: number = 0, changeValue: number = 0;
+            let oldClappingCount: number = 0, newClappingCount: number = 0, changeValue: number = 0;
             const userId = newCommentData?.userId
 
             Object.values(oldClapping).forEach((value) => {
@@ -84,3 +85,28 @@ export const clappingCounter =
 
             return admin.firestore().doc(`Users/${userId}`).update({ clappingCounter: admin.firestore.FieldValue.increment(changeValue) })
         })
+
+
+//initialize algolia serach
+
+exports.onCreateDoctor = functions.firestore.document('Users/{userID}')
+    .onCreate((snap, context) => {
+        const userData = snap.data();
+        const userId = snap.id;
+        return index.saveObject({
+            objectID: userId,
+            userData
+        })
+    })
+
+exports.onDeleteDoctor = functions.firestore.document('Users/{userID}')
+    .onDelete(snap => {
+        const userData = snap.data();
+        const userId = snap.id;
+        if (userData?.userType.usertype == 'Doctor') {
+            return index.deleteObject(userId)
+                .then(() => console.log('add to algolia successfully'))
+                .catch(err => console.log("error occured : ", err))
+        }
+        return
+    }) 

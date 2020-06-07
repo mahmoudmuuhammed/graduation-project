@@ -53,7 +53,7 @@
     </div>
     <div class="form__fgroup u-mrgb-1" *ngIf="forms.disableForPatient">
         <div class="form__fgroup-label">
-            <label for="g-faculty">Graduation Faculty</label>
+            <label for="gradeFaculty">Graduation Faculty</label>
             <div class="validation" 
                 *ngIf="!forms.gFacultyControl.valid && forms.gFacultyControl.touched">
                 <span *ngIf="forms.gFacultyControl.errors.required">
@@ -67,9 +67,9 @@
         <input 
             type="text" 
             class="form__fgroup-control" 
-            id="g-faculty" 
+            id="gradFaculty" 
             placeholder="Enetr your graduation faculty" 
-            formControlName="g-faculty">
+            formControlName="gradFaculty">
     </div>
     <div class="form__fgroup u-mrgb-1" *ngIf="forms.disableForPatient">
         <div class="form__fgroup-label">
@@ -99,7 +99,7 @@
     </ul>
     <div class="form__fgroup u-mrgb-2" *ngIf="forms.disableForPatient">
         <div class="form__fgroup-label">
-            <label for="g-year">Graduation Year</label>
+            <label for="gradeYear">Graduation Year</label>
             <div class="validation" 
                 *ngIf="!forms.gYearControl.valid && forms.gYearControl.touched">
                 <span *ngIf="forms.gYearControl.errors.required">
@@ -113,9 +113,30 @@
         <input 
             type="number" 
             class="form__fgroup-control form__fgroup-control--custom" 
-            id="g-year" 
+            id="gradYear" 
             placeholder="Enetr your graduation year" 
-            formControlName="g-year">
+            formControlName="gradYear">
+    </div>
+
+    <div class="form__fgroup u-mrgb-2" *ngIf="forms.disableForPatient">
+        <div class="form__fgroup-label">
+            <label for="feesControl">Fees</label>
+            <div class="validation" 
+                *ngIf="!forms.feesControl.valid && forms.feesControl.touched">
+                <span *ngIf="forms.feesControl.errors.required">
+                    {{ forms.validationErrors.required }}
+                </span>
+                <svg class="validation__icon">
+                    <use xlink:href="../../../../../assets/svgs/exclamation.svg#Capa_1"></use>
+                </svg>
+            </div>
+        </div>
+        <input 
+            type="number" 
+            class="form__fgroup-control form__fgroup-control--custom" 
+            id="feesControl" 
+            placeholder="Enetr your fees" 
+            formControlName="fees">
     </div>
     
     <!-- --------------------------  -->

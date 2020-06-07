@@ -8,6 +8,7 @@ import { EmojiComponent } from './emoji-component/emoji.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { UploadingComponent } from './uploading-component/uploading.component';
+import { DdColabseDirective } from '../directives/dd-colabse.directive';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { UploadingComponent } from './uploading-component/uploading.component';
         NotFoundComponent,
         MedkitLogoComponent,
         EmojiComponent,
-        UploadingComponent
+        UploadingComponent,
+        DdColabseDirective
     ],
     imports: [ LandRoutingModule, HttpClientModule, CommonModule ],
     exports: [
@@ -25,7 +27,8 @@ import { UploadingComponent } from './uploading-component/uploading.component';
         NotFoundComponent,
         MedkitLogoComponent,
         EmojiComponent,
-        UploadingComponent
+        UploadingComponent,
+        DdColabseDirective
     ]
 })
 

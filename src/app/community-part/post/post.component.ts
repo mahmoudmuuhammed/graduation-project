@@ -10,23 +10,16 @@ import { Post } from 'src/app/models/post.model';
 })
 export class singlePostComponent implements OnInit {
   postData: Post
-  view: boolean = false
-  commentCounter: number = 0;
+  isPostExistance: boolean = false
 
   constructor(private activatedRoute: ActivatedRoute,
     private feedsService: FeedsService) { }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(res => {
-      this.feedsService.getSinglePost(res.postId).subscribe(res => {
-        this.postData = res[0];
-        this.view = true
-      })
-      this.feedsService.getTotalCommentCount(res.postId).subscribe(res => {
-        this.commentCounter = 0;
-        Object.values(res).forEach(() => {
-          this.commentCounter++
-        })
+    this.activatedRoute.params.subscribe(url => {
+      this.feedsService.getSinglePost(url.postId).subscribe(post => {
+        post.length==0?this.isPostExistance=false:this.isPostExistance=true;
+        this.postData = post[0];
       })
     })
   }
