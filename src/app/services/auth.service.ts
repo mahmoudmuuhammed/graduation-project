@@ -61,6 +61,7 @@ export class AuthService {
                 email: email,
                 createdTime: creationTime,
                 fullName: fullname,
+                clappingCounter:0,
                 userType: userType
             }).then(() => {
                 const filePath = `userPhoto/${user.uid}`;

@@ -5,14 +5,14 @@
                 class="post-form__group-control" placeholder="Add title" formControlName="title"></textarea>
         </div>
         <div class="post-form__group">
-            <img src="{{userImgUrl}}" alt="user-img" class="post-form__group-img"
+            <img src="{{userImgUrl}}" alt="" class="post-form__group-img"
                 *ngIf="!postDashboardCase">
             <textarea name="content" id="post-content" cols="30" [rows]="postDashboardCase ? '3' : '1'"
                 class="post-form__group-control post-form__group-control--custom" placeholder="What's your problem?"
                 style="font-weight: 600;" formControlName="content" (click)="showFullForm()"></textarea>
         </div>
         <div class="imgPreviewDiv" *ngIf="isImgExist">
-            <img src="{{imageInputSrc}}">
+            <img  alt="" src="{{imageInputSrc}}">
         </div>
         <div class="post-form__group" *ngIf="postDashboardCase">
             <div class="post-form__actions">
@@ -28,9 +28,9 @@
                     </svg>
                 </div>
 
-                <svg class="post-form__actions-icon">
+                <!-- <svg class="post-form__actions-icon">
                     <use xlink:href="../../../../assets/sprites/chat-icons.svg#paper-clip"></use>
-                </svg>
+                </svg> -->
                 <div dropDownCollabse class="post-form__submit-category">
                     <button type="button" class="post-form__submit-category__btn post-form__submit-btn">
                         {{Category}}

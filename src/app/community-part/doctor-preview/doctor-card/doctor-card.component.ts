@@ -19,8 +19,6 @@ export class DoctorCardComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getUserImgLink(this.DoctorData.uid).subscribe(imgUrl => {
       this.docImgUrl = imgUrl
-    }, err => {
-      this.docImgUrl = 'https://firebasestorage.googleapis.com/v0/b/medkitc.appspot.com/o/users%2Fman.jpg?alt=media&token=33adad58-5726-4090-b66b-cbd157593862';
     })
   }
 

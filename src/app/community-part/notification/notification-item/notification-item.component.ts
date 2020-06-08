@@ -12,16 +12,21 @@ import { FeedsService } from 'src/app/services/feeds.service';
 export class NotificationItemComponent implements OnInit {
   @Input() notificationData: Notification;
   isRead: boolean = false;
-  constructor(private authService:AuthService,private feedsService:FeedsService) { }
+  docImgUrl: string = ''
+
+  constructor(private authService: AuthService, private feedsService: FeedsService) { }
 
   ngOnInit() {
     this.isRead = this.notificationData.read;
+    this.authService.getUserImgLink(this.notificationData.from).subscribe(imgUrl => {
+      this.docImgUrl = imgUrl
+    })
   }
 
   changeReadState() {
     const notificationId = this.notificationData.n_id;
-    this.authService.currentUser.subscribe(user=>{
-      this.feedsService.changeNotificationReadState(notificationId,user.uid);
+    this.authService.currentUser.subscribe(user => {
+      this.feedsService.changeNotificationReadState(notificationId, user.uid);
     })
   }
 }

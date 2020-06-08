@@ -88,7 +88,7 @@ export class FeedsService {
     }
 
     getPostImgSrc(postId: string) {
-        return this.fStorage.ref(`postImages/${postId}`).getDownloadURL()
+        return this.fStorage.ref(`postImages/${postId}`).getDownloadURL().pipe(take(1))
     }
 
     getComments(postId: string) {

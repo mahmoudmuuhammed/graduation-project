@@ -2,7 +2,7 @@
     <div class="post-details">
         <div class="post-details__user">
             <div class="postData">
-                <img src="../../../../../assets/svgs/man.svg" alt="user img" class="post-details__user-img">
+                <img src="{{userImgUrl}}" alt="" class="post-details__user-img">
                 <div class="postOwnerandCategory">
                     <span class="postOwner">{{ postData?.userName }}</span>
                     <span class="postCategory">{{ postData?.category }}</span>
@@ -22,8 +22,8 @@
             {{ postData?.description }}
         </span>
     </div>
-    <div class="image-container">
-        <img src="../../../../../assets/images/img1.png" alt="post image" class="image-container__img">
+    <div class="image-container" *ngIf="postData.postPhoto">
+        <img src="{{postImgUrl}}" alt="" class="image-container__img">
 
     </div>
 
