@@ -4,14 +4,15 @@
     </div>
     <div class="document u-mrgb-2">
         <img
-            [src]="uploading.imgUrl"
+            [src]="imgUrl"
             alt="id-card" 
             class="document__img document__custom u-mrgb-2">
         <label class="document__upload">
             <input 
             type="file" 
             accept="image/*" 
-            (change)="uploading.handlingFileUploaded($event)">
+            #fileInput
+            (change)="handlingFileUploaded(fileInput.files[0])">
             Upload your photo
         </label>
     </div>

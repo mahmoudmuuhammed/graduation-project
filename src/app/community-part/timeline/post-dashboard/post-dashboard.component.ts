@@ -2,7 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FeedsService } from 'src/app/services/feeds.service';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { map } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/auth.service';
+import { take } from 'rxjs/operators';
 
 @Component({
     selector: 'post-dashboard',
@@ -17,11 +18,19 @@ export class PostDashboardComponent implements OnInit {
     isImgExist: boolean = false;
     imageInput: {};
     imageInputSrc;
+    userImgUrl: string = ''
     constructor(private feedService: FeedsService,
-        private fStorage: AngularFireStorage) { }
+        private authService: AuthService) { }
 
     ngOnInit() {
         this.postFormController();
+
+        this.authService.currentUser.pipe(take(1)).subscribe(user=>{
+            this.authService.getUserImgLink(user.uid).subscribe(imgUrl => {
+                this.userImgUrl = imgUrl
+            })
+        })
+        
     }
 
     showFullForm() {

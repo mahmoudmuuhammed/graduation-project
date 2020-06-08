@@ -13,26 +13,28 @@ export class FormsServices {
     updateEmail: FormGroup;
     disableForPatient: boolean = true;
     // global validation for forms
-    validationErrors: 
-        { required: string, 
+    validationErrors:
+        {
+            required: string,
             notValidEmail: string,
-            emailExist: string, 
+            emailExist: string,
             minLength: string,
             notValidPhone: string,
             userType: string
             notFound: string,
-            incorrectPass: string } = {
-                required: 'required',
-                notValidEmail: 'not valid email',
-                userType: 'select type of account',
-                emailExist: '',
-                notValidPhone: 'not valid phone number',
-                minLength: 'must be at least 6 characters',
-                notFound: '',
-                incorrectPass: ''
-    };
+            incorrectPass: string
+        } = {
+            required: 'required',
+            notValidEmail: 'not valid email',
+            userType: 'select type of account',
+            emailExist: '',
+            notValidPhone: 'not valid phone number',
+            minLength: 'must be at least 6 characters',
+            notFound: '',
+            incorrectPass: ''
+        };
 
-    constructor() {}
+    constructor() { }
 
     accountFormController() {
         this.accountForm = new FormGroup({
@@ -41,7 +43,7 @@ export class FormsServices {
             'password': new FormControl(null, [Validators.required, Validators.minLength(6)]),
         });
     }
-    
+
     generalFormController() {
         this.generalForm = new FormGroup({
             'gender': new FormControl(null, Validators.required),
@@ -49,7 +51,7 @@ export class FormsServices {
             'reason': new FormControl(null)
         });
     }
-    
+
     doctorFormController() {
         this.doctorForm = new FormGroup({
             'specialty': new FormControl(null, Validators.required),
@@ -61,11 +63,13 @@ export class FormsServices {
         });
         this.usertypeControl.valueChanges.subscribe(
             (value) => {
-                if(value == 'Patient'){
+                if (value == 'Patient') {
                     this.disableForPatient = false;
                     this.specialtyControl.disable();
                     this.gYearControl.disable();
                     this.gFacultyControl.disable();
+                    this.feesControl.disable();
+                    this.locationControl.disable();
                     console.log(this.doctorForm.status);
                     return;
                 }
@@ -74,8 +78,10 @@ export class FormsServices {
                 this.gYearControl.enable();
                 this.gFacultyControl.enable();
                 this.feesControl.enable();
+                this.feesControl.enable();
+                this.locationControl.enable();
                 console.log(this.doctorForm.status);
-            }  
+            }
         );
     }
 
@@ -96,23 +102,23 @@ export class FormsServices {
     get fullnameControl() {
         return this.accountForm.get('fullname');
     }
-    
+
     get emailControl() {
         return this.accountForm.get('email');
     }
-    
+
     get passwordControl() {
         return this.accountForm.get('password');
     }
-    
+
     get usertypeControl() {
         return this.doctorForm.get('usertype');
     }
-    
+
     get genderControl() {
         return this.generalForm.get('gender');
     }
-    
+
     get ageControl() {
         return this.generalForm.get('age');
     }
@@ -124,11 +130,11 @@ export class FormsServices {
     get specialtyControl() {
         return this.doctorForm.get('specialty');
     }
-    
+
     get gFacultyControl() {
         return this.doctorForm.get('gradFaculty');
     }
-    
+
     get gYearControl() {
         return this.doctorForm.get('gradYear');
     }
@@ -144,11 +150,11 @@ export class FormsServices {
     get updateEmailControl() {
         return this.updateEmail.get('email');
     }
-    
+
     get signinEmailControl() {
         return this.signinForm.get('email');
     }
-    
+
     get signinPasswordControl() {
         return this.signinForm.get('password');
     }

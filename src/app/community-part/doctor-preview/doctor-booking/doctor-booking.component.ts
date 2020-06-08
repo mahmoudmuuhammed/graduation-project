@@ -25,7 +25,6 @@ export class DoctorBookingComponent implements OnInit {
   }
 
   booking() {
-
   }
 
 }

@@ -48,7 +48,7 @@
             </div>
             <!-- Account Picture and Option -->
             <div class="accountDetails">
-                <img src="./assets/images/profile.jpg" class="accountImg">
+                <img src="{{userImgUrl}}" class="accountImg">
                 <span class=" d-none d-md-block accountName">{{userName | titlecase }}</span>
                 <div class="logOutOption" (click)='onLogout()'>
                     <svg>

@@ -28,9 +28,9 @@
                 </div>
             </section>
             <section class="creditCardSection">
-                <ng-payment-card></ng-payment-card>
+                <ng-payment-card (formSaved)='booking()'></ng-payment-card>
             </section>
-            <button class="bookBtn" (click)="booking()">Book</button>
+            <!-- <button class="bookBtn" (click)="booking()">Book</button> -->
         </main>
     </div>
 </div>

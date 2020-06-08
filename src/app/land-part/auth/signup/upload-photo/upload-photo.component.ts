@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { UploadingService } from 'src/app/services/uploading.service';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'upload-photo',
@@ -8,10 +9,21 @@ import { UploadingService } from 'src/app/services/uploading.service';
 })
 
 export class UploadPhotoComponent implements OnInit {
-    
-    constructor(public uploading: UploadingService) {}
+
+    imgUrl: any = 'https://firebasestorage.googleapis.com/v0/b/medkitc.appspot.com/o/users%2Fman.jpg?alt=media&token=33adad58-5726-4090-b66b-cbd157593862';
+
+    constructor(private uploadingService:UploadingService) { }
 
     ngOnInit() {
-        
+
+    }
+
+    handlingFileUploaded(file) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            this.imgUrl = reader.result;
+        };
+        this.uploadingService.onPhotoselect.next(file)
     }
 }

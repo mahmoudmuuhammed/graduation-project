@@ -16,18 +16,22 @@ export class PostListItemComponent implements OnInit {
     postId: string;
     isAuther: boolean = false;
     postImgSrc: string = '';
+    userImgUrl: string = '';
 
     constructor(private feedsService: FeedsService, private authService: AuthService) { }
 
     ngOnInit() {
         this.postId = this.postData.postKey;
-        this.authService.currentUser.subscribe(user=>{
+        this.authService.currentUser.pipe(take(1)).subscribe(user => {
             const postAuther = this.postData.userID;
             user.uid == postAuther ? this.isAuther = true : this.isAuther = false;
         })
-        
 
-        if(this.postData.postPhoto){
+        this.authService.getUserImgLink(this.postData.userID).subscribe(imgUrl => {
+            this.userImgUrl = imgUrl
+        })
+
+        if (this.postData.postPhoto) {
             this.feedsService.getPostImgSrc(this.postId).pipe(take(1)).subscribe(imgSrc => {
                 if (imgSrc != null) {
                     this.postImgSrc = imgSrc;

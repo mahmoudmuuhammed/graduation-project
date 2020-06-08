@@ -16,6 +16,7 @@ export class CommentListItemComponent implements OnInit {
     clappingCounter: number = 0;
     isAuther: boolean = false;
     clapped: boolean = false;
+    userImgUrl: string = '';
 
     constructor(private feedsService: FeedsService, private authService: AuthService) { }
 
@@ -32,6 +33,11 @@ export class CommentListItemComponent implements OnInit {
                         this.clapped = true
                     }
                 };
+            })
+
+            
+            this.authService.getUserImgLink(this.commentData.userId).subscribe(imgUrl => {
+                this.userImgUrl = imgUrl
             })
 
             const commentAuther = this.commentData.userId;

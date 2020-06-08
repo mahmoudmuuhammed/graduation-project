@@ -2,7 +2,6 @@ export class UserModel {
     uid: string;
     email: string;
     fullName: string;
-    photoUrl?: string;
     createdTime?: number;
     status?: string;
     userType: AccountType;

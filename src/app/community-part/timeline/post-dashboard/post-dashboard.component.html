@@ -5,7 +5,7 @@
                 class="post-form__group-control" placeholder="Add title" formControlName="title"></textarea>
         </div>
         <div class="post-form__group">
-            <img src="../../../../assets/svgs/man.svg" alt="user-img" class="post-form__group-img"
+            <img src="{{userImgUrl}}" alt="user-img" class="post-form__group-img"
                 *ngIf="!postDashboardCase">
             <textarea name="content" id="post-content" cols="30" [rows]="postDashboardCase ? '3' : '1'"
                 class="post-form__group-control post-form__group-control--custom" placeholder="What's your problem?"
