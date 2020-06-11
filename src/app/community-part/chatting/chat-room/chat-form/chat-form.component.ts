@@ -26,14 +26,21 @@ export class ChatFormComponent implements OnInit {
 
     sendingMessage() {
         const message = this.messageValue.nativeElement.value;
-        this.chat.sendMessage(this.threadId, message, this.currentUser.uid, this.routeId);
+        this.chat.sendMessage(this.threadId, message, this.currentUser.uid, this.routeId, '0',null);
         this.chat.saveLastMessage(this.threadId, message);
         this.messageValue.nativeElement.value = '';
     }
 
     handleSendMessage(event) {
-        if(event.keyCode === 13) {
+        if (event.keyCode === 13) {
             this.sendingMessage();
         };
+    }
+
+    onSelectedFile(event) {
+        console.log(event.target.files[0])
+    }
+    onSelectedImg(event) {
+
     }
 }

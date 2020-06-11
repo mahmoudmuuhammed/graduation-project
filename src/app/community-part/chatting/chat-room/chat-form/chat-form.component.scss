@@ -4,23 +4,38 @@
 @import "../../../../../styles/base/typography";
 
 .chat-sending {
-    background-color: red;
     @include flexbox;
     align-items: center;
-    position: relative;
+    border-top: 1px solid #e0e0e0;
+    background-color: #fff;
 }
 
 .message-attachments {
-    position: absolute;
-    left: 15px;
-    top:50%;
-    transform: translateY(-50%);
     @include flexbox;
+    justify-content: center;
+    margin-left: 10px;
+
+    .inputDiv {
+        position: relative;
+        display: flex;
+        justify-items: center;
+        cursor: pointer;
+
+        input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+    }
 }
 
 .message-input {
     resize: none;
-    padding: 1.5em 3.5em;
+    padding: 1rem;
     overflow: hidden;
     width: 100%;
     font-family: 'Inter';
@@ -28,7 +43,6 @@
     font-weight: 500;
     color: $primary-text;
     border: none;
-    border-top: .3px solid rgba($secondary-text, .5);
 
     &::-webkit-input-placeholder {
         font-size: 14px;
@@ -40,7 +54,7 @@
 .send-btn {
     position: absolute;
     right: 15px;
-    top:50%;
+    top: 50%;
     transform: translateY(-50%);
     padding: .4em;
     border-radius: 50%;

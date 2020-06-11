@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { Message } from 'src/app/models/message.model';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
     selector: 'message',
@@ -10,22 +11,30 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 
 export class MessageComponent implements OnInit {
+
     @Input() message: Message;
     incoming: boolean;
     authState: firebase.User;
-    constructor(private auth: AngularFireAuth) {}
+    userImgSrc: string = ''
+
+    constructor(private auth: AngularFireAuth,
+        private authService: AuthService) { }
 
     ngOnInit() {
-        if(this.auth.auth.currentUser !== undefined && this.auth.auth.currentUser !== null) {
+        if (this.auth.auth.currentUser !== undefined && this.auth.auth.currentUser !== null) {
             this.authState = this.auth.auth.currentUser;
         };
         this.checkingIncomingMessage();
+
+        this.authService.getUserImgLink(this.message.uid).subscribe(res => {
+            this.userImgSrc = res
+        })
     }
 
     checkingIncomingMessage() {
         const user = this.authState.uid;
-        if(this.message.senderId && user) {
-            this.incoming = this.message.senderId !== user;
+        if (this.message.uid && user) {
+            this.incoming = this.message.uid !== user;
         }
     }
 }

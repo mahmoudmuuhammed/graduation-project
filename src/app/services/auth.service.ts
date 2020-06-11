@@ -61,7 +61,7 @@ export class AuthService {
                 email: email,
                 createdTime: creationTime,
                 fullName: fullname,
-                clappingCounter:0,
+                clappingCounter: 0,
                 userType: userType
             }).then(() => {
                 const filePath = `userPhoto/${user.uid}`;
@@ -69,12 +69,12 @@ export class AuthService {
                 if (userImg) {
                     storageRef.put(userImg)
                 }
-                else{
-                    if(userType.usertype=='Doctor'){
-                        storageRef.putString(this.getDefaultDoctorImg(),'base64', {contentType:'image/svg+xml'})
+                else {
+                    if (userType.usertype == 'Doctor') {
+                        storageRef.putString(this.getDefaultDoctorImg(), 'base64', { contentType: 'image/svg+xml' })
                     }
-                    else{
-                        storageRef.putString(this.getDefaultUserImg(),'base64', {contentType:'image/svg+xml'})
+                    else {
+                        storageRef.putString(this.getDefaultUserImg(), 'base64', { contentType: 'image/svg+xml' })
                     }
                 }
             })
@@ -140,9 +140,11 @@ export class AuthService {
 
     updateUserStatus(status: string) {
         this.auth.authState.pipe(take(1)).subscribe(user => {
-            const path = `Users/${user.uid}`;
-            this.fireDb.doc<UserModel>(path)
-                .update({ status: status });
+            if (user) {
+                const path = `Users/${user.uid}`;
+                this.fireDb.doc<UserModel>(path)
+                    .update({ status: status });
+            }
         })
     }
 
@@ -155,6 +157,15 @@ export class AuthService {
             };
         };
     }
+
+
+    // onCloseBrowser() {
+    //     window.addEventListener('beforeunload', (event) => {
+    //         var time = (new Date()).getTime() + 10000
+    //         this.updateUserStatus('offline')
+    //         while ((new Date()).getTime() < time) { }
+    //     }, false)
+    // }
 
     getUserImgLink(userId: string) {
         return this.storage.ref(`userPhoto/${userId}`).getDownloadURL().pipe(take(1))

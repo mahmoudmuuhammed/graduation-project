@@ -1,8 +1,10 @@
-import { Component, 
-        OnInit, 
-        ViewChild, 
-        ElementRef, 
-        AfterViewChecked} from "@angular/core";
+import {
+    Component,
+    OnInit,
+    ViewChild,
+    ElementRef,
+    AfterViewChecked
+} from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { Observable, Subscription } from 'rxjs';
@@ -23,32 +25,39 @@ import { take } from 'rxjs/operators';
 export class ChatRoomComponent implements OnInit, AfterViewChecked {
 
     @ViewChild('scroller', { static: true }) scrollerSelector: ElementRef;
-    threadId: string;
+    //threadId: string;
+    roomId: string;
     activeRoute: string;
     currentUser: firebase.User;
     userData: Observable<UserModel>;
     messages: Observable<Message[]>;
     subscribtion: Subscription;
+
     constructor(
         private route: ActivatedRoute,
         private fireDb: FirestoreService,
         private auth: AngularFireAuth,
         private chat: ChattingService,
-        private authService:AuthService
-    ) {}
+        private authService: AuthService
+    ) { }
 
     ngOnInit() {
-        this.currentUser = this.auth.auth.currentUser;
+        this.auth.authState.subscribe(user => {
+            this.route.params.subscribe(
+                param => {
+                    this.activeRoute = param.id
+                    // this.threadId = this.activeRoute < user.uid 
+                    // ? `${this.activeRoute}_${user.uid}` 
+                    // : `${user.uid}_${this.activeRoute}`;
+                    //this.messages = this.chat.getMessages(this.threadId);
 
-        this.auth.authState.pipe(take(1)).subscribe(user=>{
-            this.route.paramMap.subscribe(
-                params => {
-                    this.activeRoute = params.get('id');
-                    this.threadId = this.activeRoute < user.uid 
-                    ? `${this.activeRoute}_${user.uid}` 
-                    : `${user.uid}_${this.activeRoute}`;
-                    this.messages = this.chat.getMessages(this.threadId);
+                    this.chat.getRoomId(user.uid, this.activeRoute).pipe(take(1)).subscribe(res => {
+                        this.roomId = res
+                        this.messages = this.chat.getMessages(res)
+                        this.chat.updateUnreadToRead(this.roomId, user.uid,this.activeRoute)
+                    })
                     this.userData = this.fireDb.getUser(this.activeRoute);
+
                 }
             );
         })
@@ -63,7 +72,7 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked {
         scrollPane.scrollTop = scrollPane.scrollHeight;
     }
 
-    logout(){
+    logout() {
         this.authService.logout();
     }
 }

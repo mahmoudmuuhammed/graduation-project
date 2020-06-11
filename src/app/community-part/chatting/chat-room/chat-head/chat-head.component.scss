@@ -9,7 +9,7 @@
     @include flexbox;
     justify-content: space-between;
     align-items: center;
-    border-bottom: .3px solid rgba($secondary-text, .6);
+    border-bottom: 1px solid #e0e0e0;
 
     &__user {
         @include flexbox;
@@ -33,26 +33,31 @@
             }
 
             &__status {
-                font-size: 10px;
-                font-weight: 400;
+                font-size: 11px;
+                font-weight: 700;
                 color: rgba($secondary-text, .7);
+                display: flex;
+                align-items: center;
+                margin-top: -5px;
 
                 .userStatus {
-                    width: 12px;
-                    height: 12px;
-                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
                     border-radius: 50%;
-                    margin-right: 10px;
-                    text-align: left;
+                    margin-right: 5px;
 
-                    &.online{
-                        background-color: green;
+                    &.online {
+                        background-color: #14ce14;
+                        border: 1px solid #aaa;
                     }
-                    &.offline{
-                        background-color: red;
+
+                    &.offline {
+                        background-color: #d22b2b;
                     }
-                    &.busy{
-                        background-color: yellow;
+
+                    &.away {
+                        background-color: #d4e018;
+                        border: 1px solid #aaa;
                     }
                 }
             }
@@ -60,6 +65,7 @@
     }
 
     &__action {
+        display: flex;
         &-icon {
             cursor: pointer;
             width: 25px;

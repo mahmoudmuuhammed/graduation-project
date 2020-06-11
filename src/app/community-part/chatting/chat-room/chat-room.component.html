@@ -5,7 +5,7 @@
             <div class="chatMessages" #scroller>
                 <chat-feeds [messages]="messages"></chat-feeds>
             </div>
-            <div class="chatInput">
-                <chat-form [threadId]="threadId" [routeId]="activeRoute"></chat-form>
+            <div class="chatInput" *ngIf="roomId">
+                <chat-form [threadId]="roomId" [routeId]="activeRoute"></chat-form>
             </div>
 </div>

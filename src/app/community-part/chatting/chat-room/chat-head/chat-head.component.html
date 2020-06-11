@@ -1,14 +1,14 @@
 <div class="head">
     <div class="head__user">
-        <img src="../../../../../assets/svgs/man.svg" alt="" class="head__user-img">
+        <img src="{{userImgSrc}}" alt="" class=" head__user-img">
         <div class="head__user-info">
             <span class="head__user-info__name">
                 {{ userData?.fullName | titlecase }}
             </span>
             <span class="head__user-info__status">
-                <span class="userStatus" [ngClass]="{'active':userData?.status=='online',
+                <span class="userStatus" [ngClass]="{'online':userData?.status=='online',
                 'offline':userData?.status=='offline',
-                'away':userData?.status=='away'||userData?.status=='busy'}"></span>
+                'away':userData?.status=='away' || userData?.status=='busy'}"></span>
                 {{ userData?.status }}
             </span>
         </div>

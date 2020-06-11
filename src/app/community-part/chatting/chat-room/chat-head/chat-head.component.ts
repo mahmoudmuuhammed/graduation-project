@@ -1,4 +1,4 @@
-import { Component, Input, Injectable } from "@angular/core";
+import { Component, Input, OnChanges } from "@angular/core";
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 
@@ -14,14 +14,22 @@ import { AuthService } from 'src/app/services/auth.service';
     styleUrls: ['./chat-head.component.scss']
 })
 
-export class ChatHeadComponent {
+export class ChatHeadComponent implements OnChanges {
     @Input() userData: UserModel;
+    userImgSrc: string = ''
+
     constructor(private firestore: AngularFirestore,
         private activatedRoute: ActivatedRoute,
         private authService: AuthService,
         private fireAuth: AngularFireAuth,
         private sharedService: SharedService,
     ) { }
+
+    ngOnChanges() {
+        this.authService.getUserImgLink(this.userData.uid).subscribe(res => {
+            this.userImgSrc = res
+        })
+    }
 
     call() {
         let userId = this.activatedRoute.snapshot.params.id
@@ -35,7 +43,7 @@ export class ChatHeadComponent {
                         if (reciever.status == 'offline' || reciever.status == 'away') {
                             alert('User is offline')
                         }
-                        else if(reciever.status == 'busy'){
+                        else if (reciever.status == 'busy') {
                             alert('User have another Call')
                         }
                         else {

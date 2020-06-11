@@ -1,11 +1,11 @@
 <div class="message" [ngClass]="{ 'inbound': incoming, 'outbound': !incoming }">
-    <img src="../../../../../../assets/svgs/man.svg" alt="" class="message__img">
+    <img src="{{userImgSrc}}" alt="" class="message__img">
     <div class="message__content" [ngClass]="{ 'inboundContent': incoming, 'outboundContent': !incoming }">
         <span class="message__content-text">
-            {{ message?.content }}
+            {{ message?.msg }}
         </span>
         <span class="message__content-time">
-            {{ message.timeStamp | date:'shortTime' }}
+            {{ message?.timestamp | date:'shortTime' }}
         </span>
     </div>
 </div>

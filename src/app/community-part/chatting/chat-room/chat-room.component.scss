@@ -2,11 +2,11 @@
 
 .chatRoomContainer {
     position: relative;
-    height: calc(100vh - 55px);
+    height: calc(100vh - 50px);
 
     .chatMessages {
         overflow-y: auto;
-        height: calc(100vh - 170px); //topnav + chatHeader + chatInput + (((height of otherUsers in future to be added)))
+        height: calc(100vh - 150px); //topnav + chatHeader + chatInput + (((height of otherUsers in future to be added)))
 
         ::-webkit-scrollbar {
             width: 2px;

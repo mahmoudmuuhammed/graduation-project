@@ -23,7 +23,7 @@ export class ChatListComponent implements OnInit {
 
     ngOnInit() {
         this.auth.authState.pipe(take(1)).subscribe(user=>{
-            this.threads = this.chat.getThreads(user.uid);
+           //this.threads = this.chat.getThreads(user.uid);
         })
     }
 }

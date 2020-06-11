@@ -56,14 +56,25 @@
 
     .inboundContent {
         border-radius: 0px 5px 5px 5px;
+
         &::before {
             left: -10px;
             right: unset;
             background-image: url('../../../../../../assets/images/leftMsg.png');
         }
-    }
 
+        .message {
+            
+            &__content{
+                &-time{
+                    left: unset;
+                    right: 5px;
+                }
+            }
+        }
+    }
 }
+
 
 .outbound {
     direction: rtl;

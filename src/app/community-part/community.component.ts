@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, ElementRef, ViewChild, ChangeDetectorRef, OnInit } from '@angular/core';
 
 import { AgouraServic } from 'src/app/services/agora.service';
 import { SharedService } from '../services/shared.service'
@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./community.component.scss']
 })
 
-export class CommunityContainerComponent {
+export class CommunityContainerComponent implements OnInit {
   callerData: { callerName: string, callerImgSrc: string, channelName: string };
   channelName: string
   callAccepted: boolean = false;
@@ -20,8 +20,9 @@ export class CommunityContainerComponent {
   constructor(private sharedService: SharedService,
     private agoraService: AgouraServic,
     private changeDetector: ChangeDetectorRef,
-    private authService: AuthService) {
+    private authService: AuthService) { }
 
+  ngOnInit() {
     //Making Call
     this.sharedService.callingSubject.subscribe(
       val => {
@@ -50,7 +51,7 @@ export class CommunityContainerComponent {
       this.changeDetector.detectChanges();
     })
 
-    this.authService.updateStatusOnIdle();
-
+    //update user status on changing browser tabs
+      this.authService.updateStatusOnIdle()
   }
 }

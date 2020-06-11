@@ -1,5 +1,4 @@
-import { Component, Input } from "@angular/core";
-import { ChattingService } from 'src/app/services/chatting.service';
+import { Component, Input, OnInit } from "@angular/core";
 import { Observable } from 'rxjs';
 import { Message } from 'src/app/models/message.model';
 
@@ -9,9 +8,10 @@ import { Message } from 'src/app/models/message.model';
     styleUrls: ['./feeds.component.scss']
 })
 
-export class ChatFeedsComponent {
+export class ChatFeedsComponent implements OnInit {
     @Input() messages: Observable<Message[]>;
-    constructor(
-        private fireDb: ChattingService
-    ) {}
+    constructor() { }
+
+    ngOnInit() {
+    }
 }
