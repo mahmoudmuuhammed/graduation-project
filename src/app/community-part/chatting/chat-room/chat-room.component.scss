@@ -6,7 +6,7 @@
 
     .chatMessages {
         overflow-y: auto;
-        height: calc(100vh - 150px); //topnav + chatHeader + chatInput + (((height of otherUsers in future to be added)))
+        height: calc(100vh - 150px); //topnav + chatHeader + chatInput
         padding-bottom: 10px;
 
         ::-webkit-scrollbar {
@@ -103,17 +103,6 @@
                     object-fit: contain;
                 }
             }
-        }
-    }
-}
-
-@media(max-width:576px) {
-    .chatRoomContainer {
-        height: calc(100vh - 111px);
-
-        .chatMessages {
-            height: calc(100vh - 161px);
-            padding-bottom: 60px;
         }
     }
 }

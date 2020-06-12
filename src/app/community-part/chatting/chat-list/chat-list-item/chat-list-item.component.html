@@ -1,5 +1,5 @@
-<div class="chat-litem" routerLinkActive='active' [routerLinkActiveOptions]="{exact:true}">
-    <div class="user" [routerLink]="['/community/Chat', (userData | async)?.uid]">
+<div class="chat-litem" [routerLink]="['/community/Chat', (userData | async)?.uid]" (click)="showChats()">
+    <div class="user">
         <div class="imgDiv">
             <img src="{{userImgLink}}" alt="" class="user__img">
             <div class="noOfUnreadMsg" *ngIf="noOfMsg>0">

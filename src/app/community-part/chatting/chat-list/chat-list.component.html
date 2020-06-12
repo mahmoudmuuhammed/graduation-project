@@ -1,18 +1,23 @@
-<div class="row">
-    <div class="col-12">
-        <div class="search">
-            <input type="text" class="search__input" placeholder="Search for chats"
-                (input)="searchPreviusChat($event)">
-            <svg class="search__icon">
-                <use xlink:href="../../../../assets/sprites/chat-icons.svg#search"></use>
-            </svg>
-        </div>
-    </div>
-    <div class="col-12">
-        <div class="chatListContainer">
-            <div class="chat-list" *ngFor="let room of rooms |async">
-                <chat-list-item [roomData]="room"></chat-list-item>
+<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault" [ngClass]="{open: userListStatus=== true}">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- <div class="col-12">
+                <div class="search">
+                    <input type="text" class="search__input" placeholder="Search for chats"
+                        (input)="searchPreviusChat($event)">
+                    <svg class="search__icon">
+                        <use xlink:href="../../../../assets/sprites/chat-icons.svg#search"></use>
+                    </svg>
+                </div>
+            </div> -->
+            <div class="col-12 p-0">
+                <div class="chatListContainer">
+                    <div class="chat-list" *ngFor="let room of rooms |async">
+                        <chat-list-item [roomData]="room"></chat-list-item>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
 </div>

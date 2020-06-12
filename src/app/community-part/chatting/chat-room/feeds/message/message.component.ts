@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Message } from 'src/app/models/message.model';
-import { Observable } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from 'src/app/services/auth.service';
 import { ChattingService } from 'src/app/services/chatting.service';
 
@@ -21,9 +19,12 @@ export class MessageComponent implements OnInit {
     msgImg;
     msgFileLink: string;
 
-    constructor(private authService: AuthService, private chat: ChattingService) { }
+    constructor(private authService: AuthService,
+        private chat: ChattingService) { }
 
     ngOnInit() {
+
+        this.checkingIncomingMessage();
 
         this.authService.getUserImgLink(this.message.uid).subscribe(res => {
             this.userImgSrc = res
@@ -41,5 +42,11 @@ export class MessageComponent implements OnInit {
 
     showImg(event) {
         this.chat.showImgSubject.next(event.target.src)
+    }
+
+    checkingIncomingMessage() {
+        this.authService.currentUser.subscribe(user => {
+            this.incoming = this.message.uid == user.uid ? false : true
+        })
     }
 }

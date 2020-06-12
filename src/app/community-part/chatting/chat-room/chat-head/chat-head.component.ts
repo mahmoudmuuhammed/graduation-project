@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/services/auth.service';
     styleUrls: ['./chat-head.component.scss']
 })
 
-export class ChatHeadComponent implements OnChanges{
+export class ChatHeadComponent implements OnChanges {
     @Input() userData: UserModel;
     userImgSrc;
 
@@ -26,10 +26,14 @@ export class ChatHeadComponent implements OnChanges{
     ) { }
 
     ngOnChanges() {
-        if(this.userData)
-        this.authService.getUserImgLink(this.userData.uid).subscribe(res => {
-            this.userImgSrc = res
-        })
+        if (this.userData)
+            this.authService.getUserImgLink(this.userData.uid).subscribe(res => {
+                this.userImgSrc = res
+            })
+    }
+
+    onShowUserList() {
+        this.sharedService.userListShowing.next(true)
     }
 
     call() {

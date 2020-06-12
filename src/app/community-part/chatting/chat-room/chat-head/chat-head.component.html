@@ -1,5 +1,10 @@
 <div class="head">
     <div class="head__user">
+        <div class="showUserListDiv" (click)='onShowUserList()'>
+            <svg class="head__action-icon">
+                <use xlink:href="../../../../../assets/sprites/chat-icons.svg#back"></use>
+            </svg>
+        </div>
         <img src="{{userImgSrc}}" alt="" class=" head__user-img">
         <div class="head__user-info">
             <span class="head__user-info__name">
@@ -13,8 +18,8 @@
             </span>
         </div>
     </div>
-    <div class="head__action">
-        <svg class="head__action-icon" (click)="call()">
+    <div class="head__action" (click)="call()">
+        <svg class="head__action-icon">
             <use xlink:href="../../../../../assets/sprites/chat-icons.svg#videocall"></use>
         </svg>
     </div>

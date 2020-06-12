@@ -4,6 +4,7 @@ import { UserModel } from 'src/app/models/user.model';
 import { Observable, Subscription } from 'rxjs';
 import { Room } from 'src/app/models/Room.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
     selector: 'chat-list-item',
@@ -20,7 +21,9 @@ export class ChatListItemComponent implements OnInit, OnDestroy {
     noOfMsg: number;
     userImgLink: string = ''
 
-    constructor(private db: FirestoreService, private authService: AuthService) { }
+    constructor(private db: FirestoreService,
+        private authService: AuthService,
+        private sharedService: SharedService) { }
 
     ngOnInit() {
         this.authService.currentUser.subscribe(user => {
@@ -34,19 +37,20 @@ export class ChatListItemComponent implements OnInit, OnDestroy {
                                 this.noOfMsg = Number(value)
                                 continue;
                             }
-                            this.userData = this.db.getUser(key);
+                            this.userData = this.db.getUser(key)
                             this.authService.getUserImgLink(key).subscribe(res => { this.userImgLink = res })
                         }
                     }
                 );
         })
 
-
-
         this.msgTime = this.roomData.timestamp;
         this.msgTime = this.msgTime.seconds * 1000 //convert to milleseconds
     }
 
+    showChats() {
+        this.sharedService.userListShowing.next(false)
+    }
     ngOnDestroy() {
         this.subscribtion.unsubscribe();
     }

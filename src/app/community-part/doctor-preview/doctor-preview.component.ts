@@ -19,7 +19,6 @@ export class DoctorPreviewComponent implements OnInit {
   @ViewChild('inputSearch') docSearch;
   showDocReservation: boolean = false;
   pointsSort: string = 'none'
-  feesSort: string = 'none'
 
   constructor(private doctorsService: DoctorsService) { }
 
