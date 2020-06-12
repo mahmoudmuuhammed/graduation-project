@@ -8,8 +8,7 @@
 export class Message {
     msg: string;
     msgtype: string;
-    readUsers: string[];
-    timestamp: number;
+    timestamp: Date;
     uid: string;
     filename?: string;
     filesize?: string;

@@ -1,11 +1,29 @@
 <div class="chatRoomContainer">
-        <div class="chatHeader">
-            <chat-head [userData]="(userData) | async"></chat-head>
-        </div>
-            <div class="chatMessages" #scroller>
-                <chat-feeds [messages]="messages"></chat-feeds>
-            </div>
-            <div class="chatInput" *ngIf="roomId">
-                <chat-form [threadId]="roomId" [routeId]="activeRoute"></chat-form>
-            </div>
+    <div class="chatHeader">
+        <chat-head [userData]="(userData) | async"></chat-head>
+    </div>
+    <div class="chatMessages" #scroller>
+        <chat-feeds [messages]="messages"></chat-feeds>
+    </div>
+    <div class="chatInput" *ngIf="roomId">
+        <chat-form [threadId]="roomId" [routeId]="activeRoute"></chat-form>
+    </div>
+</div>
+<!-- --------- preview image from Chat --------- -->
+<div class="outerImgPreviewDiv" #imgPreview>
+    <div class="innerImgPreviewDiv animate fadeIn slow">
+        <header>
+            <button (click)="closeImgPreview()">
+                <i class="fas fa-times"></i>
+            </button>
+        </header>
+        <main>
+            <img class="img-fluid" src='{{imgSrc}}'>
+        </main>
+        <!-- <footer>
+            <button (click)='downloadUrl()'>
+                <i class="fas fa-download"></i>
+            </button>
+        </footer> -->
+    </div>
 </div>

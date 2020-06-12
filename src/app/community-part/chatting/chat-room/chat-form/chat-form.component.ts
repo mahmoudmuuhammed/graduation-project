@@ -1,6 +1,8 @@
 import { Component, Input, ViewChild, ElementRef, OnInit } from "@angular/core";
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ChattingService } from 'src/app/services/chatting.service';
+import { FormsServices } from 'src/app/services/forms.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: 'chat-form',
@@ -16,18 +18,19 @@ export class ChatFormComponent implements OnInit {
 
     constructor(
         private auth: AngularFireAuth,
-        private chat: ChattingService
-    ) {
-    }
+        private chat: ChattingService,
+        public forms: FormsServices
+    ) { }
+
 
     ngOnInit() {
         this.currentUser = this.auth.auth.currentUser;
+        this.messageValue.nativeElement.value = '';
     }
 
     sendingMessage() {
         const message = this.messageValue.nativeElement.value;
-        this.chat.sendMessage(this.threadId, message, this.currentUser.uid, this.routeId, '0',null);
-        this.chat.saveLastMessage(this.threadId, message);
+        this.chat.sendMessage(this.threadId, message, this.currentUser.uid, this.routeId, '0', null);
         this.messageValue.nativeElement.value = '';
     }
 
@@ -38,9 +41,10 @@ export class ChatFormComponent implements OnInit {
     }
 
     onSelectedFile(event) {
-        console.log(event.target.files[0])
+        this.chat.sendFile(this.threadId, this.currentUser.uid, this.routeId, event.target.files[0])
     }
     onSelectedImg(event) {
+        this.chat.sendImg(this.threadId, this.currentUser.uid, this.routeId, event.target.files[0])
 
     }
 }

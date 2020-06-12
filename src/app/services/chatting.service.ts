@@ -4,13 +4,14 @@ import {
     AngularFirestoreCollection,
     AngularFirestoreDocument
 } from '@angular/fire/firestore';
-import { AuthService } from './auth.service';
 import { Message } from '../models/message.model';
 import { Room } from '../models/Room.model';
 import { take, map } from 'rxjs/operators';
-import { Observable, observable, merge } from 'rxjs';
+import { Observable, observable, merge, Subject } from 'rxjs';
 import { formatDate } from '@angular/common';
-import * as firebase from 'firebase'
+import { AngularFireStorage } from '@angular/fire/storage';
+// import {HttpResponse} from '@angular/common/http';
+// import {Http, ResponseContentType} from '@angular/http';
 
 @Injectable({
     providedIn: 'root'
@@ -28,7 +29,7 @@ export class ChattingService {
 
     constructor(
         private afs: AngularFirestore,
-        private authService: AuthService
+        private storage: AngularFireStorage,
     ) { }
 
     // timeStamp() {
@@ -82,61 +83,66 @@ export class ChattingService {
     //         )
     // }
 
-    getThreads(currentUserId: string) {
-        // this.threadCollection = this.afs.collection('Chats',
-        //     ref => {
-        //         return ref
-        //             .where(`members.${currentUserId}`, '<=', 0)
-        //     });
-        // return this.threadCollection.valueChanges();
-    }
+    //getThreads(currentUserId: string) {
+    // this.threadCollection = this.afs.collection('Chats',
+    //     ref => {
+    //         return ref
+    //             .where(`members.${currentUserId}`, '<=', 0)
+    //     });
+    // return this.threadCollection.valueChanges();
+    //}
 
-    getThread(profileId: string) {
-        // this.threadDoc = this.afs.doc<Thread>(`Chats/${profileId}`);
-        // return this.threadDoc.valueChanges();
-    }
+    //getThread(profileId: string) {
+    // this.threadDoc = this.afs.doc<Thread>(`Chats/${profileId}`);
+    // return this.threadDoc.valueChanges();
+    //}
 
-    saveLastMessage(threadId: string, message: string) {
-        // const data = {
-        //     lastMsg: message,
-        //     timeStamp: Date.now()
-        // };
+    //saveLastMessage(threadId: string, message: string) {
+    // const data = {
+    //     lastMsg: message,
+    //     timeStamp: Date.now()
+    // };
 
-        // return this.afs.doc(`Chats/${threadId}`).update(data);
-    }
+    // return this.afs.doc(`Chats/${threadId}`).update(data);
+    //}
 
 
     //--------------------- Moemen work -----------------------
 
+    showImgSubject = new Subject<string>()
+
+    // downloadFile(url:string): Observable<any> {
+    //     return this.http.get(url, { responseType: ResponseContentType.Blob });
+    // }
 
     getRoomId(toId: string, myId: string): Observable<string> {
         let roomId = ""
         let isRoomExist: boolean = false;
         this.roomsCollection = this.afs.collection('Rooms')
-        //console.log(formatDate(Date.now(), 'yyyyMMddhhmmssSSS', 'en-US',))
 
         return new Observable(observer => {
-            this.roomsCollection.valueChanges().pipe(take(1)).subscribe(rooms => {
+            this.roomsCollection.valueChanges({ source: 'server' }).pipe(take(1)).subscribe(rooms => {
                 rooms.forEach(room => {
                     if (Object.keys(room.users).indexOf(toId) > -1 && Object.keys(room.users).indexOf(myId) > -1) {
                         isRoomExist = true;
-                        roomId = room.roomId
+                        roomId = room.roomID
+                        console.log('1 : ', isRoomExist)
                     }
                 })
-            }).add(() => {
                 if (!isRoomExist) {
+                    console.log('2 : ', isRoomExist)
                     let users = {}
                     users[toId] = 0
                     users[myId] = 0
                     roomId = this.afs.createId();
                     const path = `Rooms/${roomId}`
-                    this.afs.doc(path).set({ msg: '', msgtype: '0', timestamps: 0, uid: myId, users, roomId: roomId })
+                    this.afs.doc(path).set({ msg: '', msgtype: '0', timestamp: 0, uid: myId, users, roomID: roomId })
                 }
             }).add(() => observer.next(roomId))
         });
     }
 
-    sendMessage(roomId: string, messageContent: string, currentUser: string, profileId: string, msgType: string, file: { filename: string, filesize: string }) {
+    sendMessage(roomId: string, messageContent: string, currentUser: string, profileId: string, msgType: string, file: { filename: string, filesize: number }) {
         this.afs.doc(`Rooms/${roomId}`).valueChanges().pipe(take(1)).subscribe((room: Room) => {
 
             //justify number of unread message for other user
@@ -146,11 +152,11 @@ export class ChattingService {
             users[currentUser] = 0;
             users[profileId] = unreadNoOfOtherUser + 1
 
-            //add room data and check type of msg to file file or not
-            let roomData: Room = { msg: messageContent, msgtype: msgType, timestamps: Date.now(), uid: currentUser, users };
+            //add room data and check type of msg (file or not)
+            let roomData: Room = { msg: messageContent, msgtype: msgType, roomID: roomId, timestamp: new Date(), uid: currentUser, users };
             if (file != null) {
                 roomData.filename = file.filename;
-                roomData.filesize = file.filesize;
+                roomData.filesize = file.filesize.toString();
             }
 
             this.afs.collection(`Rooms`)
@@ -163,12 +169,11 @@ export class ChattingService {
                         msg: messageContent,
                         msgtype: msgType,
                         uid: currentUser,
-                        readUsers: [currentUser],
-                        timestamp: Date.now(),
+                        timestamp: new Date(),
                     }
                     if (file != null) {
                         messageData.filename = file.filename;
-                        messageData.filesize = file.filesize;
+                        messageData.filesize = file.filesize.toString();
                     }
                     this.afs.doc(path)
                         .set(messageData)
@@ -197,11 +202,33 @@ export class ChattingService {
         })
     }
 
-    sendingFile() {
-        
+    sendFile(roomId: string, currentUser: string, profileId: string, file: File) {
+        const fileNameInStorage = Math.round(Number(formatDate(Date.now(), 'yyyyMMddhhmmssSSS', 'en-US') + (Math.random() * 10)))
+        this.storage.ref(`files/${fileNameInStorage}`).put(file, { contentType: file.type }).then(() => {
+            this.sendMessage(roomId, String(fileNameInStorage), currentUser, profileId, '2', { filename: file.name, filesize: file.size / 1000 })
+        })
     }
 
-    sendImg() {
+    sendImg(roomId: string, currentUser: string, profileId: string, file: File) {
+        const fileNameInStorage = Math.round(Number(formatDate(Date.now(), 'yyyyMMddhhmmssSSS', 'en-US') + (Math.random() * 10)))
+        this.storage.ref(`filesmall/${fileNameInStorage + file.name.split('.')[1]}`).put(file, { contentType: file.type }).then(() => {
+            this.sendMessage(roomId, String(fileNameInStorage), currentUser, profileId, '1', { filename: file.name, filesize: file.size / 1000 })
+        })
+    }
 
+    getMessageImg(ImgName: string) {
+        return this.storage.ref(`filesmall/${ImgName}`).getDownloadURL().pipe(take(1))
+    }
+
+    getFileLink(fileName: string) {
+        return this.storage.ref(`files/${fileName}`).getDownloadURL().pipe(take(1))
+    }
+
+    getRooms(currentUserId: string) {
+        this.roomsCollection = this.afs.collection('Rooms',
+            ref => {
+                return ref.where(`users.${currentUserId}`, '>=', 0)
+            });
+        return this.roomsCollection.valueChanges();
     }
 }

@@ -5,6 +5,8 @@ import { Thread } from 'src/app/models/thread.model';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ChattingService } from 'src/app/services/chatting.service';
 import { take } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/auth.service';
+import { Room } from 'src/app/models/Room.model';
 
 @Component({
     selector: 'chat-list',
@@ -13,17 +15,21 @@ import { take } from 'rxjs/operators';
 })
 
 export class ChatListComponent implements OnInit {
-    threads: Observable<Thread[]>;
-    currentUser: firebase.User;
+    // threads: Observable<Thread[]>;
+    rooms: Observable<Room[]>;
     constructor(
         public sharedService: SharedService,
-        private auth: AngularFireAuth,
+        private authService: AuthService,
         private chat: ChattingService
     ) {}
 
     ngOnInit() {
-        this.auth.authState.pipe(take(1)).subscribe(user=>{
-           //this.threads = this.chat.getThreads(user.uid);
+        this.authService.currentUser.subscribe(user=>{
+           this.rooms = this.chat.getRooms(user.uid);
         })
+    }
+
+    searchPreviusChat(event){
+
     }
 }

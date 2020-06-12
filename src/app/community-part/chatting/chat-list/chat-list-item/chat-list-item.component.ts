@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, OnDestroy, Renderer2, ViewChild, ElementRef } from "@angular/core";
-import { Thread } from 'src/app/models/thread.model';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { UserModel } from 'src/app/models/user.model';
 import { Observable, Subscription } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { Room } from 'src/app/models/Room.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
     selector: 'chat-list-item',
@@ -12,30 +12,39 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 
 export class ChatListItemComponent implements OnInit, OnDestroy {
-    //currentDate: Date;
-    @Input() thread: Thread;
+    @Input() roomData: Room;
     profilerId: string;
-    cuurentUser: firebase.User;
     userData: Observable<UserModel>;
     subscribtion: Subscription;
-    constructor(private db: FirestoreService, private auth: AngularFireAuth) {}
+    msgTime;
+    noOfMsg: number;
+    userImgLink: string = ''
+
+    constructor(private db: FirestoreService, private authService: AuthService) { }
 
     ngOnInit() {
-        if(this.auth.auth.currentUser !== undefined && this.auth.auth.currentUser !== null) {
-            this.cuurentUser = this.auth.auth.currentUser;
-        }
+        this.authService.currentUser.subscribe(user => {
+            this.subscribtion = this.db.getChannelsUsers(this.roomData.roomID)
+                .snapshotChanges()
+                .subscribe(
+                    re => {
+                        const users = Object.entries(re.payload.data().users);
+                        for (const [key, value] of users) {
+                            if (key === user.uid) {
+                                this.noOfMsg = Number(value)
+                                continue;
+                            }
+                            this.userData = this.db.getUser(key);
+                            this.authService.getUserImgLink(key).subscribe(res => { this.userImgLink = res })
+                        }
+                    }
+                );
+        })
 
-        this.subscribtion = this.db.getChannelsUsers(this.thread.threadId)
-        .snapshotChanges()
-        .subscribe(
-            re => {
-                const userIds = Object.keys(re.payload.data().members);
-                for(const id of userIds) {
-                    if(id === this.cuurentUser.uid) continue;
-                    this.userData = this.db.getUser(id);
-                }
-            }
-        );
+
+
+        this.msgTime = this.roomData.timestamp;
+        this.msgTime = this.msgTime.seconds * 1000 //convert to milleseconds
     }
 
     ngOnDestroy() {

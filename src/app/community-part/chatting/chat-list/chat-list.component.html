@@ -1,20 +1,17 @@
 <div class="row">
     <div class="col-12">
         <div class="search">
-            <!-- <svg class="search__icon">
-                <use xlink:href="../../../../assets/sprites/topnav-icons.svg#search"></use>
-            </svg> -->
-            <input 
-                type="text" 
-                class="search__input" 
-                placeholder="Search for chats" 
-                (click)="sharedService.showUsersList()">
+            <input type="text" class="search__input" placeholder="Search for chats"
+                (input)="searchPreviusChat($event)">
+            <svg class="search__icon">
+                <use xlink:href="../../../../assets/sprites/chat-icons.svg#search"></use>
+            </svg>
         </div>
     </div>
     <div class="col-12">
         <div class="chatListContainer">
-            <div class="chat-list" *ngFor="let thread of threads">
-                <chat-list-item [thread]="thread"></chat-list-item>
+            <div class="chat-list" *ngFor="let room of rooms |async">
+                <chat-list-item [roomData]="room"></chat-list-item>
             </div>
         </div>
     </div>

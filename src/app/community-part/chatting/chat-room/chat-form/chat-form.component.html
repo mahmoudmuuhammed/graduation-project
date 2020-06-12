@@ -1,7 +1,7 @@
 <div class="chat-sending">
     <div class="message-attachments">
         <div class="inputDiv">
-            <input type="file" (input)='onSelectedFile($event)' accept=".doc,.docx,.pdf">
+            <input type="file" (input)='onSelectedFile($event)'>
             <svg class="icon icon--attach">
                 <use xlink:href="../../../../../assets/sprites/chat-icons.svg#paperclip"></use>
             </svg>
@@ -13,8 +13,8 @@
             </svg>
         </div>
     </div>
-    <textarea name="messageInput" id="messageInput" cols="30" rows="1" class="message-input"
-        placeholder="Type a message..." #messageInput (keyup)="handleSendMessage($event)"></textarea>
+    <textarea cols="30" rows="1" class="message-input" placeholder="Type a message..." #messageInput
+        (keyup)="handleSendMessage($event)"></textarea>
 
     <div class="send-btn" (click)="sendingMessage()">
         <svg class="icon icon--send">

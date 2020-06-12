@@ -16,11 +16,45 @@
     &__content {
         margin: 10px 15px 0px 15px;
         background-color: #e5e5e5;
-        padding: 2px 10px 17px 10px;
+        padding: 5px 10px 17px 10px;
         border-radius: 5px 0px 5px 5px;
         position: relative;
         min-width: 70px;
 
+        .msgContainer {
+            display: flex;
+            flex-direction: column;
+
+            img {
+                max-height: 150px;
+                margin: 5px;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    box-shadow: 0px 0px 3px #aaa;
+                }
+            }
+        }
+
+        .fileContainer {
+            .fileLink {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                color: #000;
+            }
+
+            img {
+                max-height: 75px;
+                margin: 0px;
+                object-fit: contain;
+
+                &:hover {
+                    box-shadow: none;
+                }
+            }
+        }
 
         &-text {
             font-size: 14px;
@@ -64,9 +98,9 @@
         }
 
         .message {
-            
-            &__content{
-                &-time{
+
+            &__content {
+                &-time {
                     left: unset;
                     right: 5px;
                 }

@@ -1,11 +1,37 @@
 <div class="message" [ngClass]="{ 'inbound': incoming, 'outbound': !incoming }">
     <img src="{{userImgSrc}}" alt="" class="message__img">
     <div class="message__content" [ngClass]="{ 'inboundContent': incoming, 'outboundContent': !incoming }">
-        <span class="message__content-text">
-            {{ message?.msg }}
-        </span>
-        <span class="message__content-time">
-            {{ message?.timestamp | date:'shortTime' }}
-        </span>
+
+        <div class="msgContainer" *ngIf="message?.msgtype=='0'">
+            <span class="message__content-text">
+                {{ message?.msg }}
+            </span>
+            <span class="message__content-time">
+                {{ msgTime | date:'shortTime' }}
+            </span>
+        </div>
+
+        <div class="msgContainer" *ngIf="message?.msgtype=='1'">
+            <img src="{{msgImg}}" (click)='showImg($event)'>
+            <span class="message__content-text">
+                {{ message?.filename }}
+            </span>
+            <span class="message__content-time">
+                {{ msgTime | date:'shortTime' }}
+            </span>
+        </div>
+
+        <div class="msgContainer fileContainer" *ngIf="message?.msgtype=='2'">
+            <a href="{{msgFileLink}}" class="fileLink">
+                <img src='../../../../../../assets/images//file.png'>
+                <span class="message__content-text">
+                    {{ message?.filename }}
+                </span>
+            </a>
+            <span class="message__content-time">
+                {{ msgTime | date:'shortTime' }}
+            </span>
+        </div>
+
     </div>
 </div>

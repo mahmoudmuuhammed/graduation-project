@@ -3,7 +3,8 @@ import {
     OnInit,
     ViewChild,
     ElementRef,
-    AfterViewChecked
+    AfterViewChecked,
+    Renderer2
 } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
 import { FirestoreService } from 'src/app/services/firestore.service';
@@ -32,13 +33,16 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked {
     userData: Observable<UserModel>;
     messages: Observable<Message[]>;
     subscribtion: Subscription;
+    imgSrc: string = '';
+    @ViewChild('imgPreview') imgPreview: ElementRef;
 
     constructor(
         private route: ActivatedRoute,
         private fireDb: FirestoreService,
         private auth: AngularFireAuth,
         private chat: ChattingService,
-        private authService: AuthService
+        private authService: AuthService,
+        private render: Renderer2
     ) { }
 
     ngOnInit() {
@@ -53,13 +57,21 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked {
 
                     this.chat.getRoomId(user.uid, this.activeRoute).pipe(take(1)).subscribe(res => {
                         this.roomId = res
-                        this.messages = this.chat.getMessages(res)
-                        this.chat.updateUnreadToRead(this.roomId, user.uid,this.activeRoute)
-                    })
-                    this.userData = this.fireDb.getUser(this.activeRoute);
+                    }, err => console.log(err),
+                        () => {
+                            this.messages = this.chat.getMessages(this.roomId)
+                            this.chat.updateUnreadToRead(this.roomId, user.uid, this.activeRoute)
+                        })
 
+                    this.userData = this.fireDb.getUser(this.activeRoute);
                 }
             );
+        })
+
+        this.chat.showImgSubject.subscribe(res => {
+            this.imgSrc = res;
+            this.render.setStyle(this.imgPreview.nativeElement, 'display', 'flex')
+            this.render.setAttribute(this.imgPreview.nativeElement.querySelector("img"), 'src', this.imgSrc)
         })
     }
 
@@ -75,4 +87,20 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked {
     logout() {
         this.authService.logout();
     }
+
+    closeImgPreview() {
+        this.render.setStyle(this.imgPreview.nativeElement, 'display', 'none')
+        this.render.setAttribute(this.imgPreview.nativeElement.querySelector("img"), 'src', '')
+        this.imgSrc=''
+    }
+
+    downloadUrl() {
+        let a: any = document.createElement('a');
+        a.href = this.imgSrc;
+        a.download = 'img';
+        document.body.appendChild(a);
+        a.style = 'display: none';
+        a.click();
+        a.remove();
+      };
 }

@@ -9,9 +9,9 @@
     position: relative;
 
     .postFilter {
-        position: absolute;
-        top: 15px;
-        right: 10px;
+        position: fixed;
+        top: 65px;
+        right: 30px;
         z-index: 5;
     }
 }

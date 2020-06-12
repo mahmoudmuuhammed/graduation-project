@@ -13,3 +13,14 @@
         border-right: 1px solid #e0e0e0;
     }
 }
+@media(max-width:576px){
+    .chat{
+        .userList{
+            height: auto;
+            border-bottom: 1px solid #aaa;
+        }
+        .chat-room-container {
+            border-right: none;
+        }
+    }
+}

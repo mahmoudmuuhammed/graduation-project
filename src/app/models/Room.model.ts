@@ -1,10 +1,10 @@
 export class Room {
     msg: string;
     msgtype: string;
-    timestamps: number;
+    timestamp: Date;
     uid: string;
     users: {};
-    roomId?: string;
+    roomID: string;
     filename?: string;
     filesize?: string;
 }

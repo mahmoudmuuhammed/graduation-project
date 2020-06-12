@@ -4,28 +4,29 @@
 @import "../../../../styles/base/typography";
 
 .search {
-    padding: 10px;
     @include flexbox;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     position: relative;
+    border: .7px solid #eee;
+    border-radius: 5px;
+    background-color: rgba($secondary-text, .03);
+    margin: 10px;
+
     &__icon {
-        width: 14px;
-        height: 14px;
+        width: 20px;
+        height: 20px;
         fill: rgba($secondary-text, .7);
-        position: absolute;
-        left: 43px;
     }
 
     &__input {
-        border: .7px solid #eee;
-        border-radius: 5px;
+        border: none;
+        background-color: transparent;
         padding: .7em 3em;
         font-family: 'Inter';
         font-size: 13px;
         color: $primary-text;
         font-weight: 400;
-        background-color: rgba($secondary-text, .03);
 
         &::-webkit-input-placeholder {
             font-size: 12px;
@@ -35,19 +36,19 @@
     }
 }
 
-.chat-list.active{
-background-color: #ddd;
+.chat-list.active {
+    background-color: #ddd;
 }
 
-@media(max-width:786px){
-    .search{
+@media(max-width:786px) {
+    .search {
         display: none;
     }
 }
 
-@media(max-width:576px){
-    .chatListContainer{
+@media(max-width:576px) {
+    .chatListContainer {
         display: flex;
-        box-shadow: 0px 1px 3px -1px #aaa ;
+        box-shadow: 0px 1px 3px -1px #aaa;
     }
 }

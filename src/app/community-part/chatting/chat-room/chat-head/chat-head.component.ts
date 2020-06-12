@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from "@angular/core";
+import { Component, Input, OnChanges, OnInit, AfterViewInit } from "@angular/core";
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 
@@ -14,9 +14,9 @@ import { AuthService } from 'src/app/services/auth.service';
     styleUrls: ['./chat-head.component.scss']
 })
 
-export class ChatHeadComponent implements OnChanges {
+export class ChatHeadComponent implements OnChanges{
     @Input() userData: UserModel;
-    userImgSrc: string = ''
+    userImgSrc;
 
     constructor(private firestore: AngularFirestore,
         private activatedRoute: ActivatedRoute,
@@ -26,6 +26,7 @@ export class ChatHeadComponent implements OnChanges {
     ) { }
 
     ngOnChanges() {
+        if(this.userData)
         this.authService.getUserImgLink(this.userData.uid).subscribe(res => {
             this.userImgSrc = res
         })

@@ -3,6 +3,7 @@ import { Message } from 'src/app/models/message.model';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from 'src/app/services/auth.service';
+import { ChattingService } from 'src/app/services/chatting.service';
 
 @Component({
     selector: 'message',
@@ -16,25 +17,29 @@ export class MessageComponent implements OnInit {
     incoming: boolean;
     authState: firebase.User;
     userImgSrc: string = ''
+    msgTime;
+    msgImg;
+    msgFileLink: string;
 
-    constructor(private auth: AngularFireAuth,
-        private authService: AuthService) { }
+    constructor(private authService: AuthService, private chat: ChattingService) { }
 
     ngOnInit() {
-        if (this.auth.auth.currentUser !== undefined && this.auth.auth.currentUser !== null) {
-            this.authState = this.auth.auth.currentUser;
-        };
-        this.checkingIncomingMessage();
 
         this.authService.getUserImgLink(this.message.uid).subscribe(res => {
             this.userImgSrc = res
         })
+
+        this.msgTime = this.message.timestamp;
+        this.msgTime = this.msgTime.seconds * 1000 //convert to milleseconds
+
+        if (this.message.msgtype == '1')
+            this.chat.getMessageImg(this.message.msg).subscribe(url => this.msgImg = url)
+
+        if (this.message.msgtype == '2')
+            this.chat.getFileLink(this.message.msg).subscribe(url => this.msgFileLink = url)
     }
 
-    checkingIncomingMessage() {
-        const user = this.authState.uid;
-        if (this.message.uid && user) {
-            this.incoming = this.message.uid !== user;
-        }
+    showImg(event) {
+        this.chat.showImgSubject.next(event.target.src)
     }
 }

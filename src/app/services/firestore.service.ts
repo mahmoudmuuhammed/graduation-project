@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserModel } from '../models/user.model';
 import { Thread } from '../models/thread.model';
+import { Room } from '../models/Room.model';
 
 
 @Injectable({
@@ -11,7 +12,8 @@ import { Thread } from '../models/thread.model';
 export class FirestoreService {
     users: AngularFirestoreCollection<UserModel>;
     user: AngularFirestoreDocument<UserModel>;
-    channelsData: AngularFirestoreDocument<Thread>;
+    //channelsData: AngularFirestoreDocument<Thread>;
+    channelsData: AngularFirestoreDocument<Room>;
 
     constructor(
         private fireDb: AngularFirestore
@@ -29,7 +31,7 @@ export class FirestoreService {
     }
 
     getChannelsUsers(threadId: string) {
-        this.channelsData = this.fireDb.doc<Thread>(`Chats/${threadId}`);
+        this.channelsData = this.fireDb.doc<Room>(`Rooms/${threadId}`);
         return this.channelsData;
     }
     

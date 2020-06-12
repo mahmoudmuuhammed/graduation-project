@@ -1,21 +1,23 @@
-<div class="chat-litem" [routerLink]="['/chat', (userData | async)?.uid]">
-    <div class="user">
-        <img 
-            src="../../../../../assets/svgs/man.svg"
-            alt="user img" 
-            class="user__img">
-        <div class="user__info">
-            <span class="user__info-name">
-                {{ (userData | async)?.fullName }}
-            </span>
-            <span class="user__info-time">
-                {{ thread?.timeStamp| date:'shortTime' }}
-            </span>
+<div class="chat-litem" routerLinkActive='active' [routerLinkActiveOptions]="{exact:true}">
+    <div class="user" [routerLink]="['/community/Chat', (userData | async)?.uid]">
+        <div class="imgDiv">
+            <img src="{{userImgLink}}" alt="" class="user__img">
+            <div class="noOfUnreadMsg" *ngIf="noOfMsg>0">
+                <p>{{noOfMsg}}</p>
+            </div>
         </div>
-    </div>
-    <div class="lmsg">
-        <span>
-            {{ thread?.lastMsg }}
-        </span>
+        <div class="user__info">
+            <div class="user__info-container">
+                <span class="user__info-name">
+                    {{ (userData | async)?.fullName |titlecase}}
+                </span>
+                <span class="user__info-time">
+                    {{ msgTime| date:'shortTime' }}
+                </span>
+            </div>
+            <div class="lmsg">
+                <span>{{ roomData?.msg }}</span>
+            </div>
+        </div>
     </div>
 </div>

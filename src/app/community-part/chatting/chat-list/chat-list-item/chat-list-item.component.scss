@@ -7,20 +7,42 @@
 .chat-litem {
     padding: 10px;
     margin-bottom: 5px;
-    //border-right: 2.5px solid $primary-color;
-    //background-color: rgba(#eee, .3);
+
+    &:hover {
+        background-color: #eaeaea;
+        cursor: pointer;
+    }
+
+    &.active {
+        background-color: #e0e0e0;
+    }
 }
 
 .user {
     @include flexbox;
     align-items: center;
     margin-bottom: .5em;
-    cursor: pointer;
 
-    .userInfoContainer {
-        display: flex;
-        flex-direction: column;
-        min-width: 0;
+    .imgDiv {
+        position: relative;
+
+        .noOfUnreadMsg {
+            p {
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                background-color: #764BCB;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #fff;
+                font-size: 12px;
+                font-weight: 600;
+            }
+        }
     }
 
     &__img {
@@ -31,28 +53,38 @@
     }
 
     &__info {
-        @include flexbox;
-        justify-content: space-between;
-        font-weight: 500;
+        // @include flexbox;
+        // justify-content: space-between;
+        // flex-direction: column;
+        // font-weight: 500;
+        width: calc(100% - 50px);
         margin-left: .5rem;
 
+        &-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         &-name {
-            font-size: 14px;
+            font-size: 15px;
             color: $primary-text;
+            font-weight: 500;
         }
 
         &-time {
-            font-size: 10px;
+            font-size: 11px;
             color: rgba($secondary-text, .7);
+            white-space: nowrap;
+            margin-top: -3px;
         }
     }
 }
 
 .lmsg {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
     color: rgba($secondary-text, .9);
-    margin-left: .5rem;
 
     span {
         display: block;
@@ -64,7 +96,8 @@
 
 @media(max-width:768px) {
     .user {
-        margin: 0px;
+        margin: 0px auto;
+        width: min-content;
 
         &__img {
             margin: auto;
@@ -87,5 +120,9 @@
 
     .user {
         cursor: auto;
+
+        .imgDiv{
+            height: 50px;
+        }
     }
 }
