@@ -1,19 +1,25 @@
-<nav class="navbar u-mrgb-2">
-    <div class="navbar__brand">
-        <medkit-logo 
-            [textColor]="'#2d2d2d'" 
-            [smIcon]="'#764BCB'"></medkit-logo>
+<div class="container-fluid navContainer" id="navContainer">
+    <div class="row navBar">
+        <div class="col-sm-6 col-12">
+            <a class="navbar-brand logo" routerLink="/">
+                <medkit-logo></medkit-logo>
+            </a>
+        </div>
+
+        <div class="col-sm-6 col-12">
+            <ul class="navbarNav">
+                <li class="navItem">
+                    <a class="navLink" routerLink="/signin">Sign in</a>
+                </li>
+                <li class="navItem">
+                    <a class="navLink" routerLink="/">Back to home</a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <ul class="navbar__list">
-        <li class="navbar__list-item">
-            <a routerLink="/signin" class="navbar__list-link">Sign in</a>
-        </li>
-        <li class="navbar__list-item">
-            <a routerLink="/" class="navbar__list-link">Back to home</a>
-        </li>
-    </ul>
-</nav>
-<section class="signup u-mrgt-4">
+</div>
+
+<section class="signup">
     <div class="content">
         <div class="info sm-title u-mrgb-1">
             Create your account now.
@@ -29,7 +35,7 @@
                     <social></social>
                     <div class="stepper__actions">
                         <button matStepperNext
-                            class="stepper__actions-submit u-mrgt-1">
+                            class="stepper__actions-submit">
                             Sign up with email
                         </button>
                     </div>

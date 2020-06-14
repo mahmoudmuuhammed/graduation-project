@@ -22,8 +22,7 @@
 
         .title {
             text-align: center;
-            color: #fff;
-            background-color: #764bcb;
+            color: #258acd;
             padding: 10px;
         }
 
@@ -40,7 +39,7 @@
                     width: 196px;
                     height: 196px;
                     border-radius: 50%;
-                    background-color: #ad60d4;
+                    background-color: #5dade2;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -50,7 +49,7 @@
                         width: 180px;
                         height: 180px;
                         border-radius: 50%;
-                        background-color: #ad3ae7;
+                        background-color: #258acd;
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -60,7 +59,7 @@
                             width: 166px;
                             height: 166px;
                             border-radius: 50%;
-                            background-color: #9932CC;
+                            background-color: #195e8c;
                             display: flex;
                             justify-content: center;
                             align-items: center;
@@ -94,7 +93,7 @@
                     .btn {
                         padding: 10px 20px;
                         font-size: 16px;
-                        margin: 50px 20px 20px 20px;
+                        margin: 20px;
                     }
                 }
             }
@@ -161,55 +160,55 @@
 
 @keyframes outerDivAniamtion {
     0% {
-        background-color: #ad60d4;
+        background-color: #5dade2;
     }
 
     33% {
-        background-color: #ad3ae7;
+        background-color: #258acd;
     }
 
     66% {
-        background-color: #9932CC;
+        background-color: #195e8c;
     }
 
     100% {
-        background-color: #ad60d4;
+        background-color: #5dade2;
     }
 
 }
 
 @keyframes middleDivAniamtion {
     0% {
-        background-color: #ad3ae7;
+        background-color: #258acd;
     }
 
     33% {
-        background-color: #9932CC;
+        background-color: #195e8c;
     }
 
     66% {
-        background-color: #ad60d4;
+        background-color: #5dade2;
     }
 
     100% {
-        background-color: #ad3ae7;
+        background-color: #258acd;
     }
 }
 
 @keyframes innerDivAniamtion {
     0% {
-        background-color: #9932CC;
+        background-color: #195e8c;
     }
 
     33% {
-        background-color: #ad60d4;
+        background-color: #5dade2;
     }
 
     66% {
-        background-color: #ad3ae7;
+        background-color: #258acd;
     }
 
     100% {
-        background-color: #9932CC;
+        background-color: #195e8c;
     }
 }

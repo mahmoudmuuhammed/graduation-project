@@ -211,7 +211,7 @@ export class ChattingService {
 
     sendImg(roomId: string, currentUser: string, profileId: string, file: File) {
         const fileNameInStorage = Math.round(Number(formatDate(Date.now(), 'yyyyMMddhhmmssSSS', 'en-US') + (Math.random() * 10)))
-        this.storage.ref(`filesmall/${fileNameInStorage + file.name.split('.')[1]}`).put(file, { contentType: file.type }).then(() => {
+        this.storage.ref(`filesmall/${fileNameInStorage}`).put(file, { contentType: file.type }).then(() => {
             this.sendMessage(roomId, String(fileNameInStorage), currentUser, profileId, '1', { filename: file.name, filesize: file.size / 1000 })
         })
     }

@@ -15,7 +15,7 @@ export class DoctorBookingComponent implements OnInit {
   docImgUrl: string = ''
 
   constructor(private doctorService: DoctorsService,
-    private authService:AuthService) { }
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.doctorService.doctorDataSubjectOnBooking.subscribe(docData => {
@@ -26,7 +26,7 @@ export class DoctorBookingComponent implements OnInit {
       })
     })
 
-    
+
   }
 
   onCloseBooking() {
@@ -36,4 +36,7 @@ export class DoctorBookingComponent implements OnInit {
   booking() {
   }
 
+  close(event) {
+    event.target.className == 'doctorReservationOuter' ? this.showbooking = false:''
+  }
 }

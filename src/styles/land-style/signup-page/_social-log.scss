@@ -45,6 +45,9 @@
          @include buttons;
          @include flexbox;
          font-size: 13px;
+         width: 225px;
+         display: block;
+         margin: auto;
 
          &--g {
              background-color: #DF4930;

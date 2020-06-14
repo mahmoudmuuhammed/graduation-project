@@ -1,4 +1,4 @@
-<div class="postFilterMainDiv">
+<div #filter class="postFilterMainDiv">
     <header>
         <p>filter posts</p>
     </header>
@@ -8,6 +8,10 @@
                 {{Category}}
                 <i class="fas fa-caret-down"></i>
             </button>
+            <div class="filterIconDiv">
+                <i class="fas fa-filter"></i>
+            </div>
+            
             <div class="collapse">
                 <option value="All" (click)="postFilterSelection($event)">All</option>
                 <option value="General" (click)="postFilterSelection($event)">General</option>

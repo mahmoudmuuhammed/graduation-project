@@ -15,11 +15,11 @@ import { SharedService } from 'src/app/services/shared.service';
 export class ChatListItemComponent implements OnInit, OnDestroy {
     @Input() roomData: Room;
     profilerId: string;
-    userData: Observable<UserModel>;
+    userData: Observable<UserModel> = null;
     subscribtion: Subscription;
     msgTime;
     noOfMsg: number;
-    userImgLink: string = ''
+    userImgLink: string = '../../../../../assets/images/DeafultUser.svg'
 
     constructor(private db: FirestoreService,
         private authService: AuthService,

@@ -7,6 +7,8 @@ import { Component, Input } from "@angular/core";
 })
 
 export class MedkitLogoComponent {
-    @Input() textColor: string;
-    @Input() smIcon: string;
+    @Input() textColor: string="#333333";
+    @Input() sloganColor: string="#555555";
+    @Input() iconStroke: string='#fff';
+    @Input() iconFill: string='#258ACD';
 }

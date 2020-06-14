@@ -1,1 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920.04 621.09"><defs><style>.cls-1{fill:url(#linear-gradient);}</style><linearGradient id="linear-gradient" y1="310.55" x2="1920.04" y2="310.55" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#643eae"/><stop offset="1" stop-color="#7650d3"/></linearGradient></defs><title>Asset 1</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M1920,0C1753,146.73,1509.55,307.22,1208,316c-202.56,5.9-264.62-61.52-476-49C294.87,292.89-4,614.68,0,621S304.69,316.45,726,323c185.3,2.88,244.45,64.82,466,102,298,50,555.13-.93,728-53Z"/></g></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1920 621.1" style="enable-background:new 0 0 1920 621.1;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+</style>
+<title>Asset 1</title>
+<g>
+	<g id="Layer_1-2">
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-3.966849e-02" y1="310.5475" x2="1920" y2="310.5475">
+			<stop  offset="0" style="stop-color:#23688E"/>
+			<stop  offset="1" style="stop-color:#258ACD"/>
+		</linearGradient>
+		<path class="st0" d="M1920,0c-167,146.7-410.4,307.2-712,316c-202.6,5.9-264.6-61.5-476-49C294.9,292.9-4,614.7,0,621
+			s304.7-304.5,726-298c185.3,2.9,244.5,64.8,466,102c298,50,555.1-0.9,728-53V0z"/>
+	</g>
+</g>
+</svg>

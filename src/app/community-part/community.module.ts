@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
+import { AngularAgoraRtcModule, AgoraConfig } from 'angular-agora-rtc';
 
 import { communityRoutingModule } from './community-routing.module';
 import { ProfileModule } from './profile/profile.module';
@@ -20,7 +21,9 @@ import { NotificationItemComponent } from './notification/notification-item/noti
 import { DangerAreaComponent } from './danger-area/danger-area.component'
 import { singlePostComponent } from './post/post.component';
 
-
+const agoraConfig: AgoraConfig = {
+    AppID: '0aa38281b2a84016b2c5b0ed745d13a0',
+  };
 
 @NgModule({
     declarations: [
@@ -43,7 +46,8 @@ import { singlePostComponent } from './post/post.component';
         TimelineModule,
         ProfileModule,
         ChattingModule,
-        DoctorPreviewModule
+        DoctorPreviewModule,
+        AngularAgoraRtcModule.forRoot(agoraConfig)
     ],
     exports: [
         CommunityContainerComponent,

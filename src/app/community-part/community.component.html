@@ -21,7 +21,7 @@
 </div>
 
 <div #callingAlert *ngIf="callComming">
-    <callingAlert [CallerData]='callerData'></callingAlert>
+    <callingAlert [callerID]='callerId'></callingAlert>
 </div>
 
 <div #videoCallDiv *ngIf="callAccepted">

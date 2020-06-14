@@ -12,19 +12,18 @@ import { take } from 'rxjs/operators';
 
 export class PostListItemComponent implements OnInit {
     @Input() postData: Post;
-    commentCounter: number = 0;
     postId: string;
     isAuther: boolean = false;
-    postImgSrc: string = '';
+    postImgSrc: string = null;
     userImgUrl: string = '';
 
     constructor(private feedsService: FeedsService, private authService: AuthService) { }
 
     ngOnInit() {
         this.postId = this.postData.postKey;
-        this.authService.currentUser.pipe(take(1)).subscribe(user => {
+        this.authService.currentUser.subscribe(user => {
             const postAuther = this.postData.userID;
-            user.uid == postAuther ? this.isAuther = true : this.isAuther = false;
+            this.isAuther = user.uid == postAuther ? true : false;
         })
 
         this.authService.getUserImgLink(this.postData.userID).subscribe(imgUrl => {
@@ -32,7 +31,7 @@ export class PostListItemComponent implements OnInit {
         })
 
         if (this.postData.postPhoto) {
-            this.feedsService.getPostImgSrc(this.postId).pipe(take(1)).subscribe(imgSrc => {
+            this.feedsService.getPostImgSrc(this.postId).subscribe(imgSrc => {
                 if (imgSrc != null) {
                     this.postImgSrc = imgSrc;
                 }

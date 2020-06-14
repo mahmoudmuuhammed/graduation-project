@@ -1,7 +1,8 @@
-import { Component, Input, OnInit, OnChanges } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { FeedsService } from 'src/app/services/feeds.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Comment } from 'src/app/models/comment.model';
+import { take } from 'rxjs/operators';
 
 @Component({
     selector: 'comment-list',
@@ -9,16 +10,31 @@ import { Comment } from 'src/app/models/comment.model';
     styleUrls: ['./comment-list.component.scss']
 })
 
-export class CommentListComponent implements OnInit,OnChanges {
+export class CommentListComponent implements OnInit {
+    isMoreCommentExist: boolean = false;
     @Input() postId: string;
     comments: Observable<Comment[]>;
-    
-    constructor(private feedsService: FeedsService) {}
+    limitedComments: Observable<Comment[]>;
+    noOfComment: number = 5
+    noOfAllComments: Comment[];
+
+    constructor(private feedsService: FeedsService) { }
 
     ngOnInit() {
         this.comments = this.feedsService.getComments(this.postId);
+        this.limitedComments = this.feedsService.getLimitedComment(this.postId, this.noOfComment);
+
+        this.comments.pipe(take(1)).subscribe(all => {
+            this.noOfAllComments = all
+            this.limitedComments.pipe(take(1)).subscribe(limited => {
+                this.isMoreCommentExist = all > limited ? true : false
+            })
+        })
     }
-    ngOnChanges(){
-        this.comments = this.feedsService.getComments(this.postId);
+
+    loadMoreComment() {
+        this.noOfComment += 5;
+        this.isMoreCommentExist = this.noOfComment >= this.noOfAllComments.length ? false : true;
+        this.limitedComments = this.feedsService.getLimitedComment(this.postId, this.noOfComment);
     }
 }

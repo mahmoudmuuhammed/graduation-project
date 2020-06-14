@@ -1,4 +1,4 @@
-<div class="chatRoomContainer">
+<div class="chatRoomContainer animate fadeIn slower">
     <div class="chatHeader">
         <chat-head [userData]="(userData) | async"></chat-head>
     </div>
@@ -10,7 +10,7 @@
     </div>
 </div>
 <!-- --------- preview image from Chat --------- -->
-<div class="outerImgPreviewDiv" #imgPreview>
+<div class="outerImgPreviewDiv" #imgPreview (click)="close($event)">
     <div class="innerImgPreviewDiv animate fadeIn slow">
         <header>
             <button (click)="closeImgPreview()">

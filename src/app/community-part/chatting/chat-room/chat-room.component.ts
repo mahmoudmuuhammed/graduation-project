@@ -91,7 +91,7 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked {
     closeImgPreview() {
         this.render.setStyle(this.imgPreview.nativeElement, 'display', 'none')
         this.render.setAttribute(this.imgPreview.nativeElement.querySelector("img"), 'src', '')
-        this.imgSrc=''
+        this.imgSrc = ''
     }
 
     downloadUrl() {
@@ -102,5 +102,9 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked {
         a.style = 'display: none';
         a.click();
         a.remove();
-      };
+    };
+
+    close(event) {
+        event.target.className == 'outerImgPreviewDiv' ? this.closeImgPreview() : ''
+    }
 }

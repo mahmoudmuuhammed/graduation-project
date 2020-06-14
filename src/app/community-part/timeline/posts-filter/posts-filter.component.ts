@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { FeedsService } from 'src/app/services/feeds.service';
 
 @Component({
@@ -7,16 +7,19 @@ import { FeedsService } from 'src/app/services/feeds.service';
   styleUrls: ['./posts-filter.component.scss']
 })
 export class PostsFilterComponent implements OnInit {
-  Category: string = 'All';
 
-  constructor(private feddsService: FeedsService) { }
+  Category: string = 'All';
+  @ViewChild('filter') filter;
+
+  constructor(private feedsService: FeedsService, private render: Renderer2) { }
 
   ngOnInit(): void {
-    this.feddsService.filteredPostCategory.emit(this.Category);
+    this.feedsService.filteredPostCategory.emit(this.Category);
   }
 
   postFilterSelection(event) {
+    if (this.Category == event.target.value) return
     this.Category = event.target.value
-    this.feddsService.filteredPostCategory.emit(this.Category);
+    this.feedsService.filteredPostCategory.emit(this.Category);
   }
 }

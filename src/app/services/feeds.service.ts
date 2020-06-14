@@ -74,7 +74,7 @@ export class FeedsService {
             category: category,
             postPhoto: isImg,
             upVotes: {},
-            commentCounter:0
+            commentCounter: 0
         };
         if (isImg) {
             this.fStorage.ref(`postImages/${createdId}`).put(img).then(() => {
@@ -97,6 +97,12 @@ export class FeedsService {
         return this.commentCollection.valueChanges();
     }
 
+    getLimitedComment(postId: string, limit: number) {
+        this.commentCollection = this.db.collection(`Posts/${postId}/Comments`,
+            ref => { return ref.orderBy('createdTime', 'desc').limit(limit) });
+        return this.commentCollection.valueChanges();
+    }
+
     setupComment(postId: string, content: string) {
         const commentId = this.db.createId();
         const data: Comment = {
@@ -111,7 +117,7 @@ export class FeedsService {
         const path = `Posts/${postId}/Comments/${commentId}`;
         this.db.doc(path).set(data);
 
-        this.db.doc(`Posts/${postId}`).update({commentCounter:firestore.FieldValue.increment(1)})
+        this.db.doc(`Posts/${postId}`).update({ commentCounter: firestore.FieldValue.increment(1) })
 
         this.notificationSetup(postId)
     }

@@ -8,11 +8,9 @@
                 <i></i><i></i><i></i>
             </span>
         </button>
-        <a class="navbar-brand d-none d-md-block logo">
-            <img src="../assets/images/logo.svg" class="d-inline-block align-top" alt="Logo">
-        </a>
-        <a class="navbar-brand d-md-none d-block smallLogo" style="margin-top:-5px;width:160px">
-            <img src="../assets/images/miniLogo.svg" class="d-inline-block align-top" alt="Logo">
+
+        <a class="navbar-brand">
+            <medkit-logo></medkit-logo>
         </a>
     </div>
 
@@ -29,13 +27,14 @@
         <div class="AccountOptionDiv">
             <!-- Notification Area -->
             <div dropDownCollabse>
-                <button class="bellBtn" data-toggle="collapse" data-target="#notificationDiv" (click)='showNotification()'>
+                <button class="bellBtn" data-toggle="collapse" data-target="#notificationDiv"
+                    (click)='showNotification()'>
                     <div class="notification-bell" [ngClass]="{'bellAnimate':newNotification}">
                         <span class="bell-top"></span>
                         <span class="bell-middle"></span>
                         <span class="bell-bottom"></span>
                         <span class="bell-rad" [ngClass]="{'bellRadAnimate':newNotification}"></span>
-                      </div>
+                    </div>
                     <div [ngClass]="{'bellDot':newNotification}"></div>
                 </button>
                 <div class="collapse notificationDivContainer" id="notificationDiv">
@@ -48,36 +47,25 @@
             </div>
             <!-- Account Picture and Option -->
             <div class="accountDetails">
-                <img src="{{userImgUrl}}"  alt="" class="accountImg">
+                <img src="{{userImgUrl}}" alt="" class="accountImg">
                 <span class=" d-none d-md-block accountName">{{userName | titlecase }}</span>
-                <div class="logOutOption" (click)='onLogout()'>
-                    <svg>
-                        <use xlink:href="../../../../assets/sprites/topnav-icons.svg#logout"></use>
-                    </svg>
-                </div>
                 <!-- Account option -->
-                <!-- <div class="AccountOption" dropDownCollabse>
+                <div class="AccountOption" dropDownCollabse>
                     <button class="AccountBtn" type="button" data-toggle="collapse" data-target="#AccountOptionDiv"
                         aria-expanded="false" aria-controls="AccountOptionDiv">
                         <i class="fas fa-caret-down"></i>
                     </button>
                     <div class="collapse" id="AccountOptionDiv">
-                        <div>
-                            <div class=" optionDiv notificationTogglerDiv">
-                                <span>Notification</span>
-                                <label class="switch">
-                                    <input type="checkbox">
-                                    <span class="slider round"></span>
-                                </label>
-                            </div>
-                            <div class="optionDiv" (click)='onLogout()'>
-                                <svg>
-                                    <use xlink:href="../../../../assets/sprites/topnav-icons.svg#logout"></use>
-                                </svg>
-                            </div>
-                        </div>
+                        <div class="optionDiv">
+                            <i class="fas fa-cog icon"></i>
+                            <p>Settings</p>
+                         </div>
+                         <div class="optionDiv" (click)='onLogout()'>
+                            <i class="fas fa-sign-out-alt icon"></i>
+                            <p>Log Out</p>
+                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>

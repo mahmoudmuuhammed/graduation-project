@@ -1,6 +1,7 @@
 export class notificationStructure {
     data: {
         channelName: string;
+        callerId: string;
     }
     notification: {
         title: string;

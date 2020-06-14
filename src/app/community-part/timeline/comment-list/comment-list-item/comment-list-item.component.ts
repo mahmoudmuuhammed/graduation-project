@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, OnDestroy } from "@angular/core";
 import { Comment } from 'src/app/models/comment.model';
 import { FeedsService } from 'src/app/services/feeds.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'comment-list-item',
@@ -9,14 +10,15 @@ import { AuthService } from 'src/app/services/auth.service';
     styleUrls: ['./comment-list-item.component.scss']
 })
 
-export class CommentListItemComponent implements OnInit {
+export class CommentListItemComponent implements OnInit, OnDestroy {
     @Input() commentData: Comment;
     postId: string;
     commentId: string;
     clappingCounter: number = 0;
     isAuther: boolean = false;
     clapped: boolean = false;
-    userImgUrl: string = '';
+    userImgUrl: string = '../../../../../assets/images/DeafultUser.svg';
+    sub: Subscription
 
     constructor(private feedsService: FeedsService, private authService: AuthService) { }
 
@@ -25,7 +27,7 @@ export class CommentListItemComponent implements OnInit {
         this.commentId = this.commentData.commentId
 
         this.authService.currentUser.subscribe(user => {
-            this.feedsService.getTotalClapping(this.postId, this.commentId).subscribe(commentData => {
+            this.sub = this.feedsService.getTotalClapping(this.postId, this.commentId).subscribe(commentData => {
                 const clappings = Object.entries(commentData.clappings);
                 for (let [key, value] of clappings) {
                     this.clappingCounter += value;
@@ -35,7 +37,7 @@ export class CommentListItemComponent implements OnInit {
                 };
             })
 
-            
+
             this.authService.getUserImgLink(this.commentData.userId).subscribe(imgUrl => {
                 this.userImgUrl = imgUrl
             })
@@ -55,5 +57,9 @@ export class CommentListItemComponent implements OnInit {
 
     deleteComment() {
         this.feedsService.deleteComment(this.postId, this.commentId);
+    }
+
+    ngOnDestroy() {
+        this.sub.unsubscribe()
     }
 }

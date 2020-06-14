@@ -12,46 +12,78 @@
     justify-content: center;
 }
 
-.navbar {
-    width: 100%;
-    @include flexbox;
-    justify-content: space-between;
-    align-items: center;
-    padding: .5em;
-    background-color: rgba($divider-color, .7);
+.navContainer {
     position: fixed;
     top: 0;
-    left: 0;
+    left: 0px;
+    width: 100%;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, .8);
 
-    &__brand {
-        width: 100px;
-        text-align: center;
-        margin-left: 1em;
+    .navBar {
+        padding: 5px 10px;
     }
 
-    &__list {
-        @include flexbox;
-        justify-content: space-around;
-        width: 250px;
+    .navbarNav {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        list-style: none;
 
-        &-item {
-            list-style: none;
+        .navItem {
+
+            margin-top: 2px;
+
+            a {
+                color: $primary-color;
+                text-decoration: none;
+                font-size: 18px;
+                margin: 5px 10px;
+                padding: 0 10px;
+                display: inline-block;
+
+                &::after {
+                    content: '';
+                    display: block;
+                    width: 0;
+                    height: 2px;
+                    background: #fff;
+                    margin-top: 2px;
+                    transition: width .2s ease-in-out;
+                }
+
+                &:hover {
+                    &::after {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:576px) {
+    .navContainer {
+        .navbar-brand {
+            margin: 0px auto;
+            display: block;
         }
 
-        &-link {
-            @include links(16px, $primary-color);
-            font-weight: 600;
-            font-size: 15px;
-        }
+        .navbarNav {
+            margin-top: 5px;
+            justify-content: space-evenly;
 
-        @media only screen and (max-width: 600px) {
-            width: 220px;
+            .navItem {
+                a {
+                    margin: 5px 0;
+                }
+            }
         }
     }
 }
 
 .content {
-    background-color: rgba(255, 255, 255, .7);
+    background-color: rgba(255, 255, 255, .8);
     padding: 2em;
     border-radius: 5px;
     @include flexbox;
@@ -115,6 +147,7 @@
 
     &__btn {
         @include buttons;
+        background:linear-gradient(to right ,#258acd, #57a6d4);
     }
 }
 
@@ -177,4 +210,14 @@
             }
         }
     }
+}
+
+@media(max-width:767.9px) {
+    .navContainer{
+        position: static;
+    }
+    .signin {
+        min-height: auto;
+    }
+
 }

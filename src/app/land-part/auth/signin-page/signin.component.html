@@ -1,47 +1,46 @@
-<nav class="navbar">
-    <div class="navbar__brand">
-        <medkit-logo 
-            [textColor]="'#2d2d2d'" 
-            [smIcon]="'#764BCB'"></medkit-logo>
+<div class="container-fluid navContainer" id="navContainer">
+    <div class="row navBar">
+        <div class="col-sm-6 col-12">
+            <a class="navbar-brand logo" routerLink="/">
+                <medkit-logo></medkit-logo>
+            </a>
+        </div>
+
+        <div class="col-sm-6 col-12">
+            <ul class="navbarNav">
+                <li class="navItem">
+                    <a class="navLink" routerLink="/signup">Sign up</a>
+                </li>
+                <li class="navItem">
+                    <a class="navLink" routerLink="/">Back to home</a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <ul class="navbar__list">
-        <li class="navbar__list-item">
-            <a routerLink="/signup" class="navbar__list-link">Sign up</a>
-        </li>
-        <li class="navbar__list-item">
-            <a routerLink="/" class="navbar__list-link">Back to home</a>
-        </li>
-    </ul>
-</nav>
+</div>
+
 <section class="signin">
     <div class="content">
         <div class="title sm-title u-mrgb-1">Welcome back.</div>
         <div class="sociallog u-mrgb-1">
-            <button 
-                class="sociallog__item sociallog__item--g" 
-                (click)="googleProviderAuth()">
+            <button class="sociallog__item sociallog__item--g" (click)="googleProviderAuth()">
                 <svg class="sociallog__icon">
                     <use xlink:href="../../../../../assets/sprites/auth-icons.svg#google"></use>
                 </svg>
                 <span>Sign in with Google</span>
             </button>
-            <button 
-                class="sociallog__item sociallog__item--fb" 
-                (click)="facebookProviderAuth()">
+            <button class="sociallog__item sociallog__item--fb" (click)="facebookProviderAuth()">
                 <svg class="sociallog__icon">
                     <use xlink:href="../../../../../assets/sprites/auth-icons.svg#facebook"></use>
                 </svg>
                 <span>Sign in with Facebook</span>
             </button>
         </div>
-        <form 
-            [formGroup]="forms.signinForm"
-            class="form">
+        <form [formGroup]="forms.signinForm" class="form">
             <div class="form__fgroup u-mrgb-1">
                 <div class="form__fgroup-label">
                     <label for="email">Email</label>
-                    <div class="validation" 
-                        *ngIf="!forms.signinEmailControl.valid && forms.signinEmailControl.touched">
+                    <div class="validation" *ngIf="!forms.signinEmailControl.valid && forms.signinEmailControl.touched">
                         <span *ngIf="forms.signinEmailControl.errors.required">
                             {{ forms.validationErrors.required }}
                         </span>
@@ -52,8 +51,7 @@
                             <use xlink:href="../../../../../assets/svgs/exclamation.svg#Capa_1"></use>
                         </svg>
                     </div>
-                    <div class="validation" 
-                        *ngIf="forms.validationErrors.notFound">
+                    <div class="validation" *ngIf="forms.validationErrors.notFound">
                         <span>
                             {{ forms.validationErrors.notFound }}
                         </span>
@@ -62,17 +60,13 @@
                         </svg>
                     </div>
                 </div>
-                <input 
-                    type="email" 
-                    id="email" 
-                    class="form__fgroup-control" 
-                    placeholder="Enter your email" 
+                <input type="email" id="email" class="form__fgroup-control" placeholder="Enter your email"
                     formControlName="email">
             </div>
             <div class="form__fgroup u-mrgb-1">
                 <div class="form__fgroup-label">
                     <label for="password">Password</label>
-                    <div class="validation" 
+                    <div class="validation"
                         *ngIf="!forms.signinPasswordControl.valid && forms.signinPasswordControl.touched">
                         <span *ngIf="forms.signinPasswordControl.errors.required">
                             {{ forms.validationErrors.required }}
@@ -82,31 +76,21 @@
                         </svg>
                     </div>
                 </div>
-                <input
-                    type="password"
-                    id="password"
-                    class="form__fgroup-control"
-                    placeholder="Enter your password" 
+                <input type="password" id="password" class="form__fgroup-control" placeholder="Enter your password"
                     formControlName="password">
             </div>
             <div class="controllers u-mrgb-1">
                 <div class="controllers__items">
-                    <input
-                        type="checkbox"
-                        class="controllers__items-chbox u-mrgr-1">
+                    <input type="checkbox" class="controllers__items-chbox u-mrgr-1">
                     <span>Remember me</span>
                 </div>
                 <a href="#" class="controllers__items-fgot">Forget password?</a>
             </div>
             <div class="submit">
-                <button
-                    class="submit__btn"
-                    (click)="signinSubmit()">Sign in</button>
+                <button class="submit__btn" (click)="signinSubmit()">Sign in</button>
             </div>
         </form>
-        <div class="loading" 
-            style="align-self: center;" 
-            *ngIf="">
+        <div class="loading" style="align-self: center;" *ngIf="">
             <loading-spinner></loading-spinner>
         </div>
     </div>

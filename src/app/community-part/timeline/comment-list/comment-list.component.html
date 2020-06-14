@@ -1,3 +1,6 @@
-<div *ngFor="let comment of comments | async">
+<div *ngFor="let comment of limitedComments | async">
     <comment-list-item [commentData]="comment"></comment-list-item>
+</div>
+<div *ngIf="isMoreCommentExist">
+    <button class="loadMoreBtn" (click)="loadMoreComment()">load more</button>
 </div>

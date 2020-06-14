@@ -14,7 +14,7 @@ export class MessageComponent implements OnInit {
     @Input() message: Message;
     incoming: boolean;
     authState: firebase.User;
-    userImgSrc: string = ''
+    userImgSrc: string = '../../../../../assets/images/DeafultUser.svg'
     msgTime;
     msgImg;
     msgFileLink: string;

@@ -18,7 +18,8 @@ export const videoCallNotification =
             const recieverMsgToken = message?.RecieverMsgToken;
             const payload = {
                 data: {
-                    channelName: message?.channelName
+                    channelName: message?.channelName,
+                    callerId: message?.CallerID
                 },
                 notification: {
                     title: 'Incoming Video Call',

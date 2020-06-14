@@ -1,1 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1360 128"><defs><style>.cls-1{fill:url(#linear-gradient);}</style><linearGradient id="linear-gradient" x1="680" y1="128" x2="680" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4f3388"/><stop offset="1" stop-color="#764bcb"/></linearGradient></defs><title>footer</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M0,0,680,40,1360,0V128H0Z"/></g></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1360 128" style="enable-background:new 0 0 1360 128;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+</style>
+<title>footer</title>
+<g>
+	<g id="Layer_1-2">
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="680" y1="128" x2="680" y2="-9.094947e-13">
+			<stop  offset="0" style="stop-color:#206E99"/>
+			<stop  offset="1" style="stop-color:#288ACA"/>
+		</linearGradient>
+		<path class="st0" d="M0,0l680,40l680-40v128H0V0z"/>
+	</g>
+</g>
+</svg>

@@ -52,14 +52,14 @@ export class ChatHeadComponent implements OnChanges {
                             alert('User have another Call')
                         }
                         else {
-                            this.sharedService.callingSubject.next({ channelName: Sender.uid + reciever.uid, state: true });
+                            this.sharedService.callingSubject.next({ channelName: Sender.uid + '_' + reciever.uid, state: true });
                             this.firestore.collection('videoCallNotification').add({
                                 CallerID: Sender.uid,
                                 RecieverID: reciever.uid,
                                 Caller: Sender.email,
                                 Reciever: reciever.email,
                                 RecieverMsgToken: reciever.notification_token_id,
-                                channelName: Sender.uid + reciever.uid,
+                                channelName: Sender.uid +'_'+ reciever.uid,
                             })
                         }
                     })

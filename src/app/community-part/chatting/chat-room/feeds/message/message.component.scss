@@ -86,16 +86,54 @@
     }
 }
 
+
+
+.outbound {
+    direction: rtl;
+    margin-right: 20px;
+
+    .outboundContent {
+        background: $primary-color ;
+
+        .message {
+            &__content {
+
+                &-text {
+                    color: #fff;
+                }
+
+                &-time {
+                    color: #fff;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    .message__img {
+        display: none;
+    }
+}
+
+
 .inbound {
     margin-left: 20px;
+    transition: 0s;
 
     .inboundContent {
         border-radius: 0px 5px 5px 5px;
 
         &::before {
+            content: "";
+            display: block;
+            position: absolute;
             left: -10px;
+            top: 0;
             right: unset;
+            width: 10px;
+            height: 20px;
             background-image: url('../../../../../../assets/images/leftMsg.png');
+            background-size: cover;
         }
 
         .message {
@@ -107,15 +145,5 @@
                 }
             }
         }
-    }
-}
-
-
-.outbound {
-    direction: rtl;
-    margin-right: 20px;
-
-    .message__img {
-        display: none;
     }
 }

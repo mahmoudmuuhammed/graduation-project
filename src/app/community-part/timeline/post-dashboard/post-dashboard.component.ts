@@ -55,7 +55,7 @@ export class PostDashboardComponent implements OnInit {
     handleAddPost() {
         const title: string = this.postForm.get('title').value;
         var content: string = this.postForm.get('content').value;
-        content = null ? content = "" : '';
+        content == null ? content = "" : '';
         this.feedService.setupPost(title, content, this.Category, this.isImgExist, this.imageInput);
         this.Category = 'General'
         this.postForm.reset();

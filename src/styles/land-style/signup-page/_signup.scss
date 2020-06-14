@@ -3,43 +3,76 @@
 @import "../../base/utilities";
 @import "../../base/typography";
 
-.navbar {
-    width: 100%;
-    @include flexbox;
-    justify-content: space-between;
-    align-items: center;
-    height: 50px;
-    background-color: rgba($divider-color, .7);
+.navContainer {
     position: fixed;
     top: 0;
-    left: 0;
+    left: 0px;
+    width: 100%;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, .8);
 
-    &__brand {
-        width: 100px;
-        text-align: center;
-        margin-left: 1em;
+    .navBar {
+        padding: 5px 10px;
     }
 
-    &__list {
-        @include flexbox;
-        justify-content: space-around;
+    .navbarNav {
+        display: flex;
+        justify-content: flex-end;
         align-items: center;
-        width: 250px;
-        margin: 0;
-        &-item {
-            list-style: none;
-        }
-        &-link {
-            @include links(16px, $primary-color);
-            font-weight: 600;
-            font-size: 15px;
-        }
+        list-style: none;
 
-        @media only screen and (max-width: 600px) {
-            width: 220px;
+        .navItem {
+
+            margin-top: 2px;
+
+            a {
+                color: $primary-color;
+                text-decoration: none;
+                font-size: 18px;
+                margin: 5px 10px;
+                padding: 0 10px;
+                display: inline-block;
+
+                &::after {
+                    content: '';
+                    display: block;
+                    width: 0;
+                    height: 2px;
+                    background: #fff;
+                    margin-top: 2px;
+                    transition: width .2s ease-in-out;
+                }
+
+                &:hover {
+                    &::after {
+                        width: 100%;
+                    }
+                }
+            }
         }
     }
 }
+
+@media (max-width:576px) {
+    .navContainer {
+        .navbar-brand {
+            margin: 0px auto;
+            display: block;
+        }
+
+        .navbarNav {
+            margin-top: 5px;
+            justify-content: space-evenly;
+
+            .navItem {
+                a {
+                    margin: 5px 0;
+                }
+            }
+        }
+    }
+}
+
 
 .signup {
     @include flexbox;
@@ -49,6 +82,7 @@
     background-image: url(src\assets\svgs\abstract-bg.svg);
     background-attachment: fixed;
     background-size: cover;
+    padding-top: 65px;
 }
 
 .content {
@@ -60,6 +94,10 @@
 
 .stepper {
     width: 100%;
+    box-shadow: 0px 0px 5px #aaa;
+    border-radius: 10px;
+    overflow: hidden;
+
     &__label {
         @include form-labels;
         cursor: pointer;
@@ -75,6 +113,11 @@
 
         &-submit {
             @include buttons;
+            width: 225px;
+            font-size: 13px;
+            padding: 1em 2em;
+            display: block;
+            margin: auto;
         }
     }
 
@@ -109,4 +152,14 @@
     font-size: 16px;
     font-weight: 700;
     color: $primary-color;
+}
+
+@media(max-width:767.9px) {
+    .navContainer{
+        position: static;
+    }
+    .signup {
+        padding-top: 0px;
+    }
+
 }

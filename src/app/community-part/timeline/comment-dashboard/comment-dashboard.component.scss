@@ -2,7 +2,7 @@
 @import "../../../../styles/abstracts/mixins";
 
 .comment-form {
-    padding: 12px;
+    padding: 5px 10px;
     background-color: $divider-color;
 
     &__group {
@@ -33,7 +33,7 @@
     &__submit {
         border: none;
         border-radius: 0 5px 5px 0;
-        background-color: #764BCB;
+        background-color: $primary-color;
         font-size: 12px;
         font-weight: 700;
         font-family: "Inter";

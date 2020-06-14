@@ -19,9 +19,8 @@ export const environment = {
   },
   mapboxConfig: {
     apiKey: 'pk.eyJ1IjoibWFobW91ZDIyMzM5OSIsImEiOiJja2FwcXIzOXAwNHhqMnhwd2RyamRuZzFrIn0.Zy578QQBG6yZWla3XgM42w'
-  }
-  
-  , agoraConfig: {
+  },
+  agoraConfig: {
     AppID: '0aa38281b2a84016b2c5b0ed745d13a0',
   }
 }

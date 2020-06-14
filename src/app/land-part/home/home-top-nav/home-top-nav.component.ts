@@ -1,4 +1,4 @@
-import { Component,  HostListener, Inject } from '@angular/core';
+import { Component, HostListener, Inject } from '@angular/core';
 import { DOCUMENT } from "@angular/common";
 
 @Component({
@@ -6,7 +6,13 @@ import { DOCUMENT } from "@angular/common";
   templateUrl: './home-top-nav.component.html',
   styleUrls: ['./home-top-nav.component.scss']
 })
+
 export class HomeTopNavComponent {
+
+  text: string = '#fff';
+  slogan: string = "#fff";
+  iconFill: string = "#fff";
+  iconStroke: string = "#258ACD";
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
 
@@ -14,13 +20,17 @@ export class HomeTopNavComponent {
   onWindowScroll() {
     if (document.body.scrollTop > 70 || document.documentElement.scrollTop > 70) {
       document.getElementById('navContainer').classList.add('white');
-      (document.getElementById('logo') as HTMLImageElement).src = '../assets/images/logo.svg';
-      (document.getElementById('miniLogo') as HTMLImageElement).src = '../assets/images/miniLogo.svg';
+      this.text = '#333';
+      this.slogan = "#555";
+      this.iconFill = "#258ACD";
+      this.iconStroke = "#fff";
     }
     else {
       document.getElementById('navContainer').classList.remove('white');
-      (document.getElementById('logo') as HTMLImageElement).src = '../assets/images/logoWhite.svg';
-      (document.getElementById('miniLogo') as HTMLImageElement).src = '../assets/images/miniLogoWhite.svg';
+      this.text = '#fff';
+      this.slogan = "#fff";
+      this.iconFill = "#fff";
+      this.iconStroke = "#258ACD";
     }
   }
   name = 'Angular';

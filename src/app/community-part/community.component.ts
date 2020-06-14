@@ -11,7 +11,7 @@ import { AuthService } from '../services/auth.service';
 })
 
 export class CommunityContainerComponent implements OnInit {
-  callerData: { callerName: string, callerImgSrc: string, channelName: string };
+  callerId: string;
   channelName: string
   callAccepted: boolean = false;
   callComming: boolean = false;
@@ -45,13 +45,13 @@ export class CommunityContainerComponent implements OnInit {
     this.agoraService.requestPermission();
     this.agoraService.receiveMessage();
     this.agoraService.CallSubject.subscribe((notification) => {
-      console.log(notification.data.channelName)
+      this.callerId = notification.data.callerId
       this.channelName = notification.data.channelName
       this.callComming = true
       this.changeDetector.detectChanges();
     })
 
     //update user status on changing browser tabs
-      this.authService.updateStatusOnIdle()
+    this.authService.updateStatusOnIdle()
   }
 }

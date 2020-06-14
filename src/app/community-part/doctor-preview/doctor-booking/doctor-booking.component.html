@@ -1,5 +1,5 @@
-<div class="doctorReservationOuter" *ngIf="showbooking">
-    <div class="doctorReservationInner">
+<div class="doctorReservationOuter" *ngIf="showbooking" (click)="close($event)">
+    <div class="doctorReservationInner animate fadeIn slower">
         <header>
             <!-- <h4>Booking a consultation</!-->
             <div class="closeButtonDiv">
