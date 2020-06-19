@@ -2,7 +2,7 @@
 
     <div class="navLinkDiv">
         <div routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
-            <a routerLink='Profile'>
+            <a [routerLink]="['Profile', userId]">
                 <div class="sideNavItemImgDiv"><i class="fas fa-user sideNavItemImg"></i></div>
                 <span class="sideNavItemSpan">Profile</span>
             </a>

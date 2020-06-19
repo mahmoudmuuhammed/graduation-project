@@ -136,7 +136,7 @@ export class ChattingService {
                     users[myId] = 0
                     roomId = this.afs.createId();
                     const path = `Rooms/${roomId}`
-                    this.afs.doc(path).set({ msg: '', msgtype: '0', timestamp: 0, uid: myId, users, roomID: roomId })
+                    this.afs.doc(path).set({ msg: '', msgtype: '0', timestamp: new Date(), uid: myId, users, roomID: roomId })
                 }
             }).add(() => observer.next(roomId))
         });

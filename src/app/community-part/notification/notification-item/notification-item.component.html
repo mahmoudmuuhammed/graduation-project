@@ -1,8 +1,11 @@
 <a routerLink="Post/{{notificationData?.post_id}}" (click)='changeReadState()'>
     <div class="notificationContentDiv" [ngClass]="{'read':isRead}">
-        <img  alt="" src="{{docImgUrl}}">
+        <img alt="" src="{{docImgUrl}}">
         <div>
-            <p> <b>{{notificationData?.from_full_name}}</b> has commented on your post</p>
+            <p>
+                <a>{{notificationData?.from_full_name}}</a>
+                has commented on your post
+            </p>
             <p class="notificationTime">in {{notificationData?.createdTime |date:'d,LLL h:m aa'}}</p>
         </div>
         <div class="unreadDotDiv"></div>

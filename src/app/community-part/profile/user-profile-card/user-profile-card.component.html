@@ -1,11 +1,14 @@
-<div class="user-profile-card">
+<div class="user-profile-card" *ngIf="userData">
     <div class="user-profile-card__info">
-        <user-profile-info></user-profile-info>
+        <user-profile-info  [userData]='userData'></user-profile-info>
     </div>
     <div class="user-profile-card__data">
-        <user-profile-data></user-profile-data>
+        <user-profile-data  [userData]='userData'></user-profile-data>
+    </div>
+    <div class="user-profile-card__docInf" *ngIf="userData?.userType.usertype=='Doctor'">
+        <doctor-inf [userData]='userData'></doctor-inf>
     </div>
     <div class="user-profile-card__actions">
-        <user-profile-actions></user-profile-actions>
+        <user-profile-actions [userData]='userData'></user-profile-actions>
     </div>
 </div>

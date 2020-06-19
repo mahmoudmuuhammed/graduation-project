@@ -26,10 +26,17 @@
             }
 
             h5 {
-                padding-top: 5px;
-                text-align: center;
-                color: #444;
-                margin: 0;
+                a {
+                    padding-top: 5px;
+                    text-align: center;
+                    color: #444;
+                    margin: 0;
+                    text-decoration: none;
+
+                    &:hover{
+                        color: $primary-color;
+                    }
+                }
             }
 
             .docFaculty {

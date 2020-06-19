@@ -313,8 +313,11 @@ footer {
 
 
     footer {
-        background: linear-gradient(to bottom, #764BCB, #4F3388);
+        background: linear-gradient(to bottom, $primary-color, #206E99);
 
+        .footerImgDiv{
+            margin: 20px auto;
+        }
         .container-fluid {
             padding-top: 0px
         }

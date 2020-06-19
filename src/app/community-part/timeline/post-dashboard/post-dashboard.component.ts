@@ -1,9 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FeedsService } from 'src/app/services/feeds.service';
-import { AngularFireStorage } from '@angular/fire/storage';
 import { AuthService } from 'src/app/services/auth.service';
-import { take } from 'rxjs/operators';
 
 @Component({
     selector: 'post-dashboard',
@@ -12,29 +10,33 @@ import { take } from 'rxjs/operators';
 })
 
 export class PostDashboardComponent implements OnInit {
+
+    @ViewChild('postTitle') postTitle: ElementRef
     postDashboardCase: boolean = false;
     postForm: FormGroup;
     Category: string = 'General';
     isImgExist: boolean = false;
     imageInput: {};
     imageInputSrc;
-    userImgUrl: string = ''
+    //userImgUrl: string = '../../../../assets/images/DeafultUser.svg'
+
     constructor(private feedService: FeedsService,
         private authService: AuthService) { }
 
     ngOnInit() {
         this.postFormController();
 
-        this.authService.currentUser.pipe(take(1)).subscribe(user=>{
-            this.authService.getUserImgLink(user.uid).subscribe(imgUrl => {
-                this.userImgUrl = imgUrl
-            })
-        })
-        
+        // this.authService.currentUser.subscribe(user=>{
+        //     this.authService.getUserImgLink(user.uid).subscribe(imgUrl => {
+        //         this.userImgUrl = imgUrl
+        //     })
+        // })
     }
 
     showFullForm() {
         this.postDashboardCase = true;
+        setTimeout(() => this.postTitle.nativeElement.focus(), 10)
+
     }
 
     hideForm() {

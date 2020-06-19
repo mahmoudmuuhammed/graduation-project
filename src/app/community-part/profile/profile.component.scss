@@ -1,21 +1,11 @@
 @import "../../../styles/abstracts/variables";
 @import "../../../styles/abstracts/mixins";
 
-.profile {
-    @include flexbox;
-    justify-content: flex-start;
-
-    &__info {
-        width: 350px;
-        height: 89.8vh;
-        overflow-y: auto;
-        &::-webkit-scrollbar {
-            width: 0;
-        }
-        background-color: $divider-color;
-    }
-
-    &__content {
-        width: calc(100% - 350px);
-    }
+.profileContainer{
+    min-height: calc(100vh - 50px);
+}
+.profile__info{
+    background-color: #fff;
+    position: sticky;
+    top: 0;
 }

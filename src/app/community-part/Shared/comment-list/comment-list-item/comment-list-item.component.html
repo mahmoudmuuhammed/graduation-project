@@ -1,4 +1,4 @@
-<div class="comment">
+<div class="comment" [@commentAnimation]>
     <div class="comment__info">
         <div class="userImgDiv">
             <img src="{{userImgUrl}}" alt="" class="comment__info-user__img">
@@ -7,7 +7,7 @@
             <div class="userdata">
                 <div class="comment__info-user">
                     <span class="comment__info-user__name">
-                        <a>
+                        <a [routerLink]="['/community/Profile', commentData.userId]">
                             {{ commentData?.userName}}
                         </a>
                     </span>
@@ -18,7 +18,7 @@
                 <div class="commentHeader">
                     <div class="comment__info-rate">
                         <span class="comment__info-rate__counter">
-                            {{ clappingCounter }} clapping
+                            {{ clappingCounter }} claps
                         </span>
                     </div>
                     <div dropDownCollabse class="commentOption" *ngIf="isAuther">

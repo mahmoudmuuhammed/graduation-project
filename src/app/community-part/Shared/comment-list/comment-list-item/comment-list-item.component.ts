@@ -2,15 +2,28 @@ import { Component, Input, OnInit, OnDestroy } from "@angular/core";
 import { Comment } from 'src/app/models/comment.model';
 import { FeedsService } from 'src/app/services/feeds.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { Subscription } from 'rxjs';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
     selector: 'comment-list-item',
     templateUrl: './comment-list-item.component.html',
-    styleUrls: ['./comment-list-item.component.scss']
+    styleUrls: ['./comment-list-item.component.scss'],
+    animations: [
+        trigger('commentAnimation', [
+            state('void', style({
+                transform: 'translateY(-20px)',
+                opacity: 0
+            })),
+            state('exist', style({
+                transform: 'translateY(0)',
+                opacity: 1
+            })),
+            transition('void=>*', animate(200))
+        ])
+    ]
 })
 
-export class CommentListItemComponent implements OnInit, OnDestroy {
+export class CommentListItemComponent implements OnInit {
     @Input() commentData: Comment;
     postId: string;
     commentId: string;
@@ -18,7 +31,6 @@ export class CommentListItemComponent implements OnInit, OnDestroy {
     isAuther: boolean = false;
     clapped: boolean = false;
     userImgUrl: string = '../../../../../assets/images/DeafultUser.svg';
-    sub: Subscription
 
     constructor(private feedsService: FeedsService, private authService: AuthService) { }
 
@@ -27,13 +39,14 @@ export class CommentListItemComponent implements OnInit, OnDestroy {
         this.commentId = this.commentData.commentId
 
         this.authService.currentUser.subscribe(user => {
-            this.sub = this.feedsService.getTotalClapping(this.postId, this.commentId).subscribe(commentData => {
+            this.feedsService.getTotalClapping(this.postId, this.commentId).subscribe(commentData => {
                 const clappings = Object.entries(commentData.clappings);
                 for (let [key, value] of clappings) {
                     this.clappingCounter += value;
                     if (key == user.uid && value == 1) {
                         this.clapped = true
                     }
+                    break;
                 };
             })
 
@@ -45,8 +58,6 @@ export class CommentListItemComponent implements OnInit, OnDestroy {
             const commentAuther = this.commentData.userId;
             user.uid == commentAuther ? this.isAuther = true : this.isAuther = false;
         })
-
-
     }
 
     clapping() {
@@ -57,9 +68,5 @@ export class CommentListItemComponent implements OnInit, OnDestroy {
 
     deleteComment() {
         this.feedsService.deleteComment(this.postId, this.commentId);
-    }
-
-    ngOnDestroy() {
-        this.sub.unsubscribe()
     }
 }

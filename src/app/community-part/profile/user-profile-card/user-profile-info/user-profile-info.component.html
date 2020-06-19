@@ -1,23 +1,31 @@
 <div class="profile-info">
-    <img 
-        src="../../../../../assets/svgs/man.svg" 
-        alt="" 
-        class="profile-info__img">
+    <div class="profile-info__ImgDiv">
+        <div class="userStatus"></div>
+        <img src="{{imgSrc}}" alt="" class="profile-info__ImgDiv-img">
+    </div>
 
     <div class="profile-info__user">
         <span class="profile-info__user-name">
-            Alex Morgan
+            {{userData.fullName |titlecase}}
         </span>
-        <span class="profile-info__user-specialty">
-            Diabets Disease
-        </span>
+        <!-- <span class="profile-info__user-specialty">
+            Diabets
+        </span> -->
         <div class="profile-info__user-belong">
-            <div class="profile-info__user-belong__content">
+            <!-- <div class="profile-info__user-belong__content">
                 <span class="profile-info__user-belong__title">
-                    posts
+                    post
                 </span>
                 <span class="profile-info__user-belong__desc">
                     34
+                </span>
+            </div> -->
+            <div class="profile-info__user-belong__content">
+                <span class="profile-info__user-belong__title">
+                    comment
+                </span>
+                <span class="profile-info__user-belong__desc">
+                    {{userData.commentCounter}}
                 </span>
             </div>
             <div class="profile-info__user-belong__content">
@@ -25,25 +33,25 @@
                     claps
                 </span>
                 <span class="profile-info__user-belong__desc">
-                    980
+                    {{userData.clappingCounter}}
                 </span>
             </div>
-            <div class="profile-info__user-belong__content">
+            <!-- <div class="profile-info__user-belong__content">
                 <span class="profile-info__user-belong__title">
                     rate
                 </span>
                 <span class="profile-info__user-belong__desc">
                     8.9
                 </span>
-            </div>
+            </div> -->
         </div>
-        <div class="profile-info__user-actions">
+        <!-- <div class="profile-info__user-actions">
             <button class="profile-info__user-actions__btn profile-info__user-actions__btn--custom">
                 <span>Stories</span>
             </button>
             <button class="profile-info__user-actions__btn">
                 <span>View profile</span>
             </button>
-        </div>
+        </div> -->
     </div>
 </div>

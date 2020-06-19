@@ -16,7 +16,7 @@ export class TopnavComponent implements OnInit {
     navCollabseStatus: boolean = false;
     userName: string = ""
     newNotification: boolean = false;
-    userImgUrl: string = ''
+    userImgUrl: string = '../../../assets/images/DeafultUser.svg'
 
     constructor(private sharedService: SharedService,
         private authService: AuthService,

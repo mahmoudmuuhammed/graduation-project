@@ -3,11 +3,12 @@ import { Component, ElementRef, ViewChild, ChangeDetectorRef, OnInit } from '@an
 import { AgouraServic } from 'src/app/services/agora.service';
 import { SharedService } from '../services/shared.service'
 import { AuthService } from '../services/auth.service';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'community',
   templateUrl: './community.component.html',
-  styleUrls: ['./community.component.scss']
+  styleUrls: ['./community.component.scss'],
 })
 
 export class CommunityContainerComponent implements OnInit {
@@ -54,4 +55,9 @@ export class CommunityContainerComponent implements OnInit {
     //update user status on changing browser tabs
     this.authService.updateStatusOnIdle()
   }
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation']
+  }
+
 }

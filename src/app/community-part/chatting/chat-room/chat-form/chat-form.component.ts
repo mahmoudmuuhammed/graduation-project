@@ -45,6 +45,5 @@ export class ChatFormComponent implements OnInit {
     }
     onSelectedImg(event) {
         this.chat.sendImg(this.threadId, this.currentUser.uid, this.routeId, event.target.files[0])
-
     }
 }

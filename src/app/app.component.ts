@@ -8,7 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private authService: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     //this.authService.autoLogin()

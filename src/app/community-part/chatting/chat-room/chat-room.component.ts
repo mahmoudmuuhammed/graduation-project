@@ -84,27 +84,20 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked {
         scrollPane.scrollTop = scrollPane.scrollHeight;
     }
 
-    logout() {
-        this.authService.logout();
-    }
-
     closeImgPreview() {
         this.render.setStyle(this.imgPreview.nativeElement, 'display', 'none')
         this.render.setAttribute(this.imgPreview.nativeElement.querySelector("img"), 'src', '')
         this.imgSrc = ''
     }
 
-    downloadUrl() {
-        let a: any = document.createElement('a');
-        a.href = this.imgSrc;
-        a.download = 'img';
-        document.body.appendChild(a);
-        a.style = 'display: none';
-        a.click();
-        a.remove();
-    };
-
     close(event) {
         event.target.className == 'outerImgPreviewDiv' ? this.closeImgPreview() : ''
+    }
+
+
+    onRoomClick() {
+        this.authService.currentUser.subscribe(user => {
+            this.chat.updateUnreadToRead(this.roomId, user.uid, this.activeRoute)
+        })
     }
 }

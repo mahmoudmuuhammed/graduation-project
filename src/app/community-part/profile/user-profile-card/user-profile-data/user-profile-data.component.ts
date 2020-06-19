@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
+import { UserModel } from 'src/app/models/user.model';
 
 @Component({
     selector: 'user-profile-data',
@@ -6,4 +7,13 @@ import { Component } from "@angular/core";
     styleUrls: ['./user-profile-data.component.scss']
 })
 
-export class UserProfileDataComponent {}
+export class UserProfileDataComponent {
+
+    @Input() userData: UserModel
+
+    constructor() { }
+
+    ngOnInit(): void {
+    }
+
+}

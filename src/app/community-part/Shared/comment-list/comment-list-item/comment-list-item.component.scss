@@ -40,6 +40,11 @@
                         font-weight: 600;
                         color: $primary-text;
                         margin-right: .4em;
+
+                        a {
+                            text-decoration: none;
+                            color: #222;
+                        }
                     }
 
                     &__date {

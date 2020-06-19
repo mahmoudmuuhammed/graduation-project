@@ -16,19 +16,19 @@
                 </div>
                 <div class="docDetails">
                     <p>
-                        <!-- <img src="../../../assets/images/speciality.svg"> -->
+                        <img src="../../../assets/images/speciality.svg">
                         Specialized in</p>
                     <p>{{doctorData.userType.specialty}}</p>
                 </div>
                 <div class="docDetails">
                     <p>
-                        <!-- <i class="fas fa-euro-sign"></i> -->
+                        <i class="fas fa-money-bill-wave-alt icon" style="transform: rotate(135deg);"></i>
                         fees</p>
                     <p>{{doctorData.userType.fees}} LE</p>
                 </div>
             </section>
             <section class="creditCardSection">
-                <ng-payment-card (formSaved)='booking()'></ng-payment-card>
+                <ng-payment-card (formSaved)='booking($event)'></ng-payment-card>
             </section>
             <!-- <button class="bookBtn" (click)="booking()">Book</button> -->
         </main>

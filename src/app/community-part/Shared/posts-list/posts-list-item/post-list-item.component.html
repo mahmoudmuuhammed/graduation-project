@@ -1,10 +1,12 @@
-<div class="post-item animate fadeIn">
+<div class="post-item" [@postAnimation]>
     <div class="post-details">
         <div class="post-details__user">
             <div class="postData">
                 <img src="{{userImgUrl}}" alt="" class="post-details__user-img">
                 <div class="postOwnerandCategory">
-                    <span class="postOwner">{{ postData.userName }}</span>
+                    <span class="postOwner">
+                        <a [routerLink]="['/community/Profile', postData.userID]">{{ postData.userName }}</a>
+                    </span>
                     <span class="postCategory"> in {{ postData.category }}</span>
                 </div>
             </div>

@@ -1,0 +1,32 @@
+<div class="profile-data">
+
+    <div class="profile-data__container">
+        <span class="profile-data__container-title">
+            <img class="icon iconImg" src="../../../../../assets/images/speciality.svg">
+        </span>
+        <span class="profile-data__container-desc">
+            {{userData.userType.specialty}}
+        </span>
+    </div>
+
+    <div class="profile-data__container">
+        <span class="profile-data__container-title">
+            <svg class="icon">
+                <use xlink:href="../../../../../assets/sprites/icons.svg#location"></use>
+            </svg>
+        </span>
+        <span class="profile-data__container-desc">
+            {{userData.userType.location}}
+        </span>
+    </div>
+
+    <div class="profile-data__container">
+        <span class="profile-data__container-title" >
+            <i class="fas fa-money-bill-wave-alt icon" style="transform: rotate(135deg);"></i>
+        </span>
+        <span class="profile-data__container-desc">
+            {{userData.userType.fees}} LE
+        </span>
+    </div>
+
+</div>

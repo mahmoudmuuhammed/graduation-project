@@ -20,6 +20,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { NotificationItemComponent } from './notification/notification-item/notification-item.component';
 import { DangerAreaComponent } from './danger-area/danger-area.component'
 import { singlePostComponent } from './post/post.component';
+import { SharedCommunityModule } from './Shared/sharedCommunity.module';
 
 const agoraConfig: AgoraConfig = {
     AppID: '0aa38281b2a84016b2c5b0ed745d13a0',
@@ -47,7 +48,8 @@ const agoraConfig: AgoraConfig = {
         ProfileModule,
         ChattingModule,
         DoctorPreviewModule,
-        AngularAgoraRtcModule.forRoot(agoraConfig)
+        AngularAgoraRtcModule.forRoot(agoraConfig),
+        SharedCommunityModule
     ],
     exports: [
         CommunityContainerComponent,

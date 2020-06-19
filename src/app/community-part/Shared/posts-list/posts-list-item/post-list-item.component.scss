@@ -48,6 +48,15 @@
 
                 .postOwner {
                     font-size: 16px;
+
+                    a {
+                        text-decoration: none;
+                        color: #222;
+
+                        &:hover{
+                            color: $primary-color;
+                        }
+                    }
                 }
 
                 .postCategory {

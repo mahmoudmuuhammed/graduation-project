@@ -2,31 +2,25 @@ import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 admin.initializeApp();
 
-import algoliasearch from 'algoliasearch';
-
-const client = algoliasearch('LKPW2MSVDG', '8fb123fa3e5e050c888a0a31b3518533',{timeouts: {
-    connect: 20,
-    read: 20,
-    write: 20
-  }});
-const index = client.initIndex('Doctors');
-
 export const videoCallNotification =
     functions.firestore.document('videoCallNotification/{notificaionID}')
         .onCreate((msgData) => {
             const message = msgData.data();
-            const recieverMsgToken = message?.RecieverMsgToken;
+            const receiverMsgToken = message?.receiverMsgToken;
+            const clickAction: string = 'com.example.medkit.activities.VideoChatActivity'
+
             const payload = {
                 data: {
                     channelName: message?.channelName,
-                    callerId: message?.CallerID
+                    callerId: message?.callerID,
                 },
                 notification: {
                     title: 'Incoming Video Call',
-                    body: message?.Caller,
+                    body: message?.caller,
+                    click_action: clickAction
                 }
             }
-            return admin.messaging().sendToDevice(recieverMsgToken, payload)
+            return admin.messaging().sendToDevice(receiverMsgToken, payload)
         })
 
 export const commentNotification =
@@ -46,6 +40,20 @@ export const commentNotification =
                 }
                 return admin.messaging().sendToDevice(recieverMsgToken, payload)
             }).catch((err) => console.log(err))
+        })
+
+export const postCounter =
+    functions.firestore.document('Posts/{postId}')
+        .onCreate(post => {
+            const userId = post.data()?.userID;
+            return admin.firestore().doc(`Users/${userId}`).update({ postCounter: admin.firestore.FieldValue.increment(1) })
+        })
+
+export const postCounterOnDelete =
+    functions.firestore.document('Posts/{postId}')
+        .onDelete(post => {
+            const userId = post.data()?.userID;
+            return admin.firestore().doc(`Users/${userId}`).update({ postCounter: admin.firestore.FieldValue.increment(-1) })
         })
 
 export const commentCounter =
@@ -87,27 +95,50 @@ export const clappingCounter =
             return admin.firestore().doc(`Users/${userId}`).update({ clappingCounter: admin.firestore.FieldValue.increment(changeValue) })
         })
 
+export const chatNotification =
+    functions.firestore.document('Rooms/{roomId}/Messages/{msgId}')
+        .onCreate(msg => {
 
-//initialize algolia serach
+            const msgData = msg.data();
+            const senderId: string = msgData?.uid;
+            let senderName: string = '';
+            let receiverId: string = '';
+            let receiverToken: string = '';
+            const msgRef = msg.ref;
+            const roomRef = msgRef.parent.parent;
+            let payload: {};
 
-exports.onCreateDoctor = functions.firestore.document('Users/{userID}')
-    .onCreate((snap, context) => {
-        const userData = snap.data();
-        const userId = snap.id;
-        return index.saveObject({
-            objectID: userId,
-            userData
+            roomRef?.get().then(room => {
+                const roomData = room.data();
+                Object.keys(roomData?.users).forEach((key) => {
+                    if (senderId != key) {
+                        receiverId = key
+                    }
+                })
+                return admin.firestore().doc(`Users/${receiverId}`).get().then(res => {
+                    receiverToken = res.data()?.notification_token_id
+
+                    admin.firestore().doc(`Users/${senderId}`).get().then(res => {
+                        senderName = res.data()?.fullName
+
+                        if (msgData?.msgtype == 0) {
+                            payload = {
+                                notification: {
+                                    title: 'New mesage from ' + senderName,
+                                    body: msgData?.msg
+                                }
+                            }
+                        }
+                        else {
+                            payload = {
+                                notification: {
+                                    title: 'New file received from ' + senderName,
+                                    body: msgData?.filename
+                                }
+                            }
+                        }
+                        return admin.messaging().sendToDevice(receiverToken, payload)
+                    })
+                })
+            })
         })
-    })
-
-exports.onDeleteDoctor = functions.firestore.document('Users/{userID}')
-    .onDelete(snap => {
-        const userData = snap.data();
-        const userId = snap.id;
-        if (userData?.userType.usertype == 'Doctor') {
-            return index.deleteObject(userId)
-                .then(() => console.log('add to algolia successfully'))
-                .catch(err => console.log("error occured : ", err))
-        }
-        return
-    }) 

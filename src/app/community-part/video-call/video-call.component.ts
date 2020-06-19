@@ -3,6 +3,9 @@ import { AngularAgoraRtcService, Stream } from 'angular-agora-rtc';
 import { SharedService } from 'src/app/services/shared.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { AgouraServic } from 'src/app/services/agora.service';
+import { ChattingService } from 'src/app/services/chatting.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'videoCall',
@@ -12,22 +15,25 @@ import { AgouraServic } from 'src/app/services/agora.service';
 })
 
 export class VideoCallComponent implements OnInit {
-  @Input() CallerName: string = 'Moemen Said';
+  @Input() CallerId: string;
   @Input() channelName: string;
-  @Input() callStatus: boolean;
+  callerName: string = ''
   localStream: Stream;
   remoteCalls: any = [];
 
   constructor(private agoraService: AngularAgoraRtcService,
     private detectChange: ChangeDetectorRef,
     private sharedService: SharedService,
-    private authService:AuthService,
-    private customAgoraService:AgouraServic) {
+    private authService: AuthService,
+    private firestore: FirestoreService) {
     this.agoraService.createClient();
   }
 
   ngOnInit() {
-      this.startCall(null, this.channelName)
+    this.startCall(null, this.channelName)
+    this.firestore.getUser(this.CallerId).pipe(take(1)).subscribe(res => {
+      this.callerName = res.fullName
+    })
   }
 
   startCall(token: string, channelName: string) {
@@ -40,7 +46,7 @@ export class VideoCallComponent implements OnInit {
   }
 
   endCall() {
-   this.authService.updateUserStatus('online')
+    this.authService.updateUserStatus('online')
     this.localStream.close();
     this.localStream.stop();
     this.agoraService.client.leave();

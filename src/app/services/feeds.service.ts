@@ -10,9 +10,9 @@ import { take } from 'rxjs/operators';
 import { Post } from '../models/post.model';
 import { Comment } from '../models/comment.model';
 import { Notification } from '../models/notification.model';
-import { UserModel } from '../models/user.model';
 import { firestore } from 'firebase/app';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { AuthService } from './auth.service';
 
 @Injectable({
     providedIn: 'root'
@@ -26,16 +26,12 @@ export class FeedsService {
     commentDocument: AngularFirestoreDocument<Comment>;
     notificationCollection: AngularFirestoreCollection<Notification>;
     notificationDocument: AngularFirestoreDocument<Notification>;
-    currentUser: firebase.User;
     filteredPostCategory = new EventEmitter<string>();
 
     constructor(private db: AngularFirestore,
         private auth: AngularFireAuth,
-        private fStorage: AngularFireStorage) {
-        if (auth.auth.currentUser !== undefined && auth.auth.currentUser !== null) {
-            this.currentUser = auth.auth.currentUser;
-        }
-    }
+        private fStorage: AngularFireStorage,
+        private authService: AuthService) { }
 
     getPostsInTimeline(category: string) {
         if (category == 'All') {
@@ -50,9 +46,10 @@ export class FeedsService {
         return this.postCollection.valueChanges();
     }
 
-    getPostsInUserProfile() {
+    getPostsInUserProfile(userID) {
         this.postCollection = this.db.collection('Posts',
-            ref => { return ref.where('userId', '==', this.currentUser.uid) });
+            ref => { return ref.where('userID', '==', userID)
+            .orderBy('createdTime', 'desc') });
         return this.postCollection.valueChanges();
     }
 

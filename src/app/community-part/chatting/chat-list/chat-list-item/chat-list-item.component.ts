@@ -1,15 +1,29 @@
-import { Component, Input, OnInit, OnDestroy, Renderer2, ViewChild, ElementRef } from "@angular/core";
+import { Component, Input, OnInit, OnDestroy, Renderer2, ViewChild, ElementRef, OnChanges } from "@angular/core";
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { UserModel } from 'src/app/models/user.model';
 import { Observable, Subscription } from 'rxjs';
 import { Room } from 'src/app/models/Room.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { SharedService } from 'src/app/services/shared.service';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
     selector: 'chat-list-item',
     templateUrl: './chat-list-item.component.html',
-    styleUrls: ['./chat-list-item.component.scss']
+    styleUrls: ['./chat-list-item.component.scss'],
+    // animations: [
+    //     trigger('chatItemAnimation', [
+    //         state('void', style({
+    //             transform: 'translateX(-20px)',
+    //             opacity: 0
+    //         })),
+    //         state('1', style({
+    //             transform: 'translateX(0)',
+    //             opacity: 1
+    //         })),
+    //         transition('void => 1', animate(200)),
+    //     ])
+    // ]
 })
 
 export class ChatListItemComponent implements OnInit, OnDestroy {
@@ -19,7 +33,8 @@ export class ChatListItemComponent implements OnInit, OnDestroy {
     subscribtion: Subscription;
     msgTime;
     noOfMsg: number;
-    userImgLink: string = '../../../../../assets/images/DeafultUser.svg'
+    userImgLink: string = '../../../../../assets/images/DeafultUser.svg';
+    animationState = 'void'
 
     constructor(private db: FirestoreService,
         private authService: AuthService,
@@ -47,7 +62,6 @@ export class ChatListItemComponent implements OnInit, OnDestroy {
         this.msgTime = this.roomData.timestamp;
         this.msgTime = this.msgTime.seconds * 1000 //convert to milleseconds
     }
-
     showChats() {
         this.sharedService.userListShowing.next(false)
     }

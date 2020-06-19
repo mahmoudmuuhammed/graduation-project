@@ -1,5 +1,6 @@
-<div class="chat-litem animate fadeIn" [routerLink]="['/community/Chat', (userData | async)?.uid]" (click)="showChats()"
-    *ngIf="(userData |async) !=null">
+<div class="chat-litem"
+    [routerLink]="['/community/Chat', (userData | async)?.uid]"
+    (click)="showChats()" *ngIf="(userData |async) !=null">
     <div class="user">
         <div class="imgDiv">
             <img src="{{userImgLink}}" alt="" class="user__img">

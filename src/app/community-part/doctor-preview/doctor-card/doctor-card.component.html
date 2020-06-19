@@ -1,8 +1,8 @@
 <div class="docCardOuter">
-    <div class="docCardInner">
+    <div class="docCardInner animate fadeIn">
         <header>
             <img src="{{docImgUrl}}">
-            <h5>Dr.{{DoctorData?.fullName}}</h5>
+            <h5><a [routerLink]="['/community/Profile',DoctorData.uid]">Dr.{{DoctorData?.fullName}}</a></h5>
             <p class="docFaculty">{{DoctorData.userType.gradFaculty?DoctorData.userType.gradFaculty:'_'}}</p>
         </header>
         <main>
@@ -19,7 +19,7 @@
                 <p class="detailsDescription">{{DoctorData.clappingCounter?DoctorData.clappingCounter:0}}</p>
             </div>
             <div class="docDetailsDiv">
-                <i class="fas fa-euro-sign"></i>
+                <i class="fas fa-money-bill-wave-alt icon" style="transform: rotate(135deg);"></i>
                 <p class="detailsDescription">{{DoctorData?.userType.fees}}</p>
             </div>
         </main>

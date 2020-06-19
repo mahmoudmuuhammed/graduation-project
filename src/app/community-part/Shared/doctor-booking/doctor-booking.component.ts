@@ -3,6 +3,7 @@ import { DoctorsService } from 'src/app/services/doctors.service';
 import { take } from 'rxjs/operators';
 import { UserModel } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'doctor-booking',
@@ -15,7 +16,8 @@ export class DoctorBookingComponent implements OnInit {
   docImgUrl: string = ''
 
   constructor(private doctorService: DoctorsService,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.doctorService.doctorDataSubjectOnBooking.subscribe(docData => {
@@ -33,10 +35,12 @@ export class DoctorBookingComponent implements OnInit {
     this.showbooking = false
   }
 
-  booking() {
+  booking(cardDate) {
+    const docId: string = this.doctorData.uid;
+    this.router.navigate([`/community/Chat/${docId}`])
   }
 
   close(event) {
-    event.target.className == 'doctorReservationOuter' ? this.showbooking = false:''
+    event.target.className == 'doctorReservationOuter' ? this.showbooking = false : ''
   }
 }

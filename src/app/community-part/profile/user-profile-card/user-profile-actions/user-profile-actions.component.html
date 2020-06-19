@@ -1,4 +1,4 @@
-<div class="profile-actions">
+<!-- <div class="profile-actions">
     <div class="profile-actions__box">
         <div class="profile-actions__status">
             <span class="profile-actions__status-title">
@@ -22,4 +22,12 @@
             </button>
         </div>
     </div>
+</div> -->
+
+<div class="bookingDiv" *ngIf="!isCurrentUser && isDoctor">
+    <button class="bookingDiv__btn">Book</button>
+</div>
+
+<div class="editDiv" *ngIf="isCurrentUser">
+    <button class="editDiv__btn">Edit Details</button>
 </div>

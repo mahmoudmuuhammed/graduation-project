@@ -1,38 +1,6 @@
-<div class="post-item" *ngIf="isPostExistance">
-    <div class="post-details">
-        <div class="post-details__user">
-            <div class="postData">
-                <img src="{{userImgUrl}}" alt="" class="post-details__user-img">
-                <div class="postOwnerandCategory">
-                    <span class="postOwner">{{ postData?.userName }}</span>
-                    <span class="postCategory">{{ postData?.category }}</span>
-                </div>
-            </div>
-            <span class="postTimeDiv">
-                <i class="far fa-clock"></i>
-                <span>{{ postData?.createdTime | date:'d,LLL h:m aa' }}</span>
-            </span>
-        </div>
-    </div>
-    <div class="post-info">
-        <span class="post-info__title">
-            {{ postData?.title }}
-        </span>
-        <span class="post-info__content">
-            {{ postData?.description }}
-        </span>
-    </div>
-    <div class="image-container" *ngIf="postData.postPhoto">
-        <img src="{{postImgUrl}}" alt="" class="image-container__img">
+<post-list-item [postData]="postData" *ngIf="postData"></post-list-item>
 
-    </div>
-
-    <div class="post-actions">
-        <upvotes [postId]="postData.postKey"></upvotes>
-        <div class="post-actions__comments">
-            <span>{{ postData?.commentCounter }} comment</span>
-        </div>
-    </div>
-    <comment-dashboard [postId]="postData?.postKey"></comment-dashboard>
-    <comment-list [postId]="postData?.postKey"></comment-list>
+<div class="postErrorDiv" *ngIf="!isPostExistance && loaded">
+    <img src="../../../assets/images/error.svg">
+    <h3>Sorry this post isn't available any more</h3>
 </div>

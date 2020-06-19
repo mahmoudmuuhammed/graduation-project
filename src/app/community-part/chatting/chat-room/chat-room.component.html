@@ -1,4 +1,4 @@
-<div class="chatRoomContainer animate fadeIn slower">
+<div class="chatRoomContainer animate fadeIn slower" (click)="onRoomClick()">
     <div class="chatHeader">
         <chat-head [userData]="(userData) | async"></chat-head>
     </div>

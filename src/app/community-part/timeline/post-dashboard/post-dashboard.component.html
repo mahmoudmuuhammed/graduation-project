@@ -1,18 +1,17 @@
 <div class="postDashboardContainer">
     <form [formGroup]="postForm" class="post-form" (ngSubmit)="handleAddPost()">
         <div class="post-form__group" *ngIf="postDashboardCase">
-            <textarea name="title" id="post-title" cols="30" rows="1" style="font-weight: 800;"
+            <textarea #postTitle name="title" id="post-title" cols="30" rows="1" style="font-weight: 800;"
                 class="post-form__group-control" placeholder="Add title" formControlName="title"></textarea>
         </div>
         <div class="post-form__group">
-            <img src="{{userImgUrl}}" alt="" class="post-form__group-img"
-                *ngIf="!postDashboardCase">
+            <!-- <img src="{{userImgUrl}}" alt="" class="post-form__group-img" *ngIf="!postDashboardCase"> -->
             <textarea name="content" id="post-content" cols="30" [rows]="postDashboardCase ? '3' : '1'"
                 class="post-form__group-control post-form__group-control--custom" placeholder="What's your problem?"
                 style="font-weight: 600;" formControlName="content" (click)="showFullForm()"></textarea>
         </div>
         <div class="imgPreviewDiv" *ngIf="isImgExist">
-            <img  alt="" src="{{imageInputSrc}}">
+            <img alt="" src="{{imageInputSrc}}">
         </div>
         <div class="post-form__group" *ngIf="postDashboardCase">
             <div class="post-form__actions">

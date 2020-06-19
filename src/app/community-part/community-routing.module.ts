@@ -12,6 +12,7 @@ import { singlePostComponent } from './post/post.component';
 const communityRoutes: Routes = [
     {
         path: '', component: CommunityContainerComponent, children: [
+            { path: '', component: TimelineComponent },
             { path: 'Timeline', component: TimelineComponent },
             { path: 'Post/:postId', component: singlePostComponent },
             {
@@ -19,7 +20,7 @@ const communityRoutes: Routes = [
                     { path: ':id', component: ChatRoomComponent }
                 ]
             },
-            { path: 'Profile', component: ProfileComponent },
+            { path: 'Profile/:id', component: ProfileComponent },
             { path: 'Doctors', component: DoctorPreviewComponent },
         ]
     }

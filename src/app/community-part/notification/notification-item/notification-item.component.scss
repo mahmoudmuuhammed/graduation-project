@@ -13,6 +13,7 @@ a {
     margin: 5px;
     border-radius: 5px;
     position: relative;
+    cursor: pointer;
 
     img {
         width: 40px;
@@ -23,8 +24,15 @@ a {
     p {
         margin: 0px 10px;
         font-size: 14px;
+
+        a {
+            font-size: 15px;
+            font-weight: 600;
+            color: #222;
+        }
     }
-    p.notificationTime{
+
+    p.notificationTime {
         font-size: 12px;
         font-weight: 600;
         margin-top: -2px;

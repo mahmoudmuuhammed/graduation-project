@@ -8,6 +8,7 @@ export class UserModel {
     notification_token_id?: string;
     clappingCounter?: number;
     commentCounter?: number;
+    postCounter?: number;
 };
 
 export class AccountType {
@@ -16,5 +17,5 @@ export class AccountType {
     gradYear?: string;
     specialty?: string;
     location?: string;
-    fees?:number;
+    fees?: number;
 }

@@ -127,7 +127,7 @@ export class AuthService {
     autoLogin() {
         firebase.auth().onAuthStateChanged(user => {
             if (!!user) {
-                this.ngZone.run(() => this.router.navigate(['/community/Timeline']))
+                this.ngZone.run(() => this.router.navigate(['/community/Profile']))
             }
         })
     }

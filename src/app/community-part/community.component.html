@@ -11,12 +11,12 @@
         <!-- <div class="col-lg-2 dangerArea">
             <danger-area></danger-area>
         </div> -->
-        <div class="community__main-router">
+        <!-- <div class="community__main-router"> -->
             <!-- router injection  -->
             <!-- <profile></profile> -->
             <!-- <timeline></timeline> -->
             <!-- <chatting-container></chatting-container> -->
-        </div>
+        <!-- </div> -->
     </div>
 </div>
 
@@ -25,5 +25,5 @@
 </div>
 
 <div #videoCallDiv *ngIf="callAccepted">
-    <videoCall [channelName]='channelName'></videoCall>
+    <videoCall [channelName]='channelName' [CallerId]="callerId"></videoCall>
 </div>

@@ -1,8 +1,13 @@
-<div class="profile">
-    <div class="profile__info">
-        <user-profile-card></user-profile-card>
+<div class="row profileContainer">
+    <div class="col-12 col-md-4 p-0">
+        <div class="profile__info">
+            <user-profile-card [userId]='userId'></user-profile-card>
+        </div>
     </div>
-    <div class="profile__content">
-        <profile-content></profile-content>
+    <div class="col-12 col-md-8">
+        <div class="profile__content">
+            <profile-content [userId]='userId'></profile-content>
+        </div>
     </div>
+
 </div>
