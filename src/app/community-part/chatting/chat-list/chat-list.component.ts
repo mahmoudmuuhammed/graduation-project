@@ -2,10 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { SharedService } from 'src/app/services/shared.service';
 import { Observable } from 'rxjs';
 import { ChattingService } from 'src/app/services/chatting.service';
-import { take } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { Room } from 'src/app/models/Room.model';
-import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
     selector: 'chat-list',

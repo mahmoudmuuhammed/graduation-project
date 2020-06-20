@@ -12,15 +12,21 @@ import { take } from 'rxjs/operators';
     styleUrls: ['./profile-content.component.scss']
 })
 
-export class ProfileContentComponent implements  OnChanges {
+export class ProfileContentComponent implements OnChanges {
 
+    loaded: boolean = false;
+    isPostExistance: boolean;
     @Input() userId
-    posts: Observable<Post[]>
-    constructor(private activedRouted: ActivatedRoute,
-        private feeds: FeedsService) { }
+    posts: Post[]
+
+    constructor(private feeds: FeedsService) { }
 
     ngOnChanges() {
-        this.posts = this.feeds.getPostsInUserProfile(this.userId);
+        this.feeds.getPostsInUserProfile(this.userId).subscribe(res => {
+            res.length == 0 ? this.isPostExistance = false : this.isPostExistance = true;
+            this.posts = res
+            this.loaded = true
+        })
     }
 
 }

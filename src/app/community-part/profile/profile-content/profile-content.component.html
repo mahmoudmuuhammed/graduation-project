@@ -1,8 +1,11 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12">
-            <div class="postContainer" *ngFor="let post of posts |async">
+        <div class="col-12 p-0">
+            <div class="postContainer" *ngFor="let post of posts">
                 <post-list-item [postData]="post"></post-list-item>
+            </div>
+            <div class="postErrorDiv" *ngIf="!isPostExistance && loaded">
+                <h4> He didn't posted yet</h4>
             </div>
         </div>
     </div>

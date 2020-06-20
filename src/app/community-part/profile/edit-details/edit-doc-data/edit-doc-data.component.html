@@ -1,0 +1,90 @@
+<div class="row">
+
+    <div class="col-12 p-sm-0">
+        <div class="contentDivContainer">
+            <div class="contentDiv">
+                <div class="actualDataDiv row">
+                    <div class="col-sm-3 col-12">
+                        <p class="description">Speciality</p>
+                    </div>
+                    <div class="col-sm-9 col-12">
+                        <p>{{userData.userType.specialty}}</p>
+                    </div>
+                </div>
+                <button class="btn" editCollapse >Edit</button>
+            </div>
+            <div class="editDiv animate fadeIn">
+                <form (ngSubmit)='changeSpeciality(specialtyForm)' #specialtyForm='ngForm'>
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-3 col-12">New speciality</label>
+                        <input type="text" name="specialty" ngModel required
+                         class="form-control form-control-sm col-md-7 col-10">
+                        <button class="btn col-2">Change</button>
+                    </div>
+                    <div class="cancelEditDiv">
+                        <button type="button" #cancelSpecialtyBtn editCollapse class="btn cancelBtn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 p-sm-0">
+        <div class="contentDivContainer">
+            <div class="contentDiv">
+                <div class="actualDataDiv row">
+                    <div class="col-sm-3 col-12">
+                        <p class="description">Location</p>
+                    </div>
+                    <div class="col-sm-9 col-12">
+                        <p>{{userData.userType.location}}</p>
+                    </div>
+                </div>
+                <button class="btn" editCollapse>Edit</button>
+            </div>
+            <div class="editDiv animate fadeIn">
+                <form (ngSubmit)='changeLocation(locationForm)' #locationForm='ngForm'>
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-3 col-12">New location</label>
+                        <input type="text" name="location" ngModel required
+                         class="form-control form-control-sm col-md-7 col-10">
+                        <button class="btn col-2">Change</button>
+                    </div>
+                    <div class="cancelEditDiv">
+                        <button type="button" #cancelLocationBtn editCollapse class="btn cancelBtn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 p-sm-0">
+        <div class="contentDivContainer">
+            <div class="contentDiv">
+                <div class="actualDataDiv row">
+                    <div class="col-sm-3 col-12">
+                        <p class="description">Fees</p>
+                    </div>
+                    <div class="col-sm-9 col-12">
+                        <p>{{userData.userType.fees}}</p>
+                    </div>
+                </div>
+                <button class="btn" editCollapse>Edit</button>
+            </div>
+            <div class="editDiv animate fadeIn">
+                <form (ngSubmit)='changeFees(feesForm)' #feesForm='ngForm'> 
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-3 col-12">New fees</label>
+                        <input type="text" name="fees" ngModel required
+                         class="form-control form-control-sm col-md-7 col-10">
+                        <button class="btn col-2">Change</button>
+                    </div>
+                    <div class="cancelEditDiv">
+                        <button type="button" #cancelFeesBtn editCollapse class="btn cancelBtn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -150,7 +150,7 @@ export class FeedsService {
                     from_full_name: this.auth.auth.currentUser.displayName,
                     post_id: postId,
                     n_id: NotificationId,
-                    message: 'has commented on your post',
+                    message: 'New comment',
                     read: false
                 }
                 this.db.doc(`Users/${postUserID}/Notification/${NotificationId}`).set(data)

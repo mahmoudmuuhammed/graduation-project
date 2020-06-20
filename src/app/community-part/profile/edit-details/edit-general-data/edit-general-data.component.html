@@ -1,0 +1,110 @@
+<div class="row">
+
+    <div class="col-12 p-sm-0">
+        <div class="contentDivContainer imgDiv">
+            <div class="contentDiv">
+                <div class="actualDataDiv">
+                    <img src="{{userImgLink}}">
+                    <div class="imgBtnDiv">
+                        <button class="btn"><i class="fas fa-edit"></i></button>
+                        <input type="file" accept="image/*" (change)="changePhoto($event)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 p-sm-0">
+        <div class="contentDivContainer">
+            <div class="contentDiv">
+                <div class="actualDataDiv row">
+                    <div class="col-sm-3 col-12">
+                        <p class="description">Full name</p>
+                    </div>
+                    <div class="col-sm-9 col-12">
+                        <p>{{userData.fullName | titlecase}}</p>
+                    </div>
+                </div>
+                <button class="btn" editCollapse>Edit</button>
+            </div>
+            <div class="editDiv animate fadeIn">
+                <form (ngSubmit)='changeName(nameForm)' #nameForm="ngForm">
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-3 col-12">New full name</label>
+                        <input type="text" name="fullName" ngModel required
+                            class="form-control form-control-sm col-md-7 col-10">
+                        <button class="btn col-2">Change</button>
+                    </div>
+                    <div class="cancelEditDiv">
+                        <button #cancelNameBtn type="button" editCollapse class="btn cancelBtn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 p-sm-0">
+        <div class="contentDivContainer">
+            <div class="contentDiv">
+                <div class="actualDataDiv row">
+                    <div class="col-sm-3 col-12">
+                        <p class="description">Email</p>
+                    </div>
+                    <div class="col-sm-9 col-12">
+                        <p>{{userData.email}}</p>
+                    </div>
+                </div>
+                <button class="btn" editCollapse>Edit</button>
+            </div>
+            <div class="editDiv animate fadeIn">
+                <form (ngSubmit)='changeEmail(emailForm)' #emailForm="ngForm">
+                    <div class="form-group row passCheck">
+                        <label class="col-form-label col-md-3 col-12">Your password</label>
+                        <input type="password" name="password" ngModel required
+                            class="form-control form-control-sm col-md-9 col-12"><br><br>
+                        <label class="col-form-label col-md-3  col-12">New email</label>
+                        <input type="email" name="email" ngModel required
+                            class="form-control form-control-sm col-md-9 col-12">
+                        <button class="btn col-12">Change</button>
+                    </div>
+                    <div class="cancelEditDiv">
+                        <button #cancelEmailBtn type="button" editCollapse class="btn cancelBtn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 p-sm-0">
+        <div class="contentDivContainer">
+            <div class="contentDiv">
+                <div class="actualDataDiv row">
+                    <div class="col-sm-3 col-12">
+                        <p class="description">Password</p>
+                    </div>
+                    <div class="col-sm-9 col-12">
+                        <p>********</p>
+                    </div>
+                </div>
+                <button class="btn" editCollapse>Edit</button>
+            </div>
+            <div class="editDiv animate fadeIn">
+                <form (ngSubmit)='changePassword(passwordForm)' #passwordForm='ngForm'>
+                    <div class="form-group row passCheck">
+                        <label class="col-form-label col-md-3 col-12">old password</label>
+                        <input type="password" name="oldPassword" ngModel required
+                            class="form-control form-control-sm col-md-9 col-12"><br><br>
+                        <label class="col-form-label col-md-3 col-12">New password</label>
+                        <input type="password" name="newPassword" ngModel required
+                            class="form-control form-control-sm col-md-9 col-12">
+                        <button class="btn col-12">Change</button>
+                    </div>
+                    <div class="cancelEditDiv">
+                        <button #cancelPasswordBtn type="button" editCollapse class="btn cancelBtn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

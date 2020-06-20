@@ -39,12 +39,12 @@
     background: #f5f6f7;
 }
 .communityRouterDiv{
-    height: calc(100vh - 50px);
-    overflow-y: auto;
-    overflow-x: hidden;
+    // height: calc(100vh - 50px);
+    // overflow-y: auto;
+    // overflow-x: hidden;
 }
 
-@media(max-width:991.99px){
+@media(max-width:767.99px){
     .communityRouterDiv{
         height: auto;
         overflow: auto;

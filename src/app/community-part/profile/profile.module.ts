@@ -10,6 +10,7 @@ import { UserProfileDataComponent } from './user-profile-card/user-profile-data/
 import { UserProfileActionsComponent } from './user-profile-card/user-profile-actions/user-profile-actions.component';
 import { DoctorInfComponent } from './user-profile-card/doctor-inf/doctor-inf.component';
 import { ProfileContentComponent } from './profile-content/profile-content.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -20,12 +21,13 @@ import { ProfileContentComponent } from './profile-content/profile-content.compo
         UserProfileDataComponent,
         UserProfileActionsComponent,
         DoctorInfComponent,
-        ProfileContentComponent
+        ProfileContentComponent,
     ],
     imports: [
         CommonModule,
         SharedModule,
-        SharedCommunityModule
+        SharedCommunityModule,
+        RouterModule
     ],
     exports: [
         ProfileComponent

@@ -1,0 +1,142 @@
+@import "../../../../../styles/abstracts/variables";
+
+.contentDivContainer {
+    padding: 15px 20px;
+    border-radius: 10px;
+    background: #ecececb8;
+    margin: 15px;
+
+    .contentDiv {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .actualDataDiv {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+
+            p {
+                font-size: 16px;
+                font-family: inherit;
+                font-weight: 500;
+            }
+
+            p.description {
+                padding-left: 20px;
+                font-weight: 600;
+            }
+        }
+
+        .btn {
+            color: $primary-color;
+            font-size: 16px;
+            padding: 0px 20px;
+
+            &:focus {
+                box-shadow: none;
+            }
+        }
+    }
+
+    .editDiv {
+        display: none;
+        margin-top: 20px;
+
+        .form-group {
+            padding: 0px 15px;
+
+            label.col-form-label {
+                padding-left: 20px;
+            }
+
+            input.form-control {
+                height: 38px;
+                border-radius: 5px 0 0 5px;
+                font-size: 1rem;
+                border-right: none;
+
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+
+            .btn {
+                background-color: $primary-color;
+                border-radius: 0 5px 5px 0;
+                color: #fff;
+
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+
+            &.passCheck {
+                input.form-control {
+                    border: 1px solid #ced4da;
+                    border-radius: 5px;
+                }
+
+                .btn {
+                    border-radius: 5px;
+                    margin: 10px auto 0 auto;
+                    max-width: 200px;
+                }
+            }
+        }
+
+        .cancelEditDiv {
+            display: flex;
+            justify-content: flex-end;
+
+            .cancelBtn {
+                padding: 0 15px;
+                color: #f00;
+
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:768px) {
+    .contentDivContainer {
+        margin: 15px 0;
+
+        .contentDiv {
+
+            .actualDataDiv {
+
+                p {
+                    font-size: 16px;
+                }
+            }
+        }
+        .editDiv {
+            .form-group {
+                label.col-form-label {
+                    padding-left: 0px;
+                }
+            }
+        }
+    }
+}
+    
+
+    @media(max-width:576px) {
+        .contentDivContainer {
+
+            .contentDiv {
+
+                .actualDataDiv {
+
+                    p.description {
+                        padding-left: 0px;
+                    }
+                }
+            }
+        }
+    }

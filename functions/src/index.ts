@@ -34,7 +34,7 @@ export const commentNotification =
                 const recieverMsgToken = userData?.notification_token_id
                 const payload = {
                     notification: {
-                        title: 'New comment on your post',
+                        title: notificationData?.message,
                         body: 'from ' + notificationData?.from_full_name
                     }
                 }

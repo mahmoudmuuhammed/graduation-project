@@ -5,7 +5,7 @@
                 <img src="{{userImgUrl}}" alt="" class="post-details__user-img">
                 <div class="postOwnerandCategory">
                     <span class="postOwner">
-                        <a [routerLink]="['/community/Profile', postData.userID]">{{ postData.userName }}</a>
+                        <a [routerLink]="['/community/Profile', postData.userID]">{{ postData.userName | titlecase }}</a>
                     </span>
                     <span class="postCategory"> in {{ postData.category }}</span>
                 </div>

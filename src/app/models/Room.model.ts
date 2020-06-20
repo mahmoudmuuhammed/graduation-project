@@ -4,7 +4,7 @@ export class Room {
     timestamp: Date;
     uid: string;
     users: {};
-    roomID: string;
+    RoomID: string;
     filename?: string;
     filesize?: string;
 }

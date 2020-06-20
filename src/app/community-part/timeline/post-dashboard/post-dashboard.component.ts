@@ -35,8 +35,11 @@ export class PostDashboardComponent implements OnInit {
 
     showFullForm() {
         this.postDashboardCase = true;
-        setTimeout(() => this.postTitle.nativeElement.focus(), 10)
-
+        setTimeout(() =>
+            setTimeout(() => {
+                this.postForm.invalid ? this.postTitle.nativeElement.focus() : ''
+            }, 10)
+        )
     }
 
     hideForm() {

@@ -1,0 +1,59 @@
+header {
+    margin-top: 20px;
+
+    label {
+        font-size: 16px;
+        font-weight: 500;
+        float: left;
+
+        .maxNo {
+            font-size: 12px;
+            font-weight: 800;
+            display: block;
+            margin-top: -5px;
+        }
+    }
+
+    .editTrusted {
+        float: right;
+        color: #555;
+        text-align: center;
+        font-size: 15px;
+        cursor: pointer;
+
+        &::after {
+            content: "";
+            clear: both;
+        }
+    }
+
+
+}
+
+.trustPeopleContainer {
+    display: flex;
+    flex-direction: column;
+
+    .personLink {
+        text-decoration: none;
+        color: #333;
+
+        .personDiv {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 10px 0;
+
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+
+            span {
+                margin-left: 10px;
+                font-size: 15px;
+            }
+        }
+    }
+}

@@ -58,16 +58,16 @@
                     margin-right: 5px;
 
                     &.online {
-                        background-color: #14ce14;
+                        background-color: $activeColor;
                         border: 1px solid #aaa;
                     }
 
                     &.offline {
-                        background-color: #d22b2b;
+                        background-color: $offlineColor
                     }
 
                     &.away {
-                        background-color: #d4e018;
+                        background-color: $busyColor;
                         border: 1px solid #aaa;
                     }
                 }

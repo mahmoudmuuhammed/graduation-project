@@ -42,7 +42,7 @@ export class ChatListItemComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.authService.currentUser.subscribe(user => {
-            this.subscribtion = this.db.getChannelsUsers(this.roomData.roomID)
+            this.subscribtion = this.db.getChannelsUsers(this.roomData.RoomID)
                 .snapshotChanges()
                 .subscribe(
                     re => {

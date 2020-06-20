@@ -7,6 +7,8 @@ import { ProfileModule } from './profile/profile.module';
 import { ChattingModule } from './chatting/chatting.module';
 import { SharedModule } from '../shared/shared.module';
 import { TimelineModule } from './timeline/timeline.module';
+import { EmergencyAreaModule } from './emergency-alert/emergency-area.module';
+import { SharedCommunityModule } from './Shared/sharedCommunity.module';
 
 import { CommunityContainerComponent } from './community.component';
 import { CommunitySidebarComponent } from './community-sidebar/community-sidebar.component';
@@ -18,9 +20,8 @@ import { CallingComponent } from './callingAlert/callingAlert.component';
 import { VideoCallComponent } from './video-call/video-call.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NotificationItemComponent } from './notification/notification-item/notification-item.component';
-import { DangerAreaComponent } from './danger-area/danger-area.component'
 import { singlePostComponent } from './post/post.component';
-import { SharedCommunityModule } from './Shared/sharedCommunity.module';
+import { EditDetailsModule } from './profile/edit-details/edit-details.module';
 
 const agoraConfig: AgoraConfig = {
     AppID: '0aa38281b2a84016b2c5b0ed745d13a0',
@@ -37,7 +38,6 @@ const agoraConfig: AgoraConfig = {
         VideoCallComponent,
         NotificationComponent,
         NotificationItemComponent,
-        DangerAreaComponent,
         singlePostComponent,
     ],
     imports: [
@@ -49,7 +49,9 @@ const agoraConfig: AgoraConfig = {
         ChattingModule,
         DoctorPreviewModule,
         AngularAgoraRtcModule.forRoot(agoraConfig),
-        SharedCommunityModule
+        SharedCommunityModule,
+        EmergencyAreaModule,
+        EditDetailsModule,
     ],
     exports: [
         CommunityContainerComponent,

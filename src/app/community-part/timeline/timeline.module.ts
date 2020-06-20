@@ -1,13 +1,12 @@
 import { NgModule } from "@angular/core";
-import { PostDashboardComponent } from './post-dashboard/post-dashboard.component';
-
 import { CommonModule } from '@angular/common';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedCommunityModule } from '../Shared/sharedCommunity.module';
+import { PostDashboardComponent } from './post-dashboard/post-dashboard.component';
 import { TimelineComponent } from './timeline.component';
 import { PostsFilterComponent } from './posts-filter/posts-filter.component';
-import { SharedCommunityModule } from '../Shared/sharedCommunity.module';
 
 @NgModule({
     declarations: [
@@ -22,7 +21,6 @@ import { SharedCommunityModule } from '../Shared/sharedCommunity.module';
         SharedCommunityModule
     ],
     exports: [
-        PostDashboardComponent,
     ]
 })
 

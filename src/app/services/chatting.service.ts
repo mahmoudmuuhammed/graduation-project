@@ -125,7 +125,7 @@ export class ChattingService {
                 rooms.forEach(room => {
                     if (Object.keys(room.users).indexOf(toId) > -1 && Object.keys(room.users).indexOf(myId) > -1) {
                         isRoomExist = true;
-                        roomId = room.roomID
+                        roomId = room.RoomID
                         console.log('1 : ', isRoomExist)
                     }
                 })
@@ -136,7 +136,7 @@ export class ChattingService {
                     users[myId] = 0
                     roomId = this.afs.createId();
                     const path = `Rooms/${roomId}`
-                    this.afs.doc(path).set({ msg: '', msgtype: '0', timestamp: new Date(), uid: myId, users, roomID: roomId })
+                    this.afs.doc(path).set({ msg: '', msgtype: '0', timestamp: new Date(), uid: myId, users, RoomID: roomId })
                 }
             }).add(() => observer.next(roomId))
         });
@@ -153,7 +153,7 @@ export class ChattingService {
             users[profileId] = unreadNoOfOtherUser + 1
 
             //add room data and check type of msg (file or not)
-            let roomData: Room = { msg: messageContent, msgtype: msgType, roomID: roomId, timestamp: new Date(), uid: currentUser, users };
+            let roomData: Room = { msg: messageContent, msgtype: msgType, RoomID: roomId, timestamp: new Date(), uid: currentUser, users };
             if (file != null) {
                 roomData.filename = file.filename;
                 roomData.filesize = file.filesize.toString();

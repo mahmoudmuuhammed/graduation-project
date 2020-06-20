@@ -8,6 +8,8 @@ import { ChattingComponent } from '../community-part/chatting/chatting.component
 import { ChatRoomComponent } from '../community-part/chatting/chat-room/chat-room.component';
 import { DoctorPreviewComponent } from './doctor-preview/doctor-preview.component';
 import { singlePostComponent } from './post/post.component';
+import { EditDetailsComponent } from './profile/edit-details/edit-details.component';
+import { EditGuard } from './profile/edit-details/edit.guard'
 
 const communityRoutes: Routes = [
     {
@@ -21,6 +23,11 @@ const communityRoutes: Routes = [
                 ]
             },
             { path: 'Profile/:id', component: ProfileComponent },
+            {
+                path: 'Profile/:id/edit',
+                component: EditDetailsComponent,
+                canActivate: [EditGuard]
+            },
             { path: 'Doctors', component: DoctorPreviewComponent },
         ]
     }
