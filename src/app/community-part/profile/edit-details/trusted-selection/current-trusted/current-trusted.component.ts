@@ -46,6 +46,7 @@ export class CurrentTrustedComponent implements OnInit {
               });
             })
         })
+
       })
     })
 

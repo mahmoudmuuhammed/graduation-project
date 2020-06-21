@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { EmergencyAreaComponent } from './emergency-area.component';
 import { EmergencyButtonComponent } from './emergency-button/emergency-button.component';
@@ -14,7 +15,8 @@ import { EmergenctBtnDirective } from 'src/app/directives/emergency-btn.directiv
     EmergenctBtnDirective
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports:[EmergencyAreaComponent]
 })

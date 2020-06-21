@@ -1,14 +1,14 @@
 <div class="userListMainDiv" #userList>
     <div class="searchDiv">
-        <input type="input" placeholder="serach by name">
+        <input type="input" placeholder="serach by name" (input)='filterUsers()'>
     </div>
     <div class="userListDiv row">
-        <div class="col-12 col-md-6" *ngFor='let user of users ;let i=index'>
+        <div class="col-12 col-md-6 animate fadeIn" *ngFor='let user of users ;let i=index'>
             <div class="userItem">
                 <div class="userData">
                     <a [routerLink]="['/community/Profile',user.uid]">
                         <img [src]='[usersMap?usersMap.get(user.uid):deafultImgSrc]'>
-                        <span>{{user.fullName | titlecase }}</span>
+                        <span>{{ user.fullName | titlecase }}</span>
                     </a>
                 </div>
                 <div class="addBtnDiv">
