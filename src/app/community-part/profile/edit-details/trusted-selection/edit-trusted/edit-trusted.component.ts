@@ -19,11 +19,11 @@ export class UserListComponent implements OnInit {
 
   constructor(private profileService: ProfileService,
     private authService: AuthService,
-    private render:Renderer2) { }
+    private render: Renderer2) { }
 
   ngOnInit() {
     this.getAllUsers();
-    this.profileService.removeTrustedUserSubject.subscribe(()=>this.getAllUsers())
+    this.profileService.removeTrustedUserSubject.subscribe(() => this.getAllUsers())
   }
 
   getAllUsers() {
@@ -36,10 +36,10 @@ export class UserListComponent implements OnInit {
         this.profileService.getUser(currentUser.uid).pipe(take(1)).subscribe(userData => {
           this.currentTrustedUsers = userData.trusted
 
-          this.currentTrustedUsers.length == 3? 
-            this.render.addClass(this.userList.nativeElement,'disabled'):
-            this.render.removeClass(this.userList.nativeElement,'disabled')
-          
+          this.currentTrustedUsers.length == 3 ?
+            this.render.addClass(this.userList.nativeElement, 'disabled') :
+            this.render.removeClass(this.userList.nativeElement, 'disabled')
+
 
           //filter user (not exist in trusted or not the current user)
           this.users = []
@@ -70,9 +70,11 @@ export class UserListComponent implements OnInit {
   }
 
   onSelectTrusted(event) {
-    this.profileService.addToTrusted(event.target.value);
-    this.getAllUsers();
-    this.profileService.newTrustedUserSubject.next()
+    this.profileService.addToTrusted(event.target.value)
+      .then(() => {
+        this.getAllUsers();
+        this.profileService.newTrustedUserSubject.next()
+      })
   }
 
 }

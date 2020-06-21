@@ -29,6 +29,7 @@ export class CurrentTrustedComponent implements OnInit {
   }
 
   getTrustedUsersData() {
+
     this.trustedUsers = []
     this.authService.currentUser.subscribe(currentUser => {
       this.firestore.getUser(currentUser.uid).pipe(take(1)).subscribe(currentUserData => {
