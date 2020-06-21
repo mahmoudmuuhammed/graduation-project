@@ -1,4 +1,5 @@
 <div class="container-fluid">
+
     <div class="gerneralDataArea" *ngIf="userData">
         <edit-general-data [userData]='userData'></edit-general-data>
     </div>
@@ -6,4 +7,9 @@
     <div class="doctorDataArea" *ngIf="userData && userData.userType.usertype=='Doctor'">
         <edit-doc-data [userData]='userData'></edit-doc-data>
     </div>
+
+    <div class="doctorDataArea" *ngIf="userData">
+        <trusted-selection [userId]='userData.uid'></trusted-selection>
+    </div>
+
 </div>

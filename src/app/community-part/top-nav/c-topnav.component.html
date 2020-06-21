@@ -56,14 +56,14 @@
                         <i class="fas fa-caret-down"></i>
                     </button>
                     <div class="collapse" id="AccountOptionDiv">
-                        <div class="optionDiv">
+                        <div class="optionDiv" [routerLink]='["/community/Profile",userId,"edit"]'>
                             <i class="fas fa-cog icon"></i>
                             <p>Settings</p>
-                         </div>
-                         <div class="optionDiv" (click)='onLogout()'>
+                        </div>
+                        <div class="optionDiv" (click)='onLogout()'>
                             <i class="fas fa-sign-out-alt icon"></i>
                             <p>Log Out</p>
-                         </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { UserModel } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
@@ -22,7 +22,7 @@ export class EditGeneralDataComponent implements OnInit {
   @ViewChild('cancelPasswordBtn') cancelPasswordBtn;
   constructor(private authService: AuthService,
     private profileService: ProfileService,
-    private router: Router) { }
+    private changeDetector: ChangeDetectorRef) { }
 
 
   ngOnInit(): void {
@@ -31,9 +31,8 @@ export class EditGeneralDataComponent implements OnInit {
 
   changePhoto(event) {
     this.profileService.changeUserPic(this.userData.uid, event.target.files[0])
-      .percentageChanges().subscribe(res => {
-        res == 100 ? this.loadImg() : "";
-      })
+      .then(() => { this.loadImg() })
+      .then(() => { this.profileService.photoChangedSubject.next() })
   }
 
   loadImg() {
@@ -47,25 +46,26 @@ export class EditGeneralDataComponent implements OnInit {
           this.userData.fullName = form.value.fullName
           this.cancelNameBtn.nativeElement.click()
         })
+        .then(() => { this.profileService.nameChangedSubject.next() })
     }
   }
 
   changeEmail(form: NgForm) {
     if (form.valid) {
-      this.profileService.changeEmail(form.value.email,form.value.password)
-      .then(()=>{
-        this.userData.email = form.value.email
+      this.profileService.changeEmail(form.value.email, form.value.password)
+        .then(() => {
+          this.userData.email = form.value.email
           this.cancelEmailBtn.nativeElement.click()
-      })
+        })
     }
   }
 
-  changePassword(form:NgForm){
+  changePassword(form: NgForm) {
     if (form.valid) {
-      this.profileService.changePassword(form.value.oldPassword,form.value.newPassword)
-      .then(()=>{
+      this.profileService.changePassword(form.value.oldPassword, form.value.newPassword)
+        .then(() => {
           this.cancelPasswordBtn.nativeElement.click()
-      })
+        })
     }
   }
 

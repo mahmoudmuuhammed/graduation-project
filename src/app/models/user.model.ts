@@ -9,6 +9,7 @@ export class UserModel {
     clappingCounter?: number;
     commentCounter?: number;
     postCounter?: number;
+    trusted?: [];
 };
 
 export class AccountType {

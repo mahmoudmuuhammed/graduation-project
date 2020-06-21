@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-12 p-sm-0">
+        <div class="contentDivContainer">
+            <div class="contentDiv">
+                <div class="actualDataDiv row">
+                    <div class="col-sm-3 col-12">
+                        <p class="description">Trusted people</p>
+                        <p>(up to 3)</p>
+                    </div>
+                    <div class="col-sm-9 col-12">
+                        <current-trusted></current-trusted>
+                    </div>
+                </div>
+                <button class="btn" editCollapse (click)='scrollDown()'>Edit</button>
+            </div>
+            <div class="editDiv animate fadeIn">
+                <edit-trusted></edit-trusted>
+                <div class="cancelEditDiv">
+                    <div>
+                        <button #cancelNameBtn type="button" editCollapse class="btn cancelBtn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

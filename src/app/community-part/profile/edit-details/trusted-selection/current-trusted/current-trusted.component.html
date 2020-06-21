@@ -1,0 +1,13 @@
+<div *ngIf="trustedUsers">
+    <div class="userDataDiv" *ngFor='let user of trustedUsers; let i=index'>
+        <div class="userData">
+            <a [routerLink]="['/community/Profile',user.uid]">
+                <img [src]="usersMap?usersMap.get(user.uid):deafultImgLink">
+                <span>{{user.fullName}}</span>
+            </a>
+        </div>
+        <div class="deleteBtnDiv">
+            <button class="btn btn-danger" value="{{user.uid}}" (click)='onRemoveFromTrusted($event)'>Remove</button>
+        </div>
+    </div>
+</div>

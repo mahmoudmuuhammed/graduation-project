@@ -7,6 +7,10 @@
   animation-duration: .2s !important;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   overflow-x: hidden;
   transition: .0s;
