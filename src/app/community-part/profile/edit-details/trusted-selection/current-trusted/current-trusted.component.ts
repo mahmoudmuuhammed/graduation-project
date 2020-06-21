@@ -12,7 +12,7 @@ import { take } from 'rxjs/operators';
 })
 export class CurrentTrustedComponent implements OnInit {
 
-  trustedUsers: UserModel[] = [];
+  trustedUsers: UserModel[] = []
   usersMap = new Map();
   deafultImgLink: string = '../../../../../../assets/images/DeafultUser.svg'
 
@@ -55,6 +55,8 @@ export class CurrentTrustedComponent implements OnInit {
   onRemoveFromTrusted(event) {
     this.profileService.removeTrustedUser(event.target.value).then(() => {
       this.render.setStyle(event.target.parentElement.parentElement, 'display', 'none')
-    }).then(() => this.profileService.removeTrustedUserSubject.next())
+    })
+      .then(() => this.profileService.removeTrustedUserSubject.next())
+      .then(() => this.trustedUsers.length--)
   }
 }

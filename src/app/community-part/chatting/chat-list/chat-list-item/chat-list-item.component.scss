@@ -49,6 +49,7 @@
         height: 40px;
         background-color: $light-primary-color;
         border-radius: 50%;
+        object-fit: cover;
     }
 
     &__info {
