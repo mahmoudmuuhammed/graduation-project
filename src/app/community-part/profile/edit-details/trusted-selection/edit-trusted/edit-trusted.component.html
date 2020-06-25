@@ -1,20 +1,42 @@
 <div class="userListMainDiv" #userList>
     <div class="searchDiv">
-        <input type="input" placeholder="serach by name">
+        <input type="input" placeholder="serach by name" #userSearchInput (input)='onFilteringUsers()'>
     </div>
-    <div class="userListDiv row">
-        <div class="col-12 col-md-6 animate fadeIn" *ngFor='let user of filterdUsers ;let i=index'>
-            <div class="userItem">
-                <div class="userData">
-                    <a [routerLink]="['/community/Profile',user.uid]">
-                        <img [src]='[usersMap?usersMap.get(user.uid):deafultImgSrc]'>
-                        <span>{{ user.fullName | titlecase }}</span>
-                    </a>
-                </div>
-                <div class="addBtnDiv">
-                    <button class="btn btn-success" value="{{user.uid}}" (click)='onSelectTrusted($event)'>Add</button>
+    <div class="userListDiv">
+
+        <!-- allUsers -->
+        <div class="row" *ngIf='!isSearching'>
+            <div class="col-12 col-md-6 animate fadeIn" *ngFor='let user of users ;let i=index'>
+                <div class="userItem">
+                    <div class="userData">
+                        <a [routerLink]="['/community/Profile',user.uid]">
+                            <img [src]='[usersMap?usersMap.get(user.uid):deafultImgSrc]'>
+                            <span>{{ user.fullName | titlecase }}</span>
+                        </a>
+                    </div>
+                    <div class="addBtnDiv">
+                        <button class="btn btn-success" value="{{user.uid}}" (click)='onSelectTrusted($event)'>Add</button>
+                    </div>
                 </div>
             </div>
         </div>
+        
+        <!-- filteredUsers -->
+        <div class="row" *ngIf='isSearching'>
+            <div class="col-12 col-md-6 animate fadeIn" *ngFor='let user of filterdUsers ;let i=index'>
+                <div class="userItem">
+                    <div class="userData">
+                        <a [routerLink]="['/community/Profile',user.uid]">
+                            <img [src]='[usersMap.get(user.uid)?usersMap.get(user.uid):deafultImgSrc]'>
+                            <span>{{ user.fullName | titlecase }}</span>
+                        </a>
+                    </div>
+                    <div class="addBtnDiv">
+                        <button class="btn btn-success" value="{{user.uid}}" (click)='onSelectTrusted($event)'>Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

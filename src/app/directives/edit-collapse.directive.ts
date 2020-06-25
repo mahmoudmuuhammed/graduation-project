@@ -12,13 +12,13 @@ export class EditCollapseDirective {
     @HostListener('click') collapseEditDiv() {
 
         if (this.el.nativeElement.classList.contains('cancelBtn')) {
-            const parent = this.el.nativeElement.parentNode.parentNode.parentNode;
+            const parent = this.el.nativeElement.closest('.editDiv');
             this.render.removeClass(parent, 'fadeIn')
             setTimeout(() => this.render.setStyle(parent, 'display', 'none'), 200)
             this.render.addClass(parent, 'fadeOut')
         }
         else {
-            const parent = this.el.nativeElement.parentNode.parentNode;
+            const parent = this.el.nativeElement.closest('.contentDivContainer')
             const editArea = parent.querySelector("div.editDiv")
             this.render.removeClass(editArea, 'fadeOut')
             this.render.addClass(editArea, 'fadeIn')

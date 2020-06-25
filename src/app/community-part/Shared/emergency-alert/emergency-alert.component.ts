@@ -31,6 +31,7 @@ export class EmergencyAlertComponent implements OnInit {
 
   onConfiremAlert() {
     this.shareService.emergencyConfirmSubject.next();
+    this.userData = null;
   }
 
 }

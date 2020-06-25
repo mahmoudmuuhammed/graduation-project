@@ -2,7 +2,7 @@
     <div class="userDataDiv animate fadeIn" *ngFor='let user of trustedUsers; let i=index'>
         <div class="userData">
             <a [routerLink]="['/community/Profile',user.uid]">
-                <img [src]="usersMap?usersMap.get(user.uid):deafultImgLink">
+                <img [src]="usersMap.get(user.uid)?usersMap.get(user.uid):deafultImgLink">
                 <span>{{user.fullName}}</span>
             </a>
         </div>

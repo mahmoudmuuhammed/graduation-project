@@ -1,8 +1,9 @@
 @import "../../../../styles/abstracts/variables";
 
-body{
+body {
     overflow-y: hidden;
 }
+
 .outerDiv {
     position: fixed;
     top: 0;
@@ -28,7 +29,7 @@ body{
                 border-radius: 50%;
                 display: block;
                 margin: 30px auto;
-                animation: imagePulsing 1s 1s ease-in-out infinite !important ;
+                animation: imagePulsing 1s 1s ease-in-out infinite !important;
             }
         }
 
@@ -40,52 +41,95 @@ body{
             }
         }
 
-        .AlertDescription{
-            p{
-               margin-top: 25px;
-               font-size: 20px;
-               text-align: center; 
+        .AlertDescription {
+            p {
+                margin-top: 25px;
+                font-size: 20px;
+                text-align: center;
             }
         }
 
-        .confirmBtnDiv{
-            .btn{
+        .confirmBtnDiv {
+            .btn {
                 background-color: $primary-color;
                 color: #fff;
                 display: block;
                 margin: 20px auto;
 
-                &:focus{
+                &:focus {
                     box-shadow: none;
                 }
             }
         }
 
-        .mapDiv{
+        .mapDiv {
             min-width: 700px;
+
+            agm-map {
+                height: 600px;
+                width: 100%;
+                float: right;
+            }
 
         }
     }
 
 }
 
-@keyframes imagePulsing{
-    0%{
+@media(max-width:768px) {
+    .outerDiv {
+        .innerDiv {
+            width: 95%;
+            height: 95%;
+
+            .imgDiv {
+                img {
+                    width: 100px;
+                    height: 100px;
+                    margin: 20px auto;
+                }
+            }
+
+            .AlertDescription {
+                p {
+                    margin-top: 15px;
+                }
+            }
+
+            .mapDiv {
+                width: 100%;
+                min-width: unset;
+
+                agm-map {
+                    height: 50vh;
+                }
+            }
+        }
+    }
+}
+
+@keyframes imagePulsing {
+    0% {
         transform: scale(1);
     }
-    10%{
+
+    10% {
         transform: scale(1.05);
     }
-    20%{
+
+    20% {
         transform: scale(1);
     }
-    40%{
+
+    40% {
         transform: scale(1.05);
     }
-    50%{
+
+    50% {
         transform: scale(1);
     }
-    100%{
+
+    100% {
         transform: scale(1);
     }
 }

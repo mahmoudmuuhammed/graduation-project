@@ -8,34 +8,29 @@
 
     .contentDiv {
         display: flex;
+        justify-content: space-between;
 
-        .actualDataDiv {
-            display: flex;
-            align-items: flex-start;
-            justify-content: flex-start;
-            width: 100%;
 
-            p {
-                font-size: 13px;
-                font-weight: 800;
-                color: #555;
-                margin-top: -3px;
-                padding-left: 20px;
-            }
-            
-            p.description {
-                font-weight: 600;
-                font-size: 16px;
-                font-family: inherit;
-                color: #333;
-                margin-top: 0;
-            }
+        p {
+            font-size: 13px;
+            font-weight: 800;
+            color: #555;
+            margin-top: -3px;
         }
+
+        p.description {
+            font-weight: 600;
+            font-size: 16px;
+            font-family: inherit;
+            color: #333;
+            margin-top: 0;
+        }
+
 
         .btn {
             color: $primary-color;
             font-size: 16px;
-            padding: 0px 20px;
+            padding: 0px 5px;
             height: 24px;
 
             &:focus {
@@ -111,14 +106,16 @@
         margin: 15px 0;
 
         .contentDiv {
-
             .actualDataDiv {
 
                 p {
                     font-size: 16px;
+                    padding-left: 0;
                 }
+
             }
         }
+
 
         .editDiv {
             .form-group {
@@ -135,12 +132,9 @@
     .contentDivContainer {
 
         .contentDiv {
-
-            .actualDataDiv {
-
-                p.description {
-                    padding-left: 0px;
-                }
+            margin: 0px -15px;
+            .btn{
+                padding: 0px 20px;
             }
         }
     }
