@@ -11,10 +11,10 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class UserListComponent implements OnInit {
 
-  users: UserModel[] = []
+  filterdUsers: UserModel[] = []
   deafultImgSrc = '../../../../../../assets//images/DeafultUser.svg'
   usersMap = new Map();
-  currentTrustedUsers: string[];
+  currentTrustedUsers: string[] = [];
   @ViewChild('userList') userList;
 
   constructor(private profileService: ProfileService,
@@ -36,23 +36,31 @@ export class UserListComponent implements OnInit {
         this.profileService.getUser(currentUser.uid).pipe(take(1)).subscribe(userData => {
           this.currentTrustedUsers = userData.trusted
 
-          //disable adding new user after reach 3 for trusted
-          this.currentTrustedUsers.length == 3 ?
-            this.render.addClass(this.userList.nativeElement, 'disabled') :
-            this.render.removeClass(this.userList.nativeElement, 'disabled')
+          this.filterdUsers = []
 
-          //filter user (not exist in trusted or not the current user)
-          this.users = []
-          allUsers.forEach((element) => {
-            if (!this.currentTrustedUsers.includes(element.uid) && element.uid != currentUser.uid) {
-              this.users.push(element)
-            }
-          });
+          //check for existance trusted
+          if (typeof this.currentTrustedUsers == 'undefined') {
+            this.filterdUsers = allUsers
+            //disable adding new user after reach 3 for trusted
+          }
 
+          else {
+            this.currentTrustedUsers.length == 3 ?
+              this.render.addClass(this.userList.nativeElement, 'disabled') :
+              this.render.removeClass(this.userList.nativeElement, 'disabled')
+
+            //filter user (not exist in trusted or not the current user)
+            allUsers.forEach((element) => {
+              if (!this.currentTrustedUsers.includes(element.uid) && element.uid != currentUser.uid) {
+                this.filterdUsers.push(element)
+              }
+            });
+          }
           // add users into map to attach their img to them
-          this.users.forEach(user => {
+          this.filterdUsers.forEach(user => {
             this.usersMap.set(user.uid, '')
           });
+
         })
           .add(() => {
 
@@ -74,10 +82,6 @@ export class UserListComponent implements OnInit {
         this.getAllUsers();
         this.profileService.newTrustedUserSubject.next()
       })
-  }
-
-  filterUsers() {
-
   }
 
 }

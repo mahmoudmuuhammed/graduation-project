@@ -31,18 +31,19 @@ export class TrustedComponent implements OnInit {
       this.profileService.getUser(currentUser.uid).pipe(take(1)).subscribe(currentUserData => {
 
         this.trustedUsers = [];
-        currentUserData.trusted.forEach(userId => {
-          this.profileService.getUser(userId).pipe(take(1)).subscribe((res: UserModel) => {
-            this.trustedUsers.push(res)
-          })
-            .add(() => {
-              this.trustedUsers.forEach(user => {
-                this.authService.getUserImgLink(user.uid).subscribe(imgLink => {
-                  this.usersMap.set(user.uid, imgLink)
-                })
-              });
+        if (typeof currentUserData.trusted != 'undefined')
+          currentUserData.trusted.forEach(userId => {
+            this.profileService.getUser(userId).pipe(take(1)).subscribe((res: UserModel) => {
+              this.trustedUsers.push(res)
             })
-        })
+              .add(() => {
+                this.trustedUsers.forEach(user => {
+                  this.authService.getUserImgLink(user.uid).subscribe(imgLink => {
+                    this.usersMap.set(user.uid, imgLink)
+                  })
+                });
+              })
+          })
       })
     })
   }

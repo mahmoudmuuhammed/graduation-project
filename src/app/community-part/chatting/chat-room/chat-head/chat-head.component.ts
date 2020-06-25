@@ -54,10 +54,10 @@ export class ChatHeadComponent implements OnChanges {
                         else {
                             this.sharedService.callingSubject.next({ channelName: Sender.uid + '_' + reciever.uid, state: true });
                             this.firestore.collection('videoCallNotification').add({
-                                caller: Sender.email,
+                                caller: Sender.displayName,
                                 callerID: Sender.uid,
                                 channelName: Sender.uid +'_'+ reciever.uid,
-                                receiver: reciever.email,
+                                receiver: reciever.fullName,
                                 receiverID: reciever.uid,
                                 receiverMsgToken: reciever.notification_token_id,
                             })

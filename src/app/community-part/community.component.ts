@@ -1,25 +1,33 @@
 import { Component, ElementRef, ViewChild, ChangeDetectorRef, OnInit } from '@angular/core';
 
-import { AgouraServic } from 'src/app/services/agora.service';
+import { NotificationService } from 'src/app/services/notification.service';
 import { SharedService } from '../services/shared.service'
 import { AuthService } from '../services/auth.service';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'community',
   templateUrl: './community.component.html',
   styleUrls: ['./community.component.scss'],
+
 })
 
 export class CommunityContainerComponent implements OnInit {
+
+  //for video call
   callerId: string;
   channelName: string
   callAccepted: boolean = false;
   callComming: boolean = false;
-  @ViewChild('callingAlert') callingAlert: ElementRef;
+
+  //for emergency alert
+  userId: string
+  longitude: number;
+  latitude: number;
+  isEmergencyComming: boolean = false;
+  isCallingEmergency: boolean = false;
 
   constructor(private sharedService: SharedService,
-    private agoraService: AgouraServic,
+    private notificationService: NotificationService,
     private changeDetector: ChangeDetectorRef,
     private authService: AuthService) { }
 
@@ -42,22 +50,35 @@ export class CommunityContainerComponent implements OnInit {
       }
     )
 
-    //subscribe to call notification
-    this.agoraService.requestPermission();
-    this.agoraService.receiveMessage();
-    this.agoraService.CallSubject.subscribe((notification) => {
+    //get permission for notification and get it 
+    this.notificationService.requestPermission();
+    this.notificationService.receiveNotifications();
+
+    //subscribe to inccoming call
+    this.notificationService.CallSubject.subscribe(notification => {
       this.callerId = notification.data.callerId
       this.channelName = notification.data.channelName
       this.callComming = true
       this.changeDetector.detectChanges();
     })
 
+    //subscribe to incomming emergency
+    this.notificationService.EmergencySubject.subscribe(notification => {
+      this.userId = notification.data.userId;
+      this.longitude = Number(notification.data.longitude)
+      this.latitude = Number(notification.data.latitude)
+      this.isEmergencyComming = true;
+      this.changeDetector.detectChanges();
+    })
+
+    //confirm emergency alert
+    this.sharedService.emergencyConfirmSubject.subscribe(() => {
+      this.isEmergencyComming = false;
+      this.notificationService.stopEmergencyRingtone();
+    })
+
     //update user status on changing browser tabs
     this.authService.updateStatusOnIdle()
-  }
-
-  prepareRoute(outlet: RouterOutlet) {
-    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation']
   }
 
 }

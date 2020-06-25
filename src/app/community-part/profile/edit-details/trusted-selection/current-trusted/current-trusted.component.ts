@@ -34,18 +34,20 @@ export class CurrentTrustedComponent implements OnInit {
     this.authService.currentUser.subscribe(currentUser => {
       this.firestore.getUser(currentUser.uid).pipe(take(1)).subscribe(currentUserData => {
 
-        currentUserData.trusted.forEach(userId => {
-          this.firestore.getUser(userId).pipe(take(1)).subscribe(res => {
-            this.trustedUsers.push(res)
-          })
-            .add(() => {
-              this.trustedUsers.forEach(user => {
-                this.authService.getUserImgLink(user.uid).subscribe(imgLink => {
-                  this.usersMap.set(user.uid, imgLink)
-                })
-              });
+        if (typeof currentUserData.trusted != 'undefined') {
+          currentUserData.trusted.forEach(userId => {
+            this.firestore.getUser(userId).pipe(take(1)).subscribe(res => {
+              this.trustedUsers.push(res)
             })
-        })
+              .add(() => {
+                this.trustedUsers.forEach(user => {
+                  this.authService.getUserImgLink(user.uid).subscribe(imgLink => {
+                    this.usersMap.set(user.uid, imgLink)
+                  })
+                });
+              })
+          })
+        }
 
       })
     })
@@ -56,7 +58,7 @@ export class CurrentTrustedComponent implements OnInit {
     this.profileService.removeTrustedUser(event.target.value).then(() => {
       this.render.setStyle(event.target.parentElement.parentElement, 'display', 'none')
     })
-      .then(() => this.profileService.removeTrustedUserSubject.next())
       .then(() => this.trustedUsers.length--)
+      .then(() => this.profileService.removeTrustedUserSubject.next())
   }
 }

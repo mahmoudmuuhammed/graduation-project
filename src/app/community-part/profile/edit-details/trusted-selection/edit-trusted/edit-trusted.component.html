@@ -1,9 +1,9 @@
 <div class="userListMainDiv" #userList>
     <div class="searchDiv">
-        <input type="input" placeholder="serach by name" (input)='filterUsers()'>
+        <input type="input" placeholder="serach by name">
     </div>
     <div class="userListDiv row">
-        <div class="col-12 col-md-6 animate fadeIn" *ngFor='let user of users ;let i=index'>
+        <div class="col-12 col-md-6 animate fadeIn" *ngFor='let user of filterdUsers ;let i=index'>
             <div class="userItem">
                 <div class="userData">
                     <a [routerLink]="['/community/Profile',user.uid]">

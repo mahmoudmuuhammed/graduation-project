@@ -14,10 +14,14 @@
     </div>
 </div>
 
-<div #callingAlert *ngIf="callComming">
+<div *ngIf="callComming">
     <callingAlert [callerID]='callerId'></callingAlert>
 </div>
 
-<div #videoCallDiv *ngIf="callAccepted">
+<div *ngIf="callAccepted">
     <videoCall [channelName]='channelName' [CallerId]="callerId"></videoCall>
+</div>
+
+<div *ngIf='isEmergencyComming'>
+    <emergency-alert [userId]='userId' [longitude]='longitude' [latitude]='latitude'></emergency-alert>
 </div>

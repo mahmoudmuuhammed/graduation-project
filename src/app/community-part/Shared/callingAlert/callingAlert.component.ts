@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, Renderer2, ElementRef, ViewEncapsulation } from '@angular/core';
 
-import { AgouraServic } from 'src/app/services/agora.service';
+import { NotificationService } from 'src/app/services/notification.service';
 import { SharedService } from 'src/app/services/shared.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { Observable } from 'rxjs';
 import { UserModel } from 'src/app/models/user.model';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { take } from 'rxjs/operators';
@@ -21,7 +20,7 @@ export class CallingComponent implements OnInit {
   userImgSrc: string = '../../../assets/images/DeafultUser.svg'
 
   constructor(private sharedServices: SharedService,
-    private agoraService: AgouraServic,
+    private notificationService: NotificationService,
     private firestore: FirestoreService,
     private authService: AuthService) { }
 
@@ -30,18 +29,16 @@ export class CallingComponent implements OnInit {
       this.callerData = res;
       this.authService.getUserImgLink(res.uid).subscribe(link=>this.userImgSrc=link)
     })
-
-
   }
 
   onAccept() {
     this.sharedServices.callAcceptance.next(true)
-    this.agoraService.stopRingtone();
+    this.notificationService.stopCallRingtone();
   }
 
   onDecline() {
     this.sharedServices.callAcceptance.next(false)
-    this.agoraService.stopRingtone();
+    this.notificationService.stopCallRingtone();
   }
 
 }

@@ -2,8 +2,6 @@ import { Component, OnInit, Input, ViewEncapsulation, ChangeDetectorRef } from '
 import { AngularAgoraRtcService, Stream } from 'angular-agora-rtc';
 import { SharedService } from 'src/app/services/shared.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { AgouraServic } from 'src/app/services/agora.service';
-import { ChattingService } from 'src/app/services/chatting.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { take } from 'rxjs/operators';
 

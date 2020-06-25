@@ -9,23 +9,19 @@ import { SharedModule } from '../shared/shared.module';
 import { TimelineModule } from './timeline/timeline.module';
 import { EmergencyAreaModule } from './emergency-alert/emergency-area.module';
 import { SharedCommunityModule } from './Shared/sharedCommunity.module';
+import { EditDetailsModule } from './profile/edit-details/edit-details.module';
+import { environment } from 'src/environments/environment';
+import { DoctorPreviewModule } from './doctor-preview/doctor-preview.module';
 
 import { CommunityContainerComponent } from './community.component';
 import { CommunitySidebarComponent } from './community-sidebar/community-sidebar.component';
 import { CommunityTopnavComponent } from './community-topnav/community-topnav.component';
-import { DoctorPreviewModule } from './doctor-preview/doctor-preview.module';
 import { TopnavComponent } from './top-nav/c-topnav.component';
 import { SidebarComponent } from './sidebar/c-sidebar.component';
-import { CallingComponent } from './callingAlert/callingAlert.component';
 import { VideoCallComponent } from './video-call/video-call.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NotificationItemComponent } from './notification/notification-item/notification-item.component';
 import { singlePostComponent } from './post/post.component';
-import { EditDetailsModule } from './profile/edit-details/edit-details.module';
-
-const agoraConfig: AgoraConfig = {
-    AppID: '0aa38281b2a84016b2c5b0ed745d13a0',
-  };
 
 @NgModule({
     declarations: [
@@ -34,7 +30,6 @@ const agoraConfig: AgoraConfig = {
         CommunityTopnavComponent,
         TopnavComponent,
         SidebarComponent,
-        CallingComponent,
         VideoCallComponent,
         NotificationComponent,
         NotificationItemComponent,
@@ -48,10 +43,10 @@ const agoraConfig: AgoraConfig = {
         ProfileModule,
         ChattingModule,
         DoctorPreviewModule,
-        AngularAgoraRtcModule.forRoot(agoraConfig),
         SharedCommunityModule,
         EmergencyAreaModule,
         EditDetailsModule,
+        AngularAgoraRtcModule.forRoot(environment.agoraConfig),
     ],
     exports: [
         CommunityContainerComponent,

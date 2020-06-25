@@ -62,7 +62,10 @@ export class AuthService {
                 createdTime: creationTime,
                 fullName: fullname,
                 clappingCounter: 0,
-                userType: userType
+                commentCounter:0,
+                postCounter:0,
+                userType: userType,
+                trusted:[]
             }).then(() => {
                 const filePath = `userPhoto/${user.uid}`;
                 const storageRef = this.storage.ref(filePath);

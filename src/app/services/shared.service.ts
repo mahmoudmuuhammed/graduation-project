@@ -11,7 +11,9 @@ export class SharedService {
     newNotification = new EventEmitter<boolean>();
     callAcceptance = new Subject<boolean>();
     callingSubject = new Subject<{ channelName: string, state: boolean }>();
+    emergencyConfirmSubject = new Subject();
     userListShowing = new Subject<boolean>();
+
 
     constructor() { }
 }

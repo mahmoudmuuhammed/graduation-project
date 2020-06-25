@@ -22,6 +22,9 @@ export const environment = {
   },
   agoraConfig: {
     AppID: '0aa38281b2a84016b2c5b0ed745d13a0',
+  },
+  agmConfig: {
+    apiKey: 'AIzaSyAk4KAd9kRaZpiz3bPgQcEgUjW80pScu8o',
   }
 }
 

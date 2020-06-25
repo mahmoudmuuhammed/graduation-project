@@ -7,7 +7,7 @@ export const videoCallNotification =
         .onCreate((msgData) => {
             const message = msgData.data();
             const receiverMsgToken = message?.receiverMsgToken;
-            const clickAction: string = 'com.example.medkit.activities.VideoChatActivity'
+            const clickAction: string = 'VideoChatActivity'
 
             const payload = {
                 data: {
@@ -27,19 +27,21 @@ export const commentNotification =
     functions.firestore.document('Users/{userId}/Notification/{notificationId}')
         .onCreate((notification) => {
             const notificationData = notification.data();
-            const recieverRef = notification.ref;
-            const recieverUserRef = recieverRef.parent.parent;
-            recieverUserRef?.get().then((user) => {
-                const userData = user.data();
-                const recieverMsgToken = userData?.notification_token_id
-                const payload = {
-                    notification: {
-                        title: notificationData?.message,
-                        body: 'from ' + notificationData?.from_full_name
+            if(notificationData?.message =='New comment'){
+                const recieverRef = notification.ref;
+                const recieverUserRef = recieverRef.parent.parent;
+                recieverUserRef?.get().then((user) => {
+                    const userData = user.data();
+                    const recieverMsgToken = userData?.notification_token_id
+                    const payload = {
+                        notification: {
+                            title: notificationData?.message,
+                            body: 'from ' + notificationData?.from_full_name
+                        }
                     }
-                }
-                return admin.messaging().sendToDevice(recieverMsgToken, payload)
-            }).catch((err) => console.log(err))
+                    return admin.messaging().sendToDevice(recieverMsgToken, payload)
+                }).catch((err) => console.log(err))
+            }
         })
 
 export const postCounter =
@@ -123,17 +125,25 @@ export const chatNotification =
 
                         if (msgData?.msgtype == 0) {
                             payload = {
+                                data: {
+                                    toUid: res.data()?.uid
+                                },
                                 notification: {
                                     title: 'New mesage from ' + senderName,
-                                    body: msgData?.msg
+                                    body: msgData?.msg,
+                                    click_action: 'ChatActivity'
                                 }
                             }
                         }
                         else {
                             payload = {
+                                data: {
+                                    toUid: receiverId
+                                },
                                 notification: {
                                     title: 'New file received from ' + senderName,
-                                    body: msgData?.filename
+                                    body: msgData?.filename,
+                                    click_action: 'ChatActivity'
                                 }
                             }
                         }
@@ -141,4 +151,57 @@ export const chatNotification =
                     })
                 })
             })
+        })
+
+
+export const emrgencyNotification =
+    functions.firestore.document('Trusted_Alert/{id}')
+        .onCreate(alert => {
+
+            let promises: any[] = []
+            const alertData = alert.data();
+            const userId: string = alertData?.userId;
+            let ReceiverData: any;
+
+            return admin.firestore().doc(`Users/${userId}`).get().then(sender => {
+                let trustedUsers = sender.data()?.trusted
+
+                trustedUsers.forEach((trustedUserId: string) => {
+
+                    admin.firestore().collection(`Users/${trustedUserId}/Notification`).add({
+                        createdTime: Date.now(),
+                        from: userId,
+                        from_full_name: sender.data()?.fullName,
+                        message: `${sender.data()?.fullName} was in danger contact him`,
+                        read: false
+                    }).then(ref => {
+                        admin.firestore().doc(`Users/${trustedUserId}/Notification/${ref.id}`).update({
+                            n_id: ref.id
+                        })
+                    })
+
+                    promises.push(
+                        admin.firestore().doc(`Users/${trustedUserId}`).get().then(receiver => {
+
+                            ReceiverData = receiver.data();
+                            let payload = {
+                                data: {
+                                    longitude: alertData?.userLongitude,
+                                    latitude: alertData?.userLatitude,
+                                    userId:alertData?.userId
+                                },
+                                notification: {
+                                    title: `${sender.data()?.fullName} in danger`,
+                                    body: 'contact with him now',
+                                }
+                            }
+
+                            admin.messaging().sendToDevice(ReceiverData?.notification_token_id, payload)
+                        })
+                    )
+                })
+                return Promise.all(promises)
+
+            })
+
         })
