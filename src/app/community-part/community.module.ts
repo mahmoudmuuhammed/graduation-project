@@ -12,6 +12,7 @@ import { SharedCommunityModule } from './Shared/sharedCommunity.module';
 import { EditDetailsModule } from './profile/edit-details/edit-details.module';
 import { environment } from 'src/environments/environment';
 import { DoctorPreviewModule } from './doctor-preview/doctor-preview.module';
+import { AgmCoreModule } from '@agm/core'
 
 import { CommunityContainerComponent } from './community.component';
 import { CommunitySidebarComponent } from './community-sidebar/community-sidebar.component';
@@ -22,6 +23,7 @@ import { VideoCallComponent } from './video-call/video-call.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NotificationItemComponent } from './notification/notification-item/notification-item.component';
 import { singlePostComponent } from './post/post.component';
+import { EmergencyComponent } from './emergency/emergency.component';
 
 @NgModule({
     declarations: [
@@ -34,6 +36,7 @@ import { singlePostComponent } from './post/post.component';
         NotificationComponent,
         NotificationItemComponent,
         singlePostComponent,
+        EmergencyComponent,
     ],
     imports: [
         CommonModule,
@@ -47,6 +50,7 @@ import { singlePostComponent } from './post/post.component';
         EmergencyAreaModule,
         EditDetailsModule,
         AngularAgoraRtcModule.forRoot(environment.agoraConfig),
+        AgmCoreModule.forRoot(environment.agmConfig)
     ],
     exports: [
         CommunityContainerComponent,

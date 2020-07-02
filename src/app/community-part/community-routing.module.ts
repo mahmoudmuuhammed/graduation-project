@@ -10,6 +10,7 @@ import { DoctorPreviewComponent } from './doctor-preview/doctor-preview.componen
 import { singlePostComponent } from './post/post.component';
 import { EditDetailsComponent } from './profile/edit-details/edit-details.component';
 import { EditGuard } from './profile/edit-details/edit.guard'
+import { EmergencyComponent } from './emergency/emergency.component';
 
 const communityRoutes: Routes = [
     {
@@ -17,6 +18,7 @@ const communityRoutes: Routes = [
             { path: '', component: TimelineComponent },
             { path: 'Timeline', component: TimelineComponent },
             { path: 'Post/:postId', component: singlePostComponent },
+            { path: 'Emergency/:emergencyId', component: EmergencyComponent },
             {
                 path: 'Chat', component: ChattingComponent, children: [
                     { path: ':id', component: ChatRoomComponent }

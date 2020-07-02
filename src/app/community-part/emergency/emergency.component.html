@@ -1,0 +1,27 @@
+<div class="row" *ngIf="userData">
+    <div class="col-12 emergecyDivOuter">
+        <div class="emergecyDivInner">
+            <div class="userInf">
+                <div class="imgDiv">
+                    <img src="{{userImgLink}}">
+                </div>
+                <div class="userNameDiv">
+                    <a [routerLink]="['/community/Profile',userData.uid]">{{userData.fullName | titlecase}}</a>
+                </div>
+            </div>
+            <div class="userMsg">
+                <span> was in danger at</span>
+                <span class="timeSpan"> {{emergencyData.createdTime | date:'d,LLL h:m aa'}}</span>
+                <span> in this location</span>
+            </div>
+            <div class="mapDiv">
+                <agm-map [disableDoubleClickZoom]="true" [streetViewControl]="false" [zoom]="15" [latitude]='latitude'
+                    [longitude]='longitude'>
+
+                    <agm-marker [latitude]='latitude' [longitude]='longitude'></agm-marker>
+
+                </agm-map>
+            </div>
+        </div>
+    </div>
+</div>

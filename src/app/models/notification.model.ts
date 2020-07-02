@@ -6,4 +6,5 @@ export class Notification {
     n_id:string
     message:string
     read: boolean
+    emergencyId?:string
 };

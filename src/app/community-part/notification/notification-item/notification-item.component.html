@@ -1,10 +1,10 @@
-<a routerLink="Post/{{notificationData?.post_id}}" (click)='changeReadState()'>
+<a routerLink="{{notificationLink}}" (click)='changeReadState()'>
     <div class="notificationContentDiv" [ngClass]="{'read':isRead}">
         <img alt="" src="{{docImgUrl}}">
         <div>
             <p>
                 <a>{{notificationData?.from_full_name}}</a>
-                has commented on your post
+                {{notificationText}}
             </p>
             <p class="notificationTime">in {{notificationData?.createdTime |date:'d,LLL h:m aa'}}</p>
         </div>

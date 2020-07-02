@@ -20,7 +20,10 @@ export class EmegencyService {
                     let currentLongitude = pos.coords.longitude
                     let currentLatitude = pos.coords.latitude
                     let userId = this.user.uid
-                    this.afs.collection<Emergency>('Trusted_Alert').add({
+                    let docId = this.afs.createId()
+                    this.afs.doc<Emergency>(`Trusted_Alert/${docId}`).set({
+                        emergencyId: docId,
+                        createdTime: Date.now(),
                         userId: userId,
                         userLongitude: currentLongitude.toString(),
                         userLatitude: currentLatitude.toString()
@@ -30,5 +33,9 @@ export class EmegencyService {
                     enableHighAccuracy: true
                 };
             });
+    }
+
+    getEmegencyData(id: string) {
+        return this.afs.doc(`Trusted_Alert/${id}`).valueChanges()
     }
 }

@@ -58,7 +58,6 @@ export class CurrentTrustedComponent implements OnInit {
     this.profileService.removeTrustedUser(event.target.value).then(() => {
       this.render.setStyle(event.target.parentElement.parentElement, 'display', 'none')
     })
-      .then(() => this.trustedUsers.length--)
       .then(() => this.profileService.removeTrustedUserSubject.next())
   }
 }

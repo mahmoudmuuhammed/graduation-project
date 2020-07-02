@@ -9,10 +9,14 @@ import { FeedsService } from 'src/app/services/feeds.service';
   templateUrl: './notification-item.component.html',
   styleUrls: ['./notification-item.component.scss']
 })
+
 export class NotificationItemComponent implements OnInit {
+
   @Input() notificationData: Notification;
   isRead: boolean = false;
   docImgUrl: string = ''
+  notificationText: string = ''
+  notificationLink: string = ''
 
   constructor(private authService: AuthService, private feedsService: FeedsService) { }
 
@@ -21,6 +25,15 @@ export class NotificationItemComponent implements OnInit {
     this.authService.getUserImgLink(this.notificationData.from).subscribe(imgUrl => {
       this.docImgUrl = imgUrl
     })
+
+    if(this.notificationData.message=='has commented on your post'){
+      this.notificationText = 'has commented on your post'
+      this.notificationLink=`/community/Post/${this.notificationData.post_id}`
+    }
+    else if(this.notificationData.message=='was in danger contact him'){
+      this.notificationText = 'was in danger click for more information'
+      this.notificationLink=`/community/Emergency/${this.notificationData.emergencyId}`
+    }
   }
 
   changeReadState() {

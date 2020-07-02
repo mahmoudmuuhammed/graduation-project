@@ -89,7 +89,6 @@ export class UserListComponent implements OnInit {
         this.profileService.newTrustedUserSubject.next()
         this.userSearchInput.nativeElement.value=''
       })
-      .then(()=>this.onFilteringUsers())
   }
 
   onFilteringUsers() {

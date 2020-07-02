@@ -154,7 +154,7 @@ export class AuthService {
     updateStatusOnIdle() {
         document.onvisibilitychange = (e) => {
             if (document.visibilityState === 'hidden') {
-                this.updateUserStatus('away');
+                this.updateUserStatus('busy');
             } else {
                 this.updateUserStatus('online');
             };
