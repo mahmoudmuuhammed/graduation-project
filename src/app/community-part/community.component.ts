@@ -3,6 +3,7 @@ import { Component, ElementRef, ViewChild, ChangeDetectorRef, OnInit } from '@an
 import { NotificationService } from 'src/app/services/notification.service';
 import { SharedService } from '../services/shared.service'
 import { AuthService } from '../services/auth.service';
+import { DoctorsService } from '../services/doctors.service';
 
 @Component({
   selector: 'community',
@@ -26,10 +27,14 @@ export class CommunityContainerComponent implements OnInit {
   isEmergencyComming: boolean = false;
   isCallingEmergency: boolean = false;
 
+  //for doctor prescription input
+  isPrescriptionDashboard: boolean = false;
+
   constructor(private sharedService: SharedService,
     private notificationService: NotificationService,
     private changeDetector: ChangeDetectorRef,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private doctorsService: DoctorsService) { }
 
   ngOnInit() {
     //Making Call
@@ -79,6 +84,11 @@ export class CommunityContainerComponent implements OnInit {
 
     //update user status on changing browser tabs
     this.authService.updateStatusOnIdle()
+
+    //subscribe to preciption dashboard
+    this.doctorsService.preciptionDashBoardSubject.subscribe(res => {
+      this.isPrescriptionDashboard = res;
+    })
   }
 
 }

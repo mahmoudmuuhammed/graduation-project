@@ -4,6 +4,7 @@ import { SharedService } from 'src/app/services/shared.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { take } from 'rxjs/operators';
+import { DoctorsService } from 'src/app/services/doctors.service';
 
 @Component({
   selector: 'videoCall',
@@ -23,7 +24,8 @@ export class VideoCallComponent implements OnInit {
     private detectChange: ChangeDetectorRef,
     private sharedService: SharedService,
     private authService: AuthService,
-    private firestore: FirestoreService) {
+    private firestore: FirestoreService,
+    private doctorService: DoctorsService) {
     this.agoraService.createClient();
   }
 
@@ -50,6 +52,12 @@ export class VideoCallComponent implements OnInit {
     this.agoraService.client.leave();
     this.agoraService.client.unpublish(this.localStream)
     this.sharedService.callingSubject.next({ channelName: '', state: false });
+    this.authService.currentUser.subscribe(res => {
+      if (this.doctorService.isUserDoctor(res.uid) == true) {
+        console.log('fffffff')
+        this.doctorService.preciptionDashBoardSubject.next(true)
+      }
+    })
   }
 
   private subscribeToStreams() {

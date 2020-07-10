@@ -11,6 +11,8 @@ import { singlePostComponent } from './post/post.component';
 import { EditDetailsComponent } from './profile/edit-details/edit-details.component';
 import { EditGuard } from './profile/edit-details/edit.guard'
 import { EmergencyComponent } from './emergency/emergency.component';
+import { TrustedSelectionComponent } from './trusted-selection/trusted-selection.component';
+import { PrescriptionsComponent } from './prescriptions/prescriptions.component';
 
 const communityRoutes: Routes = [
     {
@@ -31,6 +33,8 @@ const communityRoutes: Routes = [
                 canActivate: [EditGuard]
             },
             { path: 'Doctors', component: DoctorPreviewComponent },
+            { path: 'Trusted', component: TrustedSelectionComponent },
+            { path: 'Prescription', component: PrescriptionsComponent },
         ]
     }
 ];

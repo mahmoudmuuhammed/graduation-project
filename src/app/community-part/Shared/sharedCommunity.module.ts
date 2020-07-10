@@ -17,6 +17,7 @@ import { UpvotesComponent } from './upvotes/upvotes.component';
 import { DoctorBookingComponent } from './doctor-booking/doctor-booking.component';
 import { EmergencyAlertComponent } from './emergency-alert/emergency-alert.component';
 import { CallingComponent } from './callingAlert/callingAlert.component';
+import { PrescriptionDashboardComponent } from './prescription-dashboard/prescription-dashboard.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { CallingComponent } from './callingAlert/callingAlert.component';
         UpvotesComponent,
         DoctorBookingComponent,
         EmergencyAlertComponent,
-        CallingComponent
+        CallingComponent,
+        PrescriptionDashboardComponent
     ],
     imports: [
         CommonModule,
@@ -48,7 +50,8 @@ import { CallingComponent } from './callingAlert/callingAlert.component';
         UpvotesComponent,
         DoctorBookingComponent,
         CallingComponent,
-        EmergencyAlertComponent
+        EmergencyAlertComponent,
+        PrescriptionDashboardComponent
     ],
 })
 

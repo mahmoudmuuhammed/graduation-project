@@ -25,7 +25,7 @@ export class UserListComponent implements OnInit {
     private render: Renderer2) { }
 
   ngOnInit() {
-    setTimeout(() => this.getAllUsers(), 2000)
+    this.getAllUsers()
     this.profileService.removeTrustedUserSubject.subscribe(() => {
       this.getAllUsers()
       this.isSearching = false

@@ -27,8 +27,8 @@ export class DoctorPreviewComponent implements OnInit {
   }
 
   getDoctor() {
-    this.doctorsList = this.doctorsService.getDoctors(this.selectedSpeciality);
-    this.doctorsService.getDoctors(this.selectedSpeciality).pipe(take(1)).subscribe(res => {
+    this.doctorsList = this.doctorsService.getDoctors();
+    this.doctorsService.getDoctors().pipe(take(1)).subscribe(res => {
       this.doctorListSnapshot = res
     })
   }

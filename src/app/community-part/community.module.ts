@@ -24,6 +24,12 @@ import { NotificationComponent } from './notification/notification.component';
 import { NotificationItemComponent } from './notification/notification-item/notification-item.component';
 import { singlePostComponent } from './post/post.component';
 import { EmergencyComponent } from './emergency/emergency.component';
+import { sideNavDescribtionDirective } from '../directives/sideNavDescription.directive';
+import { TrustedSelectionComponent } from './trusted-selection/trusted-selection.component';
+import { CurrentTrustedComponent } from './trusted-selection/current-trusted/current-trusted.component';
+import { UserListComponent } from './trusted-selection/edit-trusted/edit-trusted.component';
+import { PrescriptionsComponent } from './prescriptions/prescriptions.component';
+import { PrescriptionItemComponent } from './prescriptions/prescription-item/prescription-item.component';
 
 @NgModule({
     declarations: [
@@ -37,6 +43,12 @@ import { EmergencyComponent } from './emergency/emergency.component';
         NotificationItemComponent,
         singlePostComponent,
         EmergencyComponent,
+        sideNavDescribtionDirective,
+        TrustedSelectionComponent,
+        CurrentTrustedComponent,
+        UserListComponent,
+        PrescriptionsComponent,
+        PrescriptionItemComponent
     ],
     imports: [
         CommonModule,
@@ -55,7 +67,7 @@ import { EmergencyComponent } from './emergency/emergency.component';
     exports: [
         CommunityContainerComponent,
     ],
-    providers:[]
+    providers: []
 })
 
 export class CommunityModule { }

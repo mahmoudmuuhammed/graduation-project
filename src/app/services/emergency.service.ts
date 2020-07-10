@@ -22,7 +22,7 @@ export class EmegencyService {
                     let userId = this.user.uid
                     let docId = this.afs.createId()
                     this.afs.doc<Emergency>(`Trusted_Alert/${docId}`).set({
-                        emergencyId: docId,
+                        locationKey: docId,
                         createdTime: Date.now(),
                         userId: userId,
                         userLongitude: currentLongitude.toString(),

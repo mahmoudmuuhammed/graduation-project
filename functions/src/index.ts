@@ -26,24 +26,42 @@ export const videoCallNotification =
 
 
 export const commentNotification =
-    functions.firestore.document('Users/{userId}/Notification/{notificationId}')
-        .onCreate((notification) => {
-            const notificationData = notification.data();
-            if (notificationData?.message == 'has commented on your post') {
-                const recieverRef = notification.ref;
-                const recieverUserRef = recieverRef.parent.parent;
-                recieverUserRef?.get().then((user) => {
-                    const userData = user.data();
-                    const recieverMsgToken = userData?.notification_token_id
-                    const payload = {
-                        notification: {
-                            title: 'new comment on your post',
-                            body: 'from ' + notificationData?.from_full_name
-                        }
-                    }
-                    return admin.messaging().sendToDevice(recieverMsgToken, payload)
-                }).catch((err) => console.log(err))
-            }
+    functions.firestore.document('Posts/{postId}/Comments/{commentId}')
+        .onCreate((comment) => {
+
+            const commentData = comment.data();
+            const commentRef = comment.ref;
+            const postRef = commentRef.parent.parent;
+            return postRef?.get().then((post) => {
+                const postData = post.data();
+                if (postData?.userID != commentData?.userId) {
+                    admin.firestore().collection(`Users/${postData?.userID}/Notification`).add({
+                        createdTime: Date.now(),
+                        from: commentData?.userId,
+                        from_full_name: commentData?.userName,
+                        message: 'has commented on your post',
+                        post_id: postData?.postKey,
+                        read: false,
+                        type: 1
+                    }).then((ref) => {
+                        admin.firestore().doc(`Users/${postData?.userID}/Notification/${ref.id}`).update({
+                            n_id: ref.id
+                        })
+                    }).then(() => {
+                        admin.firestore().doc(`Users/${postData?.userID}`).get().then(user => {
+                            const userData = user.data();
+                            const token = userData?.notification_token_id;
+                            const payload = {
+                                notification: {
+                                    title: 'new comment on your post',
+                                    body: 'from ' + commentData?.userName
+                                }
+                            }
+                            return admin.messaging().sendToDevice(token, payload)
+                        })
+                    })
+                }
+            })
         })
 
 
@@ -85,15 +103,16 @@ export const commentCounterOnDelete =
 
 
 
-export const clappingCounter =
+export const clappingCounterAndNotification =
     functions.firestore.document('Posts/{postId}/Comments/{CommentId}')
         .onUpdate(comment => {
             const newCommentData = comment.after.data();
             const oldCommentData = comment.before.data();
             const newClapping = newCommentData?.clappings
             const oldClapping = oldCommentData?.clappings
+            const postRef = comment.before.ref.parent.parent
             let oldClappingCount: number = 0, newClappingCount: number = 0, changeValue: number = 0;
-            const userId = newCommentData?.userId
+            const commenterId = newCommentData?.userId
 
             Object.values(oldClapping).forEach((value) => {
                 oldClappingCount += Number(value)
@@ -106,45 +125,50 @@ export const clappingCounter =
             else if (newClappingCount < oldClappingCount) { changeValue = -1 }
             else { changeValue = 0 }
 
-            return admin.firestore().doc(`Users/${userId}`).update({ clappingCounter: admin.firestore.FieldValue.increment(changeValue) })
-                // .then(() => {
-                //     let userId
-                //     Object.keys(newClapping).forEach((newKey) => {
-                //         if (!oldClapping.hasOwnProperty(newKey)) {
-                //             userId = newKey;
-                //         }
-                //     })
+            return admin.firestore().doc(`Users/${commenterId}`).update({ clappingCounter: admin.firestore.FieldValue.increment(changeValue) })
+                .then(() => {
+                    if (newClappingCount > oldClappingCount) {
 
-                //     console.log(userId)
-                //     return admin.firestore().doc(`Users/${userId}`).get().then(votter => {
-                //         let votterData = votter.data();
+                        let clapperId: string = '';
+                        Object.keys(newClapping).forEach((newKey) => {
+                            if (!oldClapping.hasOwnProperty(newKey)) {
+                                clapperId = newKey;
+                            }
+                        })
 
-                //         admin.firestore().collection(`Users/${oldCommentData?.userID}/Notification`).add({
-                //             createdTime: Date.now(),
-                //             from: votterData?.uid,
-                //             from_full_name: votterData?.fullName,
-                //             message: `clapped on your comment`,
-                //             read: false
-                //         })
-                //             .then(ref => {
-                //                 admin.firestore().doc(`Users/${oldCommentData?.userID}/Notification/${ref.id}`).update({
-                //                     n_id: ref.id
-                //                 })
-
-                //                 admin.firestore().doc(`Users/${oldCommentData?.userID}`).get().then(poster => {
-                //                     let payload = {
-                //                         notification: {
-                //                             title: `clapped on your comment`,
-                //                             body: ` ${votterData?.fullName}`
-                //                         }
-                //                     }
-                //                     admin.messaging().sendToDevice(poster.data()?.notification_token_id, payload)
-                //                 })
-                //             })
-
-                //     })
-
-                // })
+                        if (newCommentData?.userId != clapperId) {
+                            return admin.firestore().doc(`Users/${clapperId}`).get().then(clapper => {
+                                postRef?.get().then(post => {
+                                    let clapperData = clapper.data();
+                                    admin.firestore().collection(`Users/${commenterId}/Notification`).add({
+                                        createdTime: Date.now(),
+                                        from: clapperData?.uid,
+                                        from_full_name: clapperData?.fullName,
+                                        message: `clapped on your comment`,
+                                        post_id: post.data()?.postKey,
+                                        type: 1,
+                                        read: false
+                                    }).then(ref => {
+                                        admin.firestore().doc(`Users/${commenterId}/Notification/${ref.id}`).update({
+                                            n_id: ref.id
+                                        })
+                                    }).then(() => {
+                                        return admin.firestore().doc(`Users/${commenterId}`).get().then(commenter => {
+                                            let payload = {
+                                                notification: {
+                                                    title: `clapped on your comment`,
+                                                    body: ` ${clapperData?.fullName}`
+                                                }
+                                            }
+                                            admin.messaging().sendToDevice(commenter.data()?.notification_token_id, payload)
+                                        })
+                                    })
+                                })
+                            })
+                        }
+                    }
+                    return
+                })
         })
 
 export const chatNotification =
@@ -223,7 +247,8 @@ export const emrgencyNotification =
                         from: userId,
                         from_full_name: sender.data()?.fullName,
                         message: `was in danger contact him`,
-                        emergencyId:alertData?.emergencyId,
+                        emergencyId: alertData?.locationKey,
+                        type: 2,
                         read: false
                     }).then(ref => {
                         admin.firestore().doc(`Users/${trustedUserId}/Notification/${ref.id}`).update({
@@ -276,29 +301,31 @@ export const votingNotification =
             return admin.firestore().doc(`Users/${userId}`).get().then(votter => {
                 let votterData = votter.data();
 
-                admin.firestore().collection(`Users/${oldPostData?.userID}/Notification`).add({
-                    createdTime: Date.now(),
-                    from: votterData?.uid,
-                    from_full_name: votterData?.fullName,
-                    message: `votted on yout post`,
-                    read: false
-                })
-                    .then(ref => {
-                        admin.firestore().doc(`Users/${oldPostData?.userID}/Notification/${ref.id}`).update({
-                            n_id: ref.id
-                        })
-
-                        admin.firestore().doc(`Users/${oldPostData?.userID}`).get().then(poster => {
-                            let payload = {
-                                notification: {
-                                    title: `new vote on your post`,
-                                    body: ` from ${votterData?.fullName}`
-                                }
-                            }
-                            admin.messaging().sendToDevice(poster.data()?.notification_token_id, payload)
-                        })
+                if(newPostData?.postKey != votterData?.uid){
+                    admin.firestore().collection(`Users/${oldPostData?.userID}/Notification`).add({
+                        createdTime: Date.now(),
+                        from: votterData?.uid,
+                        from_full_name: votterData?.fullName,
+                        message: `votted on yout post`,
+                        post_id: oldPostData?.postKey,
+                        type: 1,
+                        read: false,
                     })
-
+                        .then(ref => {
+                            admin.firestore().doc(`Users/${oldPostData?.userID}/Notification/${ref.id}`).update({
+                                n_id: ref.id
+                            })
+    
+                            admin.firestore().doc(`Users/${oldPostData?.userID}`).get().then(poster => {
+                                let payload = {
+                                    notification: {
+                                        title: `new vote on your post`,
+                                        body: ` from ${votterData?.fullName}`
+                                    }
+                                }
+                                admin.messaging().sendToDevice(poster.data()?.notification_token_id, payload)
+                            })
+                        })
+                }
             })
-
         })

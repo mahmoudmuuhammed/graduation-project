@@ -1,4 +1,4 @@
-@import "../../../../../../styles/abstracts/variables";
+@import "../../../../styles/abstracts/variables";
 
 
 .userListMainDiv {
@@ -77,7 +77,7 @@
     &.disabled {
         position: relative;
         opacity: .5;
-        
+
         &::after {
             content: '';
             position: absolute;
@@ -87,6 +87,14 @@
             left: 0px;
             z-index: 1;
             cursor: not-allowed;
+        }
+    }
+}
+
+@media (max-width:576px) {
+    .userListMainDiv {
+        .searchDiv {
+            width: 100%;
         }
     }
 }

@@ -116,7 +116,7 @@ export class FeedsService {
 
         this.db.doc(`Posts/${postId}`).update({ commentCounter: firestore.FieldValue.increment(1) })
 
-        this.notificationSetup(postId)
+        //this.notificationSetup(postId)
     }
 
     setupClapping(postId: string, commentId: string, clapValue: number) {
@@ -139,24 +139,24 @@ export class FeedsService {
         return this.db.doc<Comment>(path).valueChanges();
     }
 
-    notificationSetup(postId: string) {
-        this.db.doc<Post>(`Posts/${postId}`).valueChanges().pipe(take(1)).subscribe(docData => {
-            const postUserID = docData.userID
-            if (postUserID != this.auth.auth.currentUser.uid) {
-                const NotificationId = this.db.createId();
-                const data: Notification = {
-                    createdTime: Date.now(),
-                    from: this.auth.auth.currentUser.uid,
-                    from_full_name: this.auth.auth.currentUser.displayName,
-                    post_id: postId,
-                    n_id: NotificationId,
-                    message: 'has commented on your post',
-                    read: false
-                }
-                this.db.doc(`Users/${postUserID}/Notification/${NotificationId}`).set(data)
-            }
-        })
-    }
+    // notificationSetup(postId: string) {
+    //     this.db.doc<Post>(`Posts/${postId}`).valueChanges().pipe(take(1)).subscribe(docData => {
+    //         const postUserID = docData.userID
+    //         if (postUserID != this.auth.auth.currentUser.uid) {
+    //             const NotificationId = this.db.createId();
+    //             const data: Notification = {
+    //                 createdTime: Date.now(),
+    //                 from: this.auth.auth.currentUser.uid,
+    //                 from_full_name: this.auth.auth.currentUser.displayName,
+    //                 post_id: postId,
+    //                 n_id: NotificationId,
+    //                 message: 'has commented on your post',
+    //                 read: false
+    //             }
+    //             this.db.doc(`Users/${postUserID}/Notification/${NotificationId}`).set(data)
+    //         }
+    //     })
+    // }
 
     getNotifications(userId: string) {
         this.notificationCollection = this.db.collection(`Users/${userId}/Notification`,

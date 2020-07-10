@@ -1,0 +1,108 @@
+@import "../../../styles/abstracts/variables";
+
+
+.contentDiv {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin-top: 20px;
+
+    p {
+        font-size: 14px;
+        font-weight: 800;
+        color: #555;
+        margin-left: 5px;
+    }
+
+    p.description {
+        font-weight: 600;
+        font-size: 18px;
+        font-family: inherit;
+        color: #333;
+        margin-top: 0;
+        margin-left: 0px;
+    }
+}
+
+.editDiv {
+    margin-top: 20px;
+
+    .form-group {
+        padding: 0px 15px;
+
+        label.col-form-label {
+            padding-left: 20px;
+        }
+
+        input.form-control {
+            height: 38px;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+            border-right: none;
+
+            &:focus {
+                box-shadow: none;
+            }
+        }
+
+        .btn {
+            background-color: $primary-color;
+            border-radius: 0 5px 5px 0;
+            color: #fff;
+
+            &:focus {
+                box-shadow: none;
+            }
+        }
+
+        &.passCheck {
+            input.form-control {
+                border: 1px solid #ced4da;
+                border-radius: 5px;
+            }
+
+            .btn {
+                border-radius: 5px;
+                margin: 10px auto 0 auto;
+                max-width: 200px;
+            }
+        }
+    }
+}
+
+@media(max-width:768px) {
+    .contentDiv {
+        .actualDataDiv {
+
+            p {
+                font-size: 16px;
+                padding-left: 0;
+            }
+
+        }
+    }
+
+
+    .editDiv {
+        .form-group {
+            label.col-form-label {
+                padding-left: 0px;
+            }
+        }
+    }
+}
+
+
+@media(max-width:576px) {
+
+    .trustedContainer{
+        padding-top: 20px;
+    }
+    .contentDiv {
+        margin: 0px -15px;
+
+        .btn {
+            padding: 0px 20px;
+        }
+    }
+}

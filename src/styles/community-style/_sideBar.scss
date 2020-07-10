@@ -43,6 +43,11 @@
         .sideNavItemImg {
             color: $primary-color;
         }
+
+        .sideNavItemSvg {
+            fill: $primary-color;
+            stroke: #237cb7;
+        }
     }
 
     .sideNavItemImg {
@@ -50,6 +55,7 @@
         font-size: 25px;
         color: #aaa;
         transition: 0s;
+        width: 30px;
     }
 
     .sideNavItemImgDiv {
@@ -61,19 +67,63 @@
     .sideNavItemSpan {
         color: $primary-text;
         margin-left: 20px;
+
+        .sideNavCaret {
+            img {
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                left: -18px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+
+    .sideNavItemSvg {
+        width: 30px;
+        margin-left: 20px;
+        height: 30px;
+        fill: #aaa;
+        transition: 0s;
+        stroke: #959595;
     }
 }
 
 
 
-@media (min-width:768px) and (max-width:992px) {
+@media (min-width:768px) and (max-width:991.9px) {
     .navLinkDiv {
-        .sideNavItemImg {
-            margin-left: 20px;
-            font-size: 20px;
-            width: 20px;
+
+        .sideNavItemImgDiv {
+            width: 100%;
         }
-        
+
+        .sideNavItemImg,
+        .sideNavItemSvg {
+            margin: auto
+        }
+
+        .sideNavItemSpan {
+            display: none;
+            position: absolute;
+            left: 100% ;
+            background-color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px #aaa;
+        }
+    }
+}
+
+@media (min-width:992px) and (max-width:1200px) {
+    .navLinkDiv {
+
+        .sideNavItemImg,
+        .sideNavItemSvg {
+            margin-left: 10px;
+        }
+
         .sideNavItemSpan {
             margin-left: 10px;
         }

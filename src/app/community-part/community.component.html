@@ -1,11 +1,11 @@
 <c-topnav></c-topnav>
 <div class="container-fluid mainCommunityDiv">
     <div class="row">
-        <div class="col-md-2 col-lg-2 p-0">
+        <div class="col-md-1 col-lg-2 p-0">
             <c-sidebar></c-sidebar>
         </div>
 
-        <div class="col-md-10 col-lg-8 col-12 communityRouterDiv">
+        <div class="col-md-11 col-lg-8 col-12 communityRouterDiv">
             <router-outlet></router-outlet>
         </div>
         <div class="col-lg-2 dangerArea">
@@ -24,4 +24,8 @@
 
 <div *ngIf='isEmergencyComming'>
     <emergency-alert [userId]='userId' [longitude]='longitude' [latitude]='latitude'></emergency-alert>
+</div>
+
+<div *ngIf='isPrescriptionDashboard'>
+    <prescription-dashboard></prescription-dashboard>
 </div>

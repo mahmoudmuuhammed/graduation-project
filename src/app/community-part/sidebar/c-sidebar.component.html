@@ -1,40 +1,95 @@
 <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault" [ngClass]="{open: sideBarStatus=== true}">
 
     <div class="navLinkDiv">
-        <div routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
+        <div class="navLinkContainer" toggleDescribtion routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
             <a [routerLink]="['Profile', userId]">
                 <div class="sideNavItemImgDiv"><i class="fas fa-user sideNavItemImg"></i></div>
-                <span class="sideNavItemSpan">Profile</span>
+                <span class="sideNavItemSpan">
+                    <div class="sideNavCaret">
+                        <img src="../../../assets//images/caret.svg">
+                    </div>
+                    Profile
+                </span>
             </a>
         </div>
-        <div routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
+        <div class="navLinkContainer" toggleDescribtion routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
             <a routerLink='Timeline'>
                 <div class="sideNavItemImgDiv"><i class="fas fa-stream sideNavItemImg"></i></div>
-                <span class="sideNavItemSpan">Timeline</span>
+                <span class="sideNavItemSpan">
+                    <div class="sideNavCaret">
+                        <img src="../../../assets//images/caret.svg">
+                    </div>
+                    Timeline
+                </span>
             </a>
         </div>
-        <div routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
+        <div class="navLinkContainer" toggleDescribtion routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
             <a routerLink="Chat">
                 <div class="sideNavItemImgDiv"><i class="fas fa-comments sideNavItemImg"></i></div>
-                <span class="sideNavItemSpan">Chats</span>
+                <span class="sideNavItemSpan">
+                    <div class="sideNavCaret">
+                        <img src="../../../assets//images/caret.svg">
+                    </div>
+                    Chats
+                </span>
             </a>
         </div>
-        <div routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
+        <div class="navLinkContainer" toggleDescribtion routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
             <a routerLink='Doctors'>
                 <div class="sideNavItemImgDiv"><i class="fas fa-user-md sideNavItemImg"></i></div>
-                <span class="sideNavItemSpan">Doctor</span>
+                <span class="sideNavItemSpan">
+                    <div class="sideNavCaret">
+                        <img src="../../../assets//images/caret.svg">
+                    </div>
+                    Doctors
+                </span>
             </a>
         </div>
-        <div routerLinkActive="activeNavLinkItem" (click)="hideSideBar()" style="display: none;">
+        <div class="navLinkContainer" toggleDescribtion routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
+            <a routerLink='Trusted'>
+                <div class="sideNavItemImgDiv">
+                    <svg class="sideNavItemSvg">
+                        <use xlink:href="../../../assets/sprites/sidenav-icons.svg#trusted"></use>
+                    </svg>
+                </div>
+                <span class="sideNavItemSpan">
+                    <div class="sideNavCaret">
+                        <img src="../../../assets//images/caret.svg">
+                    </div>
+                    Trusted
+                </span>
+            </a>
+        </div>
+        <div class="navLinkContainer" toggleDescribtion routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
+            <a routerLink='Prescription'>
+                <div class="sideNavItemImgDiv">
+                    <svg class="sideNavItemSvg">
+                        <use xlink:href="../../../assets/sprites/sidenav-icons.svg#prescription"></use>
+                    </svg>
+                </div>
+                <span class="sideNavItemSpan">
+                    <div class="sideNavCaret">
+                        <img src="../../../assets//images/caret.svg">
+                    </div>
+                    Prescription
+                </span>
+            </a>
+        </div>
+        <!-- <div class="navLinkContainer"  routerLinkActive="activeNavLinkItem" (click)="hideSideBar()" style="display: none;">
             <a routerLink='/Dashboard'>
                 <div class="sideNavItemImgDiv"><img class="sideNavItemImg" src="../assets/images/dashboard.svg"></div>
-                <span class="sideNavItemSpan">Dashboard</span>
+                <span class="sideNavItemSpan">
+                    <div class="sideNavCaret">
+                        <img src="../../../assets//images/caret.svg">
+                    </div>
+                    Dashboard
+                </span>
             </a>
-        </div>
+        </div> -->
     </div>
 
 
-    <div class="downArrowDiv d-none d-lg-block" style="display: none!important;">
+    <!-- <div class="downArrowDiv d-none d-lg-block" style="display: none!important;">
         <span>For helping you</span>
     </div>
 
@@ -58,5 +113,5 @@
             </a>
         </div>
 
-    </div>
+    </div> -->
 </div>
