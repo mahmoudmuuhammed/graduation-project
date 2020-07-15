@@ -1,9 +1,10 @@
-import { Component, ElementRef, ViewChild, ChangeDetectorRef, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, ChangeDetectorRef, OnInit, HostListener } from '@angular/core';
 
 import { NotificationService } from 'src/app/services/notification.service';
 import { SharedService } from '../services/shared.service'
 import { AuthService } from '../services/auth.service';
 import { DoctorsService } from '../services/doctors.service';
+import { TraditionalNotification } from '../models/callNotification.model';
 
 @Component({
   selector: 'community',
@@ -29,6 +30,11 @@ export class CommunityContainerComponent implements OnInit {
 
   //for doctor prescription input
   isPrescriptionDashboard: boolean = false;
+  patientId: string;
+
+  //for traditional Notification
+  isNotificationComming: boolean = false;
+  traditionalNotification: TraditionalNotification;
 
   constructor(private sharedService: SharedService,
     private notificationService: NotificationService,
@@ -75,20 +81,38 @@ export class CommunityContainerComponent implements OnInit {
       this.isEmergencyComming = true;
       this.changeDetector.detectChanges();
     })
-
     //confirm emergency alert
     this.sharedService.emergencyConfirmSubject.subscribe(() => {
       this.isEmergencyComming = false;
       this.notificationService.stopEmergencyRingtone();
     })
 
-    //update user status on changing browser tabs
-    this.authService.updateStatusOnIdle()
+    //recieve traditional notification
+    this.notificationService.traditionalNotificationAlertSubject.subscribe(notificationData => {
+      this.isNotificationComming = true;
+      this.traditionalNotification = notificationData;
+    })
 
     //subscribe to preciption dashboard
     this.doctorsService.preciptionDashBoardSubject.subscribe(res => {
-      this.isPrescriptionDashboard = res;
+      this.isPrescriptionDashboard = res.state;
+      this.patientId = res.patientId;
     })
+
+    //update user status on changing browser tabs
+    this.authService.updateStatusOnIdle();
+  }
+
+
+  //update user status on browser close
+  @HostListener('window:beforeunload', ['$event'])
+  onWindowClose(event: any): void {
+    
+    event.preventDefault();
+    event.returnValue = false;
+
+
+
   }
 
 }

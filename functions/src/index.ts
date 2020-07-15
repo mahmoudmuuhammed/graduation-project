@@ -47,11 +47,16 @@ export const commentNotification =
                         admin.firestore().doc(`Users/${postData?.userID}/Notification/${ref.id}`).update({
                             n_id: ref.id
                         })
-                    }).then(() => {
                         admin.firestore().doc(`Users/${postData?.userID}`).get().then(user => {
                             const userData = user.data();
                             const token = userData?.notification_token_id;
                             const payload = {
+                                data: {
+                                    fromId: commentData?.userId,
+                                    postId: postData?.postKey,
+                                    type: '1',
+                                    n_id: ref.id
+                                },
                                 notification: {
                                     title: 'new comment on your post',
                                     body: 'from ' + commentData?.userName
@@ -152,9 +157,14 @@ export const clappingCounterAndNotification =
                                         admin.firestore().doc(`Users/${commenterId}/Notification/${ref.id}`).update({
                                             n_id: ref.id
                                         })
-                                    }).then(() => {
                                         return admin.firestore().doc(`Users/${commenterId}`).get().then(commenter => {
                                             let payload = {
+                                                data: {
+                                                    fromId: clapperData?.uid,
+                                                    postId: post.data()?.postKey,
+                                                    type: '1',
+                                                    n_id: ref.id
+                                                },
                                                 notification: {
                                                     title: `clapped on your comment`,
                                                     body: ` ${clapperData?.fullName}`
@@ -200,7 +210,10 @@ export const chatNotification =
                         if (msgData?.msgtype == 0) {
                             payload = {
                                 data: {
-                                    toUid: res.data()?.uid
+                                    toUid: res.data()?.uid,
+                                    fromId: res.data()?.uid,
+                                    roomId: roomData?.RoomID,
+                                    type: '2',
                                 },
                                 notification: {
                                     title: 'New mesage from ' + senderName,
@@ -212,7 +225,10 @@ export const chatNotification =
                         else {
                             payload = {
                                 data: {
-                                    toUid: receiverId
+                                    toUid: receiverId,
+                                    fromId: res.data()?.uid,
+                                    roomId: roomData?.RoomID,
+                                    type: '2'
                                 },
                                 notification: {
                                     title: 'New file received from ' + senderName,
@@ -301,7 +317,7 @@ export const votingNotification =
             return admin.firestore().doc(`Users/${userId}`).get().then(votter => {
                 let votterData = votter.data();
 
-                if(newPostData?.postKey != votterData?.uid){
+                if (newPostData?.userID != votterData?.uid) {
                     admin.firestore().collection(`Users/${oldPostData?.userID}/Notification`).add({
                         createdTime: Date.now(),
                         from: votterData?.uid,
@@ -315,9 +331,15 @@ export const votingNotification =
                             admin.firestore().doc(`Users/${oldPostData?.userID}/Notification/${ref.id}`).update({
                                 n_id: ref.id
                             })
-    
+
                             admin.firestore().doc(`Users/${oldPostData?.userID}`).get().then(poster => {
                                 let payload = {
+                                    data: {
+                                        fromId: votterData?.uid,
+                                        postId: oldPostData?.postKey,
+                                        type: '1',
+                                        n_id: ref.id
+                                    },
                                     notification: {
                                         title: `new vote on your post`,
                                         body: ` from ${votterData?.fullName}`

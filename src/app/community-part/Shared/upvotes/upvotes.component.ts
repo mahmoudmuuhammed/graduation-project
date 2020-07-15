@@ -17,6 +17,10 @@ export class UpvotesComponent implements OnInit {
         private authService: AuthService) { }
 
     ngOnInit() {
+        this.getVotes();
+    }
+
+    getVotes() {
         this.authService.currentUser.subscribe(user => {
             this.feedsService.getTotalVotesOnPost(this.postId)
                 .pipe(take(1))
@@ -36,9 +40,11 @@ export class UpvotesComponent implements OnInit {
 
     upVote() {
         this.feedsService.updateVoteOnPost(this.postId, 1);
+        this.getVotes()
     }
 
     downVote() {
         this.feedsService.updateVoteOnPost(this.postId, -1);
+        this.getVotes()
     }
 }

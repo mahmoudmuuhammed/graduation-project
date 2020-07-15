@@ -15,7 +15,6 @@ export class NotificationItemComponent implements OnInit {
   @Input() notificationData: Notification;
   isRead: boolean = false;
   docImgUrl: string = ''
-  notificationText: string = ''
   notificationLink: string = ''
 
   constructor(private authService: AuthService, private feedsService: FeedsService) { }
@@ -26,13 +25,11 @@ export class NotificationItemComponent implements OnInit {
       this.docImgUrl = imgUrl
     })
 
-    if(this.notificationData.message=='has commented on your post'){
-      this.notificationText = 'has commented on your post'
-      this.notificationLink=`/community/Post/${this.notificationData.post_id}`
+    if (this.notificationData.type == 1) {
+      this.notificationLink = `/community/Post/${this.notificationData.post_id}`
     }
-    else if(this.notificationData.message=='was in danger contact him'){
-      this.notificationText = 'was in danger click for more information'
-      this.notificationLink=`/community/Emergency/${this.notificationData.emergencyId}`
+    else if (this.notificationData.type == 2) {
+      this.notificationLink = `/community/Emergency/${this.notificationData.emergencyId}`
     }
   }
 

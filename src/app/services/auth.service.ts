@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from "@angular/core";
+import { Injectable, NgZone, HostListener } from "@angular/core";
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FormsServices } from './forms.service';
 import { Observable, BehaviorSubject } from 'rxjs';
@@ -62,10 +62,10 @@ export class AuthService {
                 createdTime: creationTime,
                 fullName: fullname,
                 clappingCounter: 0,
-                commentCounter:0,
-                postCounter:0,
+                commentCounter: 0,
+                postCounter: 0,
                 userType: userType,
-                trusted:[]
+                trusted: []
             }).then(() => {
                 const filePath = `userPhoto/${user.uid}`;
                 const storageRef = this.storage.ref(filePath);
@@ -161,14 +161,16 @@ export class AuthService {
         };
     }
 
-
-    // onCloseBrowser() {
-    //     window.addEventListener('beforeunload', (event) => {
-    //         var time = (new Date()).getTime() + 10000
-    //         this.updateUserStatus('offline')
-    //         while ((new Date()).getTime() < time) { }
-    //     }, false)
-    // }
+    updateUserStatusObs(status: string) {
+        return this.auth.authState.pipe(take(1)).subscribe(user => {
+            if (user) {
+                const path = `Users/${user.uid}`;
+                this.fireDb.doc<UserModel>(path)
+                    .update({ status: status });
+            }
+        })
+    }
+    
 
     getUserImgLink(userId: string) {
         return this.storage.ref(`userPhoto/${userId}`).getDownloadURL().pipe(take(1))

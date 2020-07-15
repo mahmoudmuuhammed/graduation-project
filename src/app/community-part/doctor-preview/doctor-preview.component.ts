@@ -47,7 +47,7 @@ export class DoctorPreviewComponent implements OnInit {
       let docName = doc.fullName
       let inputText = this.docSearch.nativeElement.value
       if (this.selectedSpeciality != 'All') {
-        if (docName.toLowerCase().indexOf(inputText) > -1 && doc.userType.specialty == this.selectedSpeciality) {
+        if (docName.toLowerCase().indexOf(inputText) > -1 && doc.userType.speciality == this.selectedSpeciality) {
           this.filterDoclist.push(doc)
         }
       }

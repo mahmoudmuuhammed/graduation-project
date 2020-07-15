@@ -16,7 +16,7 @@ export class AccountType {
     usertype: string;
     gradFaculty?: string;
     gradYear?: string;
-    specialty?: string;
+    speciality?: string;
     location?: string;
     fees?: number;
 }

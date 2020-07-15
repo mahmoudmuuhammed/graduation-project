@@ -1,6 +1,6 @@
 <header>
     <label>Trusted People<span class="maxNo">up to 3 person</span></label>
-    <span [routerLink]="['/community/Profile',userId,'edit']" class="editTrusted"><i class="fas fa-edit"></i></span>
+    <span [routerLink]="['/community/Trusted']" class="editTrusted"><i class="fas fa-edit"></i></span>
     <div style="clear: both;"></div>
 </header>
 <div class="trustPeopleContainer" *ngFor='let user of trustedUsers'>

@@ -13,23 +13,29 @@
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        
+
         .dataDiv {
             p {
-                font-size: 16px;
-                font-weight: 600;
+                font-size: 15px;
+                font-weight: 500;
             }
 
             a {
-                font-weight: 600;
-                font-size: 16px;
+                font-weight: 500;
+                font-size: 15px;
                 text-decoration: none;
                 color: #222;
                 display: flex;
                 align-items: center;
 
-                &:hover {
-                    color: $primary-color;
+                span {
+                    margin-left: 5px;
+                    transition: all .1s ease-in-out !important;
+                    font-weight: 600;
+
+                    &:hover {
+                        color: $primary-color;
+                    }
                 }
             }
 

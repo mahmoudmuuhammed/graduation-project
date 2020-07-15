@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Prescription } from 'src/app/models/prescriptions.mpdel';
 
 @Component({
   selector: 'prescription-item',
@@ -7,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrescriptionItemComponent implements OnInit {
 
-  userImgLink= "../../../assets/images/DeafultUser.svg"
+  userImgLink = "../../../assets/images/DeafultUser.svg"
+  @Input() prescription: Prescription;
+  @Input() userType: string;
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.userType)
+
   }
 
 }

@@ -27,5 +27,9 @@
 </div>
 
 <div *ngIf='isPrescriptionDashboard'>
-    <prescription-dashboard></prescription-dashboard>
+    <prescription-dashboard [patientId]='patientId'></prescription-dashboard>
+</div>
+
+<div *ngIf='isNotificationComming'>
+    <notification-alert></notification-alert>
 </div>

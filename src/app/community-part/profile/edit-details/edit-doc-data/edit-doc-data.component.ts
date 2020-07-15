@@ -23,7 +23,7 @@ export class EditDocDataComponent implements OnInit {
   changeSpeciality(form: NgForm) {
     if (form.valid) {
       this.profileService.changeSpeciality(form.value.specialty).then(() => {
-        this.userData.userType.specialty = form.value.specialty
+        this.userData.userType.speciality = form.value.specialty
         this.cancelSpecialtyBtn.nativeElement.click()
       })
     }

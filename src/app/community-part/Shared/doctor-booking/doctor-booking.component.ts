@@ -35,7 +35,9 @@ export class DoctorBookingComponent implements OnInit {
     this.showbooking = false
   }
 
-  booking(cardDate) {
+  booking(cardData) {
+    console.log(cardData)
+    
     const docId: string = this.doctorData.uid;
     this.router.navigate([`/community/Chat/${docId}`])
   }

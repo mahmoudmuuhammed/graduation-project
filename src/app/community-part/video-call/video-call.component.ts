@@ -5,6 +5,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { take } from 'rxjs/operators';
 import { DoctorsService } from 'src/app/services/doctors.service';
+import { UserModel } from 'src/app/models/user.model';
+import { MessageChannel } from 'worker_threads';
 
 @Component({
   selector: 'videoCall',
@@ -52,11 +54,18 @@ export class VideoCallComponent implements OnInit {
     this.agoraService.client.leave();
     this.agoraService.client.unpublish(this.localStream)
     this.sharedService.callingSubject.next({ channelName: '', state: false });
-    this.authService.currentUser.subscribe(res => {
-      if (this.doctorService.isUserDoctor(res.uid) == true) {
-        console.log('fffffff')
-        this.doctorService.preciptionDashBoardSubject.next(true)
-      }
+
+    this.authService.currentUser.subscribe(user => {
+      this.firestore.getUser(user.uid).pipe(take(1)).subscribe((userData: UserModel) => {
+        if (userData.userType.usertype == 'Doctor') {
+          const channelNameArr = this.channelName.split('_')
+          let patient: string = ''
+          for (let i = 0; i < 2; i++) {
+            channelNameArr[i] != user.uid ? patient = channelNameArr[i] : ''
+          }
+          this.doctorService.preciptionDashBoardSubject.next({ patientId: patient, state: true })
+        }
+      })
     })
   }
 

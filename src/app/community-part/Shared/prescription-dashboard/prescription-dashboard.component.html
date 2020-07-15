@@ -1,14 +1,14 @@
 <div class="outerDiv">
-    <div class="innerDiv">
+    <div class="inerDiv">
         <header>
             <p>prescription for Moemen said</p>
             <button (click)='closePerCeptionDashboard()'><i class="fas fa-times"></i></button>
         </header>
         <main>
-            <textarea placeholder="Enter notes and medicin"></textarea>
+            <form [formGroup]="prescriptionForm" (ngSubmit)="handdelAddpresciption()">
+                <textarea placeholder="Enter notes and medicin" formControlName="prescriptionContent"></textarea>
+                <button class="submitBtn" [disabled]="!prescriptionForm.valid">Submit</button>
+            </form>
         </main>
-        <footer>
-            <button class="submitBtn" (click)='submitPrescription()'>Submit</button>
-        </footer>
     </div>
 </div>

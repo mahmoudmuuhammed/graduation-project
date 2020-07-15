@@ -33,16 +33,16 @@ export class UserListComponent implements OnInit {
   }
 
   getAllUsers() {
+    this.users = [];
     this.authService.currentUser.subscribe(currentUser => {
 
       //get all users
       this.profileService.getUsers().pipe(take(1)).subscribe(allUsers => {
+        console.log(allUsers)
 
         //get current user data
         this.profileService.getUser(currentUser.uid).pipe(take(1)).subscribe(userData => {
           this.currentTrustedUsers = userData.trusted
-
-          this.users = []
 
           //check for existance trusted
           if (typeof this.currentTrustedUsers == 'undefined') {
@@ -87,7 +87,7 @@ export class UserListComponent implements OnInit {
       .then(() => {
         this.getAllUsers();
         this.profileService.newTrustedUserSubject.next()
-        this.userSearchInput.nativeElement.value=''
+        this.userSearchInput.nativeElement.value = ''
       })
   }
 

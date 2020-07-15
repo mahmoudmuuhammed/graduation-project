@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireMessaging } from '@angular/fire/messaging'
 import { Subject } from 'rxjs';
 
-import { callNotification,emergencyNotification } from '../models/callNotification.model'
+import { callNotification, emergencyNotification, TraditionalNotification } from '../models/callNotification.model'
 
 @Injectable({ providedIn: 'root' })
 
@@ -11,6 +11,7 @@ export class NotificationService {
     EmergencySubject = new Subject<emergencyNotification>();
     callAudio = new Audio("../../assets/ringtone/callSound.wav");
     emergencyAudio = new Audio("../../assets/ringtone/emergencySound.wav");
+    traditionalNotificationAlertSubject = new Subject<TraditionalNotification>()
 
     constructor(private fireMsg: AngularFireMessaging) { }
 
@@ -31,9 +32,13 @@ export class NotificationService {
                             this.CallSubject.next(notificationAlert)
                             this.playCallSound();
                         }
-                        else if (notificationAlert.notification.title.indexOf('danger') > -1)
+                        else if (notificationAlert.notification.title.indexOf('danger') > -1) {
                             this.EmergencySubject.next(notificationAlert);
                             this.playEmergencySound();
+                        }
+                        else {
+                            //this.traditionalNotificationAlertSubject.next(notificationAlert)
+                        }
                     })
                 }
             }

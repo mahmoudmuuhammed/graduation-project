@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="prescriptoinsContainer">
-        <prescription-item></prescription-item>
+    <div class="prescriptoinsContainer" *ngFor='let prescription of prescriptions |async'>
+        <prescription-item [prescription]='prescription' [userType]='userType'></prescription-item>
     </div>
 </div>

@@ -30,6 +30,8 @@ import { CurrentTrustedComponent } from './trusted-selection/current-trusted/cur
 import { UserListComponent } from './trusted-selection/edit-trusted/edit-trusted.component';
 import { PrescriptionsComponent } from './prescriptions/prescriptions.component';
 import { PrescriptionItemComponent } from './prescriptions/prescription-item/prescription-item.component';
+import { DocRatingComponent } from './doc-rating/doc-rating.component';
+import { NotificationAlertComponent } from './notification-alert/notification-alert.component';
 
 @NgModule({
     declarations: [
@@ -48,7 +50,9 @@ import { PrescriptionItemComponent } from './prescriptions/prescription-item/pre
         CurrentTrustedComponent,
         UserListComponent,
         PrescriptionsComponent,
-        PrescriptionItemComponent
+        PrescriptionItemComponent,
+        DocRatingComponent,
+        NotificationAlertComponent
     ],
     imports: [
         CommonModule,

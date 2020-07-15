@@ -4,7 +4,7 @@
         <div>
             <p>
                 <a>{{notificationData?.from_full_name}}</a>
-                {{notificationText}}
+                {{notificationData?.message}}
             </p>
             <p class="notificationTime">in {{notificationData?.createdTime |date:'d,LLL h:m aa'}}</p>
         </div>

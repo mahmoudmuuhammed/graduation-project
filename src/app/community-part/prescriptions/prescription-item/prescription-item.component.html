@@ -3,16 +3,21 @@
         <header>
 
             <div class="dataContainer">
-                <div class="dataDiv">
-                    <a [routerLink]='["/community/Profile"]'>
-                        Dr.Moemen said
+                <div class="dataDiv" *ngIf="userType == 'Doctor'">
+                    <a [routerLink]='["/community/Profile",prescription.patientId]'>
+                        to <span> {{prescription.patientName | titlecase}}</span>
+                    </a>
+                </div>
+                <div class="dataDiv" *ngIf="userType == 'Patient'">
+                    <a [routerLink]='["/community/Profile",prescription.docId]'>
+                        Dr.<span> {{prescription.docName |titlecase}}</span>
                     </a>
                 </div>
             </div>
 
             <div class="dataContainer">
                 <div class="dataDiv">
-                    <p> 25/2/2020</p>
+                    <p>{{prescription.timestamp |date:'dd/MMM/yyyy'}}</p>
                 </div>
             </div>
 
@@ -24,7 +29,7 @@
             </div>
 
             <div class="prescriptionData">
-                <p>Kjfbvjkf vbvkbv Vshvbisbvskbv fjk gg dfg kg dkjg dfj dfgklf slk sdvbsikh</p>
+                <p>{{prescription.content}}</p>
             </div>
         </main>
 

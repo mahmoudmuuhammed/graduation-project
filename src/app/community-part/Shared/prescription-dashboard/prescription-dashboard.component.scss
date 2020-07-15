@@ -12,7 +12,7 @@
     justify-content: center;
     z-index: 11;
 
-    .innerDiv {
+    .inerDiv {
         background-color: #fff;
         border-radius: 5px;
         box-shadow: 0px 0px 5px #555;
@@ -36,31 +36,38 @@
         main {
             padding: 10px 15px 0px 15px;
 
-            textarea {
-                resize: none;
-                min-width: 600px;
-                height: 400px;
-                padding: 10px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                font-size: 16px;
-                font-family: sans-serif;
-            }
-        }
+            form {
 
-        footer {
-            padding: 5px 15px 10px 15px;
-            display: flex;
-            justify-content: flex-end;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
 
-            .submitBtn {
-                background-color: $primary-color;
-                color: #fff;
-                padding: 8px 20px;
-                cursor: pointer;
-                border: none;
-                border-radius: 5px;
-                font-size: 15px;
+                textarea {
+                    resize: none;
+                    min-width: 600px;
+                    height: 400px;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    font-size: 16px;
+                    font-family: sans-serif;
+                }
+
+                .submitBtn {
+                    background-color: $primary-color;
+                    color: #fff;
+                    padding: 8px 20px;
+                    cursor: pointer;
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 15px;
+                    margin: 10px 0px;
+
+                    &:disabled{
+                        cursor: not-allowed;
+                        opacity: .5;
+                    }
+                }
             }
         }
     }
@@ -68,7 +75,7 @@
 
 @media(max-width:768px) {
     .outerDiv {
-        .innerDiv {
+        .inerDiv {
             width: 90%;
 
             main {

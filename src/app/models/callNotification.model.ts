@@ -21,3 +21,13 @@ export class emergencyNotification {
         body: string;
     }
 }
+
+export class TraditionalNotification {
+    data: {
+        fromId: string
+    }
+    notification: {
+        title: string
+        body: string
+    }
+}

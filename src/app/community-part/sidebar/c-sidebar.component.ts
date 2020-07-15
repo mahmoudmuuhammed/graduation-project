@@ -26,6 +26,8 @@ export class SidebarComponent implements OnInit {
         this.auth.currentUser.subscribe(user => {
             this.userId = user.uid;
         })
+
+        
     }
 
     hideSideBar() {
