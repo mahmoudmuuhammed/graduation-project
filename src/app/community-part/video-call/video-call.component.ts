@@ -65,6 +65,14 @@ export class VideoCallComponent implements OnInit {
           }
           this.doctorService.preciptionDashBoardSubject.next({ patientId: patient, state: true })
         }
+        else {
+          const channelNameArr = this.channelName.split('_')
+          let docID: string = ''
+          for (let i = 0; i < 2; i++) {
+            channelNameArr[i] != user.uid ? docID = channelNameArr[i] : ''
+          }
+          this.doctorService.docRateSubject.next({docId:docID,state:true})
+        }
       })
     })
   }

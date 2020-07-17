@@ -17,6 +17,7 @@ export class DoctorsService {
   doctorDocument: AngularFirestoreDocument<UserModel>;
   doctorDataSubjectOnBooking = new Subject<UserModel>();
   preciptionDashBoardSubject = new Subject<{ patientId: string, state: boolean }>();
+  docRateSubject = new Subject<{ docId: string, state: boolean }>();
 
 
   constructor(private db: AngularFirestore,
@@ -58,6 +59,22 @@ export class DoctorsService {
   getDoctorPrescriptions(docId: string) {
     return this.afs.collection<Prescription>(`Prescriptions`,
       ref => { return ref.where('docId', '==', docId) }).valueChanges()
+  }
+
+  ratingDoctor(docId: string, rate: number) {
+    this.afs.doc(`Users/${docId}`).valueChanges().pipe(take(1)).subscribe((docData: UserModel) => {
+
+      if (docData.userType.rating == 0) {
+        this.afs.doc(`Users/${docId}`).update({'userType.rating':rate})
+      }
+      else {
+        let docRate = docData.userType.rating
+        let newDocRate = Math.round((docRate + rate) / 2)
+        this.afs.doc(`Users/${docId}`).update({'userType.rating':newDocRate})
+
+      }
+    })
+
   }
 
 }

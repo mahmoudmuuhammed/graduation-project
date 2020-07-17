@@ -10,6 +10,7 @@ import { ChatFormComponent } from './chat-room/chat-form/chat-form.component';
 import { ChatHeadComponent } from './chat-room/chat-head/chat-head.component';
 import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { communityRoutingModule } from '../community-routing.module';
+import { NgPaymentCardModule } from 'ng-payment-card';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,7 @@ import { communityRoutingModule } from '../community-routing.module';
     imports: [
         CommonModule,
         communityRoutingModule,
-        
+        NgPaymentCardModule
     ],
     exports: [
         ChattingComponent

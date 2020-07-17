@@ -136,10 +136,17 @@ export class ChattingService {
                     users[myId] = 0
                     roomId = this.afs.createId();
                     const path = `Rooms/${roomId}`
-                    this.afs.doc(path).set({ msg: '', msgtype: '0', timestamp: new Date(), uid: myId, users, RoomID: roomId })
+                    this.afs.doc(path).set({ msg: '', msgtype: '0', timestamp: new Date(), uid: myId, users, RoomID: roomId, paymentTime: Date.now() })
                 }
             }).add(() => observer.next(roomId))
         });
+    }
+
+    getRoomData(roomId: string) {
+        return this.afs.doc<Room>(`Rooms/${roomId}`).valueChanges().pipe(take(1));
+    }
+    updatePaymentTime(roomId: string) {
+        return this.afs.doc(`Rooms/${roomId}`).update({ paymentTime: Date.now() });
     }
 
     sendMessage(roomId: string, messageContent: string, currentUser: string, profileId: string, msgType: string, file: { filename: string, filesize: number }) {

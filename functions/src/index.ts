@@ -13,6 +13,7 @@ export const videoCallNotification =
                 data: {
                     channelName: message?.channelName,
                     callerId: message?.callerID,
+                    callerName: message?.caller
                 },
                 notification: {
                     title: 'Incoming Video Call',
@@ -55,11 +56,12 @@ export const commentNotification =
                                     fromId: commentData?.userId,
                                     postId: postData?.postKey,
                                     type: '1',
-                                    n_id: ref.id
+                                    n_id: ref.id,
                                 },
                                 notification: {
                                     title: 'new comment on your post',
-                                    body: 'from ' + commentData?.userName
+                                    body: 'from ' + commentData?.userName,
+                                    click_action: 'PostActivity'
                                 }
                             }
                             return admin.messaging().sendToDevice(token, payload)
@@ -167,7 +169,8 @@ export const clappingCounterAndNotification =
                                                 },
                                                 notification: {
                                                     title: `clapped on your comment`,
-                                                    body: ` ${clapperData?.fullName}`
+                                                    body: ` ${clapperData?.fullName}`,
+                                                    click_action: 'PostActivity'
                                                 }
                                             }
                                             admin.messaging().sendToDevice(commenter.data()?.notification_token_id, payload)
@@ -280,11 +283,15 @@ export const emrgencyNotification =
                                 data: {
                                     longitude: alertData?.userLongitude,
                                     latitude: alertData?.userLatitude,
-                                    userId: alertData?.userId
+                                    userId: alertData?.userId,
+                                    userName: sender.data()?.fullName,
+                                    time: String(Date.now()),
+                                    emergencyId: alertData?.locationKey
                                 },
                                 notification: {
                                     title: `${sender.data()?.fullName} in danger`,
                                     body: 'contact with him now',
+                                    click_action: 'EmergencyActivity',
                                 }
                             }
 
@@ -322,7 +329,7 @@ export const votingNotification =
                         createdTime: Date.now(),
                         from: votterData?.uid,
                         from_full_name: votterData?.fullName,
-                        message: `votted on yout post`,
+                        message: `votted on your post`,
                         post_id: oldPostData?.postKey,
                         type: 1,
                         read: false,
@@ -342,7 +349,8 @@ export const votingNotification =
                                     },
                                     notification: {
                                         title: `new vote on your post`,
-                                        body: ` from ${votterData?.fullName}`
+                                        body: ` from ${votterData?.fullName}`,
+                                        click_action: 'PostActivity'
                                     }
                                 }
                                 admin.messaging().sendToDevice(poster.data()?.notification_token_id, payload)

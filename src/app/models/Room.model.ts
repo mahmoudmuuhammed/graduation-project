@@ -5,6 +5,8 @@ export class Room {
     uid: string;
     users: {};
     RoomID: string;
+    paymentTime?:number;
     filename?: string;
     filesize?: string;
+    createdTime?: number;
 }

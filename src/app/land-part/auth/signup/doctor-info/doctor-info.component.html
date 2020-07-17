@@ -33,10 +33,10 @@
     <!-- ------------------------- -->
     <div class="form__fgroup u-mrgb-1" *ngIf="forms.disableForPatient">
         <div class="form__fgroup-label">
-            <label for="specialty">Role & Specialty</label>
+            <label for="speciality">Role & Speciality</label>
             <div class="validation" 
-                *ngIf="!forms.specialtyControl.valid && forms.specialtyControl.touched">
-                <span *ngIf="forms.specialtyControl.errors.required">
+                *ngIf="!forms.specialityControl.valid && forms.specialityControl.touched">
+                <span *ngIf="forms.specialityControl.errors.required">
                     {{ forms.validationErrors.required }}
                 </span>
                 <svg class="validation__icon">
@@ -47,9 +47,9 @@
         <input 
             type="text" 
             class="form__fgroup-control form__fgroup-control--cu"
-            id="specialty"
-            placeholder="Enetr your specialty"
-            formControlName="specialty">
+            id="speciality"
+            placeholder="Enetr your speciality"
+            formControlName="speciality">
     </div>
     <div class="form__fgroup u-mrgb-1" *ngIf="forms.disableForPatient">
         <div class="form__fgroup-label">

@@ -34,7 +34,7 @@ export class UserListComponent implements OnInit {
 
   getAllUsers() {
     this.users = [];
-    this.authService.currentUser.subscribe(currentUser => {
+    this.authService.currentUser.pipe(take(1)).subscribe(currentUser => {
 
       //get all users
       this.profileService.getUsers().pipe(take(1)).subscribe(allUsers => {

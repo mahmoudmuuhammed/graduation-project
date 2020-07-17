@@ -6,11 +6,47 @@
         <chat-feeds [messages]="messages"></chat-feeds>
     </div>
     <div class="chatInput" *ngIf="roomId">
-        <chat-form [threadId]="roomId" [routeId]="activeRoute"></chat-form>
+        <chat-form [threadId]="roomId" [routeId]="activeRoute" [isDisabled]='isChatDisabled'></chat-form>
     </div>
+
+
+    <!-- Valid time exceeded Div -->
+    <div class="OuterChatTimeEndAlert" *ngIf="isPaymentExceeded">
+        <div class="innerChatTimeEndAlert">
+            <div class="alert">
+                <main>
+                    <p>you excced your time limit</p>
+                    <p>do you want to pay for new consultation ?</p>
+                </main>
+                <footer>
+                    <button (click)='showMessages()' class="readBtn">Read old messages</button>
+                    <button (click)='Pay()' class="paymentBtn">Pay</button>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- Another Book Div -->
+    <div class="OuterBooking" *ngIf="isBooking">
+        <div class="innerBooking">
+            <div class="BookingDiv">
+                <header>
+                    <p>Booking another week with Dr. moemen</p>
+                </header>
+                <main>
+                    <ng-payment-card (submit)='PayAnotherConsultaion($event)'></ng-payment-card>
+                </main>
+                <footer>
+                    <button (click)='closeBooking()'>Cancel</button>
+                </footer>
+            </div>
+        </div>
+    </div>
+
 </div>
+
 <!-- --------- preview image from Chat --------- -->
-<div class="outerImgPreviewDiv" #imgPreview (click)="close($event)">
+<div class="outerImgPreviewDiv" #imgPreview (click)="closeImg($event)">
     <div class="innerImgPreviewDiv animate fadeIn slow">
         <header>
             <button (click)="closeImgPreview()">

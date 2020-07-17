@@ -19,4 +19,5 @@ export class AccountType {
     speciality?: string;
     location?: string;
     fees?: number;
+    rating?:number
 }

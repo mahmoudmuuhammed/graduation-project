@@ -54,7 +54,7 @@ export class FormsServices {
 
     doctorFormController() {
         this.doctorForm = new FormGroup({
-            'specialty': new FormControl(null, Validators.required),
+            'speciality': new FormControl(null, Validators.required),
             'gradFaculty': new FormControl(null, Validators.required),
             'gradYear': new FormControl(null, Validators.required),
             'usertype': new FormControl(null, Validators.required),
@@ -65,7 +65,7 @@ export class FormsServices {
             (value) => {
                 if (value == 'Patient') {
                     this.disableForPatient = false;
-                    this.specialtyControl.disable();
+                    this.specialityControl.disable();
                     this.gYearControl.disable();
                     this.gFacultyControl.disable();
                     this.feesControl.disable();
@@ -74,7 +74,7 @@ export class FormsServices {
                     return;
                 }
                 this.disableForPatient = true;
-                this.specialtyControl.enable();
+                this.specialityControl.enable();
                 this.gYearControl.enable();
                 this.gFacultyControl.enable();
                 this.feesControl.enable();
@@ -129,8 +129,8 @@ export class FormsServices {
         return this.generalForm.get('reason');
     }
 
-    get specialtyControl() {
-        return this.doctorForm.get('specialty');
+    get specialityControl() {
+        return this.doctorForm.get('speciality');
     }
 
     get gFacultyControl() {

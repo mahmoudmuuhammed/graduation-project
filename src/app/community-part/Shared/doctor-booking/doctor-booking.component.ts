@@ -35,11 +35,15 @@ export class DoctorBookingComponent implements OnInit {
     this.showbooking = false
   }
 
-  booking(cardData) {
-    console.log(cardData)
+  booking(event) {
+    if(event.target[0].form.classList.contains('ng-valid')){
+      const docId: string = this.doctorData.uid;
+      this.router.navigate([`/community/Chat/${docId}`])
+    }
+    else{
+      alert('Check your card data')
+    }
     
-    const docId: string = this.doctorData.uid;
-    this.router.navigate([`/community/Chat/${docId}`])
   }
 
   close(event) {

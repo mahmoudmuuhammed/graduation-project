@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef, OnInit } from "@angular/core";
+import { Component, Input, ViewChild, ElementRef, OnInit, Renderer2, OnChanges } from "@angular/core";
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ChattingService } from 'src/app/services/chatting.service';
 import { FormsServices } from 'src/app/services/forms.service';
@@ -10,16 +10,18 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
     styleUrls: ['./chat-form.component.scss']
 })
 
-export class ChatFormComponent implements OnInit {
+export class ChatFormComponent implements OnInit, OnChanges {
     @Input() routeId: string;
     @Input() threadId: string;
+    @Input() isDisabled: boolean;
     currentUser: firebase.User;
     @ViewChild('messageInput', { static: true }) messageValue: ElementRef;
+    @ViewChild('chatForm') chatForm: ElementRef;
 
     constructor(
         private auth: AngularFireAuth,
         private chat: ChattingService,
-        public forms: FormsServices
+        private render: Renderer2,
     ) { }
 
 
@@ -28,10 +30,20 @@ export class ChatFormComponent implements OnInit {
         this.messageValue.nativeElement.value = '';
     }
 
+    ngOnChanges() {
+        setTimeout(() => {
+            this.isDisabled ?
+                this.render.addClass(this.chatForm.nativeElement, 'disabled') :
+                this.render.removeClass(this.chatForm.nativeElement, 'disabled')
+        }, 300);
+    }
+
     sendingMessage() {
         const message = this.messageValue.nativeElement.value;
-        this.chat.sendMessage(this.threadId, message, this.currentUser.uid, this.routeId, '0', null);
-        this.messageValue.nativeElement.value = '';
+        if (String(message) != '') {
+            this.chat.sendMessage(this.threadId, message, this.currentUser.uid, this.routeId, '0', null);
+            this.messageValue.nativeElement.value = '';
+        }
     }
 
     handleSendMessage(event) {

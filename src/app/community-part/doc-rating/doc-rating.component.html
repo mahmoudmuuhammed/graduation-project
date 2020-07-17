@@ -1,1 +1,31 @@
-<p>doc-rating works!</p>
+<div class="outerDiv">
+    <div class="inerDiv">
+        <header>
+            <p>Rate Dr. {{docData?.fullName}}</p>
+            <p>(1-5 stars)</p>
+        </header>
+        <main>
+
+            <div class="starsDiv" #startsDiv>
+                <div (click)='starSRate(1)'>
+                    <i class="fas fa-star active"></i>
+                </div>
+                <div (click)='starSRate(2)'>
+                    <i class="fas fa-star"></i>
+                </div>
+                <div (click)='starSRate(3)'>
+                    <i class="fas fa-star"></i>
+                </div>
+                <div (click)='starSRate(4)'>
+                    <i class="fas fa-star"></i>
+                </div>
+                <div (click)='starSRate(5)'>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <button (click)='submitRate()'>Rate</button>
+        </footer>
+    </div>
+</div>

@@ -54,6 +54,7 @@ export class AuthService {
         this.currentUser.subscribe(user => {
             const fullname = this.forms.fullnameControl.value;
             const userType: AccountType = this.forms.doctorForm.value;
+            userType.rating = 0;
             const path = `Users/${user.uid}`;
 
             this.fireDb.doc<UserModel>(path).set({
@@ -65,7 +66,8 @@ export class AuthService {
                 commentCounter: 0,
                 postCounter: 0,
                 userType: userType,
-                trusted: []
+                trusted: [],
+                status:'offline'
             }).then(() => {
                 const filePath = `userPhoto/${user.uid}`;
                 const storageRef = this.storage.ref(filePath);
@@ -136,13 +138,14 @@ export class AuthService {
     }
 
     logout() {
-        this.updateUserStatus('offline');
-        firebase.auth().signOut();
-        this.router.navigate(['']);
+        this.updateUserStatus('offline').add(()=>{
+            firebase.auth().signOut();
+            this.router.navigate(['']);
+        })
     }
 
     updateUserStatus(status: string) {
-        this.auth.authState.pipe(take(1)).subscribe(user => {
+        return this.auth.authState.pipe(take(1)).subscribe(user => {
             if (user) {
                 const path = `Users/${user.uid}`;
                 this.fireDb.doc<UserModel>(path)
@@ -170,7 +173,7 @@ export class AuthService {
             }
         })
     }
-    
+
 
     getUserImgLink(userId: string) {
         return this.storage.ref(`userPhoto/${userId}`).getDownloadURL().pipe(take(1))

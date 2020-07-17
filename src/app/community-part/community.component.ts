@@ -32,6 +32,10 @@ export class CommunityContainerComponent implements OnInit {
   isPrescriptionDashboard: boolean = false;
   patientId: string;
 
+  //for user rate input
+  isDocRate: boolean = false;
+  docId: string;
+
   //for traditional Notification
   isNotificationComming: boolean = false;
   traditionalNotification: TraditionalNotification;
@@ -99,20 +103,26 @@ export class CommunityContainerComponent implements OnInit {
       this.patientId = res.patientId;
     })
 
+    //subscribe to preciption dashboard
+    this.doctorsService.docRateSubject.subscribe(res => {
+      this.isDocRate = res.state;
+      this.docId = res.docId;
+    })
+
     //update user status on changing browser tabs
     this.authService.updateStatusOnIdle();
   }
 
 
   //update user status on browser close
-  @HostListener('window:beforeunload', ['$event'])
-  onWindowClose(event: any): void {
-    
-    event.preventDefault();
-    event.returnValue = false;
+  // @HostListener('window:beforeunload', ['$event'])
+  // onWindowClose(event: any): void {
+
+  //   event.preventDefault();
+  //   event.returnValue = false;
 
 
 
-  }
+  // }
 
 }

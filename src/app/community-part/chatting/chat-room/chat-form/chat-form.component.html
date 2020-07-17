@@ -1,24 +1,26 @@
-<div class="chat-sending">
+<div class="chat-sending" #chatForm>
     <div class="message-attachments">
         <div class="inputDiv">
-            <input type="file" (input)='onSelectedFile($event)'>
+            <input  [disabled]='isDisabled' type="file" (input)='onSelectedFile($event)'>
             <svg class="icon icon--attach">
                 <use xlink:href="../../../../../assets/sprites/chat-icons.svg#paperclip"></use>
             </svg>
         </div>
         <div class="inputDiv">
-            <input type="file" (input)='onSelectedImg($event)' accept="image/*">
+            <input  [disabled]='isDisabled' type="file" (input)='onSelectedImg($event)' accept="image/*">
             <svg class="icon icon--attach">
                 <use xlink:href="../../../../../assets/sprites/chat-icons.svg#image"></use>
             </svg>
         </div>
     </div>
-    <textarea cols="30" rows="1" class="message-input" placeholder="Type a message..." #messageInput
+    <textarea [disabled]='isDisabled' cols="30" rows="1" class="message-input" placeholder="Type a message..." #messageInput
         (keyup)="handleSendMessage($event)"></textarea>
 
-    <div class="send-btn" (click)="sendingMessage()">
-        <svg class="icon icon--send">
-            <use xlink:href="../../../../../assets/sprites/chat-icons.svg#send"></use>
-        </svg>
+    <div>
+        <button [disabled]='isDisabled' class="send-btn" (click)="sendingMessage()">
+            <svg class="icon icon--send">
+                <use xlink:href="../../../../../assets/sprites/chat-icons.svg#send"></use>
+            </svg>
+        </button>
     </div>
 </div>

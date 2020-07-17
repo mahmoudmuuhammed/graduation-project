@@ -1,0 +1,39 @@
+[debug] [2020-07-17T19:07:31.216Z] ----------------------------------------------------------------------
+[debug] [2020-07-17T19:07:31.221Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Moemen\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2020-07-17T19:07:31.221Z] CLI Version:   8.4.2
+[debug] [2020-07-17T19:07:31.222Z] Platform:      win32
+[debug] [2020-07-17T19:07:31.222Z] Node Version:  v12.16.1
+[debug] [2020-07-17T19:07:31.226Z] Time:          Fri Jul 17 2020 21:07:31 GMT+0200 (Eastern European Standard Time)
+[debug] [2020-07-17T19:07:31.226Z] ----------------------------------------------------------------------
+[debug] [2020-07-17T19:07:31.226Z] 
+[debug] [2020-07-17T19:07:31.244Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-07-17T19:07:31.246Z] > authorizing via signed-in user
+[debug] [2020-07-17T19:07:31.246Z] [iam] checking project medkitc for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-07-17T19:07:31.252Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-07-17T19:07:31.253Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-07-17T19:07:31.709Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 17 Jul 2020 19:07:35 GMT","server":"scaffolding on HTTPServer2","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-07-17T19:07:31.720Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/medkitc:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-07-17T19:07:32.695Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 17 Jul 2020 19:07:36 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=627","alt-svc":"h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-07-17T19:07:32.697Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/medkitc  
+ 
+[debug] [2020-07-17T19:07:33.174Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 17 Jul 2020 19:07:37 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[warn] !  functions: package.json indicates an outdated version of firebase-functions.
+Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[info] 
+[info] === Deploying to 'medkitc'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2020-07-17T19:07:50.655Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/medkitc/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2020-07-17T19:07:52.829Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 17 Jul 2020 19:07:56 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[medkitc]: beginning deploy... 
+[info] i  hosting[medkitc]: found 109 files in dist/medkit-app 
+[debug] [2020-07-17T19:07:54.998Z] [hosting] hash cache [ZGlzdFxtZWRraXQtYXBw] stored for 109 files
+[debug] [2020-07-17T19:07:54.998Z] [hosting][hash queue][FINAL] {"max":1884,"min":0,"avg":282.9048046987733,"active":0,"complete":109,"success":109,"errored":0,"retried":0,"total":109,"elapsed":1961}
+[debug] [2020-07-17T19:07:54.999Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/medkitc/versions/9c70c93cb0de5ba8:populateFiles  
+ <request body omitted>
+[debug] [2020-07-17T19:07:57.267Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 17 Jul 2020 19:08:01 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-07-17T19:07:57.274Z] [hosting][populate queue][FINAL] {"max":2327,"min":2327,"avg":2327,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":2332}
+[debug] [2020-07-17T19:07:57.274Z] [hosting] uploads queued: 5

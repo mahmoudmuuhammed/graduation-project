@@ -8,6 +8,17 @@
     align-items: center;
     border-top: 1px solid #e0e0e0;
     background-color: #fff;
+
+    &.disabled {
+        opacity: .5;
+
+        &>div,
+        input,
+        svg,
+        &>textArea {
+            cursor: not-allowed !important;
+        }
+    }
 }
 
 .message-attachments {
@@ -56,6 +67,8 @@
     padding: .4em;
     border-radius: 50%;
     text-align: center;
+    border: none;
+    background-color: transparent;
 }
 
 .icon {
