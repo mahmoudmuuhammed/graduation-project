@@ -1,0 +1,60 @@
+@import '../../../../styles/abstracts/variables';
+
+.tableContainer {
+    display: table;
+    width: calc(100% - 20px);
+    margin: 20px 10px;
+
+    .tableHeader {
+        display: table-header-group;
+        background: $primary-color;
+        color: #fff;
+
+        .tableHeaderCell {
+            display: table-cell;
+            padding: 10px;
+        }
+    }
+
+    .tableBody {
+        display: table-row-group;
+
+        .tableRow {
+            display: table-row;
+
+            .tableCell {
+                display: table-cell;
+                padding: 10px;
+
+                a {
+                    text-decoration: none;
+                    color: #333;
+                    font-weight: 500px;
+
+                    &:hover {
+                        color: $primary-color
+                    }
+                }
+
+                button {
+                    all: unset;
+                    border-radius: 5px;
+                    margin: 5px;
+                    color: #fff;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                }
+
+                .showBtn {
+                    background-color: $primary-color;
+                }
+
+                .deleteBtn {
+                    background-color: #d41212;
+
+                }
+            }
+        }
+    }
+
+}

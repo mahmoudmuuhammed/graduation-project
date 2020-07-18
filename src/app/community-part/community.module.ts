@@ -15,8 +15,6 @@ import { DoctorPreviewModule } from './doctor-preview/doctor-preview.module';
 import { AgmCoreModule } from '@agm/core'
 
 import { CommunityContainerComponent } from './community.component';
-import { CommunitySidebarComponent } from './community-sidebar/community-sidebar.component';
-import { CommunityTopnavComponent } from './community-topnav/community-topnav.component';
 import { TopnavComponent } from './top-nav/c-topnav.component';
 import { SidebarComponent } from './sidebar/c-sidebar.component';
 import { VideoCallComponent } from './video-call/video-call.component';
@@ -31,13 +29,11 @@ import { UserListComponent } from './trusted-selection/edit-trusted/edit-trusted
 import { PrescriptionsComponent } from './prescriptions/prescriptions.component';
 import { PrescriptionItemComponent } from './prescriptions/prescription-item/prescription-item.component';
 import { DocRatingComponent } from './doc-rating/doc-rating.component';
-import { NotificationAlertComponent } from './notification-alert/notification-alert.component';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
     declarations: [
         CommunityContainerComponent,
-        CommunitySidebarComponent,
-        CommunityTopnavComponent,
         TopnavComponent,
         SidebarComponent,
         VideoCallComponent,
@@ -52,7 +48,6 @@ import { NotificationAlertComponent } from './notification-alert/notification-al
         PrescriptionsComponent,
         PrescriptionItemComponent,
         DocRatingComponent,
-        NotificationAlertComponent
     ],
     imports: [
         CommonModule,
@@ -65,6 +60,7 @@ import { NotificationAlertComponent } from './notification-alert/notification-al
         SharedCommunityModule,
         EmergencyAreaModule,
         EditDetailsModule,
+        AdminModule,
         AngularAgoraRtcModule.forRoot(environment.agoraConfig),
         AgmCoreModule.forRoot(environment.agmConfig)
     ],

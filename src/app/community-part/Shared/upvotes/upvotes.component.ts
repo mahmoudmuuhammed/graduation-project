@@ -40,11 +40,9 @@ export class UpvotesComponent implements OnInit {
 
     upVote() {
         this.feedsService.updateVoteOnPost(this.postId, 1);
-        this.getVotes()
     }
 
     downVote() {
-        this.feedsService.updateVoteOnPost(this.postId, -1);
-        this.getVotes()
+        this.feedsService.updateVoteOnPost(this.postId, -1)
     }
 }

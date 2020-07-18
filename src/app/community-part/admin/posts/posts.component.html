@@ -1,0 +1,21 @@
+<div class="tableContainer">
+    <div class="tableHeader">
+        <div class="tableHeaderCell">No.</div>
+        <div class="tableHeaderCell">Post ID</div>
+        <div class="tableHeaderCell">Post Category</div>
+        <div class="tableHeaderCell">User ID</div>
+        <div class="tableHeaderCell">Action</div>
+    </div>
+    <div class="tableBody">
+        <div class="tableRow" *ngFor='let post of Posts |async,let i = index'>
+            <div class="tableCell">{{i}}</div>
+            <div class="tableCell">{{post.postKey}}</div>
+            <div class="tableCell">{{post.category}}</div>
+            <div class="tableCell"><a [routerLink]='["community/Profile",post.userID]'>{{post.userName}}</a></div>
+            <div class="tableCell">
+                <button class="showBtn" (click)='onViewPost(post.postKey)'>Show</button>
+                <button class="deleteBtn" (click)='onDeletePost(post.postKey)'>Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

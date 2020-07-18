@@ -55,7 +55,8 @@ export class DoctorInfoComponent implements OnInit {
       
           this.http.post('https://id-detect.herokuapp.com/predict/', message)
           .subscribe(
-            (re: Check) => {
+              (re: Check) => {
+                console.log(re)
               if(re.prediction === 0) {
                   this.checkingMessage = 'Not valid license';
               } else if (re.prediction === 1) {

@@ -2,6 +2,17 @@
 
     <div class="navLinkDiv">
         <div class="navLinkContainer" toggleDescribtion routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
+            <a [routerLink]="['Admin']">
+                <div class="sideNavItemImgDiv"><i class="fas fa-user-cog sideNavItemImg"></i></div>
+                <span class="sideNavItemSpan">
+                    <div class="sideNavCaret">
+                        <img src="../../../assets//images/caret.svg">
+                    </div>
+                    Admin
+                </span>
+            </a>
+        </div>
+        <div class="navLinkContainer" toggleDescribtion routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
             <a [routerLink]="['Profile', userId]">
                 <div class="sideNavItemImgDiv"><i class="fas fa-user sideNavItemImg"></i></div>
                 <span class="sideNavItemSpan">

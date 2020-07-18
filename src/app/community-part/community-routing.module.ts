@@ -13,6 +13,7 @@ import { EditGuard } from './profile/edit-details/edit.guard'
 import { EmergencyComponent } from './emergency/emergency.component';
 import { TrustedSelectionComponent } from './trusted-selection/trusted-selection.component';
 import { PrescriptionsComponent } from './prescriptions/prescriptions.component';
+//import { AdminGuard } from './admin/admin.guard';
 
 const communityRoutes: Routes = [
     {
@@ -35,6 +36,11 @@ const communityRoutes: Routes = [
             { path: 'Doctors', component: DoctorPreviewComponent },
             { path: 'Trusted', component: TrustedSelectionComponent },
             { path: 'Prescription', component: PrescriptionsComponent },
+            {
+                path: 'Admin',
+                loadChildren: './admin/admin.module#AdminModule',
+                //canActivate:[AdminGuard]
+              },
         ]
     }
 ];

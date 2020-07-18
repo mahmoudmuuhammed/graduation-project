@@ -61,7 +61,6 @@ export const commentNotification =
                                 notification: {
                                     title: 'new comment on your post',
                                     body: 'from ' + commentData?.userName,
-                                    click_action: 'PostActivity'
                                 }
                             }
                             return admin.messaging().sendToDevice(token, payload)
@@ -170,7 +169,6 @@ export const clappingCounterAndNotification =
                                                 notification: {
                                                     title: `clapped on your comment`,
                                                     body: ` ${clapperData?.fullName}`,
-                                                    click_action: 'PostActivity'
                                                 }
                                             }
                                             admin.messaging().sendToDevice(commenter.data()?.notification_token_id, payload)
@@ -350,7 +348,6 @@ export const votingNotification =
                                     notification: {
                                         title: `new vote on your post`,
                                         body: ` from ${votterData?.fullName}`,
-                                        click_action: 'PostActivity'
                                     }
                                 }
                                 admin.messaging().sendToDevice(poster.data()?.notification_token_id, payload)
