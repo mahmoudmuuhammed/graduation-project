@@ -50,6 +50,18 @@
         align-items: center;
         justify-content: center;
 
+        .docRateDiv{
+            margin-bottom: 10px;
+            .blank{
+                color: #888;
+                font-size: 18px;
+            }
+            .colorful{
+                color:rgb(240, 240, 11);
+                font-size: 18px;
+            }
+        }
+
         &-name {
             font-size: 16px;
             font-weight: 600;

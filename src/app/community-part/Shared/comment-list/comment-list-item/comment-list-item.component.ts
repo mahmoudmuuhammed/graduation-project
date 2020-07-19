@@ -3,6 +3,7 @@ import { Comment } from 'src/app/models/comment.model';
 import { FeedsService } from 'src/app/services/feeds.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
     selector: 'comment-list-item',
@@ -31,8 +32,11 @@ export class CommentListItemComponent implements OnInit {
     isAuther: boolean = false;
     clapped: boolean = false;
     userImgUrl: string = '../../../../../assets/images/DeafultUser.svg';
+    isVerfied: boolean = false;
 
-    constructor(private feedsService: FeedsService, private authService: AuthService) { }
+    constructor(private feedsService: FeedsService,
+        private authService: AuthService,
+        private firestore: FirestoreService) { }
 
     ngOnInit() {
         this.postId = this.commentData.postId;
@@ -57,6 +61,10 @@ export class CommentListItemComponent implements OnInit {
 
             const commentAuther = this.commentData.userId;
             user.uid == commentAuther ? this.isAuther = true : this.isAuther = false;
+        })
+
+        this.firestore.getUser(this.commentData.userId).subscribe(res => {
+            this.isVerfied = res.userType.isVerfied
         })
     }
 

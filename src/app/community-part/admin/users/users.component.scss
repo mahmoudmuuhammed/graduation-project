@@ -1,0 +1,77 @@
+@import '../../../../styles/abstracts/variables';
+
+.tableContainer {
+    display: table;
+    width: 100%;
+
+    .tableHeader {
+        display: table-header-group;
+        background: $primary-color;
+        color: #fff;
+
+        .tableHeaderCell {
+            display: table-cell;
+            padding: 10px;
+        }
+    }
+
+    .tableBody {
+        display: table-row-group;
+
+        .tableRow {
+            display: table-row;
+
+            .tableCell {
+                display: table-cell;
+                padding: 10px;
+                max-width: 18vw;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+
+                .icon{
+                    font-size: 16px;
+                    color: #555;
+                    margin-right: 5px;
+                }
+
+                .verfiedIcon{
+                    width: 15px;
+                    height: 15px;
+                    margin-right: 5px;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: #333;
+                    font-weight: 500px;
+
+                    &:hover {
+                        color: $primary-color
+                    }
+                }
+
+                button {
+                    all: unset;
+                    border-radius: 5px;
+                    margin: 5px;
+                    color: #fff;
+                    padding: 5px 5px;
+                    cursor: pointer;
+                    font-size: 12px;
+                    font-weight: 500;
+                }
+
+                .showBtn {
+                    background-color: $primary-color;
+                }
+
+                .deleteBtn {
+                    background-color: #d41212;
+
+                }
+            }
+        }
+    }
+
+}

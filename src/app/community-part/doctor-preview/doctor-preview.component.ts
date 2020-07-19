@@ -70,8 +70,8 @@ export class DoctorPreviewComponent implements OnInit {
 
   sort(){
     this.pointsSort == 'Low to high' ?
-    this.doctorsList.sort((a, b) => { return a.clappingCounter - b.clappingCounter }) :
-    this.doctorsList.sort((a, b) => { return b.clappingCounter - a.clappingCounter })
+    this.doctorsList.sort((a, b) => { return a.userType.rating - b.userType.rating }) :
+    this.doctorsList.sort((a, b) => { return b.userType.rating - a.userType.rating })
   }
 
   // feesSortChange(event) {

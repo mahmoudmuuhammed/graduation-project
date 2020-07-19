@@ -1,0 +1,43 @@
+<div class="outer">
+    <div class="inner">
+        <header>
+            <button class="closeBtn" (click)='onCloseUserPreview()'>x</button>
+        </header>
+        <main>
+            <div class="userDataContainer">
+                <div class="userDataDivImg">
+                    <img src='{{userImgLink}}'>
+                    <p><a [routerLink]='["/Community/Profile",userData?.uid]'>{{userData.fullName}}</a></p>
+                </div>
+                <div class="userDataDiv">
+                    <img src="../../../../assets/images/speciality.svg">
+                    <p class="data">{{userData.userType.speciality}}</p>
+                </div>
+                <div class="userDataDiv">
+                    <img src="../../../../assets/images/star.svg">
+                    <p class="data">{{userData.userType.rating}}</p>
+                </div>
+            </div>
+            <div class="IdImgDiv" *ngIf='userData.userType.usertype == "Doctor"'>
+                <img src='{{userIdLink}}' (click)='showIDImg()' />
+            </div>
+        </main>
+        <footer>
+            <button class="acceptBtn" (click)='onConfirmUser()' *ngIf='!userData.userType.isVerfied && userData.userType.usertype =="Doctor"'>Confirm</button>
+            <button class="deleteBtn" (click)='onDeleteUser()'>Delete</button>
+        </footer>
+    </div>
+</div>
+
+<div class="outerImgPreviewDiv" *ngIf='showingImg' #imgPreview (click)="closeImg($event)">
+    <div class="innerImgPreviewDiv animate fadeIn slow">
+        <header>
+            <button (click)="closeImgPreview()">
+                <i class="fas fa-times"></i>
+            </button>
+        </header>
+        <main>
+            <img class="img-fluid" src='{{userIdLink}}'>
+        </main>
+    </div>
+</div>

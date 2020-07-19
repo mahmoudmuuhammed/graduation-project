@@ -1,7 +1,8 @@
 <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault" [ngClass]="{open: sideBarStatus=== true}">
 
     <div class="navLinkDiv">
-        <div class="navLinkContainer" toggleDescribtion routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
+        <div class="navLinkContainer" *ngIf='userData?.userType.isAdmin' toggleDescribtion
+            routerLinkActive="activeNavLinkItem" (click)="hideSideBar()">
             <a [routerLink]="['Admin']">
                 <div class="sideNavItemImgDiv"><i class="fas fa-user-cog sideNavItemImg"></i></div>
                 <span class="sideNavItemSpan">
@@ -38,7 +39,7 @@
             <a routerLink="Chat">
                 <div class="sideNavItemImgDiv">
                     <i class="fas fa-comments sideNavItemImg chatImg"></i>
-                <div class="newMsgNotificationDiv"></div>
+                    <div class="newMsgNotificationDiv"></div>
                 </div>
                 <span class="sideNavItemSpan">
                     <div class="sideNavCaret">

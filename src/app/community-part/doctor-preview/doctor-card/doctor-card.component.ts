@@ -13,6 +13,9 @@ export class DoctorCardComponent implements OnInit {
   @Input() DoctorData: UserModel
   docImgUrl: string = ''
 
+  docRate: number[] = [];
+  numOfOffStar: number[] = [];
+
   constructor(private doctorService: DoctorsService,
     private authService: AuthService) { }
 
@@ -20,6 +23,15 @@ export class DoctorCardComponent implements OnInit {
     this.authService.getUserImgLink(this.DoctorData.uid).subscribe(imgUrl => {
       this.docImgUrl = imgUrl
     })
+
+    for (let i = 0; i < this.DoctorData?.userType.rating; i++) {
+      this.docRate.push(i)
+    }
+    for (let i = 0; i < 5 - this.docRate.length; i++) {
+      this.numOfOffStar.push(i)
+    }
+
+
   }
 
   bookDoctor() {

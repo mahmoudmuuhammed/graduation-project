@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import { UserModel } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { DoctorsService } from 'src/app/services/doctors.service';
 
 @Component({
   selector: 'user-profile-actions',
@@ -15,7 +16,7 @@ export class UserProfileActionsComponent implements OnChanges {
   isCurrentUser: boolean = false
   isDoctor: boolean = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,private doctorService:DoctorsService) { }
 
   ngOnChanges() {
     this.authService.currentUser.subscribe(user => {
@@ -23,6 +24,11 @@ export class UserProfileActionsComponent implements OnChanges {
     })
 
     this.isDoctor = this.userData.userType.usertype == "Doctor" ? true : false;
+  }
+
+  bookWithDoctor() {
+    this.doctorService.doctorDataSubjectOnBooking.next(this.userData);
+    
   }
 
 }

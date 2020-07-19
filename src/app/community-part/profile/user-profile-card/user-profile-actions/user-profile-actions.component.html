@@ -25,7 +25,7 @@
 </div> -->
 
 <div class="bookingDiv" *ngIf="!isCurrentUser && isDoctor">
-    <button class="bookingDiv__btn">Book</button>
+    <button class="bookingDiv__btn" (click)='bookWithDoctor()'>Book</button>
 </div>
 
 <div class="editDiv" *ngIf="isCurrentUser">

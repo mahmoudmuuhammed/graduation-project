@@ -10,18 +10,19 @@
         <span class="profile-info__user-name">
             {{userData.fullName |titlecase}}
         </span>
-        <!-- <span class="profile-info__user-specialty">
-            Diabets
-        </span> -->
+        <div class="docRateDiv" *ngIf="userData.userType.usertype == 'Doctor'">
+            <i *ngFor="let rate of docRate" class="fas fa-star colorful"></i>
+            <i *ngFor='let blank of numOfOffStar' class="fas fa-star blank"></i>
+        </div>
         <div class="profile-info__user-belong">
-            <!-- <div class="profile-info__user-belong__content">
+            <div class="profile-info__user-belong__content">
                 <span class="profile-info__user-belong__title">
                     post
                 </span>
                 <span class="profile-info__user-belong__desc">
-                    34
+                    {{userData.postCounter}}
                 </span>
-            </div> -->
+            </div>
             <div class="profile-info__user-belong__content">
                 <span class="profile-info__user-belong__title">
                     comment
@@ -38,22 +39,6 @@
                     {{userData.clappingCounter}}
                 </span>
             </div>
-            <!-- <div class="profile-info__user-belong__content">
-                <span class="profile-info__user-belong__title">
-                    rate
-                </span>
-                <span class="profile-info__user-belong__desc">
-                    8.9
-                </span>
-            </div> -->
         </div>
-        <!-- <div class="profile-info__user-actions">
-            <button class="profile-info__user-actions__btn profile-info__user-actions__btn--custom">
-                <span>Stories</span>
-            </button>
-            <button class="profile-info__user-actions__btn">
-                <span>View profile</span>
-            </button>
-        </div> -->
     </div>
 </div>

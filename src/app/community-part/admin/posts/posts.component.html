@@ -11,10 +11,10 @@
             <div class="tableCell">{{i}}</div>
             <div class="tableCell">{{post.postKey}}</div>
             <div class="tableCell">{{post.category}}</div>
-            <div class="tableCell"><a [routerLink]='["community/Profile",post.userID]'>{{post.userName}}</a></div>
+            <div class="tableCell"><a [routerLink]='["/community/Profile",post.userID]'>{{post.userName}}</a></div>
             <div class="tableCell">
-                <button class="showBtn" (click)='onViewPost(post.postKey)'>Show</button>
                 <button class="deleteBtn" (click)='onDeletePost(post.postKey)'>Delete</button>
+                <button class="showBtn" [routerLink]='["/community/Post",post.postKey]'>Show</button>
             </div>
         </div>
     </div>

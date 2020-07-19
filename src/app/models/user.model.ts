@@ -19,5 +19,7 @@ export class AccountType {
     speciality?: string;
     location?: string;
     fees?: number;
-    rating?:number
+    rating?: number;
+    isVerfied?: boolean;
+    isAdmin?: boolean;
 }

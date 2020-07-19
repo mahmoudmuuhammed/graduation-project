@@ -1,1 +1,28 @@
-<p>users-preview works!</p>
+<div class="tableContainer">
+    <div class="tableHeader">
+        <div class="tableHeaderCell">No.</div>
+        <div class="tableHeaderCell">User ID</div>
+        <div class="tableHeaderCell">Username</div>
+        <div class="tableHeaderCell">Email</div>
+        <div class="tableHeaderCell">Action</div>
+    </div>
+    <div class="tableBody">
+        <div class="tableRow" *ngFor='let user of Users |async,let i = index'>
+            <div class="tableCell">{{i}}</div>
+            <div class="tableCell">{{user.uid}}</div>
+            <div class="tableCell">
+                <i *ngIf='user.userType.usertype == "Doctor"' class="fas fa-user-md icon"></i>
+                <a [routerLink]="['/community/Profile',user.uid]">{{user.fullName}}</a>
+            </div>
+            <div class="tableCell">
+                <img *ngIf='user.userType.usertype == "Doctor" && user.userType.isVerfied == true'
+                    class="verfiedIcon" src="../../../../assets/images/check.svg">
+                {{user.email}}</div>
+            <div class="tableCell">
+                <button class="deleteBtn" (click)='onDeleteUser(user.uid)'>Delete</button>
+                <button class="showBtn" (click)='onViewUser(user)'
+                *ngIf='user.userType.usertype == "Doctor"'>Show</button>
+            </div>
+        </div>
+    </div>
+</div>

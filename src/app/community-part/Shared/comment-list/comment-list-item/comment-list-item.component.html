@@ -9,6 +9,7 @@
                     <span class="comment__info-user__name">
                         <a [routerLink]="['/community/Profile', commentData.userId]">
                             {{ commentData?.userName}}
+                            <img *ngIf='isVerfied' src='../../../../../assets//images/check.svg'>
                         </a>
                     </span>
                     <span class="comment__info-user__date">

@@ -13,19 +13,36 @@ import { Subject } from 'rxjs';
 
 export class AdminService {
 
-    previewPostSubject = new Subject<{ postId: string, state: boolean }>();
-
+    showUserSubject = new Subject<{ userData: UserModel, state: boolean }>();
+    showImgSubject = new Subject<{ imgLink: string, state: boolean }>();
 
     constructor(
         private auth: AngularFireAuth,
         private forms: FormsServices,
         private fireDb: AngularFirestore,
-        private ngZone: NgZone,
         private storage: AngularFireStorage,
         private afs: AngularFirestore
     ) { }
 
+    getUsers() {
+        return this.afs.collection<UserModel>('Users', ref => {
+            return ref.orderBy('createdTime', 'desc')
+        }).valueChanges().pipe(take(1))
+    }
+
     deletePost(postId: string) {
         this.afs.doc(`Posts/${postId}`).delete()
+    }
+
+    deleteUser(userId: string) {
+        this.afs.doc(`Users/${userId}`).delete()
+    }
+
+    confirmUser(userId: string) {
+        this.afs.doc(`Users/${userId}`).update({ 'userType.isVerfied': true })
+    }
+
+    getDocIdLink(docId: string) {
+        return this.storage.ref(`doctorLicense/${docId}`).getDownloadURL().pipe(take(1))
     }
 }

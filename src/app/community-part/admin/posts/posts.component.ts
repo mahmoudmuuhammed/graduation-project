@@ -25,10 +25,12 @@ export class PostsPreviewComponent implements OnInit {
   }
 
   onDeletePost(postId: string) {
-    if (confirm('Are you sure')) { this.adminService.deletePost(postId); this.loadPosts() }
+    if (confirm('Are you sure')) {
+      this.adminService.deletePost(postId); this.loadPosts()
+    }
   }
 
   onViewPost(postId: string) {
-    
+
   }
 }

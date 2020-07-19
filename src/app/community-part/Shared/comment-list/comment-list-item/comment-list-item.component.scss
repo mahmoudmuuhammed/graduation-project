@@ -45,9 +45,16 @@
                         a {
                             text-decoration: none;
                             color: #222;
-
+                            display: flex;
+                            align-items: center;
                             &:hover{
                                 color: $primary-color;
+                            }
+
+                            img{
+                                width: 15px;
+                                height: 15px;
+                                margin-left: 5px;
                             }
                         }
                     }

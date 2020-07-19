@@ -2,8 +2,7 @@
 
 .tableContainer {
     display: table;
-    width: calc(100% - 20px);
-    margin: 20px 10px;
+    width: 100%;
 
     .tableHeader {
         display: table-header-group;
@@ -25,7 +24,8 @@
             .tableCell {
                 display: table-cell;
                 padding: 10px;
-
+                white-space: nowrap;
+                
                 a {
                     text-decoration: none;
                     color: #333;
@@ -42,6 +42,8 @@
                     margin: 5px;
                     color: #fff;
                     padding: 5px 10px;
+                    font-size: 12px;
+                    font-weight: 500;;
                     cursor: pointer;
                 }
 

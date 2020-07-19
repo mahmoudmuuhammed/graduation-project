@@ -1,3 +1,5 @@
+@import '../../../styles/abstracts/variables';
+
 .admin-container {
     min-height: calc(100vh - 50px);
 
@@ -11,6 +13,7 @@
                 width: 100%;
                 margin: auto;
                 justify-content: space-evenly;
+                flex-direction: row !important;
 
                 .nav-item {
                     padding: 10px;
@@ -21,7 +24,8 @@
                     text-align: center;
 
                     &.active {
-                        background: #f5f5f5;
+                        background: $primary-color;
+                        color: #fff
                     }
                 }
             }

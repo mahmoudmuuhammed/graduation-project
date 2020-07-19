@@ -3,9 +3,9 @@
         <header class="col-12">
             <nav class="navbar navbar-expand-lg">
                 <div class="navbar-nav">
-                    <a class="nav-item" routerLink="Posts" routerLinkActive="active">Posts</a>
                     <a class="nav-item" routerLink="Users" routerLinkActive="active">Users</a>
-                    <a class="nav-item" routerLink="Add" routerLinkActive="active">Add admin</a>
+                    <a class="nav-item" routerLink="Posts" routerLinkActive="active">Posts</a>
+                    <!-- <a class="nav-item" routerLink="Add" routerLinkActive="active">Add admin</a> -->
                 </div>
             </nav>
         </header>
@@ -17,14 +17,5 @@
     </div>
 </div>
 
-<div class="postPreview" *ngIf='showingPost'>
-    <header>
-        <button class="closeBtn" (click)='closePreview()'>x</button>
-    </header>
-    <main>
-        <div class="postImgDiv">
-            <img>
-        </div>
-        
-    </main>
-</div>
+<user-preview [userData]='userData' *ngIf='showingUser'></user-preview>
+

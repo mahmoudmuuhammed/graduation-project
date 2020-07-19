@@ -94,6 +94,7 @@ export class FeedsService {
         return this.commentCollection.valueChanges();
     }
 
+
     getLimitedComment(postId: string, limit: number) {
         this.commentCollection = this.db.collection(`Posts/${postId}/Comments`,
             ref => { return ref.orderBy('createdTime', 'desc').limit(limit) });

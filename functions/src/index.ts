@@ -35,7 +35,7 @@ export const commentNotification =
             const postRef = commentRef.parent.parent;
             return postRef?.get().then((post) => {
                 const postData = post.data();
-                if (postData?.userID != commentData?.userId) {
+                if (postData?.userID !== commentData?.userId) {
                     admin.firestore().collection(`Users/${postData?.userID}/Notification`).add({
                         createdTime: Date.now(),
                         from: commentData?.userId,
@@ -61,6 +61,7 @@ export const commentNotification =
                                 notification: {
                                     title: 'new comment on your post',
                                     body: 'from ' + commentData?.userName,
+                                    click_action: 'PostActivity',
                                 }
                             }
                             return admin.messaging().sendToDevice(token, payload)
@@ -107,6 +108,12 @@ export const commentCounterOnDelete =
             return admin.firestore().doc(`Users/${userId}`).update({ commentCounter: admin.firestore.FieldValue.increment(-1) })
         })
 
+export const userDeletion =
+    functions.firestore.document('Users/{userId}')
+        .onDelete(user => {
+            return admin.auth().deleteUser(user.data()?.uid)
+        })
+
 
 
 export const clappingCounterAndNotification =
@@ -142,7 +149,7 @@ export const clappingCounterAndNotification =
                             }
                         })
 
-                        if (newCommentData?.userId != clapperId) {
+                        if (newCommentData?.userId !== clapperId) {
                             return admin.firestore().doc(`Users/${clapperId}`).get().then(clapper => {
                                 postRef?.get().then(post => {
                                     let clapperData = clapper.data();
@@ -169,6 +176,7 @@ export const clappingCounterAndNotification =
                                                 notification: {
                                                     title: `clapped on your comment`,
                                                     body: ` ${clapperData?.fullName}`,
+                                                    click_action: 'PostActivity',
                                                 }
                                             }
                                             admin.messaging().sendToDevice(commenter.data()?.notification_token_id, payload)
@@ -198,7 +206,7 @@ export const chatNotification =
             roomRef?.get().then(room => {
                 const roomData = room.data();
                 Object.keys(roomData?.users).forEach((key) => {
-                    if (senderId != key) {
+                    if (senderId !== key) {
                         receiverId = key
                     }
                 })
@@ -208,7 +216,7 @@ export const chatNotification =
                     admin.firestore().doc(`Users/${senderId}`).get().then(res => {
                         senderName = res.data()?.fullName
 
-                        if (msgData?.msgtype == 0) {
+                        if (msgData?.msgtype === 0) {
                             payload = {
                                 data: {
                                     toUid: res.data()?.uid,
@@ -322,7 +330,7 @@ export const votingNotification =
             return admin.firestore().doc(`Users/${userId}`).get().then(votter => {
                 let votterData = votter.data();
 
-                if (newPostData?.userID != votterData?.uid) {
+                if (newPostData?.userID !== votterData?.uid) {
                     admin.firestore().collection(`Users/${oldPostData?.userID}/Notification`).add({
                         createdTime: Date.now(),
                         from: votterData?.uid,
@@ -348,6 +356,7 @@ export const votingNotification =
                                     notification: {
                                         title: `new vote on your post`,
                                         body: ` from ${votterData?.fullName}`,
+                                        click_action: 'PostActivity',
                                     }
                                 }
                                 admin.messaging().sendToDevice(poster.data()?.notification_token_id, payload)

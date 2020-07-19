@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
+import { UserModel } from 'src/app/models/user.model';
 
 @Component({
   selector: 'admin',
@@ -8,20 +9,26 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class AdminComponent implements OnInit {
 
-  showingPost: boolean = false;
-  postId: string;
+  showingUser: boolean = false;
+  userData: UserModel;
+  showingImg: boolean = false;
+  imgLink: string;
 
   constructor(private adminService: AdminService) { }
 
   ngOnInit() {
-    this.adminService.previewPostSubject.subscribe(res => {
-      this.showingPost = res.state;
-      this.postId = res.postId;
+
+    this.adminService.showUserSubject.subscribe(res => {
+      this.userData = res.userData
+      this.showingUser = res.state
     })
+
+    this.adminService.showImgSubject.subscribe(res => {
+      this.imgLink = res.imgLink;
+      this.showingImg = res.state
+    })
+
   }
 
-  closePreview() {
-
-  }
 
 }
